@@ -1,39 +1,34 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+    font-size: 62.5%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+body {
+  background-color: rgb(28 28 35);
+  color: gainsboro;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
 
-.App-link {
-  color: rgb(112, 76, 182);
-}
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
+/* 
+
+Colors:
+main = 0xFF9F5AFD
+background = 0xff262938
+secondary = 0xFFF7CA18
+
+
+main = hsl(220 14% 15% / 1)
+yellow = hsl(50deg 83% 59%)
+purple = hsl(262deg 70% 64%) 
+grey = hsl(220deg 11% 89%)
+*/

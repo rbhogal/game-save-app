@@ -1,0 +1,59 @@
+.nav {
+  width: 100%;
+  background-color: rgb(26 26 35);
+}
+
+ion-icon {
+  font-size: 38px;
+  color: gainsboro;
+}
+
+header {
+  height: 55px;
+  box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 30%);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.drop-btn {
+  background-color: rgba(0, 0, 0, 0);
+  color: inherit;
+  padding: 18px;
+  font-size: 16px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.drop-btn ion-icon {
+  font-size: 15px;
+  padding-top: 2px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: gainsboro;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: rgb(84, 103, 133);
+  display: block;
+  padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

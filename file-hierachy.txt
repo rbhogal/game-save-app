@@ -1,0 +1,50 @@
+App
+|__Header (component)
+|  |__Logo
+|  |__Dropdown List
+|  |  |__categories
+|  |__Search
+|  |  |__Input field
+|  |  |__Games List (component)
+|  |__Sign In
+|  |  |__Twitch auth
+|  |     |__App
+|  |__Profile Button
+|     |__User Profile Page
+|        |__Saved Games Carousel
+|           |__Game Profile Page (component)
+|__Featured games image slider
+|__Popular Carousel
+|__Most Anticipated Carousel
+|__Recent Releases Carousel
+
+GamesList
+|__Header
+|__Games Carousel
+   |__Games
+      |__Game Profile Page (component)
+
+Game Profile Page
+|__Header (component)
+|__Trailer (hero)
+|__Cover art box 
+|__Title
+|__Rating
+|__Screenshots Modal Image Slider (component)
+|  |__Screenshot Images
+|__Description
+|__Game Details
+|  |__Genre (link)
+|  |__Release Date
+|  |__Developer 
+|  |__Features (link)
+|  |__keywords (link)
+|  |__Themes (link)
+|__Recommendations
+   |__Games Carousel
+
+
+User Profile
+|__Header (component)
+|__Saved Games
+   |__Games Carousel
