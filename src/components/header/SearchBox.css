@@ -1,3 +1,77 @@
+.SearchBox {
+  display: flex;
+  align-items: center;
+}
+
+.drop-btn {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(220, 220, 220, 0.8);
+  padding: 18px;
+  font-size: 16px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.drop-btn ion-icon {
+  font-size: 15px;
+  padding-top: 2px;
+  opacity: 0.5;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  background-color: gainsboro;
+  min-width: 250px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  transition: all 50000ms ease-in-out;
+}
+
+.dropdown-content ion-icon {
+  font-size: 15px;
+  color: rgb(84, 103, 133);
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: rgb(82, 97, 121);
+  display: block;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(199, 199, 199);
+}
+
+.drop-btn:hover {
+  color: rgba(220, 220, 220, 1);
+}
+
+.drop-btn:hover ion-icon {
+  opacity: 1;
+}
+
 .search-box {
   display: flex;
 }
@@ -11,6 +85,7 @@
   background-color: rgba(0, 0, 0, 0);
   border: none;
   margin: 0px 5px;
+  cursor: pointer;
 }
 
 .search-box input {
@@ -20,6 +95,7 @@
   font-size: 16px;
   font-family: inherit;
   font-weight: 700;
+  color: rgb(82, 97, 121);
 }
 
 .search-box input:focus {
