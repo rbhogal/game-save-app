@@ -29,7 +29,6 @@
 
 .dropdown-content {
   display: none;
-  opacity: 0;
   position: absolute;
   background-color: gainsboro;
   min-width: 250px;
@@ -57,7 +56,6 @@
 /* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
   display: block;
-  opacity: 1;
 }
 
 .dropdown-content a:hover {
@@ -90,6 +88,7 @@
 
 .search-box input {
   padding: 10px;
+  min-width: 35rem;
   border-radius: 2px;
   border: none;
   font-size: 16px;
