@@ -14,6 +14,7 @@
   font-family: inherit;
   display: flex;
   align-items: center;
+  width: 120px;
 }
 
 .drop-btn ion-icon {
@@ -30,7 +31,9 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
+  background-color: white;
+
   min-width: 250px;
   z-index: 1;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -40,6 +43,7 @@
 .dropdown-content ion-icon {
   font-size: 15px;
   color: rgb(84, 103, 133);
+
 }
 
 .dropdown-content a {
@@ -59,7 +63,8 @@
 }
 
 .dropdown-content a:hover {
-  background-color: rgb(199, 199, 199);
+  /* background-color: rgb(199, 199, 199); */
+  background-color: gainsboro;
 }
 
 .drop-btn:hover {
@@ -103,4 +108,10 @@
 
 .search-box input:focus {
   outline: none;
+}
+
+@media only screen and (max-width: 68.75em) {
+  .search-box input {
+    min-width: 25px;
+  }
 }

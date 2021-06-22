@@ -4,6 +4,14 @@
   height: auto;
 }
 
+.dropdown-content-sign-in a:hover {
+  background-color: white;
+}
+
+.sign-in-btn:hover {
+  background-color: rgba(145, 71, 255, 1);
+}
+
 .sign-in-btn {
   font-family: inherit;
   font-weight: 700;
@@ -11,8 +19,8 @@
   width: 150px;
   min-height: 40px;
   text-transform: uppercase;
-  border: none;
-  background-color: #9147ff;
+  border: 2px solid white;
+  background-color: rgba(145, 71, 255, 0.9);
   color: white;
   border-radius: 5px;
 }
