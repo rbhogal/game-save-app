@@ -49,7 +49,6 @@ const TwitchAuth = () => {
 
   const onSignInClick = () => {
     const REDIRECT_URI = 'http://localhost:3000';
-
     window.location.href = `https://id.twitch.tv/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token&scope=user:read:email`;
   };
 

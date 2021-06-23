@@ -28,3 +28,7 @@
 .dropdown-content-sign-in ion-icon {
   color: white;
 }
+
+.dropdown-content-sign-in a:hover ion-icon {
+  color: white;
+}

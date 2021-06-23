@@ -42,13 +42,14 @@
 
 .dropdown-content ion-icon {
   font-size: 15px;
-  color: rgb(84, 103, 133);
+  /* color: rgb(84, 103, 133); */
+  color: rgba(76, 76, 76, 0.5);
 
 }
 
 .dropdown-content a {
   text-decoration: none;
-  color: rgb(82, 97, 121);
+  color: #4c4c4c;
   display: block;
   padding: 5px 10px;
   margin: 5px;
@@ -65,6 +66,10 @@
 .dropdown-content a:hover {
   /* background-color: rgb(199, 199, 199); */
   background-color: gainsboro;
+}
+
+.dropdown-content a:hover ion-icon {
+  color: black;
 }
 
 .drop-btn:hover {
