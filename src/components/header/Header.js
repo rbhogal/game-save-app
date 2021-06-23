@@ -3,7 +3,7 @@ import React from "react";
 import SearchBox from "./SearchBox";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import SignIn from "./SignIn";
+import TwitchAuth from "./TwitchAuth";
 
 const Header = () => {
   return (
@@ -15,7 +15,7 @@ const Header = () => {
           </Link>
         </div>
         <SearchBox />
-        <SignIn />
+        <TwitchAuth />
       </header>
     </nav>
   );
