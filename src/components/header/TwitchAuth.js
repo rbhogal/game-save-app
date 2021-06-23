@@ -9,9 +9,6 @@ const TwitchAuth = () => {
   const signInDrop = useRef();
   const CLIENT_ID = 'zu11vezio6yttm9q01oea69kq9dd1h';
 
-  const del = 'delete this next start up';
-  
-
   useEffect(() => {
     if (document.location.hash === '') return;
 
@@ -29,11 +26,25 @@ const TwitchAuth = () => {
       })
       .then(resp => console.log(resp.data.data[0].id));
 
-    renderUserProfile();
+    renderButtons();
   }, [token]);
 
-  const renderUserProfile = () => {
-    signInDrop.current.innerHTML = 'profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>';
+  const renderButtons = () => {
+    if (token) {
+      signInDrop.current.innerHTML =
+        'profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>';
+
+      return <div>Signed in!</div>;
+    }
+
+    if (!token)
+      return (
+        <button onClick={onSignInClick} className="sign-in-btn">
+          Twitch <ion-icon name="logo-twitch"></ion-icon>
+        </button>
+      );
+
+    return <div>something is wrong</div>;
   };
 
   const onSignInClick = () => {
@@ -48,11 +59,7 @@ const TwitchAuth = () => {
         Sign In &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
       </button>
       <div className="dropdown-content dropdown-content-sign-in">
-        <Link>
-          <button onClick={onSignInClick} className="sign-in-btn">
-            Twitch <ion-icon name="logo-twitch"></ion-icon>
-          </button>
-        </Link>
+        <Link>{renderButtons()}</Link>
       </div>
     </div>
   );
