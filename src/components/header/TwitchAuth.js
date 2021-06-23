@@ -9,6 +9,9 @@ const TwitchAuth = () => {
   const signInDrop = useRef();
   const CLIENT_ID = 'zu11vezio6yttm9q01oea69kq9dd1h';
 
+  const del = 'delete this next start up';
+  
+
   useEffect(() => {
     if (document.location.hash === '') return;
 
