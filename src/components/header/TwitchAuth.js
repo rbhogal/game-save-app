@@ -20,35 +20,40 @@ const TwitchAuth = () => {
   // const isSignedIn = (userId) ? true : false;
   // console.log(isSignedIn);
 
+  // const fetchUserData = () => {
+  //   // get user data: name and id from API
+    
+  // };
+
   useEffect(() => {
     if (document.location.hash === '') return;
-
+    
     let parsedHash = new URLSearchParams(window.location.hash.substr(1));
     let accessToken = parsedHash.get('access_token');
 
     setToken(accessToken);
 
-    const fetchUserData = () => {
-      // get user data: name and id from API
-      axios
-        .get('https://api.twitch.tv/helix/users', {
-          headers: {
-            'Client-ID': CLIENT_ID,
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(resp => {
-          const { data } = resp.data;
-          const id = data[0].id;
-          const userName = data[0].display_name;
-          setUserId(id);
-          setUsername(userName);
-          setIsSignedIn(true);
-        });
-    };
+    axios
+      .get('https://api.twitch.tv/helix/users', {
+        headers: {
+          'Client-ID': CLIENT_ID,
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then(resp => {
+        const { data } = resp.data;
+        const id = data[0].id;
+        const userName = data[0].display_name;
+        setUserId(id);
+        setUsername(userName);
+        setIsSignedIn(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-    fetchUserData();
-  }, [token]);
+    
+  }, []);
 
   const addUserToStore = () => {
     dispatch(
