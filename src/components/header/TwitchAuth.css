@@ -1,13 +1,53 @@
-.dropdown-content-sign-in {
+.user-dropdown-content {
+  position: absolute;
+  background-color: white;
+  min-width: auto;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.user-dropdown-content ion-icon {
+  font-size: 15px;
+  /* color: rgb(84, 103, 133); */
+  /* color: rgba(76, 76, 76, 0.5); */
+  color: white;
+}
+
+.user-dropdown-content a {
+  text-decoration: none;
+  color: #4c4c4c;
+  display: block;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-dropdown-content.clicked {
+  display: none;
+}
+
+.user-dropdown-content a:hover:not(:last-child) {
+  background-color: gainsboro;
+}
+
+.user-dropdown-content-signed-out {
   min-width: auto;
   left: -35px;
   height: auto;
-  padding: 10px;
 }
 
-.dropdown-content-sign-in a:hover {
-  /* background-color: white; */
-  color: black;
+.user-dropdown-content-signed-in {
+  min-width: auto;
+  left: -35px;
+  height: auto;
+  padding: 10px 0;
+}
+
+.user-dropdown-content-signed-in p,
+b {
+  color: #4c4c4c;
 }
 
 .sign-in-out-btn:hover {
@@ -26,18 +66,6 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.dropdown-content-sign-in ion-icon {
-  color: white;
-}
-
-.dropdown-content-sign-in a:hover ion-icon {
-  color: white;
-}
-
-.dropdown-content-sign-in p, b {
-  color: #4c4c4c;
 }
 
 hr.solid {

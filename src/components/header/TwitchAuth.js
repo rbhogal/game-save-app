@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import './TwitchAuth.css';
 import { userAdded } from '../../features/users/usersSlice';
-import Dropdown from './Dropdown';
 
 const TwitchAuth = () => {
   const [token, setToken] = useState('');
@@ -109,14 +108,14 @@ const TwitchAuth = () => {
     if (isSignedIn) {
       return (
         <div
-          className="dropdown-content dropdown-content-sign-in dropdown-content-sign-out"
+          className="user-dropdown-content user-dropdown-content-signed-in"
           style={{ textAlign: 'center' }}
         >
           <p>Signed in as </p>
           <b>{username}</b>
 
           <hr className="solid"></hr>
-          <Link  to="/savedgames" className="link-item">
+          <Link  to="/savedgames" className="link-saved-games">
             <b style={{ margin: '0 auto' }}>SAVED GAMES</b>
           </Link>
           <hr className="solid"></hr>
@@ -132,7 +131,7 @@ const TwitchAuth = () => {
     // NOT Signed in
     if (!isSignedIn)
       return (
-        <div className="dropdown-content dropdown-content-sign-in">
+        <div className="user-dropdown-content user-dropdown-content-signed-out">
           <Link to="/">
             <button onClick={onSignInClick} className="sign-in-out-btn">
               Twitch <ion-icon name="logo-twitch"></ion-icon>

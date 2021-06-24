@@ -42,9 +42,9 @@
   .dropdown-content-sign-in a:hover {
     background-color: white;
   }
-  .dropdown-content-sign-out a:hover {
+  /* .dropdown-content-sign-out a:hover {
     background-color: gainsboro;
-  }
+  } */
   
   .dropdown-content a:hover ion-icon {
     color: black;
