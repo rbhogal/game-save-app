@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import SearchBox from "./SearchBox";
-import "./Header.css";
-import { Link } from "react-router-dom";
-import TwitchAuth from "./TwitchAuth";
+import HeaderItems from './HeaderItems';
+import './Header.css';
+import { Link } from 'react-router-dom';
+import TwitchAuth from './TwitchAuth';
 
 const Header = () => {
   return (
@@ -14,7 +14,7 @@ const Header = () => {
             <ion-icon name="game-controller-outline"></ion-icon>
           </Link>
         </div>
-        <SearchBox />
+        <HeaderItems />
         <TwitchAuth />
       </header>
     </nav>

@@ -1,4 +1,4 @@
-.SearchBox {
+.HeaderItems {
   display: flex;
   align-items: center;
 }
@@ -37,14 +37,13 @@
   min-width: 250px;
   z-index: 1;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  transition: all 50000ms ease-in-out;
+
 }
 
 .dropdown-content ion-icon {
   font-size: 15px;
   /* color: rgb(84, 103, 133); */
   color: rgba(76, 76, 76, 0.5);
-
 }
 
 .dropdown-content a {
@@ -65,6 +64,13 @@
 
 .dropdown-content a:hover {
   /* background-color: rgb(199, 199, 199); */
+  background-color: gainsboro;
+}
+
+.dropdown-content-sign-in a:hover {
+  background-color: white;
+}
+.dropdown-content-sign-out a:hover {
   background-color: gainsboro;
 }
 

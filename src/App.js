@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import "./App.css";
-import Header from "./components//header/Header";
-import {Route, Switch } from "react-router-dom";
-import Home from "./components/Home";
-import GameList from "./components/games/GameList";
-import Game from "./components/games/Game";
-import SavedGames from "./components/games/SavedGames";
+import './App.css';
+import Header from './components//header/Header';
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import GameList from './components/games/GameList';
+import Game from './components/games/Game';
+import SavedGames from './components/games/SavedGames';
 
 function App() {
   return (
