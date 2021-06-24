@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import './TwitchAuth.css';
 import { userAdded } from '../../features/users/usersSlice';
+import Dropdown from './Dropdown';
 
 const TwitchAuth = () => {
   const [token, setToken] = useState('');
@@ -22,12 +23,12 @@ const TwitchAuth = () => {
 
   // const fetchUserData = () => {
   //   // get user data: name and id from API
-    
+
   // };
 
   useEffect(() => {
     if (document.location.hash === '') return;
-    
+
     let parsedHash = new URLSearchParams(window.location.hash.substr(1));
     let accessToken = parsedHash.get('access_token');
 
@@ -49,10 +50,8 @@ const TwitchAuth = () => {
         setIsSignedIn(true);
       })
       .catch(err => {
-        console.log(err);
+        alert(err);
       });
-
-    
   }, []);
 
   const addUserToStore = () => {
@@ -78,7 +77,8 @@ const TwitchAuth = () => {
       .then(() => {
         setIsSignedIn(false);
         renderDropdown();
-      });
+      })
+      .catch(err => alert(err));
   };
 
   const renderDropdown = () => {
@@ -116,7 +116,7 @@ const TwitchAuth = () => {
           <b>{username}</b>
 
           <hr className="solid"></hr>
-          <Link to="/savedgames" className="link-item">
+          <Link  to="/savedgames" className="link-item">
             <b style={{ margin: '0 auto' }}>SAVED GAMES</b>
           </Link>
           <hr className="solid"></hr>
@@ -153,3 +153,40 @@ const TwitchAuth = () => {
 };
 
 export default TwitchAuth;
+
+
+
+/* 
+
+const Dropdown = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
+  
+
+  return (
+    <>
+      <ul
+        onClick={handleClick}
+        className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}
+      >
+        {MenuItems.map((item, index) => {
+          return (
+            <li key={index}>
+              <Link
+                className={item.cName}
+                to={item.path}
+                onClick={() => setClick(false)}
+              >
+                {item.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </>
+  );
+};
+
+export default Dropdown;
+*/

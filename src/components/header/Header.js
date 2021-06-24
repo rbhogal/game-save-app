@@ -1,9 +1,10 @@
 import React from 'react';
 
-import HeaderItems from './HeaderItems';
+import SearchBox from './SearchBox';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import TwitchAuth from './TwitchAuth';
+import Dropdown from './Dropdown';
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
             <ion-icon name="game-controller-outline"></ion-icon>
           </Link>
         </div>
-        <HeaderItems />
+        <SearchBox />
         <TwitchAuth />
       </header>
     </nav>

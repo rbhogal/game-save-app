@@ -1,0 +1,87 @@
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box ion-icon {
+  font-size: 25px;
+  color: gainsboro;
+}
+
+.search-btn:hover ion-icon {
+  color: white;
+}
+
+.search-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  margin: 0px 5px;
+  cursor: pointer;
+}
+
+.search-box input {
+  padding: 10px;
+  min-width: 35rem;
+  border-radius: 2px;
+  border: none;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 700;
+  color: rgb(82, 97, 121);
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+
+.drop-btn {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(220, 220, 220, 0.8);
+  padding: 18px;
+  font-size: 16px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  width: 125px;
+}
+
+.drop-btn ion-icon {
+  font-size: 15px;
+  padding-top: 2px;
+  opacity: 0.5;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown.clicked{
+  display:none;
+}
+
+.dropdown a {
+  text-decoration: none;
+}
+
+.drop-btn-games {
+  cursor: pointer;
+}
+
+.drop-btn:hover {
+  color: rgba(220, 220, 220, 1);
+}
+
+.drop-btn:hover ion-icon {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 68.75em) {
+  .search-box input {
+    min-width: 25px;
+  }
+}
