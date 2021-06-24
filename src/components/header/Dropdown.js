@@ -7,14 +7,13 @@ import { DropdownMenuItems } from './DropdownMenuItems';
 const Dropdown = () => {
   const [click, setClick] = useState(false);
 
-  const handleClick = () => setClick(!false);
+  const handleClick = () => setClick(!click);
 
   return (
     <>
       <div
         onClick={handleClick}
-        className={click ? 'dropdown clicked' : 'dropdown'}
-        className="dropdown-content"
+        className={click ? 'dropdown-content clicked' : 'dropdown-content'}
       >
         {DropdownMenuItems.map((item, index) => {
           return (
@@ -31,3 +30,5 @@ const Dropdown = () => {
 
 export default Dropdown;
 
+// className={click ? 'dropdown clicked' : 'dropdown'}
+//         className="dropdown-content"

@@ -4,7 +4,6 @@ import SearchBox from './SearchBox';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import TwitchAuth from './TwitchAuth';
-import Dropdown from './Dropdown';
 
 const Header = () => {
   return (

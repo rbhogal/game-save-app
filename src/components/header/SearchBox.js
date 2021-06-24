@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
 const SearchBox = () => {
-  const [click, setClick] = useState(false);
+  // const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   // const handleClick = () => setClick(!click);

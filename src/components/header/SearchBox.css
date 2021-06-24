@@ -60,10 +60,6 @@
   display: inline-block;
 }
 
-.dropdown.clicked{
-  display:none;
-}
-
 .dropdown a {
   text-decoration: none;
 }
