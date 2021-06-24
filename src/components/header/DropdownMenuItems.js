@@ -44,11 +44,7 @@ export const DropdownMenuItems = [
         path: '/',
     },
     {
-        title: 'Moba',
-        path: '/',
-    },
-    {
-        title: 'Shooter',
+        title: 'MOBA',
         path: '/',
     },
 ]

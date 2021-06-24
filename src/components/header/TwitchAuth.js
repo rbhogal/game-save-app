@@ -11,6 +11,7 @@ const TwitchAuth = () => {
   const [userId, setUserId] = useState('');
   const [username, setUsername] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
   const dispatch = useDispatch();
   const users = useSelector(state => state.users);
@@ -86,6 +87,7 @@ const TwitchAuth = () => {
   };
 
   const renderDropBtn = () => {
+    // Signed In
     if (isSignedIn) {
       return (
         <button className="drop-btn">
@@ -94,6 +96,7 @@ const TwitchAuth = () => {
       );
     }
 
+    //Not Signed In
     if (!isSignedIn) {
       return (
         <button className="drop-btn">
@@ -108,6 +111,7 @@ const TwitchAuth = () => {
     if (isSignedIn) {
       return (
         <div
+          onClick={onMouseLeave}
           className="user-dropdown-content user-dropdown-content-signed-in"
           style={{ textAlign: 'center' }}
         >
@@ -115,7 +119,7 @@ const TwitchAuth = () => {
           <b>{username}</b>
 
           <hr className="solid"></hr>
-          <Link  to="/savedgames" className="link-saved-games">
+          <Link to="/savedgames" className="link-saved-games">
             <b style={{ margin: '0 auto' }}>SAVED GAMES</b>
           </Link>
           <hr className="solid"></hr>
@@ -143,49 +147,23 @@ const TwitchAuth = () => {
     return <div>ERROR</div>;
   };
 
+  const onMouseEnter = () => {
+    window.innerWidth < 960 ? setDropdown(false) : setDropdown(true);
+  };
+  const onMouseLeave = () => {
+    window.innerWidth < 960 ? setDropdown(false) : setDropdown(false);
+  };
+
   return (
-    <div className="dropdown">
+    <div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className="dropdown"
+    >
       {renderDropBtn()}
-      {renderDropdownContent()}
+      {dropdown && renderDropdownContent()}
     </div>
   );
 };
 
 export default TwitchAuth;
-
-
-
-/* 
-
-const Dropdown = () => {
-  const [click, setClick] = useState(false);
-
-  const handleClick = () => setClick(!click);
-  
-
-  return (
-    <>
-      <ul
-        onClick={handleClick}
-        className={click ? 'dropdown-menu clicked' : 'dropdown-menu'}
-      >
-        {MenuItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <Link
-                className={item.cName}
-                to={item.path}
-                onClick={() => setClick(false)}
-              >
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
-};
-
-export default Dropdown;
-*/

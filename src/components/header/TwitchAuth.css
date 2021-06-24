@@ -24,9 +24,6 @@
   justify-content: space-between;
 }
 
-.user-dropdown-content.clicked {
-  display: none;
-}
 
 .user-dropdown-content a:hover:not(:last-child) {
   background-color: gainsboro;
@@ -42,12 +39,18 @@
   min-width: auto;
   left: -35px;
   height: auto;
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .user-dropdown-content-signed-in p,
 b {
   color: #4c4c4c;
+}
+
+.user-dropdown-content-signed-in.clicked {
+  display: none;
 }
 
 .sign-in-out-btn:hover {
