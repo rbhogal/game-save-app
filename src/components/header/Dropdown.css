@@ -3,7 +3,6 @@
     position: absolute;
     /* background-color: gainsboro; */
     background-color: white;
-  
     min-width: 250px;
     z-index: 1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -13,17 +12,18 @@
     font-size: 15px;
     /* color: rgb(84, 103, 133); */
     color: rgba(76, 76, 76, 0.5);
+
   }
   
   .dropdown-content a {
     text-decoration: none;
     color: #4c4c4c;
-    display: block;
     padding: 5px 10px;
     margin: 5px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   
   /* Show dropdown on hover
