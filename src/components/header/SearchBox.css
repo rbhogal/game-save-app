@@ -76,8 +76,10 @@
   opacity: 1;
 }
 
-@media only screen and (max-width: 68.75em) {
+@media only screen and (max-width: 70em) {
   .search-box input {
     min-width: 25px;
   }
 }
+
+

@@ -6,8 +6,13 @@
   padding: 0;
 }
 
+html,
+body {
+  margin: 0;
+}
+
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
@@ -16,4 +21,3 @@ body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
 }
-

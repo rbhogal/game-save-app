@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import Header from './components//header/Header';
+import Navbar from './components/header/Navbar';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import GameList from './components/games/GameList';
@@ -11,7 +11,7 @@ import SavedGames from './components/games/SavedGames';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/savedgames" exact component={SavedGames} />
