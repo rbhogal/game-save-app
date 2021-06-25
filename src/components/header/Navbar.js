@@ -18,12 +18,15 @@ const Navbar = () => {
         <span></span>
         <span></span>
       </div>
-      <div className="mobile-menu">
-        
+      <div
+        className={click ? 'mobile-menu open fade-in' : 'mobile-menu fade-out'}
+      >
+        <SearchBox />
       </div>
       <nav>
         <div className="logo-icon">
           <Link to="/">
+            {/* <h1 className="logo-heading">Game Save</h1> */}
             <ion-icon name="game-controller-outline"></ion-icon>
           </Link>
         </div>

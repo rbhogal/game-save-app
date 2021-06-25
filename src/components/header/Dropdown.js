@@ -23,6 +23,10 @@ const Dropdown = () => {
             </Link>
           );
         })}
+        <hr className="solid" />
+        <Link to='/gamelist' onClick={() => setClick(false)} style={{ fontWeight: 'bold' }}>
+          All Games <ion-icon name="chevron-forward-outline"></ion-icon>
+        </Link>
       </div>
     </>
   );

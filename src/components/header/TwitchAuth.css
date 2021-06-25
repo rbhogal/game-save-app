@@ -1,3 +1,11 @@
+.TwitchAuth {
+  position: relative;
+  display: inline-block;
+}
+.TwitchAuth a {
+  text-decoration: none;
+}
+
 .user-dropdown-content {
   position: absolute;
   background-color: white;
@@ -23,7 +31,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 
 .user-dropdown-content a:hover:not(:last-child) {
   background-color: gainsboro;
@@ -51,6 +58,11 @@ b {
 
 .user-dropdown-content-signed-in.clicked {
   display: none;
+}
+
+.user-image {
+  width: 30px;
+  border-radius: 50px;
 }
 
 .sign-in-out-btn:hover {

@@ -10,6 +10,7 @@ const TwitchAuth = () => {
   const [token, setToken] = useState('');
   const [userId, setUserId] = useState('');
   const [username, setUsername] = useState('');
+  const [profileImgURL, setProfileImgURL] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -45,9 +46,11 @@ const TwitchAuth = () => {
         const { data } = resp.data;
         const id = data[0].id;
         const userName = data[0].display_name;
+        const profileImgURL = data[0].profile_image_url;
         setUserId(id);
         setUsername(userName);
         setIsSignedIn(true);
+        setProfileImgURL(profileImgURL);
       })
       .catch(err => {
         alert(err);
@@ -89,6 +92,7 @@ const TwitchAuth = () => {
   const renderDropBtn = () => {
     // Signed In
     if (isSignedIn) {
+      console.log(profileImgURL);
       return (
         <button className="drop-btn">
           Profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
@@ -158,7 +162,7 @@ const TwitchAuth = () => {
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="dropdown"
+      className="TwitchAuth"
     >
       {renderDropBtn()}
       {dropdown && renderDropdownContent()}
