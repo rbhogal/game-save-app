@@ -89,3 +89,27 @@ hr.solid {
   height: 1px;
   margin: 10px 0;
 }
+
+/* Mobile--960px */
+@media only screen and (max-width: 60em) {
+  /*
+    Container Levels
+    1. TwitchAuth
+      2. drop-btn
+      2. user-drop-content
+  */
+
+  .TwitchAuth,
+  .drop-btn {
+    width: 100%;
+  }
+
+  .TwitchAuth {
+    padding: 0 10px;
+  }
+
+  .drop-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -22,6 +22,7 @@ const Navbar = () => {
         className={click ? 'mobile-menu open fade-in' : 'mobile-menu fade-out'}
       >
         <SearchBox />
+        <TwitchAuth />
       </div>
       <nav>
         <div className="logo-icon">
