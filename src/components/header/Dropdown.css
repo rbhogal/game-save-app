@@ -52,3 +52,10 @@
 .dropdown-content .solid {
   margin: 0;
 }
+
+/* Mobile--960px */
+@media only screen and (max-width: 60em) {
+  .dropdown-content {
+    width: 100%;
+  }
+}

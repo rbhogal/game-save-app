@@ -107,8 +107,20 @@
 @media only screen and (max-width: 60em) {
   .mobile-menu .SearchBox {
     flex-direction: column-reverse;
+    align-items: flex-start;
     border-radius: 0;
     padding: 10px;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .drop-btn-games {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 10px;
   }
 
   .SearchBox input {
@@ -118,7 +130,5 @@
   .mobile-menu .search-btn {
     display: none;
   }
-
-  .mobile-menu .input {
-  }
+  
 }
