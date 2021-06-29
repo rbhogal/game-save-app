@@ -1,31 +1,49 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import './Dropdown.css';
 import { DropdownMenuItems } from './DropdownMenuItems';
+import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const Dropdown = () => {
-  const [click, setClick] = useState(false);
+  const [clickDropdown, setClickDropdown] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleClick = () => setClick(!click);
+  const handleClickDropdown = () => setClickDropdown(!clickDropdown);
+
+  const handleClickDropdownItem = () => {
+    dispatch(
+      isOpen({
+        click: false,
+      })
+    );
+  };
 
   return (
     <>
       <div
-        onClick={handleClick}
-        className={click ? 'dropdown-content clicked' : 'dropdown-content'}
+        onClick={handleClickDropdown}
+        className={
+          clickDropdown ? 'dropdown-content clicked' : 'dropdown-content'
+        }
       >
         {DropdownMenuItems.map((item, index) => {
           return (
-            <Link key={index} to={item.path} onClick={() => setClick(false)}>
+            <Link onClick={handleClickDropdownItem} key={index} to={item.path}>
               {item.title}
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
           );
         })}
         <hr className="solid" />
-        <Link to='/gamelist' onClick={() => setClick(false)} style={{ fontWeight: 'bold' }}>
-          All Games <ion-icon name="chevron-forward-outline"></ion-icon>
+        <Link
+          onClick={handleClickDropdownItem}
+          to="/gamelist"
+          style={{ fontWeight: 'bold' }}
+        >
+          All Games
+          <ion-icon name="chevron-forward-outline"></ion-icon>
         </Link>
       </div>
     </>
@@ -33,6 +51,3 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
-
-// className={click ? 'dropdown clicked' : 'dropdown'}
-//         className="dropdown-content"

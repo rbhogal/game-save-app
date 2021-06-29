@@ -1,25 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './Navbar.css';
 import SearchBox from './SearchBox';
 import TwitchAuth from './TwitchAuth';
+import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const Navbar = () => {
-  const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
+  const mobileMenuIsOpen = useSelector(state => state.mobileMenu.isOpen.click);
+
+  const handleClick = () => {
+    // open mobile menu
+    if (!mobileMenuIsOpen) {
+      dispatch(
+        isOpen({
+          click: true,
+        })
+      );
+    }
+
+    // close mobile menu
+    if (mobileMenuIsOpen) {
+      dispatch(
+        isOpen({
+          click: false,
+        })
+      );
+    }
+  };
 
   return (
     <header>
       <div
-        onClick={() => setClick(!click)}
-        className={click ? 'menu-toggle open' : 'menu-toggle'}
+        onClick={handleClick}
+        className={mobileMenuIsOpen ? 'menu-toggle open' : 'menu-toggle'}
       >
         <span></span>
         <span></span>
         <span></span>
       </div>
       <div
-        className={click ? 'mobile-menu open fade-in' : 'mobile-menu fade-out'}
+        className={
+          mobileMenuIsOpen ? 'mobile-menu open fade-in' : 'mobile-menu fade-out'
+        }
       >
         <SearchBox />
         <TwitchAuth />
