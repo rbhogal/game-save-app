@@ -31,6 +31,16 @@ const Navbar = () => {
     }
   };
 
+  const handleHomeClick = () => {
+    // If user clicks on home icon on desktop
+    if (window.innerWidth > 960) return;
+    dispatch(
+      isOpen({
+        click: false,
+      })
+    );
+  };
+
   return (
     <header>
       <div
@@ -50,7 +60,7 @@ const Navbar = () => {
         <TwitchAuth />
       </div>
       <nav>
-        <div className="logo-icon">
+        <div onClick={handleHomeClick} className="logo-icon">
           <Link to="/">
             {/* <h1 className="logo-heading">Game Save</h1> */}
             <ion-icon name="game-controller-outline"></ion-icon>
