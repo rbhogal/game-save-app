@@ -5,25 +5,22 @@ import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
 const SearchBox = () => {
-  const [click, setClick] = useState(true);
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => {
-    click ? setDropdown(true) : setDropdown(false);
-    setClick(!click);
+    // Click only works for mobile
+    if (window.innerWidth > 960) return;
+
+    setDropdown(!dropdown);
   };
 
+  // Mouse cursor hover dropdown
   const onMouseEnter = () => {
     window.innerWidth < 960 ? setDropdown(false) : setDropdown(true);
   };
-
   const onMouseLeave = () => {
     window.innerWidth < 960 ? setDropdown(false) : setDropdown(false);
   };
-
-  // const handleClick = () => {
-  //   window.innerWidth < 960 ? setDropdown(true) : return ad;
-  // };
 
   return (
     <div id="SearchBox" className="SearchBox">
