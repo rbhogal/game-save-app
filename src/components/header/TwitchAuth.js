@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import './TwitchAuth.css';
 import { userAdded } from '../../features/users/usersSlice';
+import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const TwitchAuth = () => {
   const [token, setToken] = useState('');
@@ -13,6 +14,7 @@ const TwitchAuth = () => {
   const [profileImgURL, setProfileImgURL] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [click, setClick] = useState(false);
 
   const dispatch = useDispatch();
   const users = useSelector(state => state.users);
@@ -89,12 +91,23 @@ const TwitchAuth = () => {
     renderDropdownContent();
   };
 
+  const handleSignInClick = () => {
+    // Click only works for mobile
+    if (window.innerWidth > 960) return;
+    setDropdown(!dropdown);
+  };
+
+  const handleProfileClick = () => {
+    if (window.innerWidth > 960) return;
+    setDropdown(!dropdown);
+  };
+
   const renderDropBtn = () => {
     // Signed In
     if (isSignedIn) {
       console.log(profileImgURL);
       return (
-        <button className="drop-btn">
+        <button onClick={handleProfileClick} className="drop-btn">
           Profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
         </button>
       );
@@ -103,11 +116,22 @@ const TwitchAuth = () => {
     //Not Signed In
     if (!isSignedIn) {
       return (
-        <button className="drop-btn">
+        <button onClick={handleSignInClick} className="drop-btn">
           Sign In &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
         </button>
       );
     }
+  };
+
+  const handleSavedGamesClick = () => {
+    // Click only works for mobile
+    if (window.innerWidth > 960) return;
+
+    dispatch(
+      isOpen({
+        click: false,
+      })
+    );
   };
 
   const renderDropdownContent = () => {
@@ -119,11 +143,17 @@ const TwitchAuth = () => {
           className="user-dropdown-content user-dropdown-content-signed-in"
           style={{ textAlign: 'center' }}
         >
-          <p>Signed in as </p>
-          <b>{username}</b>
+          <div className="user-name-container">
+            <p>Signed in as </p>
+            <b>{username}</b>
+          </div>
 
           <hr className="solid"></hr>
-          <Link to="/savedgames" className="link-saved-games">
+          <Link
+            onClick={handleSavedGamesClick}
+            to="/savedgames"
+            className="link-saved-games"
+          >
             <b style={{ margin: '0 auto' }}>SAVED GAMES</b>
           </Link>
           <hr className="solid"></hr>
@@ -141,7 +171,7 @@ const TwitchAuth = () => {
       return (
         <div className="user-dropdown-content user-dropdown-content-signed-out">
           <Link to="/">
-            <button onClick={onSignInClick} className="sign-in-out-btn">
+            <button onClick={onSignInClick} className="sign-in-out-btn twitch-btn">
               Twitch <ion-icon name="logo-twitch"></ion-icon>
             </button>
           </Link>

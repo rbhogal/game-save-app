@@ -1,0 +1,40 @@
+// Implement TwitchAuth in mobile menu 
+
+Why is TwitchAuth not responsive when games dropdown opens? is it position rel or abs?
+
+No. the dropdown-content of games is position absolute. 
+
+Should I leave the SIGN IN at bottom of menu? 
+
+First, make it dropdown. 
+
+
+SIGN IN button > onClick setIsSignedIn = true (didn't work)
+
+How does the user dropdown content render? 
+
+1. if dropdown = true renderDropdownContent() runs. 
+2. if (!isSignedIn) (init: false) renders dropdown content SIGN IN
+
+So how do I dropdown content in mobile menu?
+
+Solution:
+1. Create a guard clause to return if desktop
+2. setDropdown(!dropdown), onClick on SIGN IN button
+WORKS! 
+3. Do the same for signed in
+
+/////////////////////////////////////////////////////
+
+Problem: Saved games click should close mobile menu
+
+how do you close mobile menu again? (its in navbar)
+
+mobileMenuIsOpen = false
+    dispatch (isOpen: click: false);
+
+/////////////////////////////////////////////////////
+
+STYLE THE MOBILE DROPDOWN menu
+
+user-dropdown-content-signed --padding top 10px

@@ -12,6 +12,7 @@
   min-width: auto;
   z-index: 1;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  height: auto;
 }
 
 .user-dropdown-content ion-icon {
@@ -39,13 +40,12 @@
 .user-dropdown-content-signed-out {
   min-width: auto;
   left: -35px;
-  height: auto;
 }
 
 .user-dropdown-content-signed-in {
   min-width: auto;
   left: -35px;
-  height: auto;
+
   padding-top: 10px;
   padding-left: 5px;
   padding-right: 5px;
@@ -90,10 +90,14 @@ hr.solid {
   margin: 10px 0;
 }
 
+.user-name-container {
+  padding-bottom: 10px;
+}
+
 /* Mobile--960px */
 @media only screen and (max-width: 60em) {
   /*
-    Container Levels
+    Parent, child and siblings
     1. TwitchAuth
       2. drop-btn
       2. user-drop-content
@@ -106,10 +110,38 @@ hr.solid {
 
   .TwitchAuth {
     padding: 0 10px;
+    height: auto;
   }
 
   .drop-btn {
     width: 100%;
     justify-content: space-between;
   }
+
+  .user-dropdown-content {
+    position: static;
+  }
+
+  .user-dropdown-content-signed-in hr {
+    margin: 0;
+  }
+
+  .user-dropdown-content-signed-in a {
+    margin: 0;
+  }
+
+  .user-dropdown-content a {
+    padding: 10px;
+  }
+
+
+  .user-dropdown-content {
+    height: 100%;
+  }
+
+  .sign-in-out-btn {
+    margin: 0 auto;
+  }
+
+  
 }
