@@ -56,8 +56,10 @@ const Navbar = () => {
           mobileMenuIsOpen ? 'mobile-menu open fade-in' : 'mobile-menu fade-out'
         }
       >
-        <SearchBox />
-        <TwitchAuth />
+        {mobileMenuIsOpen && <SearchBox />}
+        {mobileMenuIsOpen && <TwitchAuth />}
+        {/* <SearchBox />
+        <TwitchAuth /> */}
       </div>
       <nav>
         <div onClick={handleHomeClick} className="logo-icon">
