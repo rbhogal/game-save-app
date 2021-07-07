@@ -16,22 +16,13 @@ const TwitchAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
-  //  const index = state.findIndex(user => user.id === action.payload.id);
-  // const users = useSelector(state => state.users);
   const dispatch = useDispatch();
 
-  //   const isSignedIn = undefined ? false : user[0].isSignedIn;
-  // console.log(isSignedIn);
+
 
   const CLIENT_ID = 'zu11vezio6yttm9q01oea69kq9dd1h';
 
-  // const isSignedIn = (userId) ? true : false;
-  // console.log(isSignedIn);
 
-  // const fetchUserData = () => {
-  //   // get user data: name and id from API
-
-  // };
 
   useEffect(() => {
     // Return if not authenticated
@@ -58,11 +49,6 @@ const TwitchAuth = () => {
         const userName = data[0].display_name;
         // const profileImgURL = data[0].profile_image_url;
 
-        // getting users from redux database (change to firebase)
-        // const user = users.findIndex(user => user.id === id);
-
-        // If user doesn't exist, add new user
-
         // Fetch users from database, match their id with signed in id
         axios
           .get('https://game-save-default-rtdb.firebaseio.com/users.json')
@@ -71,7 +57,7 @@ const TwitchAuth = () => {
 
             // If user doesn't already exist add them to the database
             for (const key in users) {
-              // User exists 
+              // User exists
               if (users[key].id === id) return;
 
               // Create new User
@@ -98,7 +84,6 @@ const TwitchAuth = () => {
           .catch(err => {
             alert(err);
           });
-
 
         // Sign in user (redux store)
         dispatch(
@@ -133,10 +118,8 @@ const TwitchAuth = () => {
         `https://id.twitch.tv/oauth2/revoke?client_id=${CLIENT_ID}&token=${token}`
       )
       .then(() => {
+        // Sign out user
         setIsSignedIn(false);
-
-        //dispatch make sure current user isSignedIn is set to false
-
         dispatch(
           signOut({
             id: userId,
