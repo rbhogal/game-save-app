@@ -10,6 +10,7 @@ import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 const Navbar = () => {
   const dispatch = useDispatch();
   const mobileMenuIsOpen = useSelector(state => state.mobileMenu.isOpen.click);
+  
 
   const handleClick = () => {
     // open mobile menu

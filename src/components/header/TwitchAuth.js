@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './TwitchAuth.css';
-import { userAdded, signOut } from '../../features/users/usersSlice';
+import { signIn, signOut } from '../../features/users/usersSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const TwitchAuth = () => {
@@ -13,10 +13,11 @@ const TwitchAuth = () => {
   const [username, setUsername] = useState('');
   // const [profileImgURL, setProfileImgURL] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   //  const index = state.findIndex(user => user.id === action.payload.id);
-  const users = useSelector(state => state.users);
+  // const users = useSelector(state => state.users);
   const dispatch = useDispatch();
 
   //   const isSignedIn = undefined ? false : user[0].isSignedIn;
@@ -41,6 +42,7 @@ const TwitchAuth = () => {
     let accessToken = parsedHash.get('access_token');
     setToken(accessToken);
 
+    setIsLoading(true);
     // Get user's data from API
     axios
       .get('https://api.twitch.tv/helix/users', {
@@ -49,46 +51,76 @@ const TwitchAuth = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       })
-      .then(resp => {
+      .then(res => {
         // Get user data from Twitch API
-        const { data } = resp.data;
+        const { data } = res.data;
         const id = data[0].id;
         const userName = data[0].display_name;
         // const profileImgURL = data[0].profile_image_url;
-        const user = users.findIndex(user => user.id === id);
 
-        // user doesn't exist add new user
-        if (user === -1) {
-          dispatch(
-            userAdded({
-              id: id,
-              name: userName,
-              accessToken: accessToken,
-              isSignedIn: true,
-            })
-          );
-        }
-        /* 
-        // * FUTURE UPDATE: IF YOU ADD BACKEND * 
-        // If USER does exist sign them in (redux)
-        if (user >= 1) {
-          dispatch(
-            signIn({
-              id: id,
-              accessToken: accessToken,
-            })
-          );
-        }
-        */
+        // getting users from redux database (change to firebase)
+        // const user = users.findIndex(user => user.id === id);
+
+        // If user doesn't exist, add new user
+
+        // Fetch users from database, match their id with signed in id
+        axios
+          .get('https://game-save-default-rtdb.firebaseio.com/users.json')
+          .then(res => {
+            const users = res.data;
+
+            // If user doesn't already exist add them to the database
+            for (const key in users) {
+              // User exists 
+              if (users[key].id === id) return;
+
+              // Create new User
+              if (users[key].id !== id) {
+                // add new user to database
+                console.log('new user added');
+                axios
+                  .post(
+                    'https://game-save-default-rtdb.firebaseio.com/users.json',
+                    {
+                      id: id,
+                      name: userName,
+                    }
+                  )
+                  .then(resp => {
+                    //...
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              }
+            }
+          })
+          .catch(err => {
+            alert(err);
+          });
+
+
+        // Sign in user (redux store)
+        dispatch(
+          signIn({
+            id: id,
+            name: userName,
+            accessToken: accessToken,
+            isSignedIn: true,
+          })
+        );
+
+        // Sign in user and store id, username to store
         setUserId(id);
         setUsername(userName);
         // setProfileImgURL(profileImgURL);
         setIsSignedIn(true);
+        setIsLoading(false);
       })
       .catch(err => {
         alert(err);
       });
-  }, [dispatch, users]);
+  }, [dispatch]);
 
   const onSignInClick = () => {
     const REDIRECT_URI = 'http://localhost:3000';
@@ -115,7 +147,7 @@ const TwitchAuth = () => {
         setUserId('');
         renderDropdown();
       })
-      .catch(err => console.log(err));
+      .catch(err => alert(err));
   };
 
   const renderDropdown = () => {
@@ -123,38 +155,35 @@ const TwitchAuth = () => {
     renderDropdownContent();
   };
 
-  const handleSignInClick = () => {
+  // MOBILE DROPDOWN
+  const dropdownMobileMenu = () => {
     // Click only works for mobile
-    if (window.innerWidth > 960) return;
-    setDropdown(!dropdown);
-  };
-
-  const handleProfileClick = () => {
     if (window.innerWidth > 960) return;
     setDropdown(!dropdown);
   };
 
   const renderDropBtn = () => {
     // Signed In
-    if (isSignedIn) {
+    if (isSignedIn || isLoading) {
       return (
-        <button onClick={handleProfileClick} className="drop-btn">
+        <button onClick={dropdownMobileMenu} className="drop-btn">
           Profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
         </button>
       );
     }
 
     //Not Signed In
-    if (!isSignedIn) {
+    if (!isSignedIn && !isLoading) {
       return (
-        <button onClick={handleSignInClick} className="drop-btn">
+        <button onClick={dropdownMobileMenu} className="drop-btn">
           Sign In &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
         </button>
       );
     }
   };
 
-  const handleSavedGamesClick = () => {
+  // MOBILE MENU --SAVED GAMES
+  const mobileSavedGamesClick = () => {
     // Click only works for mobile
     if (window.innerWidth > 960) return;
 
@@ -181,7 +210,7 @@ const TwitchAuth = () => {
 
           <hr className="solid"></hr>
           <Link
-            onClick={handleSavedGamesClick}
+            onClick={mobileSavedGamesClick}
             to="/savedgames"
             className="link-saved-games"
           >
@@ -215,6 +244,7 @@ const TwitchAuth = () => {
     return <div>ERROR</div>;
   };
 
+  // Hover over drop button (Sign In/Profile)
   const onMouseEnter = () => {
     window.innerWidth < 960 ? setDropdown(false) : setDropdown(true);
   };
