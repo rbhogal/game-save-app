@@ -8,21 +8,18 @@ import { signIn, signOut } from '../../features/users/usersSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const TwitchAuth = () => {
+  const initialSignIn = localStorage.getItem('isSignedIn');
   const [token, setToken] = useState('');
   const [userId, setUserId] = useState('');
   const [username, setUsername] = useState('');
   // const [profileImgURL, setProfileImgURL] = useState('');
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(!!initialSignIn);
   const [isLoading, setIsLoading] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   const dispatch = useDispatch();
 
-
-
   const CLIENT_ID = 'zu11vezio6yttm9q01oea69kq9dd1h';
-
-
 
   useEffect(() => {
     // Return if not authenticated
@@ -33,8 +30,9 @@ const TwitchAuth = () => {
     let accessToken = parsedHash.get('access_token');
     setToken(accessToken);
 
+
     setIsLoading(true);
-    // Get user's data from API
+    // Get user's data from Twitch API
     axios
       .get('https://api.twitch.tv/helix/users', {
         headers: {
@@ -100,6 +98,7 @@ const TwitchAuth = () => {
         setUsername(userName);
         // setProfileImgURL(profileImgURL);
         setIsSignedIn(true);
+        localStorage.setItem('isSignedIn', 'true');
         setIsLoading(false);
       })
       .catch(err => {
@@ -119,14 +118,14 @@ const TwitchAuth = () => {
       )
       .then(() => {
         // Sign out user
-        setIsSignedIn(false);
         dispatch(
           signOut({
             id: userId,
             accessToken: '',
           })
         );
-
+        localStorage.removeItem('isSignedIn');
+        setIsSignedIn(false);
         setUserId('');
         renderDropdown();
       })
