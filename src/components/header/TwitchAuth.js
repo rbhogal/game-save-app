@@ -4,16 +4,23 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './TwitchAuth.css';
-import { signIn, signOut } from '../../features/users/usersSlice';
+import {
+  getUserDataAsync,
+  signIn,
+  signOut,
+} from '../../features/users/usersSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const TwitchAuth = () => {
   const initialSignIn = localStorage.getItem('isSignedIn');
-  const [token, setToken] = useState('');
+  console.log('local storage', initialSignIn);
+  const initialToken = localStorage.getItem('token');
+  const [token, setToken] = useState(initialToken);
   const [userId, setUserId] = useState('');
   const [username, setUsername] = useState('');
   // const [profileImgURL, setProfileImgURL] = useState('');
   const [isSignedIn, setIsSignedIn] = useState(!!initialSignIn);
+  console.log('useState', isSignedIn);
   const [isLoading, setIsLoading] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -28,8 +35,8 @@ const TwitchAuth = () => {
     // Get access token from URL
     let parsedHash = new URLSearchParams(window.location.hash.substr(1));
     let accessToken = parsedHash.get('access_token');
+    localStorage.setItem('token', accessToken);
     setToken(accessToken);
-
 
     setIsLoading(true);
     // Get user's data from Twitch API
@@ -56,17 +63,27 @@ const TwitchAuth = () => {
             // If user doesn't already exist add them to the database
             for (const key in users) {
               // User exists
-              if (users[key].id === id) return;
+              if (users[key].id === id) {
+                //POST that the user is signed in
+                axios.patch(
+                  `https://game-save-default-rtdb.firebaseio.com/users/${key}.json`,
+                  {
+                    isSignedIn: true,
+                  }
+                );
+
+                dispatch(getUserDataAsync(key));
+              }
 
               // Create new User
               if (users[key].id !== id) {
                 // add new user to database
-                console.log('new user added');
                 axios
                   .post(
                     'https://game-save-default-rtdb.firebaseio.com/users.json',
                     {
                       id: id,
+                      isSignedIn: true,
                       name: userName,
                     }
                   )
@@ -76,6 +93,7 @@ const TwitchAuth = () => {
                   .catch(err => {
                     console.log(err);
                   });
+                dispatch(getUserDataAsync(key));
               }
             }
           })
@@ -84,14 +102,16 @@ const TwitchAuth = () => {
           });
 
         // Sign in user (redux store)
-        dispatch(
-          signIn({
-            id: id,
-            name: userName,
-            accessToken: accessToken,
-            isSignedIn: true,
-          })
-        );
+        // UPDATE: Fetch user data thunk? (which adds them to state)
+
+        // dispatch(
+        //   signIn({
+        //     id: id,
+        //     name: userName,
+        //     accessToken: accessToken,
+        //     isSignedIn: isSignedIn,
+        //   })
+        // );
 
         // Sign in user and store id, username to store
         setUserId(id);
@@ -104,7 +124,7 @@ const TwitchAuth = () => {
       .catch(err => {
         alert(err);
       });
-  }, [dispatch]);
+  }, [dispatch, isSignedIn]);
 
   const onSignInClick = () => {
     const REDIRECT_URI = 'http://localhost:3000';
@@ -118,6 +138,7 @@ const TwitchAuth = () => {
       )
       .then(() => {
         // Sign out user
+
         dispatch(
           signOut({
             id: userId,
@@ -125,6 +146,7 @@ const TwitchAuth = () => {
           })
         );
         localStorage.removeItem('isSignedIn');
+        localStorage.removeItem('token');
         setIsSignedIn(false);
         setUserId('');
         renderDropdown();

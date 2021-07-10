@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './Navbar.css';
 import SearchBox from './SearchBox';
-import TwitchAuth from './TwitchAuth';
+import GoogleAuth from './GoogleAuth'
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const Navbar = () => {
@@ -58,7 +58,7 @@ const Navbar = () => {
         }
       >
         {mobileMenuIsOpen && <SearchBox />}
-        {mobileMenuIsOpen && <TwitchAuth />}
+        {mobileMenuIsOpen && <GoogleAuth />}
         {/* <SearchBox />
         <TwitchAuth /> */}
       </div>
@@ -70,7 +70,7 @@ const Navbar = () => {
           </Link>
         </div>
         <SearchBox />
-        <TwitchAuth />
+        <GoogleAuth />
       </nav>
     </header>
   );
