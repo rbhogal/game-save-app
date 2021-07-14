@@ -43,7 +43,7 @@ export const getAppToken = async () => {
       });
   };
 
-  // Get New Token If it Expires
+  // Get New Token If it Expires & dispatch token to redux
   try {
     // Get token's expiration time from firebase
     const respFirebase = await axios.get(
@@ -52,11 +52,14 @@ export const getAppToken = async () => {
     const { data: dataFirebase } = respFirebase;
 
     const expirationTime = dataFirebase.expiresIn;
+    const token = dataFirebase.token;
 
     const remainingDuration = calcRemainingTime(expirationTime);
 
     // Gets new token when token expires
     setTimeout(getNewToken, remainingDuration);
+    console.log(token);
+    return token;
   } catch (err) {
     alert(err.message);
   }
