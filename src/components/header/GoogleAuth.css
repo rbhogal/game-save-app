@@ -1,0 +1,156 @@
+.GoogleAuth {
+  position: relative;
+  display: inline-block;
+}
+.GoogleAuth a {
+  text-decoration: none;
+}
+
+.google-btn {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-btn ion-icon {
+  margin: 0 4px;
+}
+
+.user-dropdown-content {
+  position: absolute;
+  background-color: white;
+  min-width: auto;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  height: auto;
+  border-radius: 3px;
+}
+
+.user-dropdown-content ion-icon {
+  font-size: 15px;
+  /* color: rgb(84, 103, 133); */
+  /* color: rgba(76, 76, 76, 0.5); */
+  color: white;
+}
+
+.user-dropdown-content a {
+  text-decoration: none;
+  color: #4c4c4c;
+  display: block;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-dropdown-content a:hover:not(:last-child) {
+  background-color: gainsboro;
+}
+
+.user-dropdown-content-signed-out {
+  min-width: auto;
+  left: -35px;
+}
+
+.user-dropdown-content-signed-in {
+  min-width: auto;
+  left: -35px;
+
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.user-dropdown-content-signed-in p,
+b {
+  color: #4c4c4c;
+}
+
+.user-dropdown-content-signed-in.clicked {
+  display: none;
+}
+
+.user-image {
+  width: 30px;
+  border-radius: 50px;
+}
+
+.sign-in-out-btn:hover {
+  background-color: rgba(145, 71, 255, 1);
+}
+
+.sign-in-out-btn {
+  font-family: inherit;
+  font-weight: 700;
+  padding: 5px 5px;
+  width: 150px;
+  min-height: 40px;
+  text-transform: uppercase;
+  border: 2px solid white;
+  background-color: rgba(145, 71, 255, 0.9);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+hr.solid {
+  background-color: gainsboro;
+  border-width: 0;
+  height: 1px;
+  margin: 10px 0;
+}
+
+.user-name-container {
+  padding-bottom: 10px;
+}
+
+/* Mobile--960px */
+@media only screen and (max-width: 60em) {
+  /*
+    Parent, child and siblings
+    1. GoogleAuth
+      2. drop-btn
+      2. user-drop-content
+  */
+
+  .GoogleAuth,
+  .drop-btn {
+    width: 100%;
+  }
+
+  .GoogleAuth {
+    padding: 0 10px;
+    height: auto;
+  }
+
+  .drop-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .user-dropdown-content {
+    position: static;
+  }
+
+  .user-dropdown-content-signed-in hr {
+    margin: 0;
+  }
+
+  .user-dropdown-content-signed-in a {
+    margin: 0;
+  }
+
+  .user-dropdown-content a {
+    padding: 10px;
+  }
+
+  .user-dropdown-content {
+    height: 100%;
+  }
+
+  .sign-in-out-btn {
+    margin: 0 auto;
+  }
+}

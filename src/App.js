@@ -8,11 +8,15 @@ import GameList from './components/games/GameList';
 import Game from './components/games/Game';
 import SavedGames from './components/games/SavedGames';
 import AuthContext from './store/auth-context';
+import { getAppToken } from './app/getAppToken';
 
 function App() {
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
 
+  useEffect(() => {
+    getAppToken();
+  }, []);
 
   return (
     <div className="App">

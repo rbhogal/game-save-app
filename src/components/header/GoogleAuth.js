@@ -3,7 +3,7 @@ import { auth, provider } from '../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import './TwitchAuth.css';
+import './GoogleAuth.css';
 import {
   setActiveUser,
   setUserSignOutState,
@@ -17,19 +17,21 @@ import AuthContext from '../../store/auth-context';
 function GoogleAuth() {
   const [dropdown, setDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
 
-  const userName = useSelector(selectUserName);
+  // const userName = useSelector(selectUserName);
   const userEmail = useSelector(selectUserEmail);
   // const token = useSelector(selectUserToken);
+  const userName = localStorage.getItem('username');
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
+
 
   const onSignInClick = () => {
     setIsLoading(true);
     auth.signInWithPopup(provider).then(result => {
       authCtx.signIn(result.credential.accessToken);
+      localStorage.setItem('username', result.user.displayName);
       dispatch(
         setActiveUser({
           userName: result.user.displayName,
@@ -52,6 +54,7 @@ function GoogleAuth() {
       })
       .catch(err => alert(err.message));
 
+    localStorage.removeItem('username');
     setIsLoading(false);
     renderDropdown();
   };
@@ -139,9 +142,9 @@ function GoogleAuth() {
           <Link to="/">
             <button
               onClick={onSignInClick}
-              className="sign-in-out-btn twitch-btn"
-            >
-              Google <ion-icon name="logo-twitch"></ion-icon>
+              className="sign-in-out-btn google-btn"
+            >Google
+               <ion-icon name="logo-google"></ion-icon>
             </button>
           </Link>
         </div>
@@ -162,7 +165,7 @@ function GoogleAuth() {
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="TwitchAuth"
+      className="GoogleAuth"
     >
       {renderDropBtn()}
       {dropdown && renderDropdownContent()}
