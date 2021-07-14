@@ -114,12 +114,10 @@ const Home = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: 'fields cover.url, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 30;',
+      data: 'fields cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 30;',
     })
       .then(resp => {
-        // const respJson = resp.json();
-
-        console.log(resp);
+        setPopularGames(resp.data);
       })
       .catch(err => {
         // alert(err.message);

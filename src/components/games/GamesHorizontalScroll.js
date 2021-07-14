@@ -6,7 +6,7 @@ const GamesHorizontalScroll = props => {
     <>
       {props.popularGames.map((game, index) => (
         <div className="cover-container d-flex justify-content-start m-3">
-          <img src={game.cover.url} alt={game.name}></img>
+          <img src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`} alt={game.name}></img>
         </div>
       ))}
     </>
