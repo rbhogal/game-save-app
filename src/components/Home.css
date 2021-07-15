@@ -22,9 +22,18 @@ body {
   color: gainsboro;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+
+  
 }
 
 .Home > .row {
-  overflow-x: auto;
+  overflow-x: scroll;
   flex-wrap: nowrap;
+
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */  
+}
+
+.Home > .row::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }

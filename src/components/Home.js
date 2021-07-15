@@ -1,105 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import Slider from 'react-slick';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.css';
 import GamesHorizontalScroll from './games/GamesHorizontalScroll';
 import { selectAppToken } from '../features/admin/appTokenSlice';
 
 const Home = () => {
-  const [popularGames, setPopularGames] = useState([
-    {
-      id: 109462,
-      cover: {
-        id: 103813,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co283p.jpg',
-      },
-      genres: [13],
-      name: 'Animal Crossing: New Horizons',
-      total_rating: 86.5764287247872,
-    },
-    {
-      id: 119313,
-      cover: {
-        id: 113695,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co2fq7.jpg',
-      },
-      genres: [8, 14, 31, 32],
-      name: 'Fall Guys: Ultimate Knockout',
-      total_rating: 80.7468784863155,
-    },
-    {
-      id: 21642,
-      cover: {
-        id: 87347,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co1veb.jpg',
-      },
-      genres: [13, 15, 32],
-      name: 'Totally Accurate Battle Simulator',
-      total_rating: 63.3327776652141,
-    },
-    {
-      id: 1877,
-      cover: {
-        id: 122536,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co2mjs.jpg',
-      },
-      genres: [12],
-      name: 'Cyberpunk 2077',
-      total_rating: 75.81197071831465,
-    },
-    {
-      id: 26950,
-      cover: {
-        id: 111950,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co2edq.jpg',
-      },
-      genres: [31],
-      name: 'Marvel\u0027s Avengers',
-      total_rating: 60.9905050515301,
-    },
-    {
-      id: 11169,
-      cover: {
-        id: 81567,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co1qxr.jpg',
-      },
-      genres: [12, 31],
-      name: 'Final Fantasy VII Remake',
-      total_rating: 88.67126531221646,
-    },
-    {
-      id: 75235,
-      cover: {
-        id: 109855,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co2crj.jpg',
-      },
-      genres: [31],
-      name: 'Ghost of Tsushima',
-      total_rating: 90.72742309357724,
-    },
-    {
-      id: 26192,
-      cover: {
-        id: 81672,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co1r0o.jpg',
-      },
-      genres: [5, 31],
-      name: 'The Last of Us Part II',
-      total_rating: 94.18308158215274,
-    },
-    {
-      id: 103298,
-      cover: {
-        id: 75007,
-        url: '//images.igdb.com/igdb/image/upload/t_cover_big/co1lvj.jpg',
-      },
-      genres: [5],
-      name: 'DOOM Eternal',
-      total_rating: 84.7518961508708,
-    },
-  ]);
+  const [popularGames, setPopularGames] = useState([]);
 
   const token = useSelector(selectAppToken);
 
@@ -130,10 +39,8 @@ const Home = () => {
   }, [token]);
 
   return (
-    <div className="Home container-fluid">
-      <div className="row">
-        <GamesHorizontalScroll popularGames={popularGames} />
-      </div>
+    <div className="container-fluid Home">
+      <GamesHorizontalScroll popularGames={popularGames} />
     </div>
   );
 };

@@ -5,6 +5,9 @@ import axios from 'axios';
 
 import Navbar from './components/header/Navbar';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Home from './components/Home';
 import GameList from './components/games/GameList';
 import Game from './components/games/Game';
@@ -62,7 +65,7 @@ function App() {
         });
     };
 
-    // GET APP TOKEN 
+    // GET APP TOKEN
     // Get New Token If it Expires & dispatch token to redux
     try {
       // Get token's expiration time from firebase
