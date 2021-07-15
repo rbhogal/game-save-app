@@ -1,3 +1,40 @@
-.cover-container {
-  width: auto;
+.GamesHorizontalScroll > img {
+  max-width: 220px;
+  margin: 25px 0;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.GamesHorizontalScroll > img:hover {
+  transform: scale(1.1);
+}
+
+/* React Slick --Custom Arrows CSS */
+.slick-arrows {
+  position: relative;
+}
+
+.slick-arrows .slick-prev,
+.slick-arrows .slick-next {
+  position: absolute;
+}
+
+.slick-arrows .slick-prev {
+  left: 1%;
+  z-index: 1;
+}
+
+.slick-arrows .slick-next {
+  right: 1.5%;
+}
+
+.slick-slider {
+  margin-top: 25px;
+  margin-left: 12px;
+}
+
+@media only screen and (max-width: 60em) {
+  .GamesHorizontalScroll > img {
+    max-width: 180px;
+  }
 }

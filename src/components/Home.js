@@ -39,7 +39,7 @@ const Home = () => {
   }, [token]);
 
   return (
-    <div className="container-fluid Home">
+    <div className="">
       <GamesHorizontalScroll popularGames={popularGames} />
     </div>
   );

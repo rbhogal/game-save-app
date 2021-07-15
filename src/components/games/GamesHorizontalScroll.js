@@ -4,18 +4,30 @@ import Slider from 'react-slick';
 
 const GamesHorizontalScroll = props => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 7,
+    slidesToShow: 8,
+    slidesToScroll: 8,
+    className: 'slick-arrows',
+    responsive: [
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: false,
+        },
+      },
+    ],
   };
 
   return (
     <>
       <Slider {...settings}>
         {props.popularGames.map((game, index) => (
-          <div className="image-container d-flex justify-content-start m-3">
+          <div className="GamesHorizontalScroll">
             <img
               src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
               alt={game.name}
