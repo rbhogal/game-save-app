@@ -40,7 +40,7 @@ const Home = () => {
   }, [token]);
 
   return (
-    <div className="">
+    <div className="Home">
       <GamesHorizontalScroll popularGames={popularGames} />
     </div>
   );
