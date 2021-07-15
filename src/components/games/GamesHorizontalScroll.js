@@ -1,6 +1,8 @@
 import React from 'react';
-import './GamesHorizontalScroll.css';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
+
+import './GamesHorizontalScroll.css';
 
 const GamesHorizontalScroll = props => {
   const settings = {
@@ -26,13 +28,17 @@ const GamesHorizontalScroll = props => {
   return (
     <>
       <Slider {...settings}>
-        {props.popularGames.map((game, index) => (
-          <div className="GamesHorizontalScroll">
-            <img
-              src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-              alt={game.name}
-            ></img>
-          </div>
+        {props.popularGames.map(game => (
+          <>
+            <Link to={`/games/${game.id}`}>
+              <div className="GamesHorizontalScroll">
+                <img
+                  src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+                  alt={game.name}
+                ></img>
+              </div>
+            </Link>
+          </>
         ))}
       </Slider>
     </>

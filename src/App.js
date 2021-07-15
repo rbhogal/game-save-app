@@ -106,7 +106,7 @@ function App() {
           <Route path="/savedgames" exact component={SavedGames} />
         )}
         <Route path="/gamelist" exact component={GameList} />
-        <Route path="/gamelist/game" exact component={Game} />
+        <Route path="/games/:game" exact component={Game} />
         <Route path="*">
           <Redirect to="/" />
         </Route>

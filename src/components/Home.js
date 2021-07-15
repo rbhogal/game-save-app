@@ -26,6 +26,7 @@ const Home = () => {
       data: 'fields cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 30;',
     })
       .then(resp => {
+        console.log(resp.data);
         setPopularGames(resp.data);
       })
       .catch(err => {
