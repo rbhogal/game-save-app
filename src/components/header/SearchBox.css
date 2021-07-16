@@ -55,6 +55,8 @@
 
 .drop-btn {
   --dropdown-heading-color: rgba(220, 220, 220, 0.8);
+  /* --dropdown-heading-color: rgba(220, 220, 220, 1); */
+  /* --dropdown-heading-color: white; future note: Go with white full opacity */ 
 
   background-color: rgba(0, 0, 0, 0);
   color: var(--dropdown-heading-color);
@@ -90,6 +92,7 @@
 
 .drop-btn:hover {
   color: rgba(220, 220, 220, 1);
+  /* color: rgba(220, 220, 220, 0.8); */
 }
 
 .drop-btn:hover ion-icon {

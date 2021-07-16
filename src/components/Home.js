@@ -10,14 +10,14 @@ import LoadingPage from './LoadingPage';
 
 const Home = () => {
   const [popularGames, setPopularGames] = useState([]);
-  // const [popularGames, setPopularGames] = useState([]);
+  const [anticipatedGames, setAnticipatedGames] = useState([]);
   // const [popularGames, setPopularGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
   const token = useSelector(selectAppToken);
 
   const getPopularGamesRequest = () => {
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     setIsLoading(true);
     axios({
       url: url,
@@ -39,12 +39,33 @@ const Home = () => {
       });
   };
 
-  const getAnticipatedGamesRequest = () => {};
+  const getAnticipatedGamesRequest = () => {
+    setIsLoading(true);
+    axios({
+      url: url,
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Client-ID': process.env.REACT_APP_CLIENT_ID,
+        Authorization: `Bearer ${token}`,
+      },
+      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130); sort hypes asc; limit 16;',
+    })
+      .then(resp => {
+        setAnticipatedGames(resp.data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        // alert(err.message);
+        console.log(err);
+      });
+  };
 
   const getRecentReleasedGamesRequest = () => {};
-
+  console.log(anticipatedGames);
   useEffect(() => {
     if (token) getPopularGamesRequest();
+    if (token) getAnticipatedGamesRequest();
   }, [token]);
 
   return (
@@ -54,17 +75,17 @@ const Home = () => {
         <h1>Popular games</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
-      <GamesHorizontalScroll popularGames={popularGames} />
+      <GamesHorizontalScroll games={popularGames} />
       <div className="category">
         <h1>Most Anticipated</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
-      <GamesHorizontalScroll popularGames={popularGames} />
+      <GamesHorizontalScroll games={anticipatedGames} />
       <div className="category">
         <h1>Recently Released</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
-      <GamesHorizontalScroll popularGames={popularGames} />
+      <GamesHorizontalScroll games={popularGames} />
     </div>
   );
 };

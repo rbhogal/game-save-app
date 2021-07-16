@@ -38,8 +38,16 @@
   right: -2%;
 }
 
-.game-card-text {
+.game-card-content {
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  /* position: relative; */
+}
+
+.game-card-content ion-icon {
+  position: absolute;
+  left: 67%;
+  bottom: 44px;
+  z-index: 50;
 }
 
 .game-card-genre,
