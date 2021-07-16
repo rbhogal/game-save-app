@@ -6,16 +6,19 @@ import Slider from 'react-slick';
 import './Home.css';
 import GamesHorizontalScroll from './games/GamesHorizontalScroll';
 import { selectAppToken } from '../features/admin/appTokenSlice';
+import LoadingPage from './LoadingPage';
 
 const Home = () => {
   const [popularGames, setPopularGames] = useState([]);
   // const [popularGames, setPopularGames] = useState([]);
   // const [popularGames, setPopularGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const token = useSelector(selectAppToken);  
+  const token = useSelector(selectAppToken);
 
   const getPopularGamesRequest = () => {
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
+    setIsLoading(true);
     axios({
       url: url,
       method: 'POST',
@@ -28,6 +31,7 @@ const Home = () => {
     })
       .then(resp => {
         setPopularGames(resp.data);
+        setIsLoading(false);
       })
       .catch(err => {
         // alert(err.message);
@@ -35,14 +39,9 @@ const Home = () => {
       });
   };
 
-  const getAnticipatedGamesRequest = () => {
-    
-  }
-  
-  const getRecentReleasedGamesRequest = () => {
-    
-  }
-  
+  const getAnticipatedGamesRequest = () => {};
+
+  const getRecentReleasedGamesRequest = () => {};
 
   useEffect(() => {
     if (token) getPopularGamesRequest();
@@ -50,6 +49,7 @@ const Home = () => {
 
   return (
     <div className="Home">
+      {isLoading && <LoadingPage />}
       <div className="category">
         <h1>Popular games</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>

@@ -4,14 +4,18 @@
   margin: 25px 10px;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+
 }
 
 .game-card > img:hover {
   transform: scale(1.1);
+
 }
 
+
 .game-card:hover .game-card-summary-box {
-  display: block;
+  display: block;  
 }
 
 /* React Slick --Custom Arrows CSS */
@@ -72,14 +76,52 @@
 
 .game-card-summary-box {
   /* background-color: rgba(52, 58, 64, 1);  */
-  /* position: absolute; */
+  position: absolute;
 
   background-color: rgba(32, 32, 32, 1);
   margin: 8px;
   padding: 10px;
   margin-bottom: 20px;
+  border-radius: 5px;
+  width: 220px;
+  height: 280px;
+
+  bottom: 17%;
+
   display: none;
+
+
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
 }
+
+.game-card-summary-box::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
+/* Summary Cards Animations */
+
+/* @keyframes scroll-up {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.scroll-up {
+  animation: scroll-up 100ms ease-in-out forwards;
+} */
 
 @media only screen and (max-width: 60em) {
   .game-card > img {
