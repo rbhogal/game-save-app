@@ -31,11 +31,18 @@ const GamesHorizontalScroll = props => {
         {props.popularGames.map(game => (
           <>
             <Link to={`/games/${game.id}`}>
-              <div className="GamesHorizontalScroll">
+              <div className="game-card">
                 <img
                   src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
                   alt={game.name}
                 ></img>
+                <div className="game-card-text">
+                  <p className="game-card-genre">{`${game.genres[0].name}`}</p>
+                  <div className="game-card-rating-box">
+                    <p className="game-card-rating">
+                      {Math.round(game.total_rating)}</p>
+                  </div>
+                </div>
               </div>
             </Link>
           </>
