@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
 import './SearchBox.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Dropdown from './Dropdown';
 
 const SearchBox = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [search, setSearch] = useState('');
+  let history = useHistory();
 
+  console.log(search);
   const handleClick = () => {
     // Click only works for mobile
     if (window.innerWidth > 960) return;
@@ -20,6 +23,12 @@ const SearchBox = () => {
   };
   const onMouseLeave = () => {
     window.innerWidth < 960 ? setDropdown(false) : setDropdown(false);
+  };
+
+  const handleEnterPress = e => {
+    if (e.key === 'Enter') {
+      history.push(`/gamelist/games/${search}`);
+    }
   };
 
   return (
@@ -37,7 +46,13 @@ const SearchBox = () => {
         {dropdown && <Dropdown />}
       </div>
 
-      <input type="text" className="input" placeholder="Search..." />
+      <input
+        type="text"
+        className="input"
+        placeholder="Search..."
+        onChange={e => setSearch(e.target.value)}
+        onKeyPress={e => handleEnterPress(e)}
+      />
       <Link to="/">
         <button className="search-btn">
           <ion-icon name="search-outline"></ion-icon>

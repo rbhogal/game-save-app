@@ -105,8 +105,8 @@ function App() {
         {isSignedIn && (
           <Route path="/savedgames" exact component={SavedGames} />
         )}
-        <Route path="/gamelist" exact component={GameList} />
-        <Route path="/games/:game" exact component={Game} />
+        <Route path="/gamelist/games" exact component={GameList} />
+        <Route path="/gamelist/games/:game" exact component={Game} />
         <Route path="*">
           <Redirect to="/" />
         </Route>
