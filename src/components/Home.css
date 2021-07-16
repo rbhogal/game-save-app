@@ -26,9 +26,24 @@ body {
 
 .Home {
   margin: 25px 50px;
+
 }
 
 .Home a {
   text-decoration: none;
   color: inherit;
 }
+
+.Home ion-icon {
+  font-size: 25px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+}
+
+.category ion-icon {
+  margin-bottom: 2px;
+}
+
