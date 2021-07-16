@@ -43,10 +43,11 @@
   /* position: relative; */
 }
 
+/* Bookmark icon */
 .game-card-content ion-icon {
   position: absolute;
   left: 67%;
-  bottom: 44px;
+  bottom: 25px;
   z-index: 50;
 }
 
@@ -58,6 +59,12 @@
 .game-card-genre {
   bottom: 10px;
   left: 10px;
+}
+
+.game-card-genre-box {
+  width: 135px;
+  height: 16px;
+  word-wrap: break-word;
 }
 
 .game-card-rating {
@@ -74,7 +81,7 @@
   width: 38px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-  bottom: 40px;
+  bottom: 21px;
   left: 80%;
 }
 
@@ -96,7 +103,7 @@
   height: 309px;
   border: 2px solid rgba(145, 71, 255, 1);
 
-  bottom: 52px;
+  bottom: 43px;
   /* left: 2px; */
   left: -9px;
 

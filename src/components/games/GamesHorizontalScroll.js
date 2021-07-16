@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './GamesHorizontalScroll.css';
 
 const GamesHorizontalScroll = props => {
-  const [bookmark, setBookmark] = useState(false)
+  const [bookmark, setBookmark] = useState(false);
   const gameCard = useRef('nothing yet');
 
   // useEffect(() => {
@@ -34,6 +34,10 @@ const GamesHorizontalScroll = props => {
     ],
   };
 
+  const handleBookmarkClick = () => {
+    setBookmark(!bookmark);
+  };
+
   return (
     <>
       <Slider {...settings}>
@@ -51,11 +55,13 @@ const GamesHorizontalScroll = props => {
                 </div>
 
                 <div className="game-card-content">
-                  <p className="game-card-genre">{`${game.genres[0].name}`}</p>
-                  <Link onClick={()=> setBookmark(!bookmark)}>
+                  <div className="game-card-genre-box">
+                    <p className="game-card-genre">{`${game.genres[0].name}`}</p>
+                  </div>
+                  <Link onClick={handleBookmarkClick}>
                     <ion-icon
                       className="game-card-bookmark"
-                      name={bookmark? "bookmark" : "bookmark-outline"}
+                      name={bookmark ? 'bookmark' : 'bookmark-outline'}
                     ></ion-icon>
                   </Link>
                   <div className="game-card-rating-box">
