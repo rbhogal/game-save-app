@@ -12,12 +12,10 @@ const Home = () => {
   // const [popularGames, setPopularGames] = useState([]);
   // const [popularGames, setPopularGames] = useState([]);
 
-  const token = useSelector(selectAppToken);
+  const token = useSelector(selectAppToken);  
 
   const getPopularGamesRequest = () => {
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
-
-
     axios({
       url: url,
       method: 'POST',
@@ -26,7 +24,7 @@ const Home = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: 'fields cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 30;',
+      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 30;',
     })
       .then(resp => {
         setPopularGames(resp.data);
@@ -36,6 +34,15 @@ const Home = () => {
         console.log(err);
       });
   };
+
+  const getAnticipatedGamesRequest = () => {
+    
+  }
+  
+  const getRecentReleasedGamesRequest = () => {
+    
+  }
+  
 
   useEffect(() => {
     if (token) getPopularGamesRequest();

@@ -10,6 +10,10 @@
   transform: scale(1.1);
 }
 
+.game-card:hover .game-card-summary-box {
+  display: block;
+}
+
 /* React Slick --Custom Arrows CSS */
 .slick-arrows {
   position: relative;
@@ -59,6 +63,22 @@
 
   bottom: 40px;
   left: 80%;
+}
+
+.game-card-summary {
+  /* font-size: 14px; */
+  color: white;
+}
+
+.game-card-summary-box {
+  /* background-color: rgba(52, 58, 64, 1);  */
+  /* position: absolute; */
+
+  background-color: rgba(32, 32, 32, 1);
+  margin: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: none;
 }
 
 @media only screen and (max-width: 60em) {
