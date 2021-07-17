@@ -28,6 +28,8 @@ const SearchBox = () => {
   const handleEnterPress = e => {
     if (e.key === 'Enter') {
       history.push(`/gamelist/games/${search}`);
+
+      // save the search term into redux
     }
   };
 

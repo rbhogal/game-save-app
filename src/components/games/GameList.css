@@ -1,0 +1,27 @@
+.GameList {
+  margin: 25px 50px;
+  margin: 0 50px 25px 50px;
+}
+
+.GameList a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.GameList ion-icon {
+  font-size: 25px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+}
+
+.category ion-icon {
+  margin-top: 25px;
+  margin-bottom: 2px;
+}
+
+.GameList h1 {
+  margin-top: 25px;
+}

@@ -13,9 +13,45 @@ const Home = () => {
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   // const [popularGames, setPopularGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const token = useSelector(selectAppToken);
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
-  const token = useSelector(selectAppToken);
+  const calcTimeTwoYears = () => {
+    Date.now();
+/* 
+    Knowns 
+    ------------
+    Current time (in ms) = Date.now()
+
+    
+    Unknowns
+    -----------
+
+
+
+    METHODS
+    ---------
+    Date.now() -- number of ms elapsed since January 1, 1970
+    Date() -- number in ms since 1 January 1970 UTC
+
+    Calculate Two Years Ago starting today (updates everyday)
+
+    Current time - 2 Years (in ms?)
+
+    Current time (in ms) = Date.now()
+
+    2 years ago in ms = 
+
+    Date.now() - ( Date.now() - Date(2 years) )
+
+
+    every new day update
+    const twoYearsAgo = 
+ */
+  };
+
+
+
 
   const getPopularGamesRequest = () => {
     setIsLoading(true);
@@ -62,7 +98,7 @@ const Home = () => {
   };
 
   const getRecentReleasedGamesRequest = () => {};
-  console.log(anticipatedGames);
+
   useEffect(() => {
     if (token) getPopularGamesRequest();
     if (token) getAnticipatedGamesRequest();
