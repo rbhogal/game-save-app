@@ -7,6 +7,13 @@ import { Link } from 'react-router-dom';
 const GamesMultipleRowsScroll = props => {
   const [bookmark, setBookmark] = useState(false);
 
+  const name = (params) => {
+      // basically give a new array by checking if current array's items even exit
+      // (game.genres[0].name) ? then add it if not then N/A 
+  }
+  
+
+
   const settings = {
     className: 'center',
     centerMode: false,
@@ -14,8 +21,8 @@ const GamesMultipleRowsScroll = props => {
     // centerPadding: '60px',
     slidesToShow: 8,
     speed: 500,
-    rows: 2,
-    slidesPerRow: 2,
+    rows: 1,
+    slidesPerRow: 3,
     className: 'slick-arrows',
   };
 

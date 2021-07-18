@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 
 import './SearchBox.css';
 import { Link, useHistory } from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { addSearchAsync, getSearchAsync } from '../../features/users/userSlice';
+import AuthContext from '../../store/auth-context';
 
 const SearchBox = () => {
   const [dropdown, setDropdown] = useState(false);
   const [search, setSearch] = useState('');
   let history = useHistory();
+  const dispatch = useDispatch();
+  // console.log(`1) init search: ${search}`);
 
-  console.log(search);
+  const authCtx = useContext(AuthContext); 
+
+
   const handleClick = () => {
     // Click only works for mobile
     if (window.innerWidth > 960) return;
@@ -27,11 +34,24 @@ const SearchBox = () => {
 
   const handleEnterPress = e => {
     if (e.key === 'Enter') {
-      history.push(`/gamelist/games/${search}`);
+      history.push(`/gamelist/games`);
+      // console.log(
+        // `2) enter press dispatch: successful. Dispatching search:'${search}' (SearchBox.js). Redirecting to GameList...`
+      // );
+      // save the search term into localStorage
+      // dispatch(addSearchAsync(search));
 
-      // save the search term into redux
+      // localStorage.setItem('search', search);
+      authCtx.searchGame(search);
     }
   };
+
+  // useEffect(() => {
+  //   if (search) {
+  //     dispatch(getSearchAsync());
+  //     console.log('getting search from database...');
+  //   }
+  // }, [dispatch]);
 
   return (
     <div id="SearchBox" className="SearchBox">
