@@ -53,7 +53,7 @@ const GameList = () => {
 
   return (
     <div className="GameList">
-      {!isLoading && <GamesMultipleRowsScroll games={games} />}
+      {!isLoading && <GamesMultipleRowsScroll search={search} games={games} />}
       {/* {isLoading && <p>Loading...</p>} */}
     </div>
   );

@@ -91,7 +91,15 @@ const GamesMultipleRowsScroll = props => {
       );
     }
 
-
+    if (_.isEmpty(props.games)) {
+      return (
+        <>
+          <div style={{ margin: '45vh', textAlign: 'center' }}>
+            <h1>{`No results for "${props.search}".`}</h1>
+          </div>
+        </>
+      );
+    }
   };
 
   return <>{showSearchResults()}</>;
