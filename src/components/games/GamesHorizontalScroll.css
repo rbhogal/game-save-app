@@ -19,6 +19,14 @@
   /* transform: translateY(-309px); */
 }
 
+.slick-dots li button:before {
+  color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  color:white !important;
+}
+
 /* React Slick --Custom Arrows CSS */
 .slick-arrows {
   position: relative;
