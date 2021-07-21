@@ -51,13 +51,7 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
-  const resp = await axios.get(
-    'https://game-save-default-rtdb.firebaseio.com/users/.json'
-  );
-  const { data: users } = await resp;
-  return users;
-});
+
 
 const initialState = {
   userId: null,
@@ -101,9 +95,7 @@ const userSlice = createSlice({
       state.userId = action.payload.userId;
       state.savedGames = action.payload.savedGames;
     },
-    [getAllUsers.fulfilled]: (state, action) => {
-      return action.payload;
-    }
+    
   },
 });
 

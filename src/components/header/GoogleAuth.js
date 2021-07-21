@@ -12,24 +12,41 @@ import {
   selectUserToken,
   addNewUser,
   getUserData,
-  getAllUsers,
 } from '../../features/users/userSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
+import { getAllUsers } from '../../features/users/usersSlice';
 
 function GoogleAuth() {
   const [dropdown, setDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const { users } = useSelector(state => state.users);
+  console.log(users);
 
   // const userName = useSelector(selectUserName);
-  const userEmail = useSelector(selectUserEmail);
+  // const userEmail = useSelector(selectUserEmail);
   // const token = useSelector(selectUserToken);
   const userName = localStorage.getItem('username');
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
 
- 
+  const handleNewUser = (id) => {
+
+    for (const key in users) {
+      if(users[key].userId === id) {
+        console.log('user exists')
+      }
+    }
+    
+  }
+  
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+
 
   const onSignInClick = () => {
     setIsLoading(true);
@@ -45,7 +62,10 @@ function GoogleAuth() {
         })
       );
 
-      // handleNewUser(result.user.uid);
+
+      handleNewUser(result.user.uid);
+
+      // dispatch(addNewUser(result.user.uid));
     });
     setIsLoading(false);
   };

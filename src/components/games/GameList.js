@@ -34,7 +34,7 @@ const GameList = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: `search"${search}"; fields summary, cover.image_id, genres.name, name, total_rating; where platforms = (6, 48, 49, 130) & genres.name != null & cover.image_id != null; limit 48;`,
+      data: `search"${search}"; fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null; limit 48;`,
     })
       .then(resp => {
         setGames(resp.data);

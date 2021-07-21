@@ -1,12 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const initialState = [
-  {
-    id: '',
-    savedGames: [],
-  },
-];
+const initialState = { users: {} };
+
+export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
+  const resp = await axios.get(
+    'https://game-save-default-rtdb.firebaseio.com/users/.json'
+  );
+  const { data: users } = await resp;
+  return users;
+});
 
 export const getUserDataAsync = createAsyncThunk(
   'users/getUserDataAsync',
@@ -43,6 +46,9 @@ const usersSlice = createSlice({
   extraReducers: {
     [getUserDataAsync.fulfilled]: (state, action) => {
       return action.payload.data;
+    },
+    [getAllUsers.fulfilled]: (state, action) => {
+      state.users = action.payload;
     },
   },
 });

@@ -43,11 +43,9 @@ body {
 }
 
 .category ion-icon {
-  margin-top: 25px;
   margin-bottom: 2px;
 }
 
 .Home h1 {
-  margin-top: 25px;
+  /* margin-top: 25px; */
 }
-

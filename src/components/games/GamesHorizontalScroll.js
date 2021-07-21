@@ -32,6 +32,8 @@ const GamesHorizontalScroll = props => {
     ],
   };
 
+  
+
   const handleBookmarkClick = e => {
     // If logged in, store to database / If NOT logged in prompt user to login and return
     // console.log(e.target.id);
@@ -71,8 +73,8 @@ const GamesHorizontalScroll = props => {
                 <div className="game-card-summary-box">
                   <p className="game-card-summary">{game.summary}</p>
                 </div>
-
-                <div className="game-card-content">
+              </div>
+              <div className="game-card-content">
                   <div className="game-card-genre-box">
                     <p className="game-card-genre">{`${game.genres[0].name}`}</p>
                   </div>
@@ -89,7 +91,6 @@ const GamesHorizontalScroll = props => {
                     </p>
                   </div>
                 </div>
-              </div>
             </Link>
           </>
         ))}

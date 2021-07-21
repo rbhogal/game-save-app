@@ -4,7 +4,8 @@
 
 .game-card > img {
   border-radius: 5px;
-  max-width: 210px;
+  max-width: 190px;
+  /* height: 280px; */
   margin: 25px 10px;
   transition: transform 0.2s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -16,15 +17,22 @@
 
 .game-card:hover .game-card-summary-box {
   visibility: visible;
-  /* transform: translateY(-309px); */
 }
+
+/* .game-card > img:hover ~.game-card-summary-box {
+  visibility: visible;
+} */
+
+/* .game-card:not(.game-card-content):hover .game-card-summary-box {
+  visibility: visible;
+} */
 
 .slick-dots li button:before {
   color: white;
 }
 
 .slick-dots li.slick-active button:before {
-  color:white !important;
+  color: white !important;
 }
 
 /* React Slick --Custom Arrows CSS */
@@ -53,9 +61,9 @@
 
 /* Bookmark icon */
 .game-card-content ion-icon {
-  position: absolute;
-  left: 67%;
-  bottom: 25px;
+  position: relative;
+  left: 65%;
+  bottom: 19px;
   z-index: 50;
 }
 
@@ -65,7 +73,7 @@
 }
 
 .game-card-genre {
-  bottom: 10px;
+  bottom: 7px;
   left: 10px;
 }
 
@@ -73,11 +81,11 @@
   width: 135px;
   height: 16px;
   word-wrap: break-word;
+  
 }
 
 .game-card-rating {
   color: white;
-
   margin: auto 0;
 }
 
@@ -89,8 +97,8 @@
   width: 38px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-  bottom: 21px;
-  left: 80%;
+  bottom: 49px;
+  left: 78%;
 }
 
 .game-card-summary {
@@ -101,19 +109,17 @@
 .game-card-summary-box {
   /* background-color: rgba(52, 58, 64, 1);  */
   position: absolute;
-
   background-color: rgba(32, 32, 32, 1);
-  margin: 8px;
+  margin: 0 8px;
   padding: 10px;
-  margin-bottom: 20px;
   border-radius: 5px;
-  width: 232px;
-  height: 309px;
+  width: 209px;
+  height: 281px;
   border: 2px solid rgba(145, 71, 255, 1);
 
-  bottom: 34px;
+  bottom: -15px;
   /* left: 2px; */
-  left: -9px;
+  left: -7px;
 
   visibility: hidden;
   /* transform: translateY(309px); */

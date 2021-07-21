@@ -64,22 +64,21 @@ const GamesMultipleRowsScroll = props => {
                     <div className="game-card-summary-box">
                       <p className="game-card-summary">{game.summary}</p>
                     </div>
-
-                    <div className="game-card-content">
-                      <div className="game-card-genre-box">
-                        <p className="game-card-genre">{`${game.genres[0].name}`}</p>
-                      </div>
-                      <Link onClick={handleBookmarkClick}>
-                        <ion-icon
-                          className="game-card-bookmark"
-                          name={bookmark ? 'bookmark' : 'bookmark-outline'}
-                        ></ion-icon>
-                      </Link>
-                      <div className="game-card-rating-box">
-                        <p className="game-card-rating">
-                          {Math.round(game.total_rating)}
-                        </p>
-                      </div>
+                  </div>
+                  <div className="game-card-content">
+                    <div className="game-card-genre-box">
+                      <p className="game-card-genre">{`${game.genres[0].name}`}</p>
+                    </div>
+                    <Link onClick={handleBookmarkClick}>
+                      <ion-icon
+                        className="game-card-bookmark"
+                        name={bookmark ? 'bookmark' : 'bookmark-outline'}
+                      ></ion-icon>
+                    </Link>
+                    <div className="game-card-rating-box">
+                      <p className="game-card-rating">
+                        {Math.round(game.total_rating)}
+                      </p>
                     </div>
                   </div>
                 </Link>
