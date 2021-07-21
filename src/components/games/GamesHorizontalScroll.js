@@ -1,18 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
 import './GamesHorizontalScroll.css';
+import AuthContext from '../../store/auth-context';
 
 const GamesHorizontalScroll = props => {
   const [bookmark, setBookmark] = useState(false);
   const gameCard = useRef('nothing yet');
-
-  // useEffect(() => {
-  //   if (props.popularGames) console.log(gameCard.current);
-  // }, []);
-
-  // console.log(gameCard.current);
+  const [bookmarkedGames, setBookmarkedGames] = useState([]);
+  const authCtx = useContext(AuthContext);
+  const isSignedIn = authCtx.isSignedIn;
 
   const settings = {
     dots: false,
@@ -34,8 +32,28 @@ const GamesHorizontalScroll = props => {
     ],
   };
 
-  const handleBookmarkClick = () => {
-    setBookmark(!bookmark);
+  const handleBookmarkClick = e => {
+    // If logged in, store to database / If NOT logged in prompt user to login and return
+    // console.log(e.target.id);
+
+    if (!isSignedIn) return alert('Sign in to save!');
+
+    if (isSignedIn) {
+
+      
+
+      
+      // map an array and only setBookmark on those with the id you want
+      bookmarkedGames.map(game => {
+        // find id
+        // if no matching id, push object  game id, and push bookmarked: true
+        // if matching id found, then update bookmarked to either true or false. bookmark ? false : true
+      });
+
+      // 1) if
+
+      setBookmark(!bookmark);
+    }
   };
 
   return (
@@ -62,6 +80,7 @@ const GamesHorizontalScroll = props => {
                     <ion-icon
                       className="game-card-bookmark"
                       name={bookmark ? 'bookmark' : 'bookmark-outline'}
+                      id={game.id}
                     ></ion-icon>
                   </Link>
                   <div className="game-card-rating-box">

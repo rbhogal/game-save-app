@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 const GamesMultipleRowsScroll = props => {
   const [bookmark, setBookmark] = useState(false);
-  const [filteredGames, setFilteredGames] = useState([]);
 
   //   const filterData = () => {
   //     /*

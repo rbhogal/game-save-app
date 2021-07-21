@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { auth, provider } from '../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,9 @@ import {
   selectUserEmail,
   selectUserName,
   selectUserToken,
+  addNewUser,
+  getUserData,
+  getAllUsers,
 } from '../../features/users/userSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
@@ -26,6 +29,7 @@ function GoogleAuth() {
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
 
+ 
 
   const onSignInClick = () => {
     setIsLoading(true);
@@ -34,11 +38,14 @@ function GoogleAuth() {
       localStorage.setItem('username', result.user.displayName);
       dispatch(
         setActiveUser({
+          userId: result.user.uid,
           userName: result.user.displayName,
           userEmail: result.user.email,
           token: result.credential.accessToken,
         })
       );
+
+      // handleNewUser(result.user.uid);
     });
     setIsLoading(false);
   };
@@ -143,8 +150,9 @@ function GoogleAuth() {
             <button
               onClick={onSignInClick}
               className="sign-in-out-btn google-btn"
-            >Google
-               <ion-icon name="logo-google"></ion-icon>
+            >
+              Google
+              <ion-icon name="logo-google"></ion-icon>
             </button>
           </Link>
         </div>

@@ -4,22 +4,18 @@ import axios from 'axios';
 const initialState = [
   {
     id: '',
-    name: '',
-    accessToken: '',
-    isSignedIn: false,
+    savedGames: [],
   },
 ];
 
 export const getUserDataAsync = createAsyncThunk(
   'users/getUserDataAsync',
-  async (key) => {
+  async key => {
     try {
       const data = await axios.get(
         `https://game-save-default-rtdb.firebaseio.com/users/${key}.json`
       );
-
-      console.log(data);
-      return {data}
+      return { data };
     } catch (err) {
       console.log(err);
     }

@@ -24,11 +24,48 @@ export const getSearchAsync = createAsyncThunk(
   }
 );
 
+export const addNewUser = createAsyncThunk('user/addNewUser', async payload => {
+  const resp = await axios.post(
+    'https://game-save-default-rtdb.firebaseio.com/users/.json',
+    {
+      userId: payload,
+      savedGames: [],
+    }
+  );
+
+  const data = await resp;
+});
+
+export const getUserData = createAsyncThunk(
+  'user/getUserData',
+  async payload => {
+    const resp = await axios.get(
+      'https://game-save-default-rtdb.firebaseio.com/users/.json'
+    );
+    const { data: users } = await resp;
+    for (const key in users) {
+      if (users[key].userId === payload) {
+        return users[key];
+      }
+    }
+  }
+);
+
+export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
+  const resp = await axios.get(
+    'https://game-save-default-rtdb.firebaseio.com/users/.json'
+  );
+  const { data: users } = await resp;
+  return users;
+});
+
 const initialState = {
+  userId: null,
   userName: null,
   userEmail: null,
   token: null,
   search: '',
+  savedGames: [],
 };
 
 const userSlice = createSlice({
@@ -36,11 +73,13 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setActiveUser: (state, action) => {
+      state.userId = action.payload.userId;
       state.userName = action.payload.userName;
       state.userEmail = action.payload.userEmail;
       state.token = action.payload.token;
     },
     setUserSignOutState: state => {
+      state.userId = null;
       state.userName = null;
       state.userEmail = null;
       state.token = null;
@@ -58,6 +97,13 @@ const userSlice = createSlice({
     [addSearchAsync.fulfilled]: (state, action) => {
       return action.payload;
     },
+    [getUserData.fulfilled]: (state, action) => {
+      state.userId = action.payload.userId;
+      state.savedGames = action.payload.savedGames;
+    },
+    [getAllUsers.fulfilled]: (state, action) => {
+      return action.payload;
+    }
   },
 });
 
