@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './SearchBox.css';
@@ -12,10 +12,10 @@ const SearchBox = () => {
   const [search, setSearch] = useState('');
   let history = useHistory();
   const dispatch = useDispatch();
+  const inputSearch = useRef();
   // console.log(`1) init search: ${search}`);
 
-  const authCtx = useContext(AuthContext); 
-
+  const authCtx = useContext(AuthContext);
 
   const handleClick = () => {
     // Click only works for mobile
@@ -36,13 +36,14 @@ const SearchBox = () => {
     if (e.key === 'Enter') {
       history.push(`/gamelist/games`);
       // console.log(
-        // `2) enter press dispatch: successful. Dispatching search:'${search}' (SearchBox.js). Redirecting to GameList...`
+      // `2) enter press dispatch: successful. Dispatching search:'${search}' (SearchBox.js). Redirecting to GameList...`
       // );
       // save the search term into localStorage
       // dispatch(addSearchAsync(search));
 
       // localStorage.setItem('search', search);
       authCtx.searchGame(search);
+      inputSearch.current.value = '';
     }
   };
 
@@ -69,6 +70,7 @@ const SearchBox = () => {
       </div>
 
       <input
+        ref={inputSearch}
         type="text"
         className="input"
         placeholder="Search..."

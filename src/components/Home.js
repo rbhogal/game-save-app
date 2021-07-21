@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -7,18 +7,23 @@ import './Home.css';
 import GamesHorizontalScroll from './games/GamesHorizontalScroll';
 import { selectAppToken } from '../features/admin/appTokenSlice';
 import LoadingPage from './LoadingPage';
+import AuthContext from '../store/auth-context';
 
 const Home = () => {
   const [popularGames, setPopularGames] = useState([]);
   const [anticipatedGames, setAnticipatedGames] = useState([]);
-  // const [popularGames, setPopularGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [bookmarkedGames, setBookmarkedGames] = useState([]);
+  const authCtx = useContext(AuthContext);
+  const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
+  console.log(bookmarkedGames);
+
   const calcTimeTwoYears = () => {
     Date.now();
-/* 
+    /* 
     Knowns 
     ------------
     Current time (in ms) = Date.now()
@@ -49,9 +54,6 @@ const Home = () => {
     const twoYearsAgo = 
  */
   };
-
-
-
 
   const getPopularGamesRequest = () => {
     setIsLoading(true);
@@ -104,6 +106,19 @@ const Home = () => {
     if (token) getAnticipatedGamesRequest();
   }, [token]);
 
+  const handleBookmarkClick = game => {
+    // If logged in, store to database / If NOT logged in prompt user to login and return
+    // console.log(e.target.id);
+
+    if (!isSignedIn) return alert('Sign in to save!');
+
+    if (isSignedIn) {
+      // save game to bookmarked games
+      const newBookmarkedGames = [...bookmarkedGames, game];
+      setBookmarkedGames(newBookmarkedGames);
+    }
+  };
+
   return (
     <div className="Home">
       {isLoading && <LoadingPage />}
@@ -111,17 +126,26 @@ const Home = () => {
         <h1>Popular games</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
-      <GamesHorizontalScroll games={popularGames} />
+      <GamesHorizontalScroll
+        handleBookmarkClick={handleBookmarkClick}
+        games={popularGames}
+      />
       <div className="category">
         <h1>Most Anticipated</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
-      <GamesHorizontalScroll games={anticipatedGames} />
+      <GamesHorizontalScroll
+        handleBookmarkClick={handleBookmarkClick}
+        games={anticipatedGames}
+      />
       <div className="category">
         <h1>Recently Released</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
-      <GamesHorizontalScroll games={popularGames} />
+      <GamesHorizontalScroll
+        handleBookmarkClick={handleBookmarkClick}
+        games={popularGames}
+      />
     </div>
   );
 };
