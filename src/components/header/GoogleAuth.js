@@ -22,7 +22,6 @@ function GoogleAuth() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const { users } = useSelector(state => state.users);
-  console.log(users);
 
   // const userName = useSelector(selectUserName);
   // const userEmail = useSelector(selectUserEmail);
@@ -31,22 +30,21 @@ function GoogleAuth() {
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
 
-  const handleNewUser = (id) => {
-
+  const handleNewUser = id => {
+    let newUser = false;
     for (const key in users) {
-      if(users[key].userId === id) {
-        console.log('user exists')
-      }
+      newUser = users[key].userId.includes(id) ? false : true;
     }
-    
-  }
-  
+
+    if (newUser) {
+      dispatch(addNewUser(id));
+    }
+    if (!newUser) return;
+  };
 
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
-
-
 
   const onSignInClick = () => {
     setIsLoading(true);
@@ -61,7 +59,6 @@ function GoogleAuth() {
           token: result.credential.accessToken,
         })
       );
-
 
       handleNewUser(result.user.uid);
 

@@ -4,9 +4,9 @@
 
 .game-card > img {
   border-radius: 5px;
-  max-width: 190px;
+  max-width: 19rem;
   /* height: 280px; */
-  margin: 25px 10px;
+  margin: 2.5rem 1rem;
   transition: transform 0.2s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
@@ -63,7 +63,7 @@
 .game-card-content ion-icon {
   position: relative;
   left: 65%;
-  bottom: 19px;
+  bottom: 1.9rem;
   z-index: 50;
 }
 
@@ -73,15 +73,14 @@
 }
 
 .game-card-genre {
-  bottom: 7px;
-  left: 10px;
+  bottom: 0.7rem;
+  left: 1rem;
 }
 
 .game-card-genre-box {
-  width: 135px;
-  height: 16px;
+  width: 13.5rem;
+  height: 1.6rem;
   word-wrap: break-word;
-  
 }
 
 .game-card-rating {
@@ -93,11 +92,11 @@
   border-radius: 5px;
   border: 2px solid rgba(145, 71, 255, 1);
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 0 7px;
-  width: 38px;
+  padding: 0 0.7rem;
+  width: 3.8rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-  bottom: 49px;
+  bottom: 4.9rem;
   left: 78%;
 }
 
@@ -110,16 +109,16 @@
   /* background-color: rgba(52, 58, 64, 1);  */
   position: absolute;
   background-color: rgba(32, 32, 32, 1);
-  margin: 0 8px;
-  padding: 10px;
+  margin: 0 0.8rem;
+  padding: 1rem;
   border-radius: 5px;
-  width: 209px;
-  height: 281px;
+  width: 20.9rem;
+  height: 28.1rem;
   border: 2px solid rgba(145, 71, 255, 1);
 
-  bottom: -15px;
+  bottom: -1.5rem;
   /* left: 2px; */
-  left: -7px;
+  left: -0.7rem;
 
   visibility: hidden;
   /* transform: translateY(309px); */
@@ -160,6 +159,6 @@
 
 @media only screen and (max-width: 60em) {
   .game-card > img {
-    max-width: 180px;
+    max-width: 18rem;
   }
 }

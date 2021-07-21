@@ -1,6 +1,6 @@
 .GameList {
-  margin: 50px 50px 25px 50px;
-
+  /* margin: 50px 50px 25px 50px; */
+  margin: 5% 5rem;
 }
 
 .GameList a {
@@ -9,19 +9,9 @@
 }
 
 .GameList ion-icon {
-  font-size: 25px;
+  font-size: 2.5rem;
 }
-
-.category {
-  display: flex;
-  align-items: center;
-}
-
-/* .category ion-icon {
-  margin-top: 25px;
-  margin-bottom: 2px;
-} */
 
 .GameList h1 {
-  margin-top: 25px;
+  margin-top: 2.5rem;
 }
