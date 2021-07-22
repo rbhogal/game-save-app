@@ -19,8 +19,6 @@ const Home = () => {
   const token = useSelector(selectAppToken);
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
-  console.log(bookmarkedGames);
-
   const calcTimeTwoYears = () => {
     Date.now();
     /* 
@@ -106,6 +104,10 @@ const Home = () => {
     if (token) getAnticipatedGamesRequest();
   }, [token]);
 
+  useEffect(()=> {
+    // add bookmarked games to firebase database
+  },[])
+
   const handleBookmarkClick = game => {
     // If logged in, store to database / If NOT logged in prompt user to login and return
     // console.log(e.target.id);
@@ -123,7 +125,7 @@ const Home = () => {
     <div className="Home">
       {isLoading && <LoadingPage />}
       <div className="category">
-        <h1>Popular games</h1> &nbsp;
+        <h1>Popular Games</h1> &nbsp;
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll

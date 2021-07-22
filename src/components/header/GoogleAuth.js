@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { auth, provider } from '../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import './GoogleAuth.css';
 import {
@@ -21,30 +22,40 @@ function GoogleAuth() {
   const [dropdown, setDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-  const { users } = useSelector(state => state.users);
 
-  // const userName = useSelector(selectUserName);
-  // const userEmail = useSelector(selectUserEmail);
-  // const token = useSelector(selectUserToken);
   const userName = localStorage.getItem('username');
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
 
-  const handleNewUser = id => {
-    let newUser = false;
-    for (const key in users) {
-      newUser = users[key].userId.includes(id) ? false : true;
-    }
+  const handleNewUser = async id => {
+    // Get users
+    try {
+      const resp = await axios.get(
+        'https://game-save-default-rtdb.firebaseio.com/users/.json'
+      );
+      const { data: users } = await resp;
 
-    if (newUser) {
-      dispatch(addNewUser(id));
+      let newUser = true;
+
+      // Check if new user
+      for (const user in users) {
+        if (users[user].userId === id) {
+          newUser = false;
+        }
+      }
+
+      // Add if new user
+      if (newUser) {
+        dispatch(addNewUser(id));
+      }
+
+      if (!newUser) {
+        newUser = true;
+      }
+    } catch (err) {
+      alert(err.message);
     }
-    if (!newUser) return;
   };
-
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
 
   const onSignInClick = () => {
     setIsLoading(true);
@@ -61,8 +72,6 @@ function GoogleAuth() {
       );
 
       handleNewUser(result.user.uid);
-
-      // dispatch(addNewUser(result.user.uid));
     });
     setIsLoading(false);
   };

@@ -2,8 +2,8 @@ import React from 'react'
 
 const SavedGames = () => {
     return (
-        <div>
-            SavedGames
+        <div className="SavedGames">
+            
         </div>
     )
 }
