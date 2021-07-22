@@ -45,15 +45,29 @@ export const getUserData = createAsyncThunk(
     const { data: users } = await resp;
     for (const key in users) {
       if (users[key].userId === payload) {
-        return users[key];
+        return {
+          userKey: key,
+          userData: users[key],
+        };
       }
     }
   }
 );
 
-
+export const storeBookmarks = createAsyncThunk(
+  'user/storeBookmarks',
+  async payload => {
+    const resp = await axios.patch(
+      `https://game-save-default-rtdb.firebaseio.com/users/${payload.key}/.json`,
+      {
+        savedGames: payload.bookmarks,
+      }
+    );
+  }
+);
 
 const initialState = {
+  userKey: null,
   userId: null,
   userName: null,
   userEmail: null,
@@ -92,10 +106,10 @@ const userSlice = createSlice({
       return action.payload;
     },
     [getUserData.fulfilled]: (state, action) => {
-      state.userId = action.payload.userId;
-      state.savedGames = action.payload.savedGames;
+      state.userKey = action.payload.userKey;
+      state.userId = action.payload.userData.userId;
+      // state.savedGames = action.payload.savedGames;
     },
-    
   },
 });
 
@@ -104,5 +118,6 @@ export const { setActiveUser, setUserSignOutState } = userSlice.actions;
 export const selectUserName = state => state.user.userName;
 export const selectUserEmail = state => state.user.userEmail;
 export const selectUserToken = state => state.user.token;
+export const selectUserKey = state => state.user.userKey;
 
 export default userSlice.reducer;

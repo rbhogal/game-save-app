@@ -56,7 +56,7 @@ const GamesHorizontalScroll = props => {
                 <Link onClick={() => props.handleBookmarkClick(game)}>
                   <ion-icon
                     className="game-card-bookmark"
-                    name="bookmark-outline"
+                    name={props.bookmark}
                     id={game.id}
                   ></ion-icon>
                 </Link>

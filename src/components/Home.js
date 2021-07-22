@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import Slider from 'react-slick';
 
@@ -8,16 +8,43 @@ import GamesHorizontalScroll from './games/GamesHorizontalScroll';
 import { selectAppToken } from '../features/admin/appTokenSlice';
 import LoadingPage from './LoadingPage';
 import AuthContext from '../store/auth-context';
+import { getUserData, storeBookmarks } from '../features/users/userSlice';
+import { auth } from '../firebase';
+import { selectUserKey } from '../features/users/userSlice';
 
 const Home = () => {
   const [popularGames, setPopularGames] = useState([]);
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [bookmarkedGames, setBookmarkedGames] = useState([]);
+  const [bookmarked, setBookmarked] = useState(false);
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
+  const [userId, setUserId] = useState(null);
+  const dispatch = useDispatch();
+  const userKey = useSelector(selectUserKey);
+
+  useEffect(() => {
+    // Get user id from firebase
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in
+
+        setUserId(user.uid);
+      } else {
+        // User is signed out
+        setUserId(null);
+      }
+    });
+  });
+
+  useEffect(() => {
+    // Get User Data: key, id, and saved games (bookmarks)
+    if (!userId) return;
+    dispatch(getUserData(userId));
+  }, [dispatch, userId]);
 
   const calcTimeTwoYears = () => {
     Date.now();
@@ -104,9 +131,18 @@ const Home = () => {
     if (token) getAnticipatedGamesRequest();
   }, [token]);
 
-  useEffect(()=> {
+  useEffect(() => {
+    if (!userKey) return;
+    console.log('store bookmarks');
+
     // add bookmarked games to firebase database
-  },[])
+    dispatch(
+      storeBookmarks({
+        key: userKey,
+        bookmarks: bookmarkedGames,
+      })
+    );
+  }, [userKey, bookmarkedGames]);
 
   const handleBookmarkClick = game => {
     // If logged in, store to database / If NOT logged in prompt user to login and return
@@ -114,11 +150,10 @@ const Home = () => {
 
     if (!isSignedIn) return alert('Sign in to save!');
 
-    if (isSignedIn) {
-      // save game to bookmarked games
-      const newBookmarkedGames = [...bookmarkedGames, game];
-      setBookmarkedGames(newBookmarkedGames);
-    }
+    // save game to bookmarked games
+    const newBookmarkedGames = [...bookmarkedGames, game];
+    setBookmarkedGames(newBookmarkedGames);
+    setBookmarked(!bookmarked);
   };
 
   return (
@@ -129,6 +164,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
+        bookmark={bookmarked ? 'bookmark' : 'bookmark-outline'}
         handleBookmarkClick={handleBookmarkClick}
         games={popularGames}
       />
