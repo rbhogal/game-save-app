@@ -8,11 +8,10 @@ import GamesHorizontalScroll from './games/GamesHorizontalScroll';
 import { selectAppToken } from '../features/admin/appTokenSlice';
 import LoadingPage from './LoadingPage';
 import AuthContext from '../store/auth-context';
-import { getUserData, storeBookmarks } from '../features/users/userSlice';
+import { getUserData, storeBookmark } from '../features/users/userSlice';
 import { auth } from '../firebase';
 import { selectUserKey } from '../features/users/userSlice';
 import AddBookmarkGame from './games/AddBookmarkGame';
-import RemoveBookmarkGame from './games/RemoveBookmarkGame';
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -135,37 +134,57 @@ const Home = () => {
     if (token) getAnticipatedGamesRequest();
   }, [token]);
 
-  // useEffect(() => {
-  //   if (!userKey) return;
-  //   console.log('store bookmarks');
+  const checkGameExists = async gameId => {
+    let gameExists = false;
 
-  //   // add bookmarked games to firebase database
-  //   dispatch(
-  //     storeBookmarks({
-  //       key: userKey,
-  //       bookmarks: bookmarkedGames,
-  //     })
-  //   );
+    try {
+      const resp = await axios.get(
+        `https://game-save-default-rtdb.firebaseio.com/users/${userKey}/savedGames.json`
+      );
 
-  //   // store to local storage
-  // }, [userKey, bookmarkedGames]);
+      const { data: savedGames } = await resp;
 
-  const handleBookmarkClick = game => {
+      for (const game in savedGames) {
+        if (savedGames[game].id === gameId) {
+          gameExists = true;
+        }
+      }
+
+      if (gameExists) {
+        gameExists = false;
+        return true;
+      }
+
+      if (!gameExists) {
+        return false;
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleBookmarkClick = async game => {
     if (!isSignedIn) return alert('Sign in to save!');
 
     // 1). UseEffect run through the saved games by making a get inside of
     //     userSlice. If game.id matches the id inside, return boolean to state.
-    //     call it checkGameExists maybe... 
+    //     call it checkGameExists maybe...
 
-    // if boolean = true (meaning game already is saved) return alert('Already saved!');
+    const gameExists = await checkGameExists(game.id);
 
-    // For posterity if boolean = false then storeBookmarks
-    dispatch(
-      storeBookmarks({
-        key: userKey,
-        game: game,
-      })
-    );
+    if (gameExists) {
+      alert('Already saved!');
+    }
+
+    if (!gameExists) {
+      dispatch(
+        storeBookmark({
+          key: userKey,
+          game: game,
+        })
+      );
+      return alert('saved!');
+    }
   };
 
   return (

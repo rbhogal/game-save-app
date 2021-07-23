@@ -54,8 +54,8 @@ export const getUserData = createAsyncThunk(
   }
 );
 
-export const storeBookmarks = createAsyncThunk(
-  'user/storeBookmarks',
+export const storeBookmark = createAsyncThunk(
+  'user/storeBookmark',
   async payload => {
     const resp = await axios.post(
       `https://game-save-default-rtdb.firebaseio.com/users/${payload.key}/savedGames.json`,

@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 import './GamesHorizontalScroll.css';
 
-
-
 const GamesHorizontalScroll = props => {
   const [bookmark, setBookmark] = useState(false);
   const AddBookmarkGame = props.bookmarkComponent;
@@ -53,8 +51,7 @@ const GamesHorizontalScroll = props => {
                   <p className="game-card-genre">{`${game.genres[0].name}`}</p>
                 </div>
                 <Link
-                  onClick={e => {
-                    console.log(e.target);
+                  onClick={() => {
                     props.handleBookmarkClick(game);
                   }}
                 >
