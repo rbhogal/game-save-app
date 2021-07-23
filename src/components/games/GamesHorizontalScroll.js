@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 
 import './GamesHorizontalScroll.css';
 
+
+
 const GamesHorizontalScroll = props => {
-  // const [bookmark, setBookmark] = useState(false);
+  const [bookmark, setBookmark] = useState(false);
+  const AddBookmarkGame = props.bookmarkComponent;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -26,12 +30,7 @@ const GamesHorizontalScroll = props => {
     ],
   };
 
-  const handleBookmark = bookmarkId => {
-    // 1) select the element with the id of bookmarkId
-    // console.log(bookmark.current);
-    // 2) run through saved games database , if it doesn't exist add it + change bookmark className to 'bookmark'
-    // 3) if it does exist, remove it from the database (array) + change bookmark className to 'bookmark-outline
-  };
+  const name = params => {};
 
   return (
     <>
@@ -53,12 +52,13 @@ const GamesHorizontalScroll = props => {
                 <div className="game-card-genre-box">
                   <p className="game-card-genre">{`${game.genres[0].name}`}</p>
                 </div>
-                <Link onClick={() => props.handleBookmarkClick(game)}>
-                  <ion-icon
-                    className="game-card-bookmark"
-                    name={props.bookmark}
-                    id={game.id}
-                  ></ion-icon>
+                <Link
+                  onClick={e => {
+                    console.log(e.target);
+                    props.handleBookmarkClick(game);
+                  }}
+                >
+                  <AddBookmarkGame />
                 </Link>
                 <div className="game-card-rating-box">
                   <p className="game-card-rating">

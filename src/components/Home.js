@@ -11,14 +11,16 @@ import AuthContext from '../store/auth-context';
 import { getUserData, storeBookmarks } from '../features/users/userSlice';
 import { auth } from '../firebase';
 import { selectUserKey } from '../features/users/userSlice';
+import AddBookmarkGame from './games/AddBookmarkGame';
+import RemoveBookmarkGame from './games/RemoveBookmarkGame';
 
 const Home = () => {
+  const authCtx = useContext(AuthContext);
   const [popularGames, setPopularGames] = useState([]);
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [bookmarkedGames, setBookmarkedGames] = useState([]);
-  const [bookmarked, setBookmarked] = useState(false);
-  const authCtx = useContext(AuthContext);
+
   const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
@@ -26,22 +28,24 @@ const Home = () => {
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
 
-  useEffect(() => {
-    // Get user id from firebase
+  // Helper Functions
+  const getUserIdFirebase = () => {
     auth.onAuthStateChanged(user => {
       if (user) {
         // User is signed in
-
         setUserId(user.uid);
       } else {
         // User is signed out
         setUserId(null);
       }
     });
+  };
+
+  useEffect(() => {
+    getUserIdFirebase();
   });
 
   useEffect(() => {
-    // Get User Data: key, id, and saved games (bookmarks)
     if (!userId) return;
     dispatch(getUserData(userId));
   }, [dispatch, userId]);
@@ -131,29 +135,37 @@ const Home = () => {
     if (token) getAnticipatedGamesRequest();
   }, [token]);
 
-  useEffect(() => {
-    if (!userKey) return;
-    console.log('store bookmarks');
+  // useEffect(() => {
+  //   if (!userKey) return;
+  //   console.log('store bookmarks');
 
-    // add bookmarked games to firebase database
+  //   // add bookmarked games to firebase database
+  //   dispatch(
+  //     storeBookmarks({
+  //       key: userKey,
+  //       bookmarks: bookmarkedGames,
+  //     })
+  //   );
+
+  //   // store to local storage
+  // }, [userKey, bookmarkedGames]);
+
+  const handleBookmarkClick = game => {
+    if (!isSignedIn) return alert('Sign in to save!');
+
+    // 1). UseEffect run through the saved games by making a get inside of
+    //     userSlice. If game.id matches the id inside, return boolean to state.
+    //     call it checkGameExists maybe... 
+
+    // if boolean = true (meaning game already is saved) return alert('Already saved!');
+
+    // For posterity if boolean = false then storeBookmarks
     dispatch(
       storeBookmarks({
         key: userKey,
-        bookmarks: bookmarkedGames,
+        game: game,
       })
     );
-  }, [userKey, bookmarkedGames]);
-
-  const handleBookmarkClick = game => {
-    // If logged in, store to database / If NOT logged in prompt user to login and return
-    // console.log(e.target.id);
-
-    if (!isSignedIn) return alert('Sign in to save!');
-
-    // save game to bookmarked games
-    const newBookmarkedGames = [...bookmarkedGames, game];
-    setBookmarkedGames(newBookmarkedGames);
-    setBookmarked(!bookmarked);
   };
 
   return (
@@ -164,7 +176,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
-        bookmark={bookmarked ? 'bookmark' : 'bookmark-outline'}
+        bookmarkComponent={AddBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={popularGames}
       />
@@ -173,6 +185,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
+        bookmarkComponent={AddBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={anticipatedGames}
       />
@@ -181,6 +194,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
+        bookmarkComponent={AddBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={popularGames}
       />

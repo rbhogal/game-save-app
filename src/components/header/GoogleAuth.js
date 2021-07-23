@@ -82,7 +82,7 @@ function GoogleAuth() {
     auth
       .signOut()
       .then(() => {
-        authCtx.singOut();
+        authCtx.signOut();
         dispatch(setUserSignOutState());
       })
       .catch(err => alert(err.message));

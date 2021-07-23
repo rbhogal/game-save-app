@@ -4,10 +4,12 @@ const AuthContext = React.createContext({
   search: '',
   token: '',
   isSignedIn: false,
+  savedGames: [],
   signIn: token => {},
-  singOut: () => {},
-  searchGame: (search) => {}, 
-})
+  signOut: () => {},
+  searchGame: search => {},
+  storeBookmarks: bookmarkedGames => {},
+});
 
 export const AuthContextProvider = props => {
   const initialToken = localStorage.getItem('token');
@@ -15,6 +17,9 @@ export const AuthContextProvider = props => {
 
   const initialSearch = localStorage.getItem('search');
   const [search, setSearch] = useState(initialSearch);
+
+  const initialBookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+  const [bookmarks, setBookmarks] = useState(initialBookmarks);
 
   const userIsSignedIn = !!token;
 
@@ -26,19 +31,26 @@ export const AuthContextProvider = props => {
     setToken(null);
     localStorage.removeItem('token');
   };
+
   const searchGameHandler = newSearch => {
-    console.log(`inside searchGameHandler: ${newSearch}`);
     setSearch(newSearch);
     localStorage.setItem('search', search);
+  };
+
+  const storeBookmarksHandler = bookmarkedGames => {
+    setBookmarks(bookmarkedGames);
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   };
 
   const contextValue = {
     search: search,
     token: token,
     isSignedIn: userIsSignedIn,
+    savedGames: bookmarks,
     signIn: signInHandler,
-    singOut: signOutHandler,
+    signOut: signOutHandler,
     searchGame: searchGameHandler,
+    storeBookmarks: storeBookmarksHandler,
   };
 
   return (

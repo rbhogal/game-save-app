@@ -57,11 +57,9 @@ export const getUserData = createAsyncThunk(
 export const storeBookmarks = createAsyncThunk(
   'user/storeBookmarks',
   async payload => {
-    const resp = await axios.patch(
-      `https://game-save-default-rtdb.firebaseio.com/users/${payload.key}/.json`,
-      {
-        savedGames: payload.bookmarks,
-      }
+    const resp = await axios.post(
+      `https://game-save-default-rtdb.firebaseio.com/users/${payload.key}/savedGames.json`,
+      payload.game
     );
   }
 );
@@ -73,7 +71,7 @@ const initialState = {
   userEmail: null,
   token: null,
   search: '',
-  savedGames: [],
+  savedGames: {},
 };
 
 const userSlice = createSlice({
@@ -108,7 +106,7 @@ const userSlice = createSlice({
     [getUserData.fulfilled]: (state, action) => {
       state.userKey = action.payload.userKey;
       state.userId = action.payload.userData.userId;
-      // state.savedGames = action.payload.savedGames;
+      state.savedGames = action.payload.userData.savedGames;
     },
   },
 });

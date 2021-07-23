@@ -59,12 +59,16 @@
   /* position: relative; */
 }
 
-/* Bookmark icon */
+/* add (bookmark) icon */
 .game-card-content ion-icon {
   position: relative;
   left: 65%;
   bottom: 1.9rem;
   z-index: 50;
+}
+
+.game-card-content ion-icon:active {
+  transform: translateY(1px);
 }
 
 .game-card-genre,

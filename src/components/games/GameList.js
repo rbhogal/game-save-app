@@ -9,7 +9,7 @@ import AuthContext from '../../store/auth-context';
 
 const GameList = () => {
   const [games, setGames] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
   const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
@@ -25,7 +25,7 @@ const GameList = () => {
   const searchGames = () => {
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
-    // setIsLoading(true);
+    setIsLoading(true);
     axios({
       url: url,
       method: 'POST',
@@ -38,12 +38,12 @@ const GameList = () => {
     })
       .then(resp => {
         setGames(resp.data);
-        // setIsLoading(false);
       })
       .catch(err => {
         // alert(err.message);
         console.log(err);
       });
+    setIsLoading(false);
   };
 
   useEffect(() => {
