@@ -95,14 +95,14 @@ const SavedGames = () => {
 
   return (
     <div className="SavedGames">
-      {savedGamesArr && <GamesHorizontalScroll
+      {savedGamesObj && <GamesHorizontalScroll
         dots={true}
         bookmarkComponent={RemoveBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={savedGamesArr}
       />}
 
-      {_.isEmpty(savedGamesArr) &&  ( <div>Add games...</div> )}
+      {!savedGamesObj &&  ( <LoadingPage/>)}
     </div>
   );
 };
