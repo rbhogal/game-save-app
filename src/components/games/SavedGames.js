@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import _ from 'lodash';
 
 import './SavedGames.css';
 import GamesHorizontalScroll from './GamesHorizontalScroll';
@@ -10,15 +12,21 @@ import {
 } from '../../features/users/userSlice';
 import { auth } from '../../firebase';
 import { getUserData } from '../../features/users/userSlice';
-import axios from 'axios';
+import LoadingPage from '../LoadingPage';
 
 const SavedGames = () => {
   const [savedGamesArr, setSavedGamesArr] = useState([]);
   const [userId, setUserId] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const savedGamesObj = useSelector(selectSavedGames);
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  // const savedGamesObj = useSelector(selectSavedGames);
+  const [savedGamesObj, setSavedGamesObj] = useState();
+
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
+
+  /* 
+    Redux is too damn slow, just fetch the games Objects directly in here.
+  */
 
   // Helper Function (DRY: Also in Home.js)
   const getUserIdFirebase = () => {
@@ -32,6 +40,7 @@ const SavedGames = () => {
       }
     });
   };
+  
 
   useEffect(() => {
     getUserIdFirebase();
@@ -42,11 +51,24 @@ const SavedGames = () => {
     dispatch(getUserData(userId));
   }, [dispatch, userId]);
 
+  useEffect(async () => {
+    const resp = await axios.get(
+      'https://game-save-default-rtdb.firebaseio.com/users/.json'
+    );
+    const { data: users } = await resp;
+    for (const key in users) {
+      if (users[key].userId === userId) {
+        setSavedGamesObj(users[key].savedGames);
+      }
+    }
+  }, [savedGamesObj, userId]);
+
   useEffect(() => {
     convertObjToArr();
   }, [savedGamesObj]);
 
   const convertObjToArr = () => {
+    if (!savedGamesObj) return;
     const updatedSavedGames = Object.values(savedGamesObj);
     setSavedGamesArr(updatedSavedGames);
   };
@@ -63,21 +85,24 @@ const SavedGames = () => {
 
   const handleBookmarkClick = game => {
     for (const key in savedGamesObj) {
-      // console.log(savedGamesObj[key].id);
       if (savedGamesObj[key].id === game.id) {
         removeGame(key);
       }
     }
   };
 
+  console.log(savedGamesArr);
+
   return (
     <div className="SavedGames">
-      <GamesHorizontalScroll
+      {savedGamesArr && <GamesHorizontalScroll
         dots={true}
         bookmarkComponent={RemoveBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={savedGamesArr}
-      />
+      />}
+
+      {_.isEmpty(savedGamesArr) &&  ( <div>Add games...</div> )}
     </div>
   );
 };
