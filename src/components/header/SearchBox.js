@@ -33,26 +33,18 @@ const SearchBox = () => {
   };
 
   const handleEnterPress = e => {
+    console.log(e);
     if (e.key === 'Enter') {
       history.push(`/gamelist/games`);
-      // console.log(
-      // `2) enter press dispatch: successful. Dispatching search:'${search}' (SearchBox.js). Redirecting to GameList...`
-      // );
-      // save the search term into localStorage
-      // dispatch(addSearchAsync(search));
-
-      // localStorage.setItem('search', search);
       authCtx.searchGame(search);
       inputSearch.current.value = '';
     }
-  };
 
-  // useEffect(() => {
-  //   if (search) {
-  //     dispatch(getSearchAsync());
-  //     console.log('getting search from database...');
-  //   }
-  // }, [dispatch]);
+    if (e.type === 'click') {
+      history.push(`/gamelist/games`);
+      authCtx.searchGame(inputSearch.current.value);
+    }
+  };
 
   return (
     <div id="SearchBox" className="SearchBox">
@@ -75,10 +67,10 @@ const SearchBox = () => {
         className="input"
         placeholder="Search..."
         onChange={e => setSearch(e.target.value)}
-        onKeyPress={e => handleEnterPress(e)}
+        onKeyPress={handleEnterPress}
       />
       <Link to="/">
-        <button className="search-btn">
+        <button onClick={handleEnterPress} className="search-btn">
           <ion-icon name="search-outline"></ion-icon>
         </button>
       </Link>
