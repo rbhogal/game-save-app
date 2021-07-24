@@ -92,7 +92,7 @@ const Home = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 30;',
+      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 32;',
     })
       .then(resp => {
         setPopularGames(resp.data);
@@ -113,7 +113,7 @@ const Home = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130); sort hypes asc; limit 16;',
+      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null & platforms =(6, 48, 49, 130); sort hypes asc; limit 32;',
     })
       .then(resp => {
         setAnticipatedGames(resp.data);

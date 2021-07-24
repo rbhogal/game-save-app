@@ -4,8 +4,8 @@ import './LoadingPage.css';
 
 const LoadingPage = () => {
   return (
-    <div className="LoadingPage">
-      <h1>Loading...</h1>
+    <div id="preloader">
+      <div id="loader"></div>
     </div>
   );
 };

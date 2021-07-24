@@ -1,14 +1,14 @@
 .SavedGames {
-    margin: 90px 50px 25px 80px;
+  margin: 90px 50px 25px 80px;
 }
 
 .SavedGames a {
-    text-decoration: none;
+  text-decoration: none;
   color: inherit;
 }
 
 .SavedGames ion-icon {
-    font-size: 2.5rem;
-    /* color: rgb(196, 49, 49); */
+  font-size: 2.5rem;
+  /* color: rgb(196, 49, 49); */
 }
 

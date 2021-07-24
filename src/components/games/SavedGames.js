@@ -40,7 +40,6 @@ const SavedGames = () => {
       }
     });
   };
-  
 
   useEffect(() => {
     getUserIdFirebase();
@@ -91,18 +90,18 @@ const SavedGames = () => {
     }
   };
 
-  console.log(savedGamesArr);
-
   return (
     <div className="SavedGames">
-      {savedGamesObj && <GamesHorizontalScroll
-        dots={true}
-        bookmarkComponent={RemoveBookmarkGame}
-        handleBookmarkClick={handleBookmarkClick}
-        games={savedGamesArr}
-      />}
+      {savedGamesObj && (
+        <GamesHorizontalScroll
+          dots={true}
+          bookmarkComponent={RemoveBookmarkGame}
+          handleBookmarkClick={handleBookmarkClick}
+          games={savedGamesArr}
+        />
+      )}
 
-      {!savedGamesObj &&  ( <LoadingPage/>)}
+      {!savedGamesObj && <LoadingPage />}
     </div>
   );
 };
