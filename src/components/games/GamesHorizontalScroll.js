@@ -9,7 +9,7 @@ const GamesHorizontalScroll = props => {
   const AddBookmarkGame = props.bookmarkComponent;
 
   const settings = {
-    dots: false,
+    dots: props.dots,
     infinite: true,
     speed: 500,
     slidesToShow: 8,
@@ -22,13 +22,11 @@ const GamesHorizontalScroll = props => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: false,
+          dots: props.dots,
         },
       },
     ],
   };
-
-  const name = params => {};
 
   return (
     <>

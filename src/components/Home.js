@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import Slider from 'react-slick';
 
 import './Home.css';
 import GamesHorizontalScroll from './games/GamesHorizontalScroll';
@@ -100,7 +99,6 @@ const Home = () => {
         setIsLoading(false);
       })
       .catch(err => {
-        // alert(err.message);
         console.log(err);
       });
   };
@@ -122,7 +120,6 @@ const Home = () => {
         setIsLoading(false);
       })
       .catch(err => {
-        // alert(err.message);
         console.log(err);
       });
   };
@@ -166,10 +163,6 @@ const Home = () => {
   const handleBookmarkClick = async game => {
     if (!isSignedIn) return alert('Sign in to save!');
 
-    // 1). UseEffect run through the saved games by making a get inside of
-    //     userSlice. If game.id matches the id inside, return boolean to state.
-    //     call it checkGameExists maybe...
-
     const gameExists = await checkGameExists(game.id);
 
     if (gameExists) {
@@ -195,6 +188,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
+        dots={false}
         bookmarkComponent={AddBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={popularGames}
@@ -204,6 +198,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
+        dots={false}
         bookmarkComponent={AddBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={anticipatedGames}
@@ -213,6 +208,7 @@ const Home = () => {
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </div>
       <GamesHorizontalScroll
+        dots={false}
         bookmarkComponent={AddBookmarkGame}
         handleBookmarkClick={handleBookmarkClick}
         games={popularGames}

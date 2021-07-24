@@ -32,8 +32,7 @@ export const addNewUser = createAsyncThunk('user/addNewUser', async payload => {
       savedGames: [],
     }
   );
-
-  const data = await resp;
+  // const data = await resp;
 });
 
 export const getUserData = createAsyncThunk(
@@ -63,6 +62,7 @@ export const storeBookmark = createAsyncThunk(
     );
   }
 );
+
 
 const initialState = {
   userKey: null,
@@ -117,5 +117,6 @@ export const selectUserName = state => state.user.userName;
 export const selectUserEmail = state => state.user.userEmail;
 export const selectUserToken = state => state.user.token;
 export const selectUserKey = state => state.user.userKey;
+export const selectSavedGames = state => state.user.savedGames;
 
 export default userSlice.reducer;
