@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { selectAppToken } from '../../features/admin/appTokenSlice';
-import GamesMultipleRowsScroll from './GamesMultipleRowsScroll';
+import GamesSearchScroll from './GamesSearchScroll';
 import './GameList.css';
 import AuthContext from '../../store/auth-context';
 import AddBookmarkGame from './AddBookmarkGame';
@@ -106,7 +106,7 @@ const GameList = () => {
   return (
     <div className="GameList">
       {!isLoading && (
-        <GamesMultipleRowsScroll
+        <GamesSearchScroll
           handleBookmarkClick={handleBookmarkClick}
           bookmarkComponent={AddBookmarkGame}
           search={search}

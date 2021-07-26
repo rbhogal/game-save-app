@@ -5,7 +5,7 @@ import _ from 'lodash';
 import './GamesHorizontalScroll.css';
 import { Link } from 'react-router-dom';
 
-const GamesMultipleRowsScroll = props => {
+const GamesSearchScroll = props => {
   const [bookmark, setBookmark] = useState(false);
   const BookmarkComponent = props.bookmarkComponent;
 
@@ -80,4 +80,4 @@ const GamesMultipleRowsScroll = props => {
   return <>{showSearchResults()}</>;
 };
 
-export default GamesMultipleRowsScroll;
+export default GamesSearchScroll;
