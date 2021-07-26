@@ -131,6 +131,7 @@ const Home = () => {
     if (token) getAnticipatedGamesRequest();
   }, [token]);
 
+  // DRY: Repeat code in GameList.js
   const checkGameExists = async gameId => {
     let gameExists = false;
 
@@ -160,6 +161,7 @@ const Home = () => {
     }
   };
 
+  // DRY: Repeat code in GameList.js
   const handleBookmarkClick = async game => {
     if (!isSignedIn) return alert('Sign in to save!');
 

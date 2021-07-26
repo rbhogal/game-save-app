@@ -6,7 +6,7 @@ import './GamesHorizontalScroll.css';
 
 const GamesHorizontalScroll = props => {
   const [bookmark, setBookmark] = useState(false);
-  const AddBookmarkGame = props.bookmarkComponent;
+  const BookmarkComponent = props.bookmarkComponent;
 
   const settings = {
     dots: props.dots,
@@ -53,7 +53,7 @@ const GamesHorizontalScroll = props => {
                     props.handleBookmarkClick(game);
                   }}
                 >
-                  <AddBookmarkGame />
+                  <BookmarkComponent />
                 </Link>
                 <div className="game-card-rating-box">
                   <p className="game-card-rating">

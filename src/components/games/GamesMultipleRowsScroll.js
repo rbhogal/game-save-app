@@ -7,27 +7,7 @@ import { Link } from 'react-router-dom';
 
 const GamesMultipleRowsScroll = props => {
   const [bookmark, setBookmark] = useState(false);
-
-  //   const filterData = () => {
-  //     /*
-  //     Get incoming array from props.games
-  //     Check if a name, image_id, summary, genres[0].name and total.rating exist
-  //     If they don't exist make that value N/A
-  //     Make a new array with adjusted values
-
-  //     Methods needed: map, and
-  //     */
-
-  //     // basically give a new array by checking if current array's items even exit
-  //     // (game.genres[0].name) ? then add it if not then N/A
-
-  //     const filteredGames = props.games.filter(game => !game.genres[0].name);
-  //     setFilteredGames(filteredGames);
-  //   };
-
-  //   useEffect(() => {
-  //     filterData();
-  //   }, [filteredGames]);
+  const BookmarkComponent = props.bookmarkComponent;
 
   const settings = {
     className: 'center',
@@ -41,10 +21,6 @@ const GamesMultipleRowsScroll = props => {
     rows: 1,
     slidesPerRow: 1,
     className: 'slick-arrows',
-  };
-
-  const handleBookmarkClick = () => {
-    setBookmark(!bookmark);
   };
 
   const showSearchResults = () => {
@@ -69,11 +45,12 @@ const GamesMultipleRowsScroll = props => {
                     <div className="game-card-genre-box">
                       <p className="game-card-genre">{`${game.genres[0].name}`}</p>
                     </div>
-                    <Link onClick={handleBookmarkClick}>
-                      <ion-icon
-                        className="game-card-bookmark"
-                        name={bookmark ? 'bookmark' : 'bookmark-outline'}
-                      ></ion-icon>
+                    <Link
+                      onClick={() => {
+                        props.handleBookmarkClick(game);
+                      }}
+                    >
+                      <BookmarkComponent />
                     </Link>
                     <div className="game-card-rating-box">
                       <p className="game-card-rating">

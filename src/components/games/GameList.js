@@ -6,6 +6,8 @@ import { selectAppToken } from '../../features/admin/appTokenSlice';
 import GamesMultipleRowsScroll from './GamesMultipleRowsScroll';
 import './GameList.css';
 import AuthContext from '../../store/auth-context';
+import AddBookmarkGame from './AddBookmarkGame';
+import { storeBookmark, selectUserKey } from '../../features/users/userSlice';
 
 const GameList = () => {
   const [games, setGames] = useState([]);
@@ -16,7 +18,8 @@ const GameList = () => {
 
   const authCtx = useContext(AuthContext);
   const newSearch = authCtx.search;
-  // console.log(`Retrieving search: '${search}', from state`);
+  const isSignedIn = authCtx.isSignedIn;
+  const userKey = useSelector(selectUserKey);
 
   useEffect(() => {
     setSearch(newSearch);
@@ -51,9 +54,65 @@ const GameList = () => {
     // setIsLoading(false);
   }, [token, search]);
 
+  const checkGameExists = async gameId => {
+    let gameExists = false;
+
+    try {
+      const resp = await axios.get(
+        `https://game-save-default-rtdb.firebaseio.com/users/${userKey}/savedGames.json`
+      );
+
+      const { data: savedGames } = await resp;
+
+      for (const game in savedGames) {
+        if (savedGames[game].id === gameId) {
+          gameExists = true;
+        }
+      }
+
+      if (gameExists) {
+        gameExists = false;
+        return true;
+      }
+
+      if (!gameExists) {
+        return false;
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleBookmarkClick = async game => {
+    if (!isSignedIn) return alert('Sign in to save!');
+
+    const gameExists = await checkGameExists(game.id);
+
+    if (gameExists) {
+      alert('Already saved!');
+    }
+
+    if (!gameExists) {
+      dispatch(
+        storeBookmark({
+          key: userKey,
+          game: game,
+        })
+      );
+      return alert('saved!');
+    }
+  };
+
   return (
     <div className="GameList">
-      {!isLoading && <GamesMultipleRowsScroll search={search} games={games} />}
+      {!isLoading && (
+        <GamesMultipleRowsScroll
+          handleBookmarkClick={handleBookmarkClick}
+          bookmarkComponent={AddBookmarkGame}
+          search={search}
+          games={games}
+        />
+      )}
       {/* {isLoading && <p>Loading...</p>} */}
     </div>
   );
