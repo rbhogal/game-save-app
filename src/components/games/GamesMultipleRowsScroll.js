@@ -61,7 +61,7 @@ const GamesMultipleRowsScroll = props => {
                 </Link>
               </>
             ))}
-          </Slider>
+        </Slider>
         </>
       );
     }

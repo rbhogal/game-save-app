@@ -6,6 +6,7 @@
 .SearchBox ion-icon {
   font-size: 25px;
   color: gainsboro;
+  margin-top: 5px;
 }
 
 .search-btn:hover ion-icon {

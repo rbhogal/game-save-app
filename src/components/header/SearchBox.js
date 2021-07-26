@@ -1,20 +1,16 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './SearchBox.css';
 import { Link, useHistory } from 'react-router-dom';
 import Dropdown from './Dropdown';
-import { addSearchAsync, getSearchAsync } from '../../features/users/userSlice';
 import AuthContext from '../../store/auth-context';
 
 const SearchBox = () => {
   const [dropdown, setDropdown] = useState(false);
   const [search, setSearch] = useState('');
   let history = useHistory();
-  const dispatch = useDispatch();
   const inputSearch = useRef();
-  // console.log(`1) init search: ${search}`);
-
   const authCtx = useContext(AuthContext);
 
   const handleClick = () => {
@@ -41,8 +37,8 @@ const SearchBox = () => {
     }
 
     if (e.type === 'click') {
-      history.push(`/gamelist/games`);
       authCtx.searchGame(inputSearch.current.value);
+      inputSearch.current.value = '';
     }
   };
 
@@ -69,7 +65,7 @@ const SearchBox = () => {
         onChange={e => setSearch(e.target.value)}
         onKeyPress={handleEnterPress}
       />
-      <Link to="/">
+      <Link to="/gamelist/games">
         <button onClick={handleEnterPress} className="search-btn">
           <ion-icon name="search-outline"></ion-icon>
         </button>
