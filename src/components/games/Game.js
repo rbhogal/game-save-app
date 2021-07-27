@@ -8,6 +8,7 @@ import { selectAppToken } from '../../features/admin/appTokenSlice';
 const Game = () => {
   const token = useSelector(selectAppToken);
   const [gameId, setGameId] = useState('');
+  const [gameData, setGameData] = useState([]);
   const urlPath = window.location.pathname;
   console.log(gameId);
   const getGameId = () => {
@@ -18,11 +19,11 @@ const Game = () => {
 
   useEffect(() => {
     getGameId();
-  }, [urlPath]);
+  });
 
   useEffect(() => {
     if (gameId) getGameData();
-  }, [gameId]);
+  });
 
   const getGameData = async () => {
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
@@ -40,15 +41,17 @@ const Game = () => {
       });
 
       const { data } = await resp;
-      console.log(data);
+      setGameData(data[0]);
     } catch {
       throw 'Something went wrong';
     }
   };
 
+  console.log(gameData);
   return (
     <div className="Game">
-      <h1>Game</h1>
+      {gameData.name}: &nbsp; <br />
+      {gameData.summary}
     </div>
   );
 };
