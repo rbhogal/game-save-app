@@ -39,7 +39,7 @@ const GamesSearchScroll = props => {
           <Slider {...settings}>
             {props.games.map(game => (
               <>
-                <Link to={`/gamelist/games/${game.name}`}>
+                <Link to={`/gamelist/games/${game.name}/${game.id}`}>
                   <div className="game-card">
                     <img
                       src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
