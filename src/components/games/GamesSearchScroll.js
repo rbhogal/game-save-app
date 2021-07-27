@@ -5,9 +5,11 @@ import _ from 'lodash';
 import './GamesHorizontalScroll.css';
 import './GamesSearchScroll.css';
 import { Link } from 'react-router-dom';
+import LoadingPage from '../LoadingPage';
 
 const GamesSearchScroll = props => {
   const BookmarkComponent = props.bookmarkComponent;
+  const isLoading = props.isLoading;
 
   const settings = {
     className: 'center',
@@ -84,7 +86,12 @@ const GamesSearchScroll = props => {
     }
   };
 
-  return <>{showSearchResults()}</>;
+  return (
+    <>
+      {!isLoading && showSearchResults()}
+      {isLoading && <LoadingPage />}
+    </>
+  );
 };
 
 export default GamesSearchScroll;

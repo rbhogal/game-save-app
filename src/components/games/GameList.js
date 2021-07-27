@@ -26,9 +26,8 @@ const GameList = () => {
   }, [newSearch]);
 
   const searchGames = () => {
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
-
     setIsLoading(true);
+    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
       url: url,
       method: 'POST',
@@ -41,17 +40,15 @@ const GameList = () => {
     })
       .then(resp => {
         setGames(resp.data);
+        setIsLoading(false);
       })
       .catch(err => {
-        // alert(err.message);
         console.log(err);
       });
-    setIsLoading(false);
   };
 
   useEffect(() => {
     if (token && search) searchGames();
-    // setIsLoading(false);
   }, [token, search]);
 
   const checkGameExists = async gameId => {
@@ -105,15 +102,13 @@ const GameList = () => {
 
   return (
     <div className="GameList">
-      {!isLoading && (
-        <GamesSearchScroll
-          handleBookmarkClick={handleBookmarkClick}
-          bookmarkComponent={AddBookmarkGame}
-          search={search}
-          games={games}
-        />
-      )}
-      {/* {isLoading && <p>Loading...</p>} */}
+      <GamesSearchScroll
+        isLoading={isLoading}
+        handleBookmarkClick={handleBookmarkClick}
+        bookmarkComponent={AddBookmarkGame}
+        search={search}
+        games={games}
+      />
     </div>
   );
 };
