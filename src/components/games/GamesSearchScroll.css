@@ -1,0 +1,26 @@
+/* .slick-dots li div:before {
+  color: white;
+}
+
+.slick-dots li div:hover,
+.slick-dots li div:focus {
+  outline: none;
+}
+
+.slick-dots li.slick-active div:before {
+  color: white !important;
+}
+
+.slick-dots li.slick-active div:before {
+  opacity: 0.75;
+} */
+
+/* .slick-dots li > div {
+    opacity: .75;
+} */
+
+.slick-dots .slick-active {
+    color:violet;
+    /* opacity: .5; */
+}
+

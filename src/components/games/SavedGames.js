@@ -94,6 +94,7 @@ const SavedGames = () => {
     <div className="SavedGames">
       {savedGamesObj && (
         <GamesHorizontalScroll
+          title="Saved Games"
           dots={true}
           bookmarkComponent={RemoveBookmarkGame}
           handleBookmarkClick={handleBookmarkClick}

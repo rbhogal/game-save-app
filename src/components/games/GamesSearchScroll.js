@@ -3,24 +3,31 @@ import Slider from 'react-slick';
 import _ from 'lodash';
 
 import './GamesHorizontalScroll.css';
+import './GamesSearchScroll.css';
 import { Link } from 'react-router-dom';
 
 const GamesSearchScroll = props => {
-  const [bookmark, setBookmark] = useState(false);
   const BookmarkComponent = props.bookmarkComponent;
 
   const settings = {
     className: 'center',
     dots: true,
-    // centerMode: false,
     infinite: true,
-    // centerPadding: '60px',
     slidesToShow: 8,
     slidesToScroll: 8,
     speed: 500,
     rows: 1,
     slidesPerRow: 1,
     className: 'slick-arrows',
+    customPaging: i => (
+      <div
+        style={{
+          fontWeight: '700',
+        }}
+      >
+        {i + 1}
+      </div>
+    ),
   };
 
   const showSearchResults = () => {
@@ -61,7 +68,7 @@ const GamesSearchScroll = props => {
                 </Link>
               </>
             ))}
-        </Slider>
+          </Slider>
         </>
       );
     }

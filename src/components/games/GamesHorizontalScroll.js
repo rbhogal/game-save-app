@@ -30,6 +30,10 @@ const GamesHorizontalScroll = props => {
 
   return (
     <>
+    <div className="category">
+        <h1>{props.title}</h1> &nbsp;
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
       <Slider {...settings}>
         {props.games.map(game => (
           <>

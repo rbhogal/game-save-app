@@ -4,7 +4,10 @@ import axios from 'axios';
 
 import './Home.css';
 import GamesHorizontalScroll from './games/GamesHorizontalScroll';
-import { selectAppToken } from '../features/admin/appTokenSlice';
+import {
+  selectAppToken,
+  addLoadingState,
+} from '../features/admin/appTokenSlice';
 import LoadingPage from './LoadingPage';
 import AuthContext from '../store/auth-context';
 import { getUserData, storeBookmark } from '../features/users/userSlice';
@@ -17,7 +20,6 @@ const Home = () => {
   const [popularGames, setPopularGames] = useState([]);
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [bookmarkedGames, setBookmarkedGames] = useState([]);
 
   const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
@@ -38,6 +40,10 @@ const Home = () => {
       }
     });
   };
+
+  useEffect(() => {
+    dispatch(addLoadingState(isLoading));
+  });
 
   useEffect(() => {
     getUserIdFirebase();
@@ -82,53 +88,51 @@ const Home = () => {
  */
   };
 
-  const getPopularGamesRequest = () => {
+  const getAllGamesRequest = async () => {
     setIsLoading(true);
-    axios({
-      url: url,
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Client-ID': process.env.REACT_APP_CLIENT_ID,
-        Authorization: `Bearer ${token}`,
-      },
-      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 32;',
-    })
-      .then(resp => {
-        setPopularGames(resp.data);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
-  const getAnticipatedGamesRequest = () => {
-    setIsLoading(true);
-    axios({
-      url: url,
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Client-ID': process.env.REACT_APP_CLIENT_ID,
-        Authorization: `Bearer ${token}`,
-      },
-      data: 'fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null & platforms =(6, 48, 49, 130); sort hypes asc; limit 32;',
-    })
-      .then(resp => {
-        setAnticipatedGames(resp.data);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+    // POPULAR GAMES
 
-  const getRecentReleasedGamesRequest = () => {};
+    try {
+      const respPopularGames = await axios({
+        url: url,
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Client-ID': process.env.REACT_APP_CLIENT_ID,
+          Authorization: `Bearer ${token}`,
+        },
+        data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 32;',
+      });
+
+      const { data: popularGames } = await respPopularGames;
+      setPopularGames(popularGames);
+
+      // // MOST ANTICIPATED GAMES
+      const respAnticipatedGames = await axios({
+        url: url,
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Client-ID': process.env.REACT_APP_CLIENT_ID,
+          Authorization: `Bearer ${token}`,
+        },
+        data: 'fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null & platforms =(6, 48, 49, 130); sort hypes asc; limit 32;',
+      });
+
+      const { data: anticipatedGames } = await respAnticipatedGames;
+      setAnticipatedGames(anticipatedGames);
+
+      // // RECENTLY RELEASED GAMES
+    } catch {
+      throw Error('Something went wrong');
+    }
+
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    if (token) getPopularGamesRequest();
-    if (token) getAnticipatedGamesRequest();
+    if (token) getAllGamesRequest();
   }, [token]);
 
   // DRY: Repeat code in GameList.js
@@ -185,36 +189,36 @@ const Home = () => {
   return (
     <div className="Home">
       {isLoading && <LoadingPage />}
-      <div className="category">
-        <h1>Popular Games</h1> &nbsp;
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </div>
-      <GamesHorizontalScroll
-        dots={false}
-        bookmarkComponent={AddBookmarkGame}
-        handleBookmarkClick={handleBookmarkClick}
-        games={popularGames}
-      />
-      <div className="category">
-        <h1>Most Anticipated</h1> &nbsp;
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </div>
-      <GamesHorizontalScroll
-        dots={false}
-        bookmarkComponent={AddBookmarkGame}
-        handleBookmarkClick={handleBookmarkClick}
-        games={anticipatedGames}
-      />
-      <div className="category">
-        <h1>Recently Released</h1> &nbsp;
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </div>
-      <GamesHorizontalScroll
-        dots={false}
-        bookmarkComponent={AddBookmarkGame}
-        handleBookmarkClick={handleBookmarkClick}
-        games={popularGames}
-      />
+
+      {!isLoading && (
+        <GamesHorizontalScroll
+          title={'Popular Games'}
+          dots={false}
+          bookmarkComponent={AddBookmarkGame}
+          handleBookmarkClick={handleBookmarkClick}
+          games={popularGames}
+        />
+      )}
+
+      {!isLoading && (
+        <GamesHorizontalScroll
+          title={'Most Anticipated'}
+          dots={false}
+          bookmarkComponent={AddBookmarkGame}
+          handleBookmarkClick={handleBookmarkClick}
+          games={anticipatedGames}
+        />
+      )}
+
+      {!isLoading && (
+        <GamesHorizontalScroll
+          title={'Recent Releases'}
+          dots={false}
+          bookmarkComponent={AddBookmarkGame}
+          handleBookmarkClick={handleBookmarkClick}
+          games={popularGames}
+        />
+      )}
     </div>
   );
 };

@@ -29,13 +29,13 @@
 
 
 
-.slick-dots li button:before {
+/* .slick-dots li button:before {
   color: white;
 }
 
 .slick-dots li.slick-active button:before {
   color: white !important;
-}
+} */
 
 /* React Slick --Custom Arrows CSS */
 .slick-arrows {

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import Navbar from './components/header/Navbar';
@@ -14,12 +14,13 @@ import Game from './components/games/Game';
 import SavedGames from './components/games/SavedGames';
 import AuthContext from './store/auth-context';
 
-import { addAppToken } from './features/admin/appTokenSlice';
+import { addAppToken, selectIsLoading } from './features/admin/appTokenSlice';
 
 function App() {
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const getAppToken = async () => {
     // Helper Function
