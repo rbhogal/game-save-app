@@ -10,24 +10,18 @@ const Game = () => {
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
   const urlPath = window.location.pathname;
-  console.log(gameId);
+  // const [isLoading, setIsLoading] = useState(true);
   const getGameId = () => {
     const index = urlPath.lastIndexOf('/');
     const gameId = urlPath.slice(index + 1, urlPath.length);
     setGameId(gameId);
   };
 
-  useEffect(() => {
-    getGameId();
-  });
-
-  useEffect(() => {
-    if (gameId) getGameData();
-  });
-
   const getGameData = async () => {
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
+    console.log('i ran');
+    console.log(gameId);
 
+    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     try {
       const resp = await axios({
         url: url,
@@ -42,12 +36,19 @@ const Game = () => {
 
       const { data } = await resp;
       setGameData(data[0]);
-    } catch {
-      throw 'Something went wrong';
+    } catch (err) {
+      console.log(err.message);
     }
   };
 
-  console.log(gameData);
+  useEffect(() => {
+    getGameId();
+  }, []);
+
+  useEffect(() => {
+    if (gameId) getGameData();
+  }, [gameId]);
+
   return (
     <div className="Game">
       {gameData.name}: &nbsp; <br />

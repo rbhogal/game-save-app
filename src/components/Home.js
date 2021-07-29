@@ -19,6 +19,7 @@ const Home = () => {
   const authCtx = useContext(AuthContext);
   const [popularGames, setPopularGames] = useState([]);
   const [anticipatedGames, setAnticipatedGames] = useState([]);
+  const [recentGames, setRecentGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const isSignedIn = authCtx.isSignedIn;
@@ -27,6 +28,14 @@ const Home = () => {
   const [userId, setUserId] = useState(null);
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
+
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth();
+  let day = date.getDate();
+  let releaseDate = Math.round(new Date(year - 1, month, day).getTime() / 1000);
+
+  let currentDate = Math.round(new Date().getTime() / 1000);
 
   // Helper Functions
   const getUserIdFirebase = () => {
@@ -54,46 +63,11 @@ const Home = () => {
     dispatch(getUserData(userId));
   }, [dispatch, userId]);
 
-  const calcTimeTwoYears = () => {
-    Date.now();
-    /* 
-    Knowns 
-    ------------
-    Current time (in ms) = Date.now()
-
-    
-    Unknowns
-    -----------
-
-
-
-    METHODS
-    ---------
-    Date.now() -- number of ms elapsed since January 1, 1970
-    Date() -- number in ms since 1 January 1970 UTC
-
-    Calculate Two Years Ago starting today (updates everyday)
-
-    Current time - 2 Years (in ms?)
-
-    Current time (in ms) = Date.now()
-
-    2 years ago in ms = 
-
-    Date.now() - ( Date.now() - Date(2 years) )
-
-
-    every new day update
-    const twoYearsAgo = 
- */
-  };
-
   const getAllGamesRequest = async () => {
     setIsLoading(true);
 
-    // POPULAR GAMES
-
     try {
+      // POPULAR GAMES
       const respPopularGames = await axios({
         url: url,
         method: 'POST',
@@ -102,30 +76,53 @@ const Home = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: 'fields summary, cover.image_id, genres.name, name, total_rating; where platforms =(6, 48, 49, 130) & rating_count > 75 & first_release_date > 1577921959; limit 32;',
+        data: 'fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 16;',
       });
 
       const { data: popularGames } = await respPopularGames;
       setPopularGames(popularGames);
 
-      // // MOST ANTICIPATED GAMES
       const respAnticipatedGames = await axios({
-        url: url,
+        url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: 'fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null & platforms =(6, 48, 49, 130); sort hypes asc; limit 32;',
+        data: `fields game.summary, game.cover.image_id, game.genres.name, game.name, game.total_rating; where date > ${currentDate} & game.hypes > 10 & game.genres.name != null & game.cover.image_id != null & game.platforms =(6, 48, 49, 130); sort date desc; limit 16;`,
       });
 
-      const { data: anticipatedGames } = await respAnticipatedGames;
-      setAnticipatedGames(anticipatedGames);
+      const { data: anticipatedGamesIGDB } = await respAnticipatedGames;
+      let anticipatedGamesArr = [];
+      for (const key of anticipatedGamesIGDB) {
+        anticipatedGamesArr.push(key.game);
+      }
+
+      setAnticipatedGames(anticipatedGamesArr);
 
       // // RECENTLY RELEASED GAMES
-    } catch {
-      throw Error('Something went wrong');
+      const respRecentGames = await axios({
+        url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Client-ID': process.env.REACT_APP_CLIENT_ID,
+          Authorization: `Bearer ${token}`,
+        },
+        data: `fields game.summary, game.cover.image_id, game.genres.name, game.name, game.total_rating; where date < ${currentDate} & game.genres.name != null & game.cover.image_id != null & game.platforms =(6, 48, 49, 130); sort date desc; limit 16;`,
+      });
+
+      const { data: recentGamesIGDB } = await respRecentGames;
+      let recentGamesArr = [];
+
+      for (const key of recentGamesIGDB) {
+        recentGamesArr.push(key.game);
+      }
+
+      setRecentGames(recentGamesArr);
+    } catch (err) {
+      throw Error(err.message);
     }
 
     setIsLoading(false);
@@ -216,7 +213,7 @@ const Home = () => {
           dots={false}
           bookmarkComponent={AddBookmarkGame}
           handleBookmarkClick={handleBookmarkClick}
-          games={popularGames}
+          games={recentGames}
         />
       )}
     </div>

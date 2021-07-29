@@ -10,7 +10,7 @@ const GamesHorizontalScroll = props => {
 
   const settings = {
     dots: props.dots,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 8,
     slidesToScroll: 8,
@@ -40,6 +40,7 @@ const GamesHorizontalScroll = props => {
             <Link to={`/gamelist/games/${game.name}/${game.id}`}>
               <div className="game-card">
                 <img
+                  style={{ width: '19rem', height: '25.3rem' }}
                   src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
                   alt={game.name}
                 ></img>

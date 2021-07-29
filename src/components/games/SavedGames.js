@@ -16,6 +16,7 @@ import LoadingPage from '../LoadingPage';
 
 const SavedGames = () => {
   const [savedGamesArr, setSavedGamesArr] = useState([]);
+
   const [userId, setUserId] = useState();
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   // const savedGamesObj = useSelector(selectSavedGames);
@@ -69,7 +70,8 @@ const SavedGames = () => {
   const convertObjToArr = () => {
     if (!savedGamesObj) return;
     const updatedSavedGames = Object.values(savedGamesObj);
-    setSavedGamesArr(updatedSavedGames);
+    const updatedSavedGamesRev = updatedSavedGames.reverse(); // Reversed order: Most recent saves 
+    setSavedGamesArr(updatedSavedGamesRev);
   };
 
   const removeGame = async gameKey => {
