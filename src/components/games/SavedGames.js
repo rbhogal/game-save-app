@@ -70,7 +70,7 @@ const SavedGames = () => {
   const convertObjToArr = () => {
     if (!savedGamesObj) return;
     const updatedSavedGames = Object.values(savedGamesObj);
-    const updatedSavedGamesRev = updatedSavedGames.reverse(); // Reversed order: Most recent saves 
+    const updatedSavedGamesRev = updatedSavedGames.reverse(); // Reversed order: Most recent saves
     setSavedGamesArr(updatedSavedGamesRev);
   };
 
@@ -98,6 +98,7 @@ const SavedGames = () => {
         <GamesHorizontalScroll
           title="Saved Games"
           dots={true}
+          infinite={false}
           bookmarkComponent={RemoveBookmarkGame}
           handleBookmarkClick={handleBookmarkClick}
           games={savedGamesArr}
