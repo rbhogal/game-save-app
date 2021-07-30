@@ -7,12 +7,15 @@ import { selectAppToken } from '../../features/admin/appTokenSlice';
 import AddBookmarkGame from './AddBookmarkGame';
 import { selectUserKey, storeBookmark } from '../../features/users/userSlice';
 import AuthContext from '../../store/auth-context';
+import LoadingPage from '../LoadingPage';
+import LoadingDots from '../LoadingDots';
 
 const Game = () => {
   const token = useSelector(selectAppToken);
   const userKey = useSelector(selectUserKey);
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
+
   const releaseYear = new Date(
     gameData.first_release_date * 1000
   ).getFullYear();
@@ -118,6 +121,7 @@ const Game = () => {
 
   return (
     <div className="Game">
+      {isLoading && <LoadingDots />}
       {!isLoading && (
         <>
           <section className="game-main-section">
@@ -162,10 +166,13 @@ const Game = () => {
                   <h3 className="game-info-heading">Information</h3>
                   <ion-icon name="chevron-forward-outline"></ion-icon>
                 </div>
-                <h4>Developer:</h4>
-                <h4>Platforms:</h4>
-                <h4>Game Modes:</h4>
-                <h4>Themes:</h4>
+
+                <div className="game-info-content">
+                  <h4>Developer: </h4>
+                  <h4>Platforms:</h4>
+                  <h4>Game Modes:</h4>
+                  <h4>Themes:</h4>
+                </div>
               </div>
 
               <div className="game-socials-div">

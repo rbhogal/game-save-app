@@ -110,3 +110,7 @@
 .game-right-column {
   margin-left: 3rem;
 }
+
+.game-info-content {
+  /* display: inline-block; */
+}
