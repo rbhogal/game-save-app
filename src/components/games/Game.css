@@ -1,4 +1,61 @@
 .Game {
-  margin-top: 75px;
+  margin-top: 11rem;
+  color: #ffffff;
+  padding: 0 30rem;
+}
+
+.game-main-section {
+  display: flex;
+  /* align-items: flex-end; */
+}
+
+.game-main-content {
+  display: flex;
+  padding: 0 3rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-img {
+  border-radius: 5px;
+  max-width: 26.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.game-title {
+  font-size: 4.8rem;
+}
+
+.game-rating-box {
+  border-radius: 27px;
+  border: 5px solid rgba(145, 71, 255, 1);
+  background-color: rgba(0, 0, 0, 0.1);
+  width: min-content;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   text-align: center;
+}
+
+.game-rating {
+  color: white;
+  margin: auto 0;
+  font-size: 3.5rem;
+  padding: 0 1rem;
+}
+
+.game-rating-bookmark-div {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.game-rating-bookmark-div ion-icon:active {
+  transform: translateY(2px);
+  /* transform: scale(0.8); */
+  /* transform: rotate(90deg); */
+}
+
+.game-rating-bookmark-div ion-icon {
+  font-size: 7.2rem;
+  padding: 0 1rem;
+  /* transition: transform 0.1s ease-in; */
 }
