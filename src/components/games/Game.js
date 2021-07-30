@@ -153,17 +153,27 @@ const Game = () => {
                 <ion-icon name="chevron-forward-outline"></ion-icon>
               </div>
 
-              <p className="game-summary">{gameData.summary}</p>
+              <p className="game-summary-content">{gameData.summary}</p>
             </div>
-            <div className="game-info-div">
-              <div className="heading-container">
-                <h3 className="game-info-heading">Information</h3>
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+
+            <div className="game-right-column">
+              <div className="game-info-div">
+                <div className="heading-container">
+                  <h3 className="game-info-heading">Information</h3>
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+                <h4>Developer:</h4>
+                <h4>Platforms:</h4>
+                <h4>Game Modes:</h4>
+                <h4>Themes:</h4>
               </div>
-              <h4>Developer:</h4>
-              <h4>Platforms:</h4>
-              <h4>Game Modes:</h4>
-              <h4>Themes:</h4>
+
+              <div className="game-socials-div">
+                <div className="heading-container">
+                  <h3 className="game-socials-heading">Connect</h3>
+                  <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+              </div>
             </div>
           </section>
         </>

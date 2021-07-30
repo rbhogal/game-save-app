@@ -28,6 +28,9 @@
 .game-img {
   border-radius: 5px;
   max-width: 26.5rem;
+  max-height: 35.8rem;
+  /* width: auto;
+  height: auto; */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -78,15 +81,17 @@
 
 .game-details-section {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .game-summary-div {
   max-width: 65rem;
+  padding-right: 6rem;
+  line-height: 1.6;
 }
 
 .game-info-div {
-  min-width: 40rem;
+  min-width: 60rem;
   /* background-color: yellow; */
 }
 
@@ -100,4 +105,8 @@
   font-size: 21px;
   padding-top: 2px;
   padding-left: 5px;
+}
+
+.game-right-column {
+  margin-left: 3rem;
 }

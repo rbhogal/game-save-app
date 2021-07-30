@@ -55,7 +55,9 @@
 }
 
 .drop-btn {
-  --dropdown-heading-color: rgba(220, 220, 220, 0.8);
+  /* --dropdown-heading-color: rgba(220, 220, 220, 0.8); */
+  --dropdown-heading-color: rgba(255, 255, 255, 0.8);
+
   /* --dropdown-heading-color: rgba(220, 220, 220, 1); */
   /* --dropdown-heading-color: white; future note: Go with white full opacity */ 
 
@@ -92,7 +94,8 @@
 }
 
 .drop-btn:hover {
-  color: rgba(220, 220, 220, 1);
+  /* color: rgba(220, 220, 220, 1); */
+  color: rgb(255, 255, 255);
   /* color: rgba(220, 220, 220, 0.8); */
 }
 

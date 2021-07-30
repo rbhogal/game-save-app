@@ -20,7 +20,6 @@
 } */
 
 .slick-dots .slick-active {
-    color:violet;
-    /* opacity: .5; */
+  color: rgba(145, 71, 255, 1);
+  /* opacity: .5; */
 }
-

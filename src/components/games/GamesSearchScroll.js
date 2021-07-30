@@ -14,7 +14,7 @@ const GamesSearchScroll = props => {
   const settings = {
     className: 'center',
     dots: true,
-    infinite: true,
+    infinite: false,
     slidesToShow: 8,
     slidesToScroll: 8,
     speed: 500,
