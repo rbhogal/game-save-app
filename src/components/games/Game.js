@@ -44,7 +44,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating; where id = ${gameId} & genres.name != null & cover.image_id != null; limit 48;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -128,11 +128,10 @@ const Game = () => {
             ></img>
 
             <div className="game-main-content">
-
               <div className="game-main-content-text">
                 <h1 className="game-title">{gameData.name}</h1>
-                <h2 className="game-genre">{gameData.genres[0].name}</h2>
                 <h2 className="game-release-year">{releaseYear}</h2>
+                <h2 className="game-genre">{gameData.genres[0].name}</h2>
               </div>
 
               <div className="game-rating-bookmark-div">
@@ -143,14 +142,30 @@ const Game = () => {
                 </div>
                 <ion-icon name="add"></ion-icon>
               </div>
-
             </div>
-
           </section>
           <section className="game-slide-section"></section>
-          <section className="game-details-section"></section>
 
-          {/* <p className='game-summary'>{gameData.summary}</p> */}
+          <section className="game-details-section">
+            <div className="game-summary-div">
+              <div className="heading-container">
+                <h3 className="game-summary-heading">Summary</h3>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </div>
+
+              <p className="game-summary">{gameData.summary}</p>
+            </div>
+            <div className="game-info-div">
+              <div className="heading-container">
+                <h3 className="game-info-heading">Information</h3>
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </div>
+              <h4>Developer:</h4>
+              <h4>Platforms:</h4>
+              <h4>Game Modes:</h4>
+              <h4>Themes:</h4>
+            </div>
+          </section>
         </>
       )}
     </div>

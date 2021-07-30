@@ -1,7 +1,16 @@
 .Game {
   margin-top: 11rem;
   color: #ffffff;
-  padding: 0 30rem;
+  padding: 0 16vw;
+}
+
+.Game h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgba(145, 71, 255, 1);
+  width: min-content;
 }
 
 .game-main-section {
@@ -23,7 +32,9 @@
 }
 
 .game-title {
-  font-size: 4.8rem;
+  font-size: 6.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .game-rating-box {
@@ -42,6 +53,10 @@
   padding: 0 1rem;
 }
 
+.game-genre {
+  font-size: 1.6rem;
+}
+
 .game-rating-bookmark-div {
   display: flex;
   align-items: center;
@@ -58,4 +73,31 @@
   font-size: 7.2rem;
   padding: 0 1rem;
   /* transition: transform 0.1s ease-in; */
+  color: #ffb100;
+}
+
+.game-details-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-summary-div {
+  max-width: 65rem;
+}
+
+.game-info-div {
+  min-width: 40rem;
+  /* background-color: yellow; */
+}
+
+.heading-container {
+  display: flex;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.heading-container ion-icon {
+  font-size: 21px;
+  padding-top: 2px;
+  padding-left: 5px;
 }
