@@ -23,7 +23,8 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const isSignedIn = authCtx.isSignedIn;
-  const token = useSelector(selectAppToken);
+  // const token = useSelector(selectAppToken);
+  const token = process.env.REACT_APP_ACCESS_TOKEN;
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
   const [userId, setUserId] = useState(null);
   const dispatch = useDispatch();

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import _ from 'lodash';
 
 import './Game.css';
 import { selectAppToken } from '../../features/admin/appTokenSlice';
@@ -9,12 +10,16 @@ import { selectUserKey, storeBookmark } from '../../features/users/userSlice';
 import AuthContext from '../../store/auth-context';
 import LoadingPage from '../LoadingPage';
 import LoadingDots from '../LoadingDots';
+import GameHeading from './GameHeading';
 
 const Game = () => {
-  const token = useSelector(selectAppToken);
+  // const token = useSelector(selectAppToken);
+  const token = process.env.REACT_APP_ACCESS_TOKEN;
   const userKey = useSelector(selectUserKey);
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
+  const [developer, setDeveloper] = useState('');
+  console.log(gameData);
 
   const releaseYear = new Date(
     gameData.first_release_date * 1000
@@ -32,9 +37,6 @@ const Game = () => {
   };
 
   const getGameData = async () => {
-    console.log('Getting data...');
-    console.log(`Game id: ${gameId}`);
-    console.log(`Token: ${token}`);
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
     setIsLoading(true);
@@ -47,7 +49,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites, url, release_dates, game_modes.name, themes, player_perspectives.*, storyline, screenshots, videos, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -67,6 +69,15 @@ const Game = () => {
       if (token) getGameData();
     }
   }, [gameId, token]);
+
+  useEffect(() => {
+    if (!_.isEmpty(gameData)) {
+      gameData.involved_companies.forEach(c => {
+        if (c.developer === true) setDeveloper(c.company.name);
+      });
+    }
+  }, [gameData]);
+  console.log(developer);
 
   // DRY: Repeat code in GameList.js
   const checkGameExists = async gameId => {
@@ -119,6 +130,7 @@ const Game = () => {
     }
   };
 
+  console.log(gameData.platforms);
   return (
     <div className="Game">
       {isLoading && <LoadingDots />}
@@ -148,38 +160,51 @@ const Game = () => {
               </div>
             </div>
           </section>
+
           <section className="game-slide-section"></section>
 
           <section className="game-details-section">
-            <div className="game-summary-div">
-              <div className="heading-container">
-                <h3 className="game-summary-heading">Summary</h3>
-                <ion-icon name="chevron-forward-outline"></ion-icon>
-              </div>
+            <div className="game-left-column">
+              <GameHeading heading="Summary" />
+              <p className="game-summary">{gameData.summary}</p>
 
-              <p className="game-summary-content">{gameData.summary}</p>
+              {gameData.storyline && (
+                <>
+                  <GameHeading heading="Storyline" />
+                  <p className="game-storyline">{gameData.storyline}</p>
+                </>
+              )}
             </div>
 
             <div className="game-right-column">
               <div className="game-info-div">
-                <div className="heading-container">
-                  <h3 className="game-info-heading">Information</h3>
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </div>
+                <GameHeading heading="Information" />
 
                 <div className="game-info-content">
-                  <h4>Developer: </h4>
-                  <h4>Platforms:</h4>
-                  <h4>Game Modes:</h4>
-                  <h4>Themes:</h4>
+                  <div className="game-info-content-container">
+                    <h4>Developer</h4>
+                    <p className="game-info-content--developer">{developer}</p>
+                  </div>
+
+                  <div className="game-info-content-container">
+                    <h4>Platforms</h4>
+                    {gameData.platforms.map(platform => (
+                      <p key={platform.id}>{platform.name}</p>
+                    ))}
+                  </div>
+
+                  <div className="game-info-content-container">
+                    <h4>Game Modes</h4>
+                  </div>
+
+                  <div className="game-info-content-container">
+                    <h4>Themes</h4>
+                  </div>
                 </div>
               </div>
 
               <div className="game-socials-div">
-                <div className="heading-container">
-                  <h3 className="game-socials-heading">Connect</h3>
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </div>
+                <GameHeading heading="Socials" />
               </div>
             </div>
           </section>

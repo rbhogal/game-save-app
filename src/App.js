@@ -23,6 +23,7 @@ function App() {
   const isLoading = useSelector(selectIsLoading);
 
   const getAppToken = async () => {
+
     // Helper Function
     const calcRemainingTime = expirationTime => {
       // expirationTime is in seconds, getTime is in ms. Convert it also to ms.
@@ -54,13 +55,14 @@ function App() {
       );
       const { data } = respTwitch;
 
+
       // Store token and expiration time to firebase
       axios
         .put('https://game-save-default-rtdb.firebaseio.com/admin.json', {
           expiresIn: data.expires_in,
           token: data.access_token,
         })
-        .then()
+        .then(console.log(data.access_token))
         .catch(err => {
           alert(err.message);
         });
@@ -69,6 +71,7 @@ function App() {
     // GET APP TOKEN
     // Get New Token If it Expires & dispatch token to redux
     try {
+
       // Get token's expiration time from firebase
       const respFirebase = await axios.get(
         'https://game-save-default-rtdb.firebaseio.com/admin.json'
@@ -77,12 +80,15 @@ function App() {
 
       const expirationTime = dataFirebase.expiresIn;
       const token = dataFirebase.token;
-
+ 
       const remainingDuration = calcRemainingTime(expirationTime);
+
+
 
       // Gets new token when token expires
       setTimeout(getNewToken, remainingDuration);
 
+      
       //dispatch token to store
       dispatch(
         addAppToken({
@@ -95,7 +101,7 @@ function App() {
   };
 
   useEffect(() => {
-    getAppToken();
+    // getAppToken();
   }, []);
 
   return (
