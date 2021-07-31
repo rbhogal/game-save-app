@@ -49,11 +49,17 @@
   text-align: center;
 }
 
+.game-release-date {
+  font-size: 2.2rem;
+  margin-top: 1.5rem;
+}
+
 .game-rating {
   color: white;
   margin: auto 0;
   font-size: 3.5rem;
   padding: 0 1rem;
+  /* padding: 0 1.5rem;  */ /* OVAL */
 }
 
 .game-genre {
@@ -81,7 +87,9 @@
 
 .game-details-section {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+  margin-right: 18vw;
+  
 }
 
 .game-left-column {
@@ -92,12 +100,11 @@
 
 .game-right-column h4 {
   padding: 1px 0;
-  /* font-weight: 700; */
   text-transform: uppercase;
   border-bottom: 1px solid white;
   margin-bottom: 1rem;
   width: min-content;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
 }
 
 .game-right-column p {
@@ -106,7 +113,7 @@
 }
 
 .game-info-div {
-  min-width: 60rem;
+  /* min-width: 60rem; */
   /* background-color: yellow; */
 }
 
@@ -114,6 +121,7 @@
   display: flex;
   margin-top: 3rem;
   margin-bottom: 1rem;
+  letter-spacing: 0.2rem;
 }
 
 .heading-container ion-icon {
@@ -127,5 +135,5 @@
 }
 
 .game-info-content-container {
- margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }

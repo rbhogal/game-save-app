@@ -20,10 +20,24 @@ const Game = () => {
   const [gameData, setGameData] = useState([]);
   const [developer, setDeveloper] = useState('');
   console.log(gameData);
-
-  const releaseYear = new Date(
-    gameData.first_release_date * 1000
-  ).getFullYear();
+  const releaseDate = new Date(gameData.first_release_date * 1000);
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const releaseYear = releaseDate.getFullYear();
+  const releaseMonth = months[releaseDate.getMonth()];
+  const releaseDay = releaseDate.getDate();
   const urlPath = window.location.pathname;
   const [isLoading, setIsLoading] = useState(true);
   const authCtx = useContext(AuthContext);
@@ -49,7 +63,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites, url, release_dates, game_modes.name, themes, player_perspectives.*, storyline, screenshots, videos, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots, videos, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -146,7 +160,7 @@ const Game = () => {
             <div className="game-main-content">
               <div className="game-main-content-text">
                 <h1 className="game-title">{gameData.name}</h1>
-                <h2 className="game-release-year">{releaseYear}</h2>
+                <h2 className="game-release-date">{`${releaseMonth} ${releaseDay}, ${releaseYear}`}</h2>
                 <h2 className="game-genre">{gameData.genres[0].name}</h2>
               </div>
 
@@ -195,16 +209,36 @@ const Game = () => {
 
                   <div className="game-info-content-container">
                     <h4>Game Modes</h4>
+                    {gameData.game_modes.map(gameMode => (
+                      <p key={gameMode.id}>{gameMode.name}</p>
+                    ))}
+                  </div>
+
+                  <div className="game-info-content-container">
+                    <h4>Genres</h4>
+                    {gameData.genres.map(genre => (
+                      <p key={genre.id}>{genre.name}</p>
+                    ))}
                   </div>
 
                   <div className="game-info-content-container">
                     <h4>Themes</h4>
+                    {gameData.themes.map(theme => (
+                      <p key={theme.id}>{theme.name}</p>
+                    ))}
+                  </div>
+
+                  <div className="game-info-content-container">
+                    <h4>Player Perspectives</h4>
+                    {gameData.player_perspectives.map(p => (
+                      <p key={p.id}>{p.name}</p>
+                    ))}
                   </div>
                 </div>
               </div>
 
               <div className="game-socials-div">
-                <GameHeading heading="Socials" />
+                <GameHeading heading="Links" />
               </div>
             </div>
           </section>
