@@ -59,7 +59,7 @@
   margin: auto 0;
   font-size: 3.5rem;
   padding: 0 1rem;
-  /* padding: 0 1.5rem;  */ /* OVAL */
+  padding: 0 1.5rem;  /* OVAL */
 }
 
 .game-genre {
@@ -136,4 +136,41 @@
 
 .game-info-content-container {
   margin-bottom: 2.5rem;
+}
+
+.game-links-div {
+  max-width: 23rem;
+}
+
+.game-links ion-icon {
+  height: 3.5rem;
+  font-size: 2.5rem;
+
+}
+
+.game-links a {
+  color: rgba(255, 255,255, 0.8);  
+  text-decoration: none;
+}
+
+.game-links a:hover {
+  color: rgba(255, 255,255, 1)
+}
+
+
+
+.game-links p {
+  margin: 0;
+  padding: 1rem;
+}
+
+.game-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game-links-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem; 
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 import './Game.css';
 import { selectAppToken } from '../../features/admin/appTokenSlice';
@@ -11,6 +12,7 @@ import AuthContext from '../../store/auth-context';
 import LoadingPage from '../LoadingPage';
 import LoadingDots from '../LoadingDots';
 import GameHeading from './GameHeading';
+import GameLink from './GameLink';
 
 const Game = () => {
   // const token = useSelector(selectAppToken);
@@ -37,7 +39,7 @@ const Game = () => {
   ];
   const releaseYear = releaseDate.getFullYear();
   const releaseMonth = months[releaseDate.getMonth()];
-  const releaseDay = releaseDate.getDate();
+  const releaseDay = releaseDate.getDate() + 1;
   const urlPath = window.location.pathname;
   const [isLoading, setIsLoading] = useState(true);
   const authCtx = useContext(AuthContext);
@@ -237,8 +239,16 @@ const Game = () => {
                 </div>
               </div>
 
-              <div className="game-socials-div">
+              <div className="game-links-div">
                 <GameHeading heading="Links" />
+                <div className="game-links">
+                  <GameLink icon="link-outline" site="Official Website" />
+                  <GameLink icon="logo-twitter" site="Twitter" />
+                  <GameLink icon="logo-instagram" site="Instagram" />
+                  <GameLink icon="logo-youtube" site="Youtube" />
+                  <GameLink icon="logo-twitch" site="Twitch" />
+                  <GameLink icon="logo-discord" site="Discord" />
+                </div>
               </div>
             </div>
           </section>
