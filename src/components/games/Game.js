@@ -12,7 +12,8 @@ import AuthContext from '../../store/auth-context';
 import LoadingPage from '../LoadingPage';
 import LoadingDots from '../LoadingDots';
 import GameHeading from './GameHeading';
-import GameLink from './GameLink';
+import GameLinks from './GameLinks';
+import GameInfo from './GameInfo';
 
 const Game = () => {
   // const token = useSelector(selectAppToken);
@@ -65,7 +66,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots, videos, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots, videos, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -73,6 +74,14 @@ const Game = () => {
       setIsLoading(false);
     } catch (err) {
       console.log(err.message);
+    }
+  };
+
+  const getDeveloper = gameData => {
+    if (!_.isEmpty(gameData)) {
+      gameData.involved_companies.forEach(c => {
+        if (c.developer === true) setDeveloper(c.company.name);
+      });
     }
   };
 
@@ -87,13 +96,8 @@ const Game = () => {
   }, [gameId, token]);
 
   useEffect(() => {
-    if (!_.isEmpty(gameData)) {
-      gameData.involved_companies.forEach(c => {
-        if (c.developer === true) setDeveloper(c.company.name);
-      });
-    }
+    getDeveloper(gameData);
   }, [gameData]);
-  console.log(developer);
 
   // DRY: Repeat code in GameList.js
   const checkGameExists = async gameId => {
@@ -190,6 +194,15 @@ const Game = () => {
                   <p className="game-storyline">{gameData.storyline}</p>
                 </>
               )}
+
+              {gameData.websites && (
+                <div className="game-links-div">
+                  <GameHeading heading="Links" />
+                  <div className="game-links">
+                    <GameLinks websitesArr={gameData.websites} />
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="game-right-column">
@@ -202,52 +215,27 @@ const Game = () => {
                     <p className="game-info-content--developer">{developer}</p>
                   </div>
 
-                  <div className="game-info-content-container">
-                    <h4>Platforms</h4>
-                    {gameData.platforms.map(platform => (
-                      <p key={platform.id}>{platform.name}</p>
-                    ))}
-                  </div>
-
-                  <div className="game-info-content-container">
-                    <h4>Game Modes</h4>
-                    {gameData.game_modes.map(gameMode => (
-                      <p key={gameMode.id}>{gameMode.name}</p>
-                    ))}
-                  </div>
-
-                  <div className="game-info-content-container">
-                    <h4>Genres</h4>
-                    {gameData.genres.map(genre => (
-                      <p key={genre.id}>{genre.name}</p>
-                    ))}
-                  </div>
-
-                  <div className="game-info-content-container">
-                    <h4>Themes</h4>
-                    {gameData.themes.map(theme => (
-                      <p key={theme.id}>{theme.name}</p>
-                    ))}
-                  </div>
-
-                  <div className="game-info-content-container">
-                    <h4>Player Perspectives</h4>
-                    {gameData.player_perspectives.map(p => (
-                      <p key={p.id}>{p.name}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="game-links-div">
-                <GameHeading heading="Links" />
-                <div className="game-links">
-                  <GameLink icon="link-outline" site="Official Website" />
-                  <GameLink icon="logo-twitter" site="Twitter" />
-                  <GameLink icon="logo-instagram" site="Instagram" />
-                  <GameLink icon="logo-youtube" site="Youtube" />
-                  <GameLink icon="logo-twitch" site="Twitch" />
-                  <GameLink icon="logo-discord" site="Discord" />
+                  {gameData.platforms && (
+                    <GameInfo title="Platforms" gameArr={gameData.platforms} />
+                  )}
+                  {gameData.game_modes && (
+                    <GameInfo
+                      title="Game Modes"
+                      gameArr={gameData.game_modes}
+                    />
+                  )}
+                  {gameData.player_perspectives && (
+                    <GameInfo
+                      title="Player Perspectives"
+                      gameArr={gameData.player_perspectives}
+                    />
+                  )}
+                  {gameData.genres && (
+                    <GameInfo title="Genres" gameArr={gameData.genres} />
+                  )}
+                  {gameData.themes && (
+                    <GameInfo title="Themes" gameArr={gameData.themes} />
+                  )}
                 </div>
               </div>
             </div>

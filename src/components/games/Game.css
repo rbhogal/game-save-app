@@ -88,12 +88,12 @@
 .game-details-section {
   display: flex;
   justify-content: space-between;
-  margin-right: 18vw;
+  
   
 }
 
 .game-left-column {
-  max-width: 65rem;
+  max-width: 100rem;
   padding-right: 6rem;
   line-height: 1.6;
 }
@@ -139,7 +139,7 @@
 }
 
 .game-links-div {
-  max-width: 23rem;
+  max-width: 40rem;
 }
 
 .game-links ion-icon {
