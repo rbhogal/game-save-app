@@ -47,12 +47,14 @@ const GameLinks = props => {
 
   return (
     <>
-      <a href={officialURL} target="_blank" rel="noreferrer noopener">
-        <div className="game-links-container">
-          <ion-icon name="link-outline"></ion-icon>
-          <p>Official Website</p>
-        </div>
-      </a>
+      {officialURL && (
+        <a href={officialURL} target="_blank" rel="noreferrer noopener">
+          <div className="game-links-container">
+            <ion-icon name="link-outline"></ion-icon>
+            <p>Official Website</p>
+          </div>
+        </a>
+      )}
 
       {newWebsitesArr.map(website => (
         <a href={website.url} target="_blank" rel="noreferrer noopener">

@@ -12,6 +12,15 @@
   padding: 2.5rem;
 }
 
+.Footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.Footer a:hover {
+    color: gainsboro;
+}
+
 .role-credits {
   display: flex;
   align-items: center;
@@ -22,3 +31,5 @@
   font-size: 1.6rem;
   margin-top: .2rem;
 }
+
+

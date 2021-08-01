@@ -14,9 +14,10 @@ const Footer = () => {
         <p className="author">IGDB</p>
       </div> */}
       <p>Designed and Developed by RB</p>
-      <p>Powerd by IGDB</p>
+      
+      <p>Powered by <a href="https://www.igdb.com/discover">IGDB</a></p>
     </div>
   );
 };
-  
+
 export default Footer;
