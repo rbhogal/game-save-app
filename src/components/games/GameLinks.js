@@ -39,6 +39,15 @@ const GameLinks = props => {
         name: 'Youtube',
       });
     }
+
+    if (website.category === 13) {
+      newWebsitesArr.push({
+        url: website.url,
+        icon: 'logo-steam',
+        name: 'Steam',
+      });
+    }
+
     if (website.category === 18) {
       newWebsitesArr.push({
         url: website.url,

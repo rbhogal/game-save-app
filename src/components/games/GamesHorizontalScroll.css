@@ -2,6 +2,21 @@
   position: relative;
 }
 
+.category h1 {
+  /* font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgba(145, 71, 255, 1); */
+ 
+}
+
+.category ion-icon {
+  /* margin-bottom: 1rem; */
+}
+
+
+
 .game-card > img {
   border-radius: 5px;
   max-width: 19rem;
@@ -26,8 +41,6 @@
 /* .game-card:not(.game-card-content):hover .game-card-summary-box {
   visibility: visible;
 } */
-
-
 
 .slick-dots li button:before {
   color: white;
@@ -73,7 +86,6 @@
   transform: translateY(1px);
 }
 
-
 .game-card-genre,
 .game-card-rating-box {
   position: relative;
@@ -102,10 +114,23 @@
   padding: 0 0.7rem;
   width: 3.8rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
   bottom: 4.9rem;
   left: 78%;
 }
+
+.game-card-rating-box {
+  /* 
+  border-radius: 27px;
+  border: 2px solid rgba(145, 71, 255, 1);
+  background-color: rgba(0, 0, 0, 0.1);
+  width: min-content;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  text-align: center; 
+  */
+}
+
+
+
 
 .game-card-summary {
   /* font-size: 14px; */
