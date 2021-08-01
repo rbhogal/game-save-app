@@ -2,18 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
 
 import './Game.css';
 import { selectAppToken } from '../../features/admin/appTokenSlice';
 import AddBookmarkGame from './AddBookmarkGame';
 import { selectUserKey, storeBookmark } from '../../features/users/userSlice';
 import AuthContext from '../../store/auth-context';
-import LoadingPage from '../LoadingPage';
 import LoadingDots from '../LoadingDots';
 import GameHeading from './GameHeading';
 import GameLinks from './GameLinks';
 import GameInfo from './GameInfo';
+import Footer from '../Footer';
 
 const Game = () => {
   // const token = useSelector(selectAppToken);
@@ -242,6 +241,7 @@ const Game = () => {
           </section>
         </>
       )}
+      {!isLoading && <Footer />}
     </div>
   );
 };

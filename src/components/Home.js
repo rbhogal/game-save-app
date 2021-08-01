@@ -14,6 +14,8 @@ import { getUserData, storeBookmark } from '../features/users/userSlice';
 import { auth } from '../firebase';
 import { selectUserKey } from '../features/users/userSlice';
 import AddBookmarkGame from './games/AddBookmarkGame';
+import Footer from './Footer';
+import LoadingDots from './LoadingDots';
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -186,7 +188,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      {isLoading && <LoadingPage />}
+      {isLoading && <LoadingDots />}
 
       {!isLoading && (
         <GamesHorizontalScroll
@@ -220,6 +222,7 @@ const Home = () => {
           games={recentGames}
         />
       )}
+      {!isLoading && <Footer />}
     </div>
   );
 };
