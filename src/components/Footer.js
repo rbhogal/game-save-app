@@ -13,7 +13,8 @@ const Footer = () => {
         <p>Powered by&nbsp;</p>
         <p className="author">IGDB</p>
       </div> */}
-      <p>Designed and Developed by RB</p>
+      <p>Designed and Developed by RB </p>
+      
       
       <p>Powered by <a href="https://www.igdb.com/discover">IGDB</a></p>
     </div>

@@ -4,9 +4,12 @@ const GameLinks = props => {
   const { websitesArr } = props;
   const newWebsitesArr = [];
   let officialURL = '';
+  let wikiURL = '';
 
   websitesArr.forEach(website => {
     if (website.category === 1) officialURL = website.url;
+
+    if (website.category === 3) wikiURL = website.url;
 
     if (website.category === 5) {
       newWebsitesArr.push({
@@ -52,6 +55,17 @@ const GameLinks = props => {
           <div className="game-links-container">
             <ion-icon name="link-outline"></ion-icon>
             <p>Official Website</p>
+          </div>
+        </a>
+      )}
+
+      {wikiURL && (
+        <a href={wikiURL} target="_blank" rel="noreferrer noopener">
+          <div className="game-links-container">
+            <span style={{fontSize: '2rem'}}>
+              <i class="fab fa-wikipedia-w"></i>
+            </span>
+            <p>Wiki</p>
           </div>
         </a>
       )}
