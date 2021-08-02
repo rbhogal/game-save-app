@@ -1,0 +1,10 @@
+
+
+.slider-container {
+  max-width: 100%;
+  border-radius: 5px;
+  height: auto;
+  background-color: #34373b;
+  /* margin: 10rem 0; */
+  padding: 2.5rem 5rem;
+}

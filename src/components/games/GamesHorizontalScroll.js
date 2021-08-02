@@ -11,6 +11,7 @@ const GamesHorizontalScroll = props => {
   const settings = {
     dots: props.dots,
     infinite: props.infinite,
+    lazyLoad: true,
     speed: 500,
     slidesToShow: 8,
     slidesToScroll: 8,

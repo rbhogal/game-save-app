@@ -5,7 +5,7 @@ import _ from 'lodash';
 import './GamesHorizontalScroll.css';
 import './GamesSearchScroll.css';
 import { Link } from 'react-router-dom';
-import LoadingPage from '../LoadingPage';
+import LoadingDots from '../LoadingDots';
 
 const GamesSearchScroll = props => {
   const BookmarkComponent = props.bookmarkComponent;
@@ -15,6 +15,7 @@ const GamesSearchScroll = props => {
     className: 'center',
     dots: true,
     infinite: false,
+    lazyLoad: true,
     slidesToShow: 8,
     slidesToScroll: 8,
     speed: 500,
@@ -89,7 +90,7 @@ const GamesSearchScroll = props => {
   return (
     <>
       {!isLoading && showSearchResults()}
-      {isLoading && <LoadingPage />}
+      {isLoading && <LoadingDots />}
     </>
   );
 };

@@ -13,6 +13,7 @@ import GameHeading from './GameHeading';
 import GameLinks from './GameLinks';
 import GameInfo from './GameInfo';
 import Footer from '../Footer';
+import GameMediaSlider from './Game/GameMediaSlider';
 
 const Game = () => {
   // const token = useSelector(selectAppToken);
@@ -42,6 +43,9 @@ const Game = () => {
   const releaseDay = releaseDate.getDate() + 1;
   const urlPath = window.location.pathname;
   const [isLoading, setIsLoading] = useState(true);
+  const [videos, setVideos] = useState([]);
+  const [screenshots, setScreenshots] = useState([]);
+  const [artwork, setArtwork] = useState([]);
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();
@@ -65,7 +69,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots, videos, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots, videos.*, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -179,9 +183,6 @@ const Game = () => {
               </div>
             </div>
           </section>
-
-          <section className="game-slide-section"></section>
-
           <section className="game-details-section">
             <div className="game-left-column">
               <GameHeading heading="Summary" />
@@ -230,7 +231,7 @@ const Game = () => {
                     />
                   )}
                   {gameData.genres && (
-                    <GameInfo title="Genres" gameArr={gameData.genres} />
+                    <GameInfo title="Genre" gameArr={gameData.genres} />
                   )}
                   {gameData.themes && (
                     <GameInfo title="Themes" gameArr={gameData.themes} />
@@ -238,6 +239,10 @@ const Game = () => {
                 </div>
               </div>
             </div>
+          </section>
+          <section className="game-slider-section">
+          <GameHeading heading="Videos" />
+            <GameMediaSlider videos={gameData.videos} />
           </section>
         </>
       )}
