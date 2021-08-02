@@ -69,7 +69,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots.*, videos.*, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots.image_id, videos.video_id, artworks.image_id; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -241,7 +241,12 @@ const Game = () => {
             </div>
           </section>
           <section className="game-slider-section">
-            <GameMediaSliders videos={gameData.videos} screenshots={gameData.screenshots} />
+            <GameMediaSliders
+              videos={gameData.videos}
+              screenshots={gameData.screenshots}
+              artworks={gameData.artworks}
+              gameName={gameData.name}
+            />
           </section>
         </>
       )}
