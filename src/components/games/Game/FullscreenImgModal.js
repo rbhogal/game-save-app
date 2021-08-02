@@ -11,6 +11,24 @@ const FullscreenImgModal = ({ showModal, setShowModal, imageId }) => {
     }
   };
 
+  const keyPress = useCallback(
+    e => {
+      if (e.key === 'Escape' && showModal) {
+        setShowModal(false);
+      }
+    },
+    [setShowModal, showModal]
+  );
+
+  const closeModalESC = () => {
+    document.addEventListener('keydown', keyPress);
+    return () => document.removeEventListener('keydown', keyPress);
+  };
+
+  useEffect(() => {
+    closeModalESC();
+  }, [keyPress]);
+
   return (
     <>
       {showModal ? (
