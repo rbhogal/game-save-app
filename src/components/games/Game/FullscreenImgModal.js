@@ -8,7 +8,10 @@ const FullscreenImgModal = ({ showModal, setShowModal, imageId }) => {
       {showModal ? (
         <div className="FullscreenImgModal">
           <div className="modal-wrapper">
-            <button className="close-modal-btn">
+            <button
+              className="close-modal-btn"
+              onClick={() => setShowModal(prev => !prev)}
+            >
               <ion-icon name="close-outline"></ion-icon>
             </button>
             <img

@@ -15,6 +15,7 @@
 
 .img-fullscreen {
   max-width: 150rem;
+  height: auto;
 }
 
 .modal-wrapper {
