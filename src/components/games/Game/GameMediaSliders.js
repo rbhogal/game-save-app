@@ -1,10 +1,12 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import './GameMediaSlider.css';
+import './GameMediaSliders.css';
+import GameHeading from '../GameHeading';
 
-const GameMediaSlider = props => {
+const GameMediaSliders = props => {
   const settings = {
+    focusOnSelect: true,
     dots: false,
     infinite: false,
     speed: 500,
@@ -13,10 +15,20 @@ const GameMediaSlider = props => {
     slidesToScroll: 2,
   };
 
-  
-
   return (
-    <>
+    <div className="GameMediaSliders">
+      <GameHeading heading="Screenshots" />
+      <div className="slider-container">
+        <Slider {...settings}>
+          {props.screenshots.map(screenshot => (
+            <img
+              src={`//images.igdb.com/igdb/image/upload/t_screenshot_med/${screenshot.image_id}.jpg`}
+            ></img>
+          ))}
+        </Slider>
+      </div>
+
+      <GameHeading heading="Videos" />
       <div className="slider-container">
         <Slider {...settings}>
           {props.videos.map(video => (
@@ -32,18 +44,8 @@ const GameMediaSlider = props => {
           ))}
         </Slider>
       </div>
-    </>
+    </div>
   );
 };
 
-export default GameMediaSlider;
-/* 
-<iframe
-          width="560"
-          height="315"
-          src={`${youtubeURL}6eS7CX5zkj0`}
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe> */
+export default GameMediaSliders;

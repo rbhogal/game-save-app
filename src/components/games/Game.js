@@ -13,7 +13,7 @@ import GameHeading from './GameHeading';
 import GameLinks from './GameLinks';
 import GameInfo from './GameInfo';
 import Footer from '../Footer';
-import GameMediaSlider from './Game/GameMediaSlider';
+import GameMediaSliders from './Game/GameMediaSliders';
 
 const Game = () => {
   // const token = useSelector(selectAppToken);
@@ -69,7 +69,7 @@ const Game = () => {
           'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${token}`,
         },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots, videos.*, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots.*, videos.*, artworks; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
       });
 
       const { data } = await resp;
@@ -241,8 +241,7 @@ const Game = () => {
             </div>
           </section>
           <section className="game-slider-section">
-          <GameHeading heading="Videos" />
-            <GameMediaSlider videos={gameData.videos} />
+            <GameMediaSliders videos={gameData.videos} screenshots={gameData.screenshots} />
           </section>
         </>
       )}
