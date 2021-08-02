@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
 import './FullscreenImgModal.css';
 
 const FullscreenImgModal = ({ showModal, setShowModal, imageId }) => {
+  const modalRef = useRef();
+
+  const closeModal = e => {
+    if (modalRef.current === e.target) {
+      setShowModal(false);
+    }
+  };
+
   return (
     <>
       {showModal ? (
-        <div className="FullscreenImgModal">
+        <div className="FullscreenImgModal" ref={modalRef} onClick={closeModal}>
           <div className="modal-wrapper">
             <button
               className="close-modal-btn"

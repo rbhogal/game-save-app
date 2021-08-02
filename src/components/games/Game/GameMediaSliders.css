@@ -37,12 +37,13 @@
   position: absolute;
   /* right: 5rem;
   bottom: 1rem; */
-  z-index: 2;
+  z-index: 1;
   left: 50%;
   margin-left: -5%;
   top: 50%;
   margin-top: -2%;
   transition: all 0.1s ease-in-out;
+  pointer-events: none;
 }
 
 /* .icon-zoom-container .fa-search-plus:hover {

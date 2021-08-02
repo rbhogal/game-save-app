@@ -57,7 +57,7 @@ const GameMediaSliders = props => {
           <Slider {...settings}>
             {props.screenshots.map((screenshot, index) => (
               <div className="img-container">
-                <span className="icon-zoom-container">
+                <span className="icon-zoom-container" >
                   <i class="fas fa-search-plus"></i>
                 </span>
                 <img
