@@ -67,6 +67,7 @@
 .arrow-prev-container:hover,
 .arrow-next-container:hover {
   background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .arrow-prev-container,
