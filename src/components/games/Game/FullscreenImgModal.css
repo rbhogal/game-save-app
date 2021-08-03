@@ -32,7 +32,7 @@
   width: 3.2rem;
   height: 3.2rem;
   padding: 0;
-  z-index: 10;
+  z-index: 11;
   border: none;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
@@ -49,4 +49,45 @@
 
 .close-modal-btn ion-icon:hover {
   color: rgba(255, 255, 255, 1);
+}
+
+.arrow-prev-container,
+.arrow-next-container {
+  max-width: 100px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.arrow-prev-container:hover,
+.arrow-next-container:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.arrow-prev-container,
+.arrow-next-container ion-icon {
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0);
+}
+
+.arrow-prev-container:hover,
+.arrow-next-container:hover ion-icon {
+  color: rgba(255, 255, 255, 1);
+}
+
+.arrow-prev-container {
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.arrow-next-container {
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

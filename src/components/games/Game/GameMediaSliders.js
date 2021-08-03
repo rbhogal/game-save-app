@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 
 import './GameMediaSliders.css';
@@ -8,6 +8,9 @@ import FullscreenImgModal from './FullscreenImgModal';
 const GameMediaSliders = props => {
   const [showModal, setShowModal] = useState(false);
   const [imageId, setImageId] = useState('');
+  const screenshotRef = useRef();
+  const artworkRef = useRef();
+  const [imageType, setImageType] = useState('');
 
   const settings = {
     dots: false,
@@ -19,17 +22,23 @@ const GameMediaSliders = props => {
   };
 
   const showFullscreen = e => {
-    console.log(e.target.id);
     setImageId(e.target.id);
     setShowModal(prev => !prev);
+
+    setImageType(e.target.dataset.imgType);
   };
 
   return (
     <div className="GameMediaSliders">
       <FullscreenImgModal
+        imageType={imageType}
+        screenshotRef={screenshotRef.current}
+        artworkRef={artworkRef.current}
         showModal={showModal}
         setShowModal={setShowModal}
         imageId={imageId}
+        screenshots={props.screenshots}
+        artworks={props.artworks}
       />
       {props.videos && <GameHeading heading="Videos" />}
       {props.videos && (
@@ -57,15 +66,17 @@ const GameMediaSliders = props => {
           <Slider {...settings}>
             {props.screenshots.map((screenshot, index) => (
               <div className="img-container">
-                <span className="icon-zoom-container" >
+                <span className="icon-zoom-container">
                   <i class="fas fa-search-plus"></i>
                 </span>
                 <img
+                  ref={screenshotRef}
                   onClick={showFullscreen}
                   key={screenshot.id}
                   id={screenshot.image_id}
                   src={`//images.igdb.com/igdb/image/upload/t_screenshot_med/${screenshot.image_id}.jpg`}
                   alt={`${props.gameName}-screenshot-${index}`}
+                  data-img-type="screenshot"
                 ></img>
               </div>
             ))}
@@ -83,12 +94,14 @@ const GameMediaSliders = props => {
                   <i class="fas fa-search-plus"></i>
                 </span>
                 <img
+                  ref={artworkRef}
                   onClick={showFullscreen}
                   className="artwork"
                   key={artwork.image_id}
                   id={artwork.image_id}
                   src={`//images.igdb.com/igdb/image/upload/t_screenshot_med/${artwork.image_id}.jpg`}
                   alt={`${props.gameName}-artwork-${index}`}
+                  data-img-type="artwork"
                 ></img>
               </div>
             ))}
