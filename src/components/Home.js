@@ -23,6 +23,7 @@ const Home = () => {
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   const [recentGames, setRecentGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
 
   const isSignedIn = authCtx.isSignedIn;
   // const token = useSelector(selectAppToken);
