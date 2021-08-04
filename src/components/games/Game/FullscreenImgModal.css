@@ -14,16 +14,17 @@
 }
 
 .img-fullscreen {
-  max-width: 140rem;
+  max-width: 100%;
   height: auto;
 }
 
 .modal-wrapper {
-  max-width: auto;
-  max-height: auto;
+  max-width: 140rem;
+  height: auto;
   z-index: 10;
   position: relative;
   text-align: center;
+  margin: 2.5rem;
 }
 
 .slideshow-count {
