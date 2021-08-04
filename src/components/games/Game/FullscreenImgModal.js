@@ -20,6 +20,8 @@ const FullscreenImgModal = ({
   let currIndex = useRef(null);
   let prevIndex = useRef(null);
   let nextIndex = useRef(null);
+  const [currSlideNum, setCurrSlideNum] = useState('');
+  const [numSlides, setNumSlides] = useState('');
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
@@ -47,6 +49,8 @@ const FullscreenImgModal = ({
       for (const screenshot of screenshots) {
         if (screenshot.image_id === imageId) {
           currIndex = screenshots.indexOf(screenshot);
+          setCurrSlideNum(currIndex + 1);
+          setNumSlides(screenshots.length);
         }
       }
     }
@@ -55,6 +59,8 @@ const FullscreenImgModal = ({
       for (const artwork of artworks) {
         if (artwork.image_id === imageId) {
           currIndex = artworks.indexOf(artwork);
+          setCurrSlideNum(currIndex + 1);
+          setNumSlides(artworks.length);
         }
       }
     }
@@ -95,6 +101,10 @@ const FullscreenImgModal = ({
     }
   };
 
+  useEffect(() => {
+    getCurrIndex();
+  });
+
   return (
     <>
       {showModal ? (
@@ -120,12 +130,16 @@ const FullscreenImgModal = ({
             >
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
+
             <img
               ref={curImageRef}
               className="img-fullscreen"
               src={`https://images.igdb.com/igdb/image/upload/t_original/${imageId}.jpg`}
               alt="image"
             />
+            <p className="slideshow-count">
+              {currSlideNum}/{numSlides}
+            </p>
           </div>
         </div>
       ) : null}
