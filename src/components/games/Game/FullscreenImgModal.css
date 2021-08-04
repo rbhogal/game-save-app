@@ -70,6 +70,10 @@
   cursor: pointer;
 }
 
+.arrow-display-none {
+  display: none;
+}
+
 .arrow-prev-container,
 .arrow-next-container ion-icon {
   font-size: 5rem;

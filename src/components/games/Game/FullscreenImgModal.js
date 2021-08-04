@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 import './FullscreenImgModal.css';
 
@@ -6,6 +6,7 @@ const FullscreenImgModal = ({
   showModal,
   setShowModal,
   imageId,
+  setImageId,
   screenshots,
   artworks,
   screenshotRef,
@@ -14,6 +15,12 @@ const FullscreenImgModal = ({
 }) => {
   const modalRef = useRef();
   const curImageRef = useRef();
+  const arrowPrevRef = useRef();
+  const arrowNextRef = useRef();
+  let currIndex = useRef(null);
+  let prevIndex = useRef(null);
+  let nextIndex = useRef(null);
+
   const closeModal = e => {
     if (modalRef.current === e.target) {
       setShowModal(false);
@@ -22,6 +29,7 @@ const FullscreenImgModal = ({
 
   const keyPress = useCallback(
     e => {
+      console.log(e);
       if (e.key === 'Escape' && showModal) {
         setShowModal(false);
       }
@@ -29,40 +37,62 @@ const FullscreenImgModal = ({
     [setShowModal, showModal]
   );
 
-  const closeModalESC = () => {
+  useEffect(() => {
     document.addEventListener('keydown', keyPress);
     return () => document.removeEventListener('keydown', keyPress);
-  };
-
-  useEffect(() => {
-    closeModalESC();
   }, [keyPress]);
 
+  const getCurrIndex = () => {
+    if (imageType === 'screenshot') {
+      for (const screenshot of screenshots) {
+        if (screenshot.image_id === imageId) {
+          currIndex = screenshots.indexOf(screenshot);
+        }
+      }
+    }
+
+    if (imageType === 'artwork') {
+      for (const artwork of artworks) {
+        if (artwork.image_id === imageId) {
+          currIndex = artworks.indexOf(artwork);
+        }
+      }
+    }
+  };
+
   const prevClick = () => {
-    console.log(`image type =${imageType}`);
+    getCurrIndex();
+    if (imageType === 'screenshot') {
+      if (currIndex > 0) {
+        prevIndex = currIndex - 1;
+        setImageId(screenshots[prevIndex].image_id);
+      }
+    }
 
-    /* 
-        if(imageType === 'screenshot) {
-            run thru screenshots(arr)
-                        find matching id, then get then next on in the array. 
-
-        }
-
-        if(imageType === 'artwork) {
-            run thru artworks arr
-            find matching id, then get then next on in the array. 
-        }
-    
-    
-    */
-
-    console.log(curImageRef.current);
-    console.log(screenshotRef);
-    console.log(artworkRef);
+    if (imageType === 'artwork') {
+      if (currIndex > 0) {
+        prevIndex = currIndex - 1;
+        setImageId(artworks[prevIndex].image_id);
+      }
+    }
   };
 
   const nextClick = () => {
-    console.log('next');
+    getCurrIndex();
+
+    if (imageType === 'screenshot') {
+      if (currIndex < screenshots.length - 1) {
+        nextIndex = currIndex + 1;
+        setImageId(screenshots[nextIndex].image_id);
+      }
+    }
+
+    if (imageType === 'artwork') {
+      if (currIndex < artworks.length - 1) {
+        nextIndex = currIndex + 1;
+        setImageId(artworks[nextIndex].image_id);
+      }
+    }
   };
 
   return (
@@ -76,10 +106,18 @@ const FullscreenImgModal = ({
             >
               <ion-icon name="close-outline"></ion-icon>
             </button>
-            <div className="arrow-prev-container" onClick={prevClick}>
+            <div
+              ref={arrowPrevRef}
+              className="arrow-prev-container"
+              onClick={prevClick}
+            >
               <ion-icon name="chevron-back-outline"></ion-icon>
             </div>
-            <div className="arrow-next-container" onClick={nextClick}>
+            <div
+              ref={arrowNextRef}
+              className="arrow-next-container"
+              onClick={nextClick}
+            >
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
             <img

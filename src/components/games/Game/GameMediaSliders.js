@@ -30,16 +30,19 @@ const GameMediaSliders = props => {
 
   return (
     <div className="GameMediaSliders">
-      <FullscreenImgModal
-        imageType={imageType}
-        screenshotRef={screenshotRef.current}
-        artworkRef={artworkRef.current}
-        showModal={showModal}
-        setShowModal={setShowModal}
-        imageId={imageId}
-        screenshots={props.screenshots}
-        artworks={props.artworks}
-      />
+      {showModal && (
+        <FullscreenImgModal
+          imageType={imageType}
+          screenshotRef={screenshotRef.current}
+          artworkRef={artworkRef.current}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          imageId={imageId}
+          setImageId={setImageId}
+          screenshots={props.screenshots}
+          artworks={props.artworks}
+        />
+      )}
       {props.videos && <GameHeading heading="Videos" />}
       {props.videos && (
         <div className="slider-container">
