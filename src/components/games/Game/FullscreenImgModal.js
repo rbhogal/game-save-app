@@ -23,49 +23,6 @@ const FullscreenImgModal = ({
   const [currSlideNum, setCurrSlideNum] = useState('');
   const [numSlides, setNumSlides] = useState('');
 
-  const closeModal = e => {
-    if (modalRef.current === e.target) {
-      setShowModal(false);
-    }
-  };
-
-  const keyPress = useCallback(
-    e => {
-      console.log(e);
-      if (e.key === 'Escape' && showModal) {
-        setShowModal(false);
-      }
-    },
-    [setShowModal, showModal]
-  );
-
-  useEffect(() => {
-    document.addEventListener('keydown', keyPress);
-    return () => document.removeEventListener('keydown', keyPress);
-  }, [keyPress]);
-
-  const getCurrIndex = () => {
-    if (imageType === 'screenshot') {
-      for (const screenshot of screenshots) {
-        if (screenshot.image_id === imageId) {
-          currIndex = screenshots.indexOf(screenshot);
-          setCurrSlideNum(currIndex + 1);
-          setNumSlides(screenshots.length);
-        }
-      }
-    }
-
-    if (imageType === 'artwork') {
-      for (const artwork of artworks) {
-        if (artwork.image_id === imageId) {
-          currIndex = artworks.indexOf(artwork);
-          setCurrSlideNum(currIndex + 1);
-          setNumSlides(artworks.length);
-        }
-      }
-    }
-  };
-
   const prevClick = () => {
     getCurrIndex();
     if (imageType === 'screenshot') {
@@ -97,6 +54,51 @@ const FullscreenImgModal = ({
       if (currIndex < artworks.length - 1) {
         nextIndex = currIndex + 1;
         setImageId(artworks[nextIndex].image_id);
+      }
+    }
+  };
+
+  const closeModal = e => {
+    if (modalRef.current === e.target) {
+      setShowModal(false);
+    }
+  };
+
+  const keyPress = useCallback(
+    e => {
+      console.log(e);
+      if (e.key === 'Escape' && showModal) {
+        setShowModal(false);
+      }
+      if (e.key === 'ArrowRight') nextClick();
+      if (e.key === 'ArrowLeft') prevClick();
+    },
+    [setShowModal, showModal, nextClick, prevClick]
+  );
+
+  useEffect(() => {
+    document.addEventListener('keydown', keyPress);
+    return () => document.removeEventListener('keydown', keyPress);
+  }, [keyPress]);
+
+  const getCurrIndex = () => {
+    if (imageType === 'screenshot') {
+      for (const screenshot of screenshots) {
+        if (screenshot.image_id === imageId) {
+          currIndex = screenshots.indexOf(screenshot);
+          setCurrSlideNum(currIndex + 1);
+          setNumSlides(screenshots.length);
+        }
+      }
+    }
+
+    if (imageType === 'artwork') {
+      for (const artwork of artworks) {
+        if (artwork.image_id === imageId) {
+          currIndex = artworks.indexOf(artwork);
+          setCurrSlideNum(currIndex + 1);
+          setNumSlides(artworks.length);
+        }
       }
     }
   };

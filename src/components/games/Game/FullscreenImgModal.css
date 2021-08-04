@@ -14,7 +14,7 @@
 }
 
 .img-fullscreen {
-  max-width: 150rem;
+  max-width: 140rem;
   height: auto;
 }
 
@@ -26,6 +26,10 @@
   text-align: center;
 }
 
+.slideshow-count {
+    margin-top: .5rem;
+
+}
 
 .close-modal-btn {
   cursor: pointer;
