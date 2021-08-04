@@ -10,6 +10,7 @@
   margin-top: 2.5rem;
   margin-bottom: 10rem;
   padding: 2.5rem 5rem;
+  padding-bottom: 3.5rem;
 }
 
 .img-container {
@@ -40,9 +41,6 @@
   pointer-events: none;
 }
 
-
-
 .img-container:hover .fa-search-plus {
   opacity: 1;
 }
-

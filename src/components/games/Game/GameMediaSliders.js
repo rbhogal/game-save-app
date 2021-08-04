@@ -13,7 +13,7 @@ const GameMediaSliders = props => {
   const [imageType, setImageType] = useState('');
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 500,
     lazyLoad: true,

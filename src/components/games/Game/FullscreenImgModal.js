@@ -66,7 +66,6 @@ const FullscreenImgModal = ({
 
   const keyPress = useCallback(
     e => {
-      console.log(e);
       if (e.key === 'Escape' && showModal) {
         setShowModal(false);
       }

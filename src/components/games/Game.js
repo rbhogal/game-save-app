@@ -22,7 +22,6 @@ const Game = () => {
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
   const [developer, setDeveloper] = useState('');
-  console.log(gameData);
   const releaseDate = new Date(gameData.first_release_date * 1000);
   const months = [
     'January',
@@ -81,6 +80,7 @@ const Game = () => {
   };
 
   const getDeveloper = gameData => {
+    if (!gameData.involved_companies) return;
     if (!_.isEmpty(gameData)) {
       gameData.involved_companies.forEach(c => {
         if (c.developer === true) setDeveloper(c.company.name);
@@ -153,7 +153,6 @@ const Game = () => {
     }
   };
 
-  console.log(gameData.platforms);
   return (
     <div className="Game">
       {isLoading && <LoadingDots />}
@@ -210,10 +209,14 @@ const Game = () => {
                 <GameHeading heading="Information" />
 
                 <div className="game-info-content">
-                  <div className="game-info-content-container">
-                    <h4>Developer</h4>
-                    <p className="game-info-content--developer">{developer}</p>
-                  </div>
+                  {developer && (
+                    <div className="game-info-content-container">
+                      <h4>Developer</h4>
+                      <p className="game-info-content--developer">
+                        {developer}
+                      </p>
+                    </div>
+                  )}
 
                   {gameData.platforms && (
                     <GameInfo title="Platforms" gameArr={gameData.platforms} />
