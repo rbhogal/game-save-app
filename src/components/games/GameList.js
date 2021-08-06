@@ -12,8 +12,7 @@ import { storeBookmark, selectUserKey } from '../../features/users/userSlice';
 const GameList = () => {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  // const token = useSelector(selectAppToken);
-  const token = process.env.REACT_APP_ACCESS_TOKEN;
+  const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
 

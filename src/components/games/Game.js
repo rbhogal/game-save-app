@@ -16,8 +16,7 @@ import Footer from '../Footer';
 import GameMediaSliders from './Game/GameMediaSliders';
 
 const Game = () => {
-  // const token = useSelector(selectAppToken);
-  const token = process.env.REACT_APP_ACCESS_TOKEN;
+  const token = useSelector(selectAppToken);
   const userKey = useSelector(selectUserKey);
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
@@ -102,8 +101,7 @@ const Game = () => {
     getDeveloper(gameData);
   }, [gameData]);
 
-  // DRY: Repeat code in GameList.js
-  const checkGameExists = async gameId => {
+  const checkGameExists = async () => {
     let gameExists = false;
 
     try {
@@ -132,11 +130,10 @@ const Game = () => {
     }
   };
 
-  // DRY: Repeat code in GameList.js
-  const handleBookmarkClick = async game => {
+  const handleBookmarkClick = async () => {
     if (!isSignedIn) return alert('Sign in to save!');
 
-    const gameExists = await checkGameExists(game.id);
+    const gameExists = await checkGameExists();
 
     if (gameExists) {
       alert('Already saved!');
@@ -146,7 +143,7 @@ const Game = () => {
       dispatch(
         storeBookmark({
           key: userKey,
-          game: game,
+          game: gameData,
         })
       );
       return alert('saved!');
@@ -178,7 +175,7 @@ const Game = () => {
                     {Math.round(gameData.total_rating)}
                   </p>
                 </div>
-                <ion-icon name="add"></ion-icon>
+                <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>
               </div>
             </div>
           </section>

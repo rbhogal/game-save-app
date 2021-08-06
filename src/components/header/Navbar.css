@@ -60,12 +60,10 @@ header {
 /* Mobile Menu Toggle */
 
 .menu-toggle {
-  position: absolute;
   display: none;
   width: auto;
   height: auto;
   padding-right: 30px;
-  z-index: 9001;
 }
 
 .menu-toggle span {

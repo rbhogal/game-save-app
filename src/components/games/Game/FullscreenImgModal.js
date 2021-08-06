@@ -22,8 +22,10 @@ const FullscreenImgModal = ({
   let nextIndex = useRef(null);
   const [currSlideNum, setCurrSlideNum] = useState('');
   const [numSlides, setNumSlides] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const prevClick = () => {
+    setIsLoading(true);
     getCurrIndex();
     if (imageType === 'screenshot') {
       if (currIndex > 0) {
@@ -38,9 +40,11 @@ const FullscreenImgModal = ({
         setImageId(artworks[prevIndex].image_id);
       }
     }
+    setIsLoading(false);
   };
 
   const nextClick = () => {
+    setIsLoading(true);
     getCurrIndex();
 
     if (imageType === 'screenshot') {
@@ -56,6 +60,7 @@ const FullscreenImgModal = ({
         setImageId(artworks[nextIndex].image_id);
       }
     }
+    setIsLoading(false);
   };
 
   const closeModal = e => {
@@ -132,12 +137,15 @@ const FullscreenImgModal = ({
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </div>
 
-            <img
-              ref={curImageRef}
-              className="img-fullscreen"
-              src={`https://images.igdb.com/igdb/image/upload/t_original/${imageId}.jpg`}
-              alt="image"
-            />
+            {!isLoading && (
+              <img
+                ref={curImageRef}
+                className="img-fullscreen"
+                src={`https://images.igdb.com/igdb/image/upload/t_original/${imageId}.jpg`}
+                alt="image"
+              />
+            )}
+            {isLoading && <p className="loading-text">Loading...</p>}
             <p className="slideshow-count">
               {currSlideNum}/{numSlides}
             </p>

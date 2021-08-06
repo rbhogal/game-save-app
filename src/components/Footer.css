@@ -13,12 +13,12 @@
 }
 
 .Footer a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .Footer a:hover {
-    color: gainsboro;
+  color: gainsboro;
 }
 
 .role-credits {
@@ -29,7 +29,9 @@
 .author {
   /* font-family: graduate, cursive; */
   font-size: 1.6rem;
-  margin-top: .2rem;
+  margin-top: 0.2rem;
 }
 
-
+.Footer ion-icon {
+  font-size: 1.4rem;
+}

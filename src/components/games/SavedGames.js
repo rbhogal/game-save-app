@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import './SavedGames.css';
 import GamesHorizontalScroll from './GamesHorizontalScroll';
+import GamesSearchScroll from './GamesSearchScroll'
 import RemoveBookmarkGame from './RemoveBookmarkGame';
 import {
   selectSavedGames,
@@ -95,7 +96,7 @@ const SavedGames = () => {
   return (
     <div className="SavedGames">
       {savedGamesObj && (
-        <GamesHorizontalScroll
+        <GamesSearchScroll
           title="Saved Games"
           dots={true}
           infinite={false}

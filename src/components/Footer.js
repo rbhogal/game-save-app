@@ -13,8 +13,19 @@ const Footer = () => {
         <p>Powered by&nbsp;</p>
         <p className="author">IGDB</p>
       </div> */}
-      <p>Designed and Developed by RB </p>
-      <p>Powered by <a href="https://www.igdb.com/discover">IGDB</a></p>
+      <p>
+        Designed and Developed by{' '}
+        <a
+          href="https://github.com/rbhogal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          RB
+        </a>
+      </p>
+      <p>
+        Powered by <a href="https://www.igdb.com/discover">IGDB</a>
+      </p>
       <ion-icon name="flash-outline"></ion-icon>
     </div>
   );
