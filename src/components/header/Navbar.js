@@ -14,6 +14,7 @@ const Navbar = () => {
   const handleClick = () => {
     // open mobile menu
     if (!mobileMenuIsOpen) {
+      document.body.style.overflow = 'hidden';
       dispatch(
         isOpen({
           click: true,
@@ -23,6 +24,7 @@ const Navbar = () => {
 
     // close mobile menu
     if (mobileMenuIsOpen) {
+      document.body.style.overflow = 'visible';
       dispatch(
         isOpen({
           click: false,

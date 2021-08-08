@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import './SavedGames.css';
 import GamesHorizontalScroll from './GamesHorizontalScroll';
-import GamesSearchScroll from './GamesSearchScroll'
+import GamesSearchScroll from './GamesSearchScroll';
 import RemoveBookmarkGame from './RemoveBookmarkGame';
 import {
   selectSavedGames,
@@ -13,7 +13,7 @@ import {
 } from '../../features/users/userSlice';
 import { auth } from '../../firebase';
 import { getUserData } from '../../features/users/userSlice';
-import LoadingPage from '../LoadingPage';
+import LoadingDots from '../LoadingDots';
 
 const SavedGames = () => {
   const [savedGamesArr, setSavedGamesArr] = useState([]);
@@ -106,7 +106,7 @@ const SavedGames = () => {
         />
       )}
 
-      {!savedGamesObj && <LoadingPage />}
+      {!savedGamesObj && <LoadingDots />}
     </div>
   );
 };

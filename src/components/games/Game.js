@@ -112,7 +112,7 @@ const Game = () => {
       const { data: savedGames } = await resp;
 
       for (const game in savedGames) {
-        if (savedGames[game].id === gameId) {
+        if (savedGames[game].id === +gameId) {
           gameExists = true;
         }
       }
