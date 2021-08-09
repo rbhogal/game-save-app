@@ -18,7 +18,52 @@ const GamesHorizontalScroll = props => {
     className: 'slick-arrows',
     responsive: [
       {
-        breakpoint: 400,
+        breakpoint: 1760,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 7,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1570,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1370,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -41,7 +86,7 @@ const GamesHorizontalScroll = props => {
             <Link to={`/gamelist/games/${game.name}/${game.id}`}>
               <div className="game-card">
                 <img
-                  style={{ width: '19rem', height: '25.3rem' }}
+                  // style={{ width: '19rem', height: '25.3rem' }}
                   src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
                   alt={game.name}
                 ></img>
