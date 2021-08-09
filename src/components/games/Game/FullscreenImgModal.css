@@ -13,25 +13,6 @@
   z-index: 9000;
 }
 
-.img-fullscreen {
-  max-width: 100%;
-  height: auto;
-}
-
-.modal-wrapper {
-  max-width: 140rem;
-  height: auto;
-  z-index: 10;
-  position: relative;
-  text-align: center;
-  margin: 2.5rem;
-}
-
-.slideshow-count {
-  margin-top: 0.5rem;
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .close-modal-btn {
   cursor: pointer;
   position: absolute;
@@ -39,7 +20,7 @@
   width: 3.2rem;
   height: 3.2rem;
   padding: 0;
-  z-index: 11;
+  z-index: 9000;
   border: none;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
@@ -56,6 +37,25 @@
 
 .close-modal-btn ion-icon:hover {
   color: rgba(255, 255, 255, 1);
+}
+
+.modal-wrapper {
+  max-width: 70%;
+  max-height: auto;
+  z-index: 10;
+  position: relative;
+  text-align: center;
+  margin: 2.5rem;
+}
+
+.img-fullscreen {
+  max-width: 100%;
+  height: auto;
+}
+
+.slideshow-count {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .arrow-prev-container,
