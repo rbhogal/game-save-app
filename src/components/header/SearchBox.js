@@ -29,7 +29,6 @@ const SearchBox = () => {
   };
 
   const handleEnterPress = e => {
-    console.log(e);
     if (e.key === 'Enter') {
       history.push(`/gamelist/games`);
       authCtx.searchGame(search);

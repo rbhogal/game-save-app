@@ -14,25 +14,11 @@ const Dropdown = () => {
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
 
-  const [genre, setGenre] = useState('');
   let history = useHistory();
 
   const handleClickDropdown = () => setClickDropdown(!clickDropdown);
 
   const handleClickDropdownItem = e => {
-    console.log(e.target.outerText);
-
-    // e = genre search
-    history.push('/gamelist/genre');
-    
-
-    /* 
-      1) history.push('/gamelist/games')
-      2) create new authCtx searchGenre(search);
-      
-
-    */
-
     dispatch(
       isOpen({
         click: false,

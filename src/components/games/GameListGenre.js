@@ -16,7 +16,6 @@ const GameListGenre = () => {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
   const token = useSelector(selectAppToken);
-  // const [genre, setGenre] = useState('');
   const dispatch = useDispatch();
 
   const authCtx = useContext(AuthContext);
@@ -25,7 +24,6 @@ const GameListGenre = () => {
   const userKey = useSelector(selectUserKey);
   const [genreId, setGenreId] = useState('');
   const urlPath = window.location.pathname;
-  console.log(genreId);
 
   useEffect(() => {
     const index = urlPath.lastIndexOf('/');
@@ -33,10 +31,6 @@ const GameListGenre = () => {
     console.log(id);
     setGenreId(id);
   });
-
-  // useEffect(() => {
-  //   setGenre(newGenre);
-  // }, [newGenre]);
 
   const searchGenre = () => {
     setIsLoading(true);
@@ -49,7 +43,7 @@ const GameListGenre = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: `fields summary, cover.image_id, genres.name, name, total_rating; where genres=${genreId} &cover.image_id != null; limit 48;`,
+      data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where genres=${genreId} & cover.image_id != null & total_rating >= 75; limit 48;`,
     })
       .then(resp => {
         setGames(resp.data);

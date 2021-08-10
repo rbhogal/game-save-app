@@ -22,6 +22,71 @@ const GamesSearchScroll = props => {
     rows: 1,
     slidesPerRow: 1,
     className: 'slick-arrows',
+    responsive: [
+      {
+        breakpoint: 1760,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 7,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1570,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1370,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+      {
+        breakpoint: 420,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: props.dots,
+        },
+      },
+    ],
     customPaging: i => (
       <div
         style={{
