@@ -113,7 +113,9 @@ const GamesSearchScroll = props => {
                     ></img>
 
                     <div className="game-card-summary-box">
-                      <p className="game-card-summary">{game.summary}</p>
+                      <p className="game-card-summary">
+                        {game.summary ? game.summary : 'No Summary Available'}
+                      </p>
                     </div>
                   </div>
                   <div className="game-card-content">
