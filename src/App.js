@@ -12,6 +12,7 @@ import Home from './components/Home';
 import GameList from './components/games/GameList';
 import Game from './components/games/Game';
 import SavedGames from './components/games/SavedGames';
+import GameListGenre from './components/games/GameListGenre';
 import AuthContext from './store/auth-context';
 import { addAppToken, selectIsLoading } from './features/admin/appTokenSlice';
 
@@ -107,6 +108,7 @@ function App() {
         )}
         <Route path="/gamelist/games" exact component={GameList} />
         <Route path="/gamelist/games/:game/:id" exact component={Game} />
+        <Route path="/gamelist/genres/:genre/:id" exact component={GameListGenre} />
         <Route path="*">
           <Redirect to="/" />
         </Route>

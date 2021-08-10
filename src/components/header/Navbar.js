@@ -57,7 +57,6 @@ const Navbar = () => {
       <nav>
         <div onClick={handleHomeClick} className="logo-icon">
           <Link to="/">
-            {/* <h1 className="logo-heading">Game Save</h1> */}
             <ion-icon name="game-controller-outline"></ion-icon>
           </Link>
         </div>

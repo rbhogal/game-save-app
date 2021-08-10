@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import './Dropdown.css';
 import { DropdownMenuItems } from './DropdownMenuItems';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
+import AuthContext from '../../store/auth-context';
 
 const Dropdown = () => {
   const [clickDropdown, setClickDropdown] = useState(false);
+
   const dispatch = useDispatch();
+  const authCtx = useContext(AuthContext);
+
+  const [genre, setGenre] = useState('');
+  let history = useHistory();
 
   const handleClickDropdown = () => setClickDropdown(!clickDropdown);
 
-  const handleClickDropdownItem = () => {
+  const handleClickDropdownItem = e => {
+    console.log(e.target.outerText);
+
+    // e = genre search
+    history.push('/gamelist/genre');
+    
+
+    /* 
+      1) history.push('/gamelist/games')
+      2) create new authCtx searchGenre(search);
+      
+
+    */
+
     dispatch(
       isOpen({
         click: false,
@@ -28,10 +48,10 @@ const Dropdown = () => {
           clickDropdown ? 'dropdown-content clicked' : 'dropdown-content'
         }
       >
-        {DropdownMenuItems.map((item, index) => {
+        {DropdownMenuItems.map((genre, index) => {
           return (
-            <Link onClick={handleClickDropdownItem} key={index} to={item.path}>
-              {item.title}
+            <Link onClick={handleClickDropdownItem} key={index} to={genre.path}>
+              {genre.title}
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
           );

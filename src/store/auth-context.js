@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const AuthContext = React.createContext({
   search: '',
+  genre: '',
   token: '',
   isSignedIn: false,
   savedGames: [],
@@ -17,6 +18,9 @@ export const AuthContextProvider = props => {
 
   const initialSearch = localStorage.getItem('search');
   const [search, setSearch] = useState(initialSearch);
+
+  const initialGenre = localStorage.getItem('genre');
+  const [genre, setGenre] = useState(initialGenre);
 
   const initialBookmarks = JSON.parse(localStorage.getItem('bookmarks'));
   const [bookmarks, setBookmarks] = useState(initialBookmarks);
@@ -37,6 +41,11 @@ export const AuthContextProvider = props => {
     localStorage.setItem('search', search);
   };
 
+  const searchGenreHandler = newGenre => {
+    setGenre(newGenre);
+    localStorage.setItem('genre', genre);
+  };
+
   const storeBookmarksHandler = bookmarkedGames => {
     setBookmarks(bookmarkedGames);
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -50,6 +59,7 @@ export const AuthContextProvider = props => {
     signIn: signInHandler,
     signOut: signOutHandler,
     searchGame: searchGameHandler,
+    searchGenre: searchGenreHandler,
     storeBookmarks: storeBookmarksHandler,
   };
 
