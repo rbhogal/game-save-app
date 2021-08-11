@@ -175,7 +175,6 @@
   }
 }
 
-
 /* 925px */
 @media only screen and (max-width: 57.8125em) {
   .game-title {
@@ -220,5 +219,13 @@
 
   .game-rating-bookmark-div {
     margin: 3rem 0;
+  }
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .game-summary {
+    max-width: 100%;
+    /* width: 100%; */
   }
 }

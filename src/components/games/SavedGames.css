@@ -12,6 +12,13 @@
   /* color: rgb(196, 49, 49); */
 }
 
+/* 812px */
+@media only screen and (max-width: 50.75em) {
+  .SavedGames {
+    margin: 0rem 5rem 0 5rem;
+  }
+}
+
 /* 600px */
 @media only screen and (max-width: 37.5em) {
   .SavedGames {
@@ -24,6 +31,7 @@
   .SavedGames {
     margin: 3em 10rem 0 10rem;
   }
+
 }
 
 /* 375px */

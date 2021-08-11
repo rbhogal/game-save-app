@@ -69,3 +69,21 @@
     max-width: 100%;
   }
 }
+
+
+/*  415px */
+@media only screen and (max-width: 25.9375em) {
+  .slider-container {
+    /* max-width: 100%;
+    border-radius: 5px;
+    height: auto;
+    background-color: #34373b;
+    margin-top: 2.5rem;
+    margin-bottom: 10rem;
+    padding: 2.5rem 5rem;
+    padding-bottom: 3.5rem; */
+
+    padding: 1rem 4rem;
+    
+  }
+}
