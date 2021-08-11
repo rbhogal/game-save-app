@@ -20,6 +20,26 @@ const GameMediaSliders = props => {
     lazyLoad: true,
     slidesToShow: 2,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1780,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+    ],
   };
 
   const showFullscreen = e => {
@@ -49,16 +69,17 @@ const GameMediaSliders = props => {
         <div className="slider-container">
           <Slider {...settings}>
             {props.videos.map(video => (
-              <iframe
-                key={video.id}
-                width="640"
-                height="385"
-                src={`https://www.youtube.com/embed/${video.video_id}`}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+              <div className="videos-container">
+                <iframe
+                  className="videos"
+                  key={video.id}
+                  src={`https://www.youtube.com/embed/${video.video_id}`}
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
             ))}
           </Slider>
         </div>
