@@ -28,7 +28,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 7,
           slidesToScroll: 7,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -37,7 +37,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 6,
           slidesToScroll: 6,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -46,7 +46,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 5,
           slidesToScroll: 5,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -55,7 +55,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -64,7 +64,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -73,7 +73,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          infinite: true,
+          infinite: false,
           dots: false,
         },
       },
@@ -82,7 +82,7 @@ const GamesSearchScroll = props => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: false,
           dots: false,
         },
       },

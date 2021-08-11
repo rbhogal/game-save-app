@@ -73,6 +73,7 @@ function GoogleAuth() {
 
       handleNewUser(result.user.uid);
     });
+
     setIsLoading(false);
   };
 

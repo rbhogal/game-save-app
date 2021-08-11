@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './GamesHorizontalScroll.css';
 
 const GamesHorizontalScroll = props => {
-  const [bookmark, setBookmark] = useState(false);
   const BookmarkComponent = props.bookmarkComponent;
 
   const settings = {

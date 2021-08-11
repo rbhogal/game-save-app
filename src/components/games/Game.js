@@ -14,10 +14,12 @@ import GameLinks from './GameLinks';
 import GameInfo from './GameInfo';
 import Footer from '../Footer';
 import GameMediaSliders from './Game/GameMediaSliders';
+import toast from 'react-hot-toast';
 
 const Game = () => {
   const token = useSelector(selectAppToken);
   const userKey = useSelector(selectUserKey);
+  const [bookmarked, setBookmarked] = useState(false);
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
   const [developer, setDeveloper] = useState('');
@@ -130,23 +132,61 @@ const Game = () => {
     }
   };
 
-  const handleBookmarkClick = async () => {
-    if (!isSignedIn) return alert('Sign in to save!');
+  // const handleBookmarkClick = async () => {
+  //   if (!isSignedIn) return alert('Sign in to save!');
 
-    const gameExists = await checkGameExists();
+  //   const gameExists = await checkGameExists();
 
-    if (gameExists) {
-      alert('Already saved!');
+  //   if (gameExists) {
+  //     alert('Already saved!');
+  //   }
+
+  //   if (!gameExists) {
+  //     dispatch(
+  //       storeBookmark({
+  //         key: userKey,
+  //         game: gameData,
+  //       })
+  //     );
+  //     return alert('saved!');
+  //   }
+  // };
+
+  const handleBookmarkClick = () => {
+    // alert sign in
+
+    if (!isSignedIn) {
+      return toast('Sign in!', {
+        duration: 2000,
+        icon: (
+          <ion-icon
+            style={{ fontSize: '2.5rem' }}
+            name="person-circle-outline"
+          ></ion-icon>
+        ),
+      });
     }
 
-    if (!gameExists) {
-      dispatch(
-        storeBookmark({
-          key: userKey,
-          game: gameData,
-        })
-      );
-      return alert('saved!');
+    //   const gameExists = await checkGameExists();
+
+    // if (gameExists) {
+    //   alert('Already saved!');
+    // }
+
+    // if (!gameExists) {
+    //   dispatch(
+    //     storeBookmark({
+    //       key: userKey,
+    //       game: gameData,
+    //     })
+    //   );
+    //   return alert('saved!');
+    // }
+  };
+
+  const renderBookmarkBtn = () => {
+    if (!isSignedIn) {
+      return <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>;
     }
   };
 
@@ -175,7 +215,8 @@ const Game = () => {
                     {Math.round(gameData.total_rating)}
                   </p>
                 </div>
-                <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>
+                {/* <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon> */}
+                {renderBookmarkBtn()}
               </div>
             </div>
           </section>

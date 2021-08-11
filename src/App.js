@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
 import Navbar from './components/header/Navbar';
@@ -100,6 +101,12 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster
+        position="top-center"
+        containerStyle={{
+          top: 65,
+        }}
+      />
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
@@ -108,7 +115,11 @@ function App() {
         )}
         <Route path="/gamelist/games" exact component={GameList} />
         <Route path="/gamelist/games/:game/:id" exact component={Game} />
-        <Route path="/gamelist/genres/:genre/:id" exact component={GameListGenre} />
+        <Route
+          path="/gamelist/genres/:genre/:id"
+          exact
+          component={GameListGenre}
+        />
         <Route path="*">
           <Redirect to="/" />
         </Route>

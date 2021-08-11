@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 import './Home.css';
 import GamesHorizontalScroll from './games/GamesHorizontalScroll';
@@ -8,7 +9,6 @@ import {
   selectAppToken,
   addLoadingState,
 } from '../features/admin/appTokenSlice';
-import LoadingPage from './LoadingPage';
 import AuthContext from '../store/auth-context';
 import { getUserData, storeBookmark } from '../features/users/userSlice';
 import { auth } from '../firebase';
@@ -23,7 +23,6 @@ const Home = () => {
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   const [recentGames, setRecentGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
 
   const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
@@ -167,12 +166,23 @@ const Home = () => {
 
   // DRY: Repeat code in GameList.js
   const handleBookmarkClick = async game => {
-    if (!isSignedIn) return alert('Sign in to save!');
+    if (!isSignedIn)
+      return toast('Sign in!', {
+        duration: 2000,
+        icon: (
+          <ion-icon
+            style={{ fontSize: '2.5rem' }}
+            name="person-circle-outline"
+          ></ion-icon>
+        ),
+      });
 
     const gameExists = await checkGameExists(game.id);
 
     if (gameExists) {
-      alert('Already saved!');
+      toast.error('Already saved!', {
+        duration: 1000,
+      });
     }
 
     if (!gameExists) {
@@ -182,7 +192,9 @@ const Home = () => {
           game: game,
         })
       );
-      return alert('saved!');
+      return toast.success('Saved', {
+        duration: 1000,
+      });
     }
   };
 
