@@ -15,3 +15,31 @@
 .GameList h1 {
   margin-top: 2.5rem;
 }
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .GameList {
+    margin: 3rem 5rem 0 5rem;
+  }
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .GameList {
+    margin: 3em 10rem 0 10rem;
+  }
+}
+
+/* 375px */
+@media only screen and (max-width: 23.4375em) {
+  .GameList {
+    margin: 3em 8rem 0 8rem;
+  }
+}
+
+/* 320px */
+@media only screen and (max-width: 20em) {
+  .GameList {
+    margin: 3rem 4rem 0 4rem;
+  }
+}

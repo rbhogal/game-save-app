@@ -14,6 +14,7 @@ import {
 import { auth } from '../../firebase';
 import { getUserData } from '../../features/users/userSlice';
 import LoadingDots from '../LoadingDots';
+import Footer from '../Footer';
 
 const SavedGames = () => {
   const [savedGamesArr, setSavedGamesArr] = useState([]);
@@ -107,6 +108,7 @@ const SavedGames = () => {
       )}
 
       {!savedGamesObj && <LoadingDots />}
+      {savedGamesObj && <Footer />}
     </div>
   );
 };

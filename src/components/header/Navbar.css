@@ -107,7 +107,7 @@ header {
   visibility: visible;
 }
 
-/* Mobile Menu Responsiveness */
+/* Mobile Menu - 960px */
 @media only screen and (max-width: 60em) {
   nav .SearchBox {
     display: none;

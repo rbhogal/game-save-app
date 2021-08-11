@@ -1,10 +1,11 @@
 import React, { useState, useContext, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './SearchBox.css';
 import { Link, useHistory } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import AuthContext from '../../store/auth-context';
+import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
 const SearchBox = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -12,6 +13,7 @@ const SearchBox = () => {
   let history = useHistory();
   const inputSearch = useRef();
   const authCtx = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     // Click only works for mobile
@@ -29,10 +31,22 @@ const SearchBox = () => {
   };
 
   const handleEnterPress = e => {
+    if (!inputSearch.current.value) return;
+
     if (e.key === 'Enter') {
       history.push(`/gamelist/games`);
       authCtx.searchGame(search);
       inputSearch.current.value = '';
+
+      if (window.innerWidth < 960) {
+        // close mobile menu
+        document.body.style.overflow = 'visible';
+        dispatch(
+          isOpen({
+            click: false,
+          })
+        );
+      }
     }
 
     if (e.type === 'click') {
@@ -60,7 +74,7 @@ const SearchBox = () => {
         ref={inputSearch}
         type="text"
         className="input"
-        placeholder="Search..."
+        placeholder="Search game..."
         onChange={e => setSearch(e.target.value)}
         onKeyPress={handleEnterPress}
       />

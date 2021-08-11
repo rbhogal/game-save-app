@@ -29,7 +29,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 7,
           slidesToScroll: 7,
           infinite: true,
-          dots: props.dots,
+          dots: true,
         },
       },
       {
@@ -38,7 +38,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 6,
           slidesToScroll: 6,
           infinite: true,
-          dots: props.dots,
+          dots: true,
         },
       },
       {
@@ -47,7 +47,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 5,
           slidesToScroll: 5,
           infinite: true,
-          dots: props.dots,
+          dots: true,
         },
       },
       {
@@ -56,7 +56,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 4,
           slidesToScroll: 4,
           infinite: true,
-          dots: props.dots,
+          dots: true,
         },
       },
       {
@@ -65,7 +65,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: props.dots,
+          dots: true,
         },
       },
       {
@@ -74,7 +74,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: props.dots,
+          dots: false,
         },
       },
       {
@@ -83,7 +83,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: props.dots,
+          dots: false,
         },
       },
     ],
@@ -146,7 +146,7 @@ const GamesSearchScroll = props => {
     if (_.isEmpty(props.games)) {
       return (
         <>
-          <div style={{ margin: '45vh', textAlign: 'center' }}>
+          <div className='no-results-mssg' >
             <h1>{`No results for "${props.search}".`}</h1>
           </div>
         </>

@@ -8,6 +8,7 @@ import './GameList.css';
 import AuthContext from '../../store/auth-context';
 import AddBookmarkGame from './AddBookmarkGame';
 import { storeBookmark, selectUserKey } from '../../features/users/userSlice';
+import Footer from '../Footer';
 
 const GameList = () => {
   const [games, setGames] = useState([]);
@@ -109,6 +110,7 @@ const GameList = () => {
         search={search}
         games={games}
       />
+      {!isLoading && <Footer />}
     </div>
   );
 };

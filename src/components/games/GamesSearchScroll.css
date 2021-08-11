@@ -10,3 +10,8 @@
 .slick-dots li:hover {
   opacity: 1;
 }
+
+.no-results-mssg {
+  margin: 45vh 0;
+  text-align: center;
+}

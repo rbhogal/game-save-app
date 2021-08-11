@@ -11,6 +11,7 @@ import AddBookmarkGame from './AddBookmarkGame';
 import { storeBookmark, selectUserKey } from '../../features/users/userSlice';
 
 import './GameList.css';
+import Footer from '../Footer';
 
 const GameListGenre = () => {
   const [games, setGames] = useState([]);
@@ -116,6 +117,7 @@ const GameListGenre = () => {
         search={''}
         games={games}
       />
+      {!isLoading && <Footer />}
     </div>
   );
 };
