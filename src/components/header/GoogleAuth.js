@@ -3,6 +3,7 @@ import { auth, provider } from '../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 import './GoogleAuth.css';
 import {
@@ -60,27 +61,37 @@ function GoogleAuth() {
 
   const onSignInClick = () => {
     setIsLoading(true);
-    auth.signInWithPopup(provider).then(result => {
-      authCtx.signIn(result.credential.accessToken);
-      localStorage.setItem('username', result.user.displayName);
-      dispatch(
-        setActiveUser({
-          userId: result.user.uid,
-          userName: result.user.displayName,
-          userEmail: result.user.email,
-          token: result.credential.accessToken,
-        })
-      );
 
-      handleNewUser(result.user.uid);
-    });
+    auth
+      .signInWithPopup(provider)
+      .then(result => {
+        authCtx.signIn(result.credential.accessToken);
+        localStorage.setItem('username', result.user.displayName);
+        dispatch(
+          setActiveUser({
+            userId: result.user.uid,
+            userName: result.user.displayName,
+            userEmail: result.user.email,
+            token: result.credential.accessToken,
+          })
+        );
+
+        handleNewUser(result.user.uid);
+      })
+      .catch(err => {
+        toast(err.message);
+      });
 
     setIsLoading(false);
   };
 
   const onSignOutClick = () => {
     setIsLoading(true);
-
+    toast.promise(auth.signOut(), {
+      loading: 'Signing out...',
+      success: 'Signed Out',
+      error: 'Error signing out',
+    });
     auth
       .signOut()
       .then(() => {
