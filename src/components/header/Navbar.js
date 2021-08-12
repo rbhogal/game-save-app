@@ -36,6 +36,7 @@ const Navbar = () => {
   const handleHomeClick = () => {
     // If user clicks on home icon on desktop
     if (window.innerWidth > 960) return;
+    document.body.style.overflow = 'visible';
     dispatch(
       isOpen({
         click: false,

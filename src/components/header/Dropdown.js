@@ -10,6 +10,7 @@ import AuthContext from '../../store/auth-context';
 
 const Dropdown = () => {
   const [clickDropdown, setClickDropdown] = useState(false);
+  const mobileMenuIsOpen = isOpen;
 
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
@@ -19,11 +20,15 @@ const Dropdown = () => {
   const handleClickDropdown = () => setClickDropdown(!clickDropdown);
 
   const handleClickDropdownItem = e => {
-    dispatch(
-      isOpen({
-        click: false,
-      })
-    );
+    // close mobile menu
+    if (mobileMenuIsOpen) {
+      document.body.style.overflow = 'visible';
+      dispatch(
+        isOpen({
+          click: false,
+        })
+      );
+    }
   };
 
   return (
