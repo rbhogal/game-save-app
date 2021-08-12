@@ -10,10 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Home from './components/Home';
-import GameList from './components/games/GameList';
-import Game from './components/games/Game';
-import SavedGames from './components/games/SavedGames';
-import GameListGenre from './components/games/GameListGenre';
+import GameList from './components/GameList';
+import Game from './components/game/Game';
+import SavedGames from './components/SavedGames';
+import GameListGenre from './components/GameListGenre';
 import AuthContext from './store/auth-context';
 import { addAppToken, selectIsLoading } from './features/admin/appTokenSlice';
 

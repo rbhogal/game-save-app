@@ -5,7 +5,6 @@ import _ from 'lodash';
 
 import './Game.css';
 import { selectAppToken } from '../../features/admin/appTokenSlice';
-import AddBookmarkGame from './AddBookmarkGame';
 import { selectUserKey, storeBookmark } from '../../features/users/userSlice';
 import AuthContext from '../../store/auth-context';
 import LoadingDots from '../LoadingDots';
@@ -13,7 +12,7 @@ import GameHeading from './GameHeading';
 import GameLinks from './GameLinks';
 import GameInfo from './GameInfo';
 import Footer from '../Footer';
-import GameMediaSliders from './Game/GameMediaSliders';
+import GameMediaSliders from '../carousels/GameMediaSliders';
 import toast from 'react-hot-toast';
 
 const Game = () => {

@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
 
 import './GameMediaSliders.css';
-import GameHeading from '../GameHeading';
-import FullscreenImgModal from './FullscreenImgModal';
+import GameHeading from '../game/GameHeading';
+import FullscreenImgModal from '../game/FullscreenImgModal';
 
 const GameMediaSliders = props => {
   const [showModal, setShowModal] = useState(false);

@@ -4,17 +4,16 @@ import axios from 'axios';
 import _ from 'lodash';
 
 import './SavedGames.css';
-import GamesHorizontalScroll from './GamesHorizontalScroll';
-import GamesSearchScroll from './GamesSearchScroll';
-import RemoveBookmarkGame from './RemoveBookmarkGame';
+import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
+import RemoveBookmarkGame from '../components/carousels/RemoveBookmarkGame';
 import {
   selectSavedGames,
   selectUserKey,
-} from '../../features/users/userSlice';
-import { auth } from '../../firebase';
-import { getUserData } from '../../features/users/userSlice';
-import LoadingDots from '../LoadingDots';
-import Footer from '../Footer';
+  getUserData
+} from '../features/users/userSlice';
+import { auth } from '../firebase';
+import LoadingDots from './LoadingDots';
+import Footer from './Footer';
 
 const SavedGames = () => {
   const [savedGamesArr, setSavedGamesArr] = useState([]);

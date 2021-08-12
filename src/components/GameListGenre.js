@@ -1,33 +1,40 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import axios from 'axios';
+
+import { selectAppToken } from '../features/admin/appTokenSlice';
+import GamesSearchScroll from './carousels/GamesSearchScroll';
+import './GameList.css';
+import AuthContext from '../store/auth-context';
+import AddBookmarkGame from './carousels/AddBookmarkGame';
+import { storeBookmark, selectUserKey } from '../features/users/userSlice';
 import toast from 'react-hot-toast'
 
-import { selectAppToken } from '../../features/admin/appTokenSlice';
-import GamesSearchScroll from './GamesSearchScroll';
 import './GameList.css';
-import AuthContext from '../../store/auth-context';
-import AddBookmarkGame from './AddBookmarkGame';
-import { storeBookmark, selectUserKey } from '../../features/users/userSlice';
-import Footer from '../Footer';
+import Footer from './Footer';
 
-const GameList = () => {
+const GameListGenre = () => {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
   const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
-  const [search, setSearch] = useState('');
 
   const authCtx = useContext(AuthContext);
-  const newSearch = authCtx.search;
+  const newGenre = authCtx.genre;
   const isSignedIn = authCtx.isSignedIn;
   const userKey = useSelector(selectUserKey);
+  const [genreId, setGenreId] = useState('');
+  const urlPath = window.location.pathname;
 
   useEffect(() => {
-    setSearch(newSearch);
-  }, [newSearch]);
+    const index = urlPath.lastIndexOf('/');
+    const id = urlPath.slice(index + 1, urlPath.length);
+    console.log(id);
+    setGenreId(id);
+  });
 
-  const searchGames = () => {
+  const searchGenre = () => {
     setIsLoading(true);
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
@@ -38,7 +45,7 @@ const GameList = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: `search"${search}"; fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null; limit 48;`,
+      data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where genres=${genreId} & cover.image_id != null & total_rating >= 75; limit 48;`,
     })
       .then(resp => {
         setGames(resp.data);
@@ -50,8 +57,8 @@ const GameList = () => {
   };
 
   useEffect(() => {
-    if (token && search) searchGames();
-  }, [token, search]);
+    if (token && genreId) searchGenre();
+  }, [token, genreId]);
 
   const checkGameExists = async gameId => {
     let gameExists = false;
@@ -83,16 +90,15 @@ const GameList = () => {
   };
 
   const handleBookmarkClick = async game => {
-    if (!isSignedIn)
-      return toast('Sign in!', {
-        duration: 2000,
-        icon: (
-          <ion-icon
-            style={{ fontSize: '2.5rem' }}
-            name="person-circle-outline"
-          ></ion-icon>
-        ),
-      });
+    if (!isSignedIn) return toast('Sign in!', {
+      duration: 2000,
+      icon: (
+        <ion-icon
+          style={{ fontSize: '2.5rem' }}
+          name="person-circle-outline"
+        ></ion-icon>
+      ),
+    });
 
     const gameExists = await checkGameExists(game.id);
 
@@ -121,7 +127,7 @@ const GameList = () => {
         isLoading={isLoading}
         handleBookmarkClick={handleBookmarkClick}
         bookmarkComponent={AddBookmarkGame}
-        search={search}
+        search={''}
         games={games}
       />
       {!isLoading && <Footer />}
@@ -129,4 +135,4 @@ const GameList = () => {
   );
 };
 
-export default GameList;
+export default GameListGenre;

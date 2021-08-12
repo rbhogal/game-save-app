@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 import './Home.css';
-import GamesHorizontalScroll from './games/GamesHorizontalScroll';
+import GamesHorizontalScroll from './carousels/GamesHorizontalScroll';
 import {
   selectAppToken,
   addLoadingState,
@@ -13,7 +13,7 @@ import AuthContext from '../store/auth-context';
 import { getUserData, storeBookmark } from '../features/users/userSlice';
 import { auth } from '../firebase';
 import { selectUserKey } from '../features/users/userSlice';
-import AddBookmarkGame from './games/AddBookmarkGame';
+import AddBookmarkGame from './carousels/AddBookmarkGame';
 import Footer from './Footer';
 import LoadingDots from './LoadingDots';
 
