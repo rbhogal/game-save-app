@@ -70,20 +70,10 @@
   }
 }
 
-
-/*  415px */
-@media only screen and (max-width: 25.9375em) {
+/*  420px */
+@media only screen and (max-width: 26.25em) {
   .slider-container {
-    /* max-width: 100%;
-    border-radius: 5px;
-    height: auto;
-    background-color: #34373b;
-    margin-top: 2.5rem;
-    margin-bottom: 10rem;
-    padding: 2.5rem 5rem;
-    padding-bottom: 3.5rem; */
-
-    padding: 1rem 4rem;
-    
+    background-color: rgba(52, 55, 59, 0);
+    padding: 0;
   }
 }
