@@ -75,6 +75,8 @@ const SearchBox = () => {
         type="text"
         className="input"
         placeholder="Game..."
+
+        
         onChange={e => setSearch(e.target.value)}
         onKeyPress={handleEnterPress}
       />

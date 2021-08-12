@@ -29,6 +29,7 @@
   font-family: inherit;
   font-weight: 700;
   color: rgb(82, 97, 121);
+  text-transform: uppercase;
 }
 
 .SearchBox input:focus {
@@ -59,7 +60,7 @@
   --dropdown-heading-color: rgba(255, 255, 255, 0.8);
 
   /* --dropdown-heading-color: rgba(220, 220, 220, 1); */
-  /* --dropdown-heading-color: white; future note: Go with white full opacity */ 
+  /* --dropdown-heading-color: white; future note: Go with white full opacity */
 
   background-color: rgba(0, 0, 0, 0);
   color: var(--dropdown-heading-color);
