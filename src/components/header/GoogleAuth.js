@@ -26,6 +26,7 @@ function GoogleAuth() {
   const userName = localStorage.getItem('username');
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
+  const mobileMenuIsOpen = isOpen;
 
   const handleNewUser = async id => {
     // Get users
@@ -130,11 +131,15 @@ function GoogleAuth() {
     // Click only works for mobile
     if (window.innerWidth > 960) return;
 
-    dispatch(
-      isOpen({
-        click: false,
-      })
-    );
+    // close mobile menu
+    if (mobileMenuIsOpen) {
+      document.body.style.overflow = 'visible';
+      dispatch(
+        isOpen({
+          click: false,
+        })
+      );
+    }
   };
 
   const renderDropdownContent = () => {
