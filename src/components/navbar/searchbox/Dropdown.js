@@ -5,8 +5,8 @@ import axios from 'axios';
 
 import './Dropdown.css';
 import { DropdownMenuItems } from './DropdownMenuItems';
-import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
-import AuthContext from '../../store/auth-context';
+import { isOpen } from '../../../features/mobileMenu/mobileMenuSlice';
+import AuthContext from '../../../store/auth-context';
 
 const Dropdown = () => {
   const [clickDropdown, setClickDropdown] = useState(false);

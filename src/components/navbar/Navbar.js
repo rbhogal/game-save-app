@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './Navbar.css';
-import SearchBox from './SearchBox';
+import SearchBox from './searchbox/SearchBox';
 import GoogleAuth from './GoogleAuth';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 

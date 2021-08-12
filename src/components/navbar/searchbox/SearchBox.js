@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import './SearchBox.css';
 import { Link, useHistory } from 'react-router-dom';
 import Dropdown from './Dropdown';
-import AuthContext from '../../store/auth-context';
-import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
+import AuthContext from '../../../store/auth-context';
+import { isOpen } from '../../../features/mobileMenu/mobileMenuSlice';
 
 const SearchBox = () => {
   const [dropdown, setDropdown] = useState(false);

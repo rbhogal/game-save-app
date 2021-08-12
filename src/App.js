@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
-import Navbar from './components/header/Navbar';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
