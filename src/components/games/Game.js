@@ -19,7 +19,7 @@ import toast from 'react-hot-toast';
 const Game = () => {
   const token = useSelector(selectAppToken);
   const userKey = useSelector(selectUserKey);
-  const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarked, setBookmarked] = useState();
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
   const [developer, setDeveloper] = useState('');
@@ -132,29 +132,7 @@ const Game = () => {
     }
   };
 
-  // const handleBookmarkClick = async () => {
-  //   if (!isSignedIn) return alert('Sign in to save!');
-
-  //   const gameExists = await checkGameExists();
-
-  //   if (gameExists) {
-  //     alert('Already saved!');
-  //   }
-
-  //   if (!gameExists) {
-  //     dispatch(
-  //       storeBookmark({
-  //         key: userKey,
-  //         game: gameData,
-  //       })
-  //     );
-  //     return alert('saved!');
-  //   }
-  // };
-
-  const handleBookmarkClick = () => {
-    // alert sign in
-
+  const handleBookmarkClick = async () => {
     if (!isSignedIn) {
       return toast('Sign in!', {
         duration: 2000,
@@ -167,31 +145,29 @@ const Game = () => {
       });
     }
 
-    //   const gameExists = await checkGameExists();
+    const gameExists = await checkGameExists();
 
-    // if (gameExists) {
-    //   alert('Already saved!');
-    // }
+    if (gameExists) {
+      toast.error('Already saved!', {
+        duration: 2000,
+      });
+    }
 
-    // if (!gameExists) {
-    //   dispatch(
-    //     storeBookmark({
-    //       key: userKey,
-    //       game: gameData,
-    //     })
-    //   );
-    //   return alert('saved!');
-    // }
-  };
-
-  const renderBookmarkBtn = () => {
-    if (!isSignedIn) {
-      return <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>;
+    if (!gameExists) {
+      dispatch(
+        storeBookmark({
+          key: userKey,
+          game: gameData,
+        })
+      );
+      return toast.success('Saved', {
+        duration: 2000,
+      });
     }
   };
 
   return (
-    <div className="Game">
+    <div id="Game" className="Game">
       {isLoading && <LoadingDots />}
       {!isLoading && (
         <>
@@ -215,8 +191,7 @@ const Game = () => {
                     {Math.round(gameData.total_rating)}
                   </p>
                 </div>
-                {/* <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon> */}
-                {renderBookmarkBtn()}
+                <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>
               </div>
             </div>
           </section>
@@ -289,6 +264,12 @@ const Game = () => {
               gameName={gameData.name}
             />
           </section>
+
+          <div className="scroll-up-btn">
+            <a href="#root">
+              <ion-icon name="arrow-up"></ion-icon>
+            </a>
+          </div>
         </>
       )}
       {!isLoading && <Footer />}

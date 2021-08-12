@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import toast from 'react-hot-toast'
 
 import { selectAppToken } from '../../features/admin/appTokenSlice';
 import GamesSearchScroll from './GamesSearchScroll';
@@ -82,12 +83,23 @@ const GameList = () => {
   };
 
   const handleBookmarkClick = async game => {
-    if (!isSignedIn) return alert('Sign in to save!');
+    if (!isSignedIn)
+      return toast('Sign in!', {
+        duration: 2000,
+        icon: (
+          <ion-icon
+            style={{ fontSize: '2.5rem' }}
+            name="person-circle-outline"
+          ></ion-icon>
+        ),
+      });
 
     const gameExists = await checkGameExists(game.id);
 
     if (gameExists) {
-      alert('Already saved!');
+      toast.error('Already saved!', {
+        duration: 1000,
+      });
     }
 
     if (!gameExists) {
@@ -97,7 +109,9 @@ const GameList = () => {
           game: game,
         })
       );
-      return alert('saved!');
+      return toast.success('Saved', {
+        duration: 1000,
+      });
     }
   };
 

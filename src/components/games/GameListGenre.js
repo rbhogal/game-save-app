@@ -9,6 +9,7 @@ import './GameList.css';
 import AuthContext from '../../store/auth-context';
 import AddBookmarkGame from './AddBookmarkGame';
 import { storeBookmark, selectUserKey } from '../../features/users/userSlice';
+import toast from 'react-hot-toast'
 
 import './GameList.css';
 import Footer from '../Footer';
@@ -89,12 +90,22 @@ const GameListGenre = () => {
   };
 
   const handleBookmarkClick = async game => {
-    if (!isSignedIn) return alert('Sign in to save!');
+    if (!isSignedIn) return toast('Sign in!', {
+      duration: 2000,
+      icon: (
+        <ion-icon
+          style={{ fontSize: '2.5rem' }}
+          name="person-circle-outline"
+        ></ion-icon>
+      ),
+    });
 
     const gameExists = await checkGameExists(game.id);
 
     if (gameExists) {
-      alert('Already saved!');
+      toast.error('Already saved!', {
+        duration: 1000,
+      });
     }
 
     if (!gameExists) {
@@ -104,7 +115,9 @@ const GameListGenre = () => {
           game: game,
         })
       );
-      return alert('saved!');
+      return toast.success('Saved', {
+        duration: 1000,
+      });
     }
   };
 
