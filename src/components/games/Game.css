@@ -182,11 +182,15 @@
 
 .scroll-up-btn a {
   color: inherit;
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 .scroll-up-btn a:hover {
   opacity: 1;
+}
+
+.scroll-up-btn ion-icon {
+  font-size: 2rem;
 }
 
 /* 1045px */
