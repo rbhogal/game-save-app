@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { auth, provider } from '../../firebase';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -9,21 +9,16 @@ import './GoogleAuth.css';
 import {
   setActiveUser,
   setUserSignOutState,
-  selectUserEmail,
-  selectUserName,
-  selectUserToken,
   addNewUser,
-  getUserData,
 } from '../../features/users/userSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
-import { getAllUsers } from '../../features/users/usersSlice';
+
 
 function GoogleAuth() {
   const [dropdown, setDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-
   const userName = localStorage.getItem('username');
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
 import Navbar from './components/navbar/Navbar';
@@ -15,13 +15,12 @@ import Game from './components/game/Game';
 import SavedGames from './components/SavedGames';
 import GameListGenre from './components/GameListGenre';
 import AuthContext from './store/auth-context';
-import { addAppToken, selectIsLoading } from './features/admin/appTokenSlice';
+import { addAppToken } from './features/admin/appTokenSlice';
 
 function App() {
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
 
   const getAppToken = async () => {
     // Helper Function
@@ -61,7 +60,7 @@ function App() {
           expiresIn: data.expires_in,
           token: data.access_token,
         })
-        .then(console.log(data.access_token))
+        .then()
         .catch(err => {
           alert(err.message);
         });

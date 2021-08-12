@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 import './GamesHorizontalScroll.css';
 import './GamesSearchScroll.css';
-import { Link } from 'react-router-dom';
 import LoadingDots from '../LoadingDots';
 
 const GamesSearchScroll = props => {
@@ -146,7 +146,7 @@ const GamesSearchScroll = props => {
     if (_.isEmpty(props.games)) {
       return (
         <>
-          <div className='no-results-mssg' >
+          <div className="no-results-mssg">
             <h1>{`No results for "${props.search}".`}</h1>
           </div>
         </>

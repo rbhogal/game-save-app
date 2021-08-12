@@ -39,17 +39,11 @@
   height: 100%;
 }
 
-.videos {
-  /* width: 640px;
-  height: 385px; */
-}
 
 .fa-search-plus {
   font-size: 3.5rem;
   opacity: 0;
   position: absolute;
-  /* right: 5rem;
-  bottom: 1rem; */
   z-index: 2;
   left: 50%;
   margin-left: -5%;

@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 
 import './Dropdown.css';
 import { DropdownMenuItems } from './DropdownMenuItems';
@@ -13,9 +12,6 @@ const Dropdown = () => {
   const mobileMenuIsOpen = isOpen;
 
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-
-  let history = useHistory();
 
   const handleClickDropdown = () => setClickDropdown(!clickDropdown);
 

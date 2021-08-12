@@ -23,20 +23,12 @@ const Home = () => {
   const [anticipatedGames, setAnticipatedGames] = useState([]);
   const [recentGames, setRecentGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
   const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
   const [userId, setUserId] = useState(null);
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
-
-  let date = new Date();
-  let year = date.getFullYear();
-  let month = date.getMonth();
-  let day = date.getDate();
-  let releaseDate = Math.round(new Date(year - 1, month, day).getTime() / 1000);
-
   let currentDate = Math.round(new Date().getTime() / 1000);
 
   // Helper Functions

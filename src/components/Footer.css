@@ -22,17 +22,6 @@
   color: gainsboro;
 }
 
-.role-credits {
-  display: flex;
-  align-items: center;
-}
-
-.author {
-  /* font-family: graduate, cursive; */
-  font-size: 1.6rem;
-  margin-top: 0.2rem;
-}
-
 .Footer ion-icon {
   font-size: 1.4rem !important;
 }

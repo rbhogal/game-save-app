@@ -29,8 +29,6 @@
 
 .user-dropdown-content ion-icon {
   font-size: 15px;
-  /* color: rgb(84, 103, 133); */
-  /* color: rgba(76, 76, 76, 0.5); */
   color: white;
 }
 
@@ -108,13 +106,6 @@ hr.solid {
 
 /* Mobile--960px */
 @media only screen and (max-width: 60em) {
-  /*
-    Parent, child and siblings
-    1. GoogleAuth
-      2. drop-btn
-      2. user-drop-content
-  */
-
   .GoogleAuth,
   .drop-btn {
     width: 100%;

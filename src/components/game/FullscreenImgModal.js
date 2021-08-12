@@ -9,8 +9,6 @@ const FullscreenImgModal = ({
   setImageId,
   screenshots,
   artworks,
-  screenshotRef,
-  artworkRef,
   imageType,
 }) => {
   const modalRef = useRef();

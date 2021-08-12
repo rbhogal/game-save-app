@@ -7,7 +7,6 @@ import './SavedGames.css';
 import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
 import RemoveBookmarkGame from '../components/carousels/RemoveBookmarkGame';
 import {
-  selectSavedGames,
   selectUserKey,
   getUserData
 } from '../features/users/userSlice';
@@ -17,18 +16,11 @@ import Footer from './Footer';
 
 const SavedGames = () => {
   const [savedGamesArr, setSavedGamesArr] = useState([]);
-
   const [userId, setUserId] = useState();
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-  // const savedGamesObj = useSelector(selectSavedGames);
   const [savedGamesObj, setSavedGamesObj] = useState();
-
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
 
-  /* 
-    Redux is too damn slow, just fetch the games Objects directly in here.
-  */
 
   // Helper Function (DRY: Also in Home.js)
   const getUserIdFirebase = () => {

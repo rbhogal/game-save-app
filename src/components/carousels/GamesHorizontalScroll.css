@@ -1,6 +1,5 @@
 .game-card {
   position: relative;
-  /* width: 100%; */
   height: auto;
 }
 
@@ -8,18 +7,9 @@
   font-size: 2.5rem;
 }
 
-.category ion-icon {
-  /* margin-bottom: 1rem; */
-}
-
 
 .game-card > img {
   border-radius: 5px;
-  /* max-width: 19rem; */
-  /* height: 280px; */
-  /* max-width: 87.5%; */
-  /* width: 100%; */
-  /* max-width: 19rem; */
   width: 19rem;
   height: auto;
   margin: 2.5rem 1rem;
@@ -47,7 +37,6 @@
   padding: 1rem;
   border-radius: 5px;
   width: 21.1rem;
-  /* width: 100%; */
   height: 28rem;
   border: 2px solid rgba(145, 71, 255, 1);
 
@@ -55,7 +44,6 @@
   left: -0.8rem;
 
   visibility: hidden;
-  /* transform: translateY(309px); */
 
   transition: all 0s ease-in-out 0.6s;
 
@@ -87,17 +75,12 @@
 }
 
 .slick-arrows .slick-prev {
-  /* left: 1%; */
   z-index: 1;
 }
 
-.slick-arrows .slick-next {
-  /* right: -2%; */
-}
 
 .game-card-content {
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  /* position: relative; */
 }
 
 /* add (bookmark) icon */
@@ -142,62 +125,4 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   bottom: 4.9rem;
   left: 78%;
-}
-
-/* 600px */
-@media only screen and (max-width: 37.5em) {
-  .game-card > img {
-    /* max-width: 26.5rem;
-    max-height: 35.8rem; */
-    /* max-width: 90%;
-    height: auto; */
-  }
-
-  .game-card-content p {
-    /* font-size: 12px; */
-  }
-
-  .game-card-genre-box {
-    /* width: 8rem; */
-  }
-
-  .game-card-rating-box {
-    /* padding: 0 0.5rem;
-    width: 2.9rem;
-    left: 78%; */
-  }
-
-  .game-card-content ion-icon {
-    /* position: relative;
-    left: 58%; */
-  }
-}
-
-/* 320px */
-@media only screen and (max-width: 20em) {
-  .game-card > img {
-    /* max-width: 26.5rem;
-    max-height: 35.8rem; */
-    /* max-width: 90%; */
-    /* height: auto; */
-  }
-
-  .game-card-content p {
-    /* font-size: 12px; */
-  }
-
-  .game-card-genre-box {
-    /* width: 6rem; */
-  }
-
-  .game-card-rating-box {
-    /* padding: 0 0.4rem;
-    width: 2.6rem;
-    left: 78%; */
-  }
-
-  .game-card-content ion-icon {
-    /* position: relative;
-    left: 58%; */
-  }
 }

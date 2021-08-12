@@ -11,7 +11,6 @@ const GameMediaSliders = props => {
   const screenshotRef = useRef();
   const artworkRef = useRef();
   const [imageType, setImageType] = useState('');
-  const [isLoading, setIsLoading] = useState();
 
   const settings = {
     dots: true,

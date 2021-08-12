@@ -97,7 +97,6 @@ const GamesHorizontalScroll = props => {
                   <p className="game-card-summary">{game.summary}</p>
                 </div>
                 <img
-                  // style={{ width: '19rem', height: '25.3rem' }}
                   src={`//images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
                   alt={game.name}
                 ></img>

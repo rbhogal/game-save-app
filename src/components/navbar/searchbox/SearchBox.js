@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import './SearchBox.css';
 import { Link, useHistory } from 'react-router-dom';

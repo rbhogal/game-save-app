@@ -17,7 +17,6 @@ const GameList = () => {
   const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
-
   const authCtx = useContext(AuthContext);
   const newSearch = authCtx.search;
   const isSignedIn = authCtx.isSignedIn;

@@ -58,7 +58,6 @@ export const getAppToken = async () => {
 
     // Gets new token when token expires
     setTimeout(getNewToken, remainingDuration);
-    console.log(token);
     return token;
   } catch (err) {
     alert(err.message);

@@ -18,7 +18,6 @@ import toast from 'react-hot-toast';
 const Game = () => {
   const token = useSelector(selectAppToken);
   const userKey = useSelector(selectUserKey);
-  const [bookmarked, setBookmarked] = useState();
   const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
   const [developer, setDeveloper] = useState('');
@@ -42,9 +41,6 @@ const Game = () => {
   const releaseDay = releaseDate.getDate() + 1;
   const urlPath = window.location.pathname;
   const [isLoading, setIsLoading] = useState(true);
-  const [videos, setVideos] = useState([]);
-  const [screenshots, setScreenshots] = useState([]);
-  const [artwork, setArtwork] = useState([]);
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();

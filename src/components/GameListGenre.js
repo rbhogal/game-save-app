@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import axios from 'axios';
+import toast from 'react-hot-toast'
 
 import { selectAppToken } from '../features/admin/appTokenSlice';
 import GamesSearchScroll from './carousels/GamesSearchScroll';
@@ -9,9 +9,6 @@ import './GameList.css';
 import AuthContext from '../store/auth-context';
 import AddBookmarkGame from './carousels/AddBookmarkGame';
 import { storeBookmark, selectUserKey } from '../features/users/userSlice';
-import toast from 'react-hot-toast'
-
-import './GameList.css';
 import Footer from './Footer';
 
 const GameListGenre = () => {
@@ -19,9 +16,7 @@ const GameListGenre = () => {
   const [isLoading, setIsLoading] = useState(null);
   const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
-
   const authCtx = useContext(AuthContext);
-  const newGenre = authCtx.genre;
   const isSignedIn = authCtx.isSignedIn;
   const userKey = useSelector(selectUserKey);
   const [genreId, setGenreId] = useState('');
@@ -30,7 +25,6 @@ const GameListGenre = () => {
   useEffect(() => {
     const index = urlPath.lastIndexOf('/');
     const id = urlPath.slice(index + 1, urlPath.length);
-    console.log(id);
     setGenreId(id);
   });
 

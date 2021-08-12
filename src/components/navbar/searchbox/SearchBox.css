@@ -37,7 +37,6 @@
 }
 
 /* Placeholder styling for browsers */
-
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   opacity: 0.6;
@@ -56,11 +55,7 @@
 }
 
 .drop-btn {
-  /* --dropdown-heading-color: rgba(220, 220, 220, 0.8); */
   --dropdown-heading-color: rgba(255, 255, 255, 0.8);
-
-  /* --dropdown-heading-color: rgba(220, 220, 220, 1); */
-  /* --dropdown-heading-color: white; future note: Go with white full opacity */
 
   background-color: rgba(0, 0, 0, 0);
   color: var(--dropdown-heading-color);
@@ -95,9 +90,7 @@
 }
 
 .drop-btn:hover {
-  /* color: rgba(220, 220, 220, 1); */
   color: rgb(255, 255, 255);
-  /* color: rgba(220, 220, 220, 0.8); */
 }
 
 .drop-btn:hover ion-icon {
@@ -128,7 +121,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    /* padding: 18px 10px; */
   }
 
   .SearchBox input {
