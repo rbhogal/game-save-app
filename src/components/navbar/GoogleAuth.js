@@ -10,7 +10,7 @@ import {
   setActiveUser,
   setUserSignOutState,
   addNewUser,
-} from '../../features/users/userSlice';
+} from '../../features/user/userSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
 

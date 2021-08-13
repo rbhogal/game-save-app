@@ -9,7 +9,7 @@ import RemoveBookmarkGame from '../components/carousels/RemoveBookmarkGame';
 import {
   selectUserKey,
   getUserData
-} from '../features/users/userSlice';
+} from '../features/user/userSlice';
 import { auth } from '../firebase';
 import LoadingDots from './LoadingDots';
 import Footer from './Footer';

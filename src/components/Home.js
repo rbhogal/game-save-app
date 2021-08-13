@@ -10,9 +10,8 @@ import {
   addLoadingState,
 } from '../features/admin/appTokenSlice';
 import AuthContext from '../store/auth-context';
-import { getUserData, storeBookmark } from '../features/users/userSlice';
+import { getUserData, storeBookmark, selectUserKey } from '../features/user/userSlice';
 import { auth } from '../firebase';
-import { selectUserKey } from '../features/users/userSlice';
 import AddBookmarkGame from './carousels/AddBookmarkGame';
 import Footer from './Footer';
 import LoadingDots from './LoadingDots';

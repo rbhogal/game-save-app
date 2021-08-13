@@ -8,7 +8,7 @@ import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
 import './GameList.css';
 import AuthContext from '../store/auth-context';
 import AddBookmarkGame from '../components/carousels/AddBookmarkGame';
-import { storeBookmark, selectUserKey } from '../features/users/userSlice';
+import { storeBookmark, selectUserKey } from '../features/user/userSlice';
 import Footer from './Footer';
 
 const GameList = () => {

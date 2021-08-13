@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import './Game.css';
 import { selectAppToken } from '../../features/admin/appTokenSlice';
-import { selectUserKey, storeBookmark } from '../../features/users/userSlice';
+import { selectUserKey, storeBookmark } from '../../features/user/userSlice';
 import AuthContext from '../../store/auth-context';
 import LoadingDots from '../LoadingDots';
 import GameHeading from './GameHeading';

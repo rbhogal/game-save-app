@@ -180,6 +180,10 @@
   opacity: 1;
 }
 
+.scroll-up-btn a:visited {
+  opacity: 0.25;
+}
+
 .scroll-up-btn ion-icon {
   font-size: 2rem;
 }
@@ -237,6 +241,15 @@
 @media only screen and (max-width: 31.25em) {
   .Game {
     margin-top: 3rem;
+    padding: 0 8vw;
+  }
+
+  .game-main-content {
+    padding: 3rem 0 0 0;
+  }
+
+  .game-img {
+    width: 60%;
   }
 
   .game-left-column {
