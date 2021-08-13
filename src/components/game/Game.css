@@ -243,6 +243,20 @@
     margin-top: 3rem;
     padding: 0 4vw;
   }
+
+  .game-main-content {
+    padding: 3rem 0 0 0;
+    width: 100%;
+  }
+
+  .game-main-content-text {
+    align-self: flex-start;
+  }
+
+  .game-rating-bookmark-div {
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 /* 750px */
@@ -251,6 +265,20 @@
     margin-top: 3rem;
     padding: 0 4vw;
   }
+
+  .game-main-content {
+    padding: 3rem 0 0 0;
+    width: 100%;
+  }
+
+  .game-main-content-text {
+    align-self: flex-start;
+  }
+
+  .game-rating-bookmark-div {
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 /* 600px */
@@ -258,6 +286,20 @@
   .Game {
     margin-top: 3rem;
     padding: 0 4vw;
+  }
+
+  .game-main-content {
+    padding: 3rem 0 0 0;
+    width: 100%;
+  }
+
+  .game-main-content-text {
+    align-self: flex-start;
+  }
+
+  .game-rating-bookmark-div {
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
@@ -285,5 +327,3 @@
     min-width: 100%;
   }
 }
-
-
