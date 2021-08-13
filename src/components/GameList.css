@@ -15,10 +15,25 @@
   margin-top: 2.5rem;
 }
 
+/* 820px */
+@media only screen and (max-width: 51.25em) {
+  .GameList {
+    margin: 0rem 2rem 0 2rem;
+  }
+}
+
+/* 750px */
+@media only screen and (max-width: 46.875em) {
+  .GameList {
+    margin: 2rem 2rem 0 2rem;
+  }
+}
+
 /* 600px */
 @media only screen and (max-width: 37.5em) {
+
   .GameList {
-    margin: 3rem 5rem 0 5rem;
+    margin: 1rem 2rem 0 2rem;
   }
 }
 

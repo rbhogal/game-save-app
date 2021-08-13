@@ -69,11 +69,12 @@ const GamesSearchScroll = props => {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 820,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 4,
+          slidesToScroll: 1,
           infinite: false,
+          arrows:false,
           dots: false,
         },
       },
