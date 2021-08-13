@@ -14,7 +14,6 @@ import {
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
 
-
 function GoogleAuth() {
   const [dropdown, setDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -96,6 +95,16 @@ function GoogleAuth() {
       .catch(err => alert(err.message));
 
     localStorage.removeItem('username');
+
+    // close mobile menu
+    if (mobileMenuIsOpen) {
+      document.body.style.overflow = 'visible';
+      dispatch(
+        isOpen({
+          click: false,
+        })
+      );
+    }
     setIsLoading(false);
     renderDropdown();
   };
