@@ -65,7 +65,7 @@ const GamesHorizontalScroll = props => {
         breakpoint: 820,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           infinite: true,
           arrows: false,
           dots: props.dots,

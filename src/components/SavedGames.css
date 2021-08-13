@@ -11,24 +11,31 @@
   font-size: 2.5rem;
 }
 
-/* 812px */
+/* 820px */
 @media only screen and (max-width: 50.75em) {
   .SavedGames {
-    margin: 0rem 5rem 0 5rem;
+    margin: 2rem 2rem 0 2rem;
+  }
+}
+
+/* 750px */
+@media only screen and (max-width: 46.875em) {
+  .SavedGames {
+    margin: 2rem 2rem 0 2rem;
   }
 }
 
 /* 600px */
 @media only screen and (max-width: 37.5em) {
   .SavedGames {
-    margin: 3rem 5rem 0 5rem;
+    margin: 2rem 2rem 0 2rem;
   }
 }
 
 /* 500px */
 @media only screen and (max-width: 31.25em) {
   .SavedGames {
-    margin: 3em 10rem 0 10rem;
+    margin: 1.5em 2rem 0 2rem;
   }
 
 }
@@ -36,13 +43,13 @@
 /* 375px */
 @media only screen and (max-width: 23.4375em) {
   .SavedGames {
-    margin: 3em 8rem 0 8rem;
+    margin: 2rem 1rem 0 1rem;
   }
 }
 
 /* 320px */
 @media only screen and (max-width: 20em) {
   .SavedGames {
-    margin: 3rem 4rem 0 4rem;
+    margin: 2rem 1rem 0 1rem;
   }
 }
