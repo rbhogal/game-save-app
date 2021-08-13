@@ -33,10 +33,6 @@ body {
   color: inherit;
 }
 
-.Home ion-icon {
-  font-size: 2.5rem;
-}
-
 .category {
   display: flex;
   align-items: center;
@@ -44,6 +40,8 @@ body {
 
 .category ion-icon {
   margin-bottom: 2px;
+  font-size: 2.5rem;
+
 }
 
 /* 825px */

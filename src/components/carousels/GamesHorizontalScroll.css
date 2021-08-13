@@ -86,6 +86,7 @@
   position: relative;
   left: 65%;
   bottom: 1.9rem;
+  font-size: 2.5rem;
   z-index: 50;
 }
 
@@ -172,7 +173,36 @@
   }
 
   .game-card-genre-box {
-    width: 8rem;
+    width: 9rem;
+  }
+}
+
+/* 670px */
+@media only screen and (max-width: 41.875em) {
+  .game-card-content ion-icon {
+    left: 61%;
+  }
+
+  .game-card-genre-box {
+    width: 9rem;
+  }
+
+  .game-card-content p {
+    font-size: 1.5rem;
+  }
+}
+
+/* 650px */
+@media only screen and (max-width: 40.625em) {
+  .game-card-content ion-icon {
+    left: 61%;
+  }
+
+  .game-card-genre-box {
+    width: 9rem;
+  }
+  .game-card-content p {
+    font-size: 1.4rem;
   }
 }
 
@@ -211,8 +241,6 @@
     width: min-content;
     bottom: 4.5rem;
   }
-
-
 }
 
 /* 500px */
@@ -226,7 +254,29 @@
   }
 
   .game-card-content ion-icon {
+    left: 65%;
+  }
+
+  .game-card-genre-box {
+    width: 9rem;
+  }
+
+  .game-card-genre-box p {
+    font-size: 1.6rem;
+  }
+
+  .game-card-content ion-icon {
     left: 63%;
+    font-size: 2.5rem;
+  }
+
+  .game-card-rating {
+    font-size: 1.6rem;
+  }
+
+  .game-card-rating-box {
+    width: min-content;
+    bottom: 4.9rem;
   }
 }
 
