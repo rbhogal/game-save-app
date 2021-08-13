@@ -112,14 +112,14 @@
 .game-card-rating {
   color: white;
   margin: auto 0;
+  padding: 0 0.7rem;
 }
 
 .game-card-rating-box {
   border-radius: 5px;
   border: 2px solid rgba(145, 71, 255, 1);
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 0 0.7rem;
-  width: 3.8rem;
+  width: min-content;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   bottom: 4.9rem;
   left: 78%;
@@ -168,7 +168,11 @@
 /* 750px */
 @media only screen and (max-width: 46.875em) {
   .game-card-content ion-icon {
-    left: 63%;
+    left: 61%;
+  }
+
+  .game-card-genre-box {
+    width: 8rem;
   }
 }
 
@@ -185,6 +189,30 @@
   .game-card-content ion-icon {
     left: 63%;
   }
+
+  .game-card-genre-box {
+    width: 8rem;
+  }
+
+  .game-card-genre-box p {
+    font-size: 1.2rem;
+  }
+
+  .game-card-content ion-icon {
+    left: 63%;
+    font-size: 2rem;
+  }
+
+  .game-card-rating {
+    font-size: 1.2rem;
+  }
+
+  .game-card-rating-box {
+    width: min-content;
+    bottom: 4.5rem;
+  }
+
+
 }
 
 /* 500px */
@@ -230,22 +258,39 @@
   .game-card-genre-box {
     width: 8rem;
   }
+
   .game-card-genre-box p {
     font-size: 1.2rem;
   }
 
   .game-card-content ion-icon {
-    left: 59%;
+    left: 63%;
     font-size: 2rem;
   }
 
   .game-card-rating-box {
-    width: 3rem;
-    padding: 0 0.6rem;
+    width: min-content;
     bottom: 4.5rem;
   }
 
   .game-card-rating {
     font-size: 1.2rem;
+    padding: 0 0.7rem;
   }
+
+  /* .game-card-rating {
+    color: white;
+    margin: auto 0;
+    padding: 0 0.7rem;
+  }
+  
+  .game-card-rating-box {
+    border-radius: 5px;
+    border: 2px solid rgba(145, 71, 255, 1);
+    background-color: rgba(0, 0, 0, 0.1);
+    width: min-content;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    bottom: 4.9rem;
+    left: 78%;
+  } */
 }

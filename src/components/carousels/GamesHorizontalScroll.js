@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
@@ -117,7 +117,7 @@ const GamesHorizontalScroll = props => {
                 </Link>
                 <div className="game-card-rating-box">
                   <p className="game-card-rating">
-                    {Math.round(game.total_rating)}
+                    {game.total_rating ? Math.round(game.total_rating) : 'NA'}
                   </p>
                 </div>
               </div>
