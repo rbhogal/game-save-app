@@ -74,7 +74,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 4,
           slidesToScroll: 3,
           infinite: false,
-          arrows:false,
+          arrows: false,
           dots: false,
         },
       },
@@ -94,7 +94,7 @@ const GamesSearchScroll = props => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: false,
-          arrows:false,
+          arrows: false,
           dots: false,
         },
       },
@@ -143,7 +143,9 @@ const GamesSearchScroll = props => {
                     </Link>
                     <div className="game-card-rating-box">
                       <p className="game-card-rating">
-                        {game.total_rating ? Math.round(game.total_rating) : 'N/A'}
+                        {game.total_rating
+                          ? Math.round(game.total_rating)
+                          : 'N/A'}
                       </p>
                     </div>
                   </div>
@@ -156,7 +158,9 @@ const GamesSearchScroll = props => {
     }
 
     if (_.isEmpty(props.games)) {
-      return (
+      return props.title === 'Saved Games' ? (
+        <div className="no-results-mssg">Add Games</div>
+      ) : (
         <>
           <div className="no-results-mssg">
             <h1>{`No results for "${props.search}".`}</h1>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import _ from 'lodash';
@@ -6,10 +6,7 @@ import _ from 'lodash';
 import './SavedGames.css';
 import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
 import RemoveBookmarkGame from '../components/carousels/RemoveBookmarkGame';
-import {
-  selectUserKey,
-  getUserData
-} from '../features/user/userSlice';
+import { selectUserKey, getUserData } from '../features/user/userSlice';
 import { auth } from '../firebase';
 import LoadingDots from './LoadingDots';
 import Footer from './Footer';
@@ -21,6 +18,36 @@ const SavedGames = () => {
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
 
+  const removeGame = async gameKey => {
+    try {
+      const resp = await axios.delete(
+        `https://game-save-default-rtdb.firebaseio.com/users/${userKey}/savedGames/${gameKey}.json`
+      );
+    } catch (err) {
+      console.log(err.message);
+    }
+    getSavedGames();
+  };
+
+  const handleBookmarkClick = game => {
+    for (const key in savedGamesObj) {
+      if (savedGamesObj[key].id === game.id) {
+        removeGame(key);
+      }
+    }
+  };
+
+  const getSavedGames = async () => {
+    const resp = await axios.get(
+      'https://game-save-default-rtdb.firebaseio.com/users/.json'
+    );
+    const { data: users } = await resp;
+    for (const key in users) {
+      if (users[key].userId === userId) {
+        setSavedGamesObj(users[key].savedGames);
+      }
+    }
+  };
 
   // Helper Function (DRY: Also in Home.js)
   const getUserIdFirebase = () => {
@@ -37,24 +64,16 @@ const SavedGames = () => {
 
   useEffect(() => {
     getUserIdFirebase();
-  });
+  }, []);
 
   useEffect(() => {
     if (!userId) return;
     dispatch(getUserData(userId));
   }, [dispatch, userId]);
 
-  useEffect(async () => {
-    const resp = await axios.get(
-      'https://game-save-default-rtdb.firebaseio.com/users/.json'
-    );
-    const { data: users } = await resp;
-    for (const key in users) {
-      if (users[key].userId === userId) {
-        setSavedGamesObj(users[key].savedGames);
-      }
-    }
-  }, [savedGamesObj, userId]);
+  useEffect(() => {
+    getSavedGames();
+  }, [userId]);
 
   useEffect(() => {
     convertObjToArr();
@@ -67,27 +86,12 @@ const SavedGames = () => {
     setSavedGamesArr(updatedSavedGamesRev);
   };
 
-  const removeGame = async gameKey => {
-    try {
-      const resp = await axios.delete(
-        `https://game-save-default-rtdb.firebaseio.com/users/${userKey}/savedGames/${gameKey}.json`
-      );
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-
-  const handleBookmarkClick = game => {
-    for (const key in savedGamesObj) {
-      if (savedGamesObj[key].id === game.id) {
-        removeGame(key);
-      }
-    }
-  };
-
+  // console.log(savedGamesArr);
+  // console.log(savedGamesObj);
+  console.log('rendering...');
   return (
     <div className="SavedGames">
-      {savedGamesObj && (
+      {!_.isEmpty(savedGamesArr) ? (
         <GamesSearchScroll
           title="Saved Games"
           dots={true}
@@ -96,10 +100,10 @@ const SavedGames = () => {
           handleBookmarkClick={handleBookmarkClick}
           games={savedGamesArr}
         />
+      ) : (
+        <LoadingDots />
       )}
-
-      {!savedGamesObj && <LoadingDots />}
-      {savedGamesObj && <Footer />}
+      {!_.isEmpty(savedGamesArr) && <Footer />}
     </div>
   );
 };
