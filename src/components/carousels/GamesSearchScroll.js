@@ -143,7 +143,7 @@ const GamesSearchScroll = props => {
                     </Link>
                     <div className="game-card-rating-box">
                       <p className="game-card-rating">
-                        {Math.round(game.total_rating)}
+                        {game.total_rating ? Math.round(game.total_rating) : 'N/A'}
                       </p>
                     </div>
                   </div>

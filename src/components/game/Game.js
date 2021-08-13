@@ -183,7 +183,7 @@ const Game = () => {
               <div className="game-rating-bookmark-div">
                 <div className="game-rating-box">
                   <p className="game-rating">
-                    {Math.round(gameData.total_rating)}
+                    {gameData.total_rating ? Math.round(gameData.total_rating) : 'N/A'}
                   </p>
                 </div>
                 <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>
