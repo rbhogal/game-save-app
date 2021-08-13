@@ -24,18 +24,10 @@
   .game-card > img {
     width: 92%;
   }
-
-  .game-card-content ion-icon {
-    left: 65%;
-    font-size: 2rem;
-  }
-
 }
-
 
 /* 375px */
 @media only screen and (max-width: 23.4375em) {
-
   .category h1 {
     font-size: 2.2rem;
   }
@@ -43,15 +35,7 @@
   .game-card > img {
     width: 92%;
   }
-
-  .game-card-content ion-icon {
-    left: 62%;
-    font-size: 2rem;
-  }
-
-
 }
-
 
 /* 320px */
 @media only screen and (max-width: 20em) {

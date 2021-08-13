@@ -142,7 +142,7 @@
     width: 92%;
   }
 
-  .game-card-content ion-icon {
+  /* .game-card-content ion-icon {
     left: 62%;
     font-size: 2rem;
   }
@@ -155,6 +155,20 @@
 
   .game-card-rating {
     font-size: 1.2rem;
+  } */
+}
+
+/* 825px */
+@media only screen and (max-width: 51.5625em) {
+  .game-card-content ion-icon {
+    left: 63%;
+  }
+}
+
+/* 750px */
+@media only screen and (max-width: 46.875em) {
+  .game-card-content ion-icon {
+    left: 63%;
   }
 }
 
@@ -169,18 +183,7 @@
   }
 
   .game-card-content ion-icon {
-    left: 62%;
-    font-size: 2rem;
-  }
-
-  .game-card-rating-box {
-    width: 3rem;
-    padding: 0 0.6rem;
-    bottom: 4.5rem;
-  }
-
-  .game-card-rating {
-    font-size: 1.2rem;
+    left: 63%;
   }
 }
 
@@ -195,8 +198,7 @@
   }
 
   .game-card-content ion-icon {
-    left: 65%;
-    font-size: 2rem;
+    left: 63%;
   }
 }
 
@@ -211,8 +213,7 @@
   }
 
   .game-card-content ion-icon {
-    left: 65%;
-    font-size: 2rem;
+    left: 63%;
   }
 }
 
