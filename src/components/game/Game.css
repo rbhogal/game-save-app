@@ -257,6 +257,14 @@
     justify-content: space-between;
     width: 100%;
   }
+
+  .game-links-div {
+    max-width: 100%;
+  }
+
+  .game-info-content {
+    max-width: 100%;
+  }
 }
 
 /* 750px */
@@ -279,6 +287,14 @@
     justify-content: space-between;
     width: 100%;
   }
+
+  .game-links-div {
+    max-width: 100%;
+  }
+
+  .game-info-content {
+    max-width: 100%;
+  }
 }
 
 /* 600px */
@@ -300,6 +316,14 @@
   .game-rating-bookmark-div {
     justify-content: space-between;
     width: 100%;
+  }
+
+  .game-links-div {
+    max-width: 100%;
+  }
+
+  .game-info-content {
+    max-width: 100%;
   }
 }
 
