@@ -144,10 +144,11 @@ const FullscreenImgModal = ({
               />
             )}
             {isLoading && <p className="loading-text">Loading...</p>}
-            <p className="slideshow-count">
+            
+          </div>
+          <p className="slideshow-count">
               {currSlideNum}/{numSlides}
             </p>
-          </div>
         </div>
       ) : null}
     </>
