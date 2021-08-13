@@ -159,7 +159,7 @@ const GamesSearchScroll = props => {
 
     if (_.isEmpty(props.games)) {
       return props.title === 'Saved Games' ? (
-        <div className="no-results-mssg">Add Games</div>
+        <h1 className="no-results-mssg">Add some games</h1>
       ) : (
         <>
           <div className="no-results-mssg">
@@ -172,8 +172,8 @@ const GamesSearchScroll = props => {
 
   return (
     <>
-      {!isLoading && showSearchResults()}
       {isLoading && <LoadingDots />}
+      {!isLoading && showSearchResults()}
     </>
   );
 };
