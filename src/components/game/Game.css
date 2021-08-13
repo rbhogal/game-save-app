@@ -237,6 +237,30 @@
   }
 }
 
+/* 825px */
+@media only screen and (max-width: 51.5625em) {
+  .Game {
+    margin-top: 3rem;
+    padding: 0 4vw;
+  }
+}
+
+/* 750px */
+@media only screen and (max-width: 46.875em) {
+  .Game {
+    margin-top: 3rem;
+    padding: 0 4vw;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .Game {
+    margin-top: 3rem;
+    padding: 0 4vw;
+  }
+}
+
 /* 500px */
 @media only screen and (max-width: 31.25em) {
   .Game {
