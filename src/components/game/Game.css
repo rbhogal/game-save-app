@@ -265,6 +265,10 @@
   .game-info-content {
     max-width: 100%;
   }
+  
+  .game-left-column {
+    padding-right: 0;
+  }
 }
 
 /* 750px */
@@ -295,6 +299,10 @@
   .game-info-content {
     max-width: 100%;
   }
+
+  .game-left-column {
+    padding-right: 0;
+  }
 }
 
 /* 600px */
@@ -324,6 +332,10 @@
 
   .game-info-content {
     max-width: 100%;
+  }
+
+  .game-left-column {
+    padding-right: 0;
   }
 }
 
