@@ -11,8 +11,8 @@
   font-size: 2.5rem;
 }
 
-/* 820px */
-@media only screen and (max-width: 50.75em) {
+/* 825px */
+@media only screen and (max-width: 51.5625em) {
   .SavedGames {
     margin: 2rem 2rem 0 2rem;
   }
@@ -37,7 +37,6 @@
   .SavedGames {
     margin: 1.5em 2rem 0 2rem;
   }
-
 }
 
 /* 375px */

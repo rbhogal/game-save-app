@@ -15,8 +15,8 @@
   margin-top: 2.5rem;
 }
 
-/* 820px */
-@media only screen and (max-width: 51.25em) {
+/* 825px */
+@media only screen and (max-width: 51.5625em) {
   .GameList {
     margin: 0rem 2rem 0 2rem;
   }
