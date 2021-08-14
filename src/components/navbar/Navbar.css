@@ -88,6 +88,7 @@ header {
 .mobile-menu {
   visibility: hidden;
   position: fixed;
+  overflow: scroll;
   background-color: var(--primary-color-navy);
   top: 54px;
   right: 0px;
@@ -102,6 +103,10 @@ header {
 
 /* Mobile Menu - 960px */
 @media only screen and (max-width: 60em) {
+  .mobile-menu {
+    padding-bottom: 1rem;
+  }
+
   nav .SearchBox {
     display: none;
   }
