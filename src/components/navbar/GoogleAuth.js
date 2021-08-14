@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { auth, provider } from '../../firebase';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -19,9 +19,14 @@ function GoogleAuth() {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const userName = localStorage.getItem('username');
+  const [username, setUsername] = useState(userName);
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const mobileMenuIsOpen = isOpen;
+
+  useEffect(() => {
+    setUsername(userName);
+  }, [userName, setUsername]);
 
   const handleNewUser = async id => {
     // Get users
@@ -61,6 +66,7 @@ function GoogleAuth() {
       .then(result => {
         authCtx.signIn(result.credential.accessToken);
         localStorage.setItem('username', result.user.displayName);
+        setUsername(result.user.displayName);
         dispatch(
           setActiveUser({
             userId: result.user.uid,
@@ -168,7 +174,7 @@ function GoogleAuth() {
         >
           <div className="user-name-container">
             <p>Signed in as </p>
-            <b>{userName}</b>
+            <b>{username}</b>
           </div>
 
           <hr className="solid"></hr>
