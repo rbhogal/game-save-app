@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import _ from 'lodash';
+import _, { upperFirst } from 'lodash';
 
 import './SavedGames.css';
 import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
@@ -50,6 +50,8 @@ const SavedGames = () => {
         users[key].savedGames
           ? setSavedGamesObj(users[key].savedGames)
           : setIsLoading(false);
+
+        if (!users[key].savedGames) setSavedGamesObj({});
       }
     }
   };
