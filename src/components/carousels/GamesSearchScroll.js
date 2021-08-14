@@ -131,7 +131,9 @@ const GamesSearchScroll = props => {
                   </div>
                   <div className="game-card-content">
                     <div className="game-card-genre-box">
-                      <p className="game-card-genre">{`${game.genres[0].name}`}</p>
+                      {game.genres && (
+                        <p className="game-card-genre">{`${game.genres[0].name}`}</p>
+                      )}
                     </div>
                     <Link
                       onClick={() => {

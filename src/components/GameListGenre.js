@@ -25,8 +25,30 @@ const GameListGenre = () => {
   useEffect(() => {
     const index = urlPath.lastIndexOf('/');
     const id = urlPath.slice(index + 1, urlPath.length);
-    setGenreId(id);
+    id !== 'all' ? setGenreId(id) : searchAllGames();
   }, [urlPath]);
+
+  const searchAllGames = () => {
+    setIsLoading(true);
+    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
+    axios({
+      url: url,
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Client-ID': process.env.REACT_APP_CLIENT_ID,
+        Authorization: `Bearer ${token}`,
+      },
+      data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where first_release_date !=null &cover.image_id != null & total_rating >= 75; limit 48;`,
+    })
+      .then(resp => {
+        setGames(resp.data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   const searchGenre = () => {
     setIsLoading(true);
@@ -39,7 +61,7 @@ const GameListGenre = () => {
         'Client-ID': process.env.REACT_APP_CLIENT_ID,
         Authorization: `Bearer ${token}`,
       },
-      data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where genres=${genreId} & cover.image_id != null & total_rating >= 75; limit 48;`,
+      data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where genres=${genreId} & cover.image_id != null & total_rating >= 75 & first_release_date !=null; limit 48;`,
     })
       .then(resp => {
         setGames(resp.data);

@@ -25,6 +25,7 @@ const Dropdown = () => {
       );
     }
   };
+  
 
   return (
     <>
@@ -45,7 +46,7 @@ const Dropdown = () => {
         <hr className="solid" />
         <Link
           onClick={handleClickDropdownItem}
-          to="/gamelist"
+          to="/gamelist/genres/all_games/all"
           style={{ fontWeight: 'bold' }}
         >
           All Games
