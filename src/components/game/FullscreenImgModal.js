@@ -22,7 +22,7 @@ const FullscreenImgModal = ({
   const [numSlides, setNumSlides] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const prevClick = () => {
+  const prevClick = useCallback(() => {
     setIsLoading(true);
     getCurrIndex();
     if (imageType === 'screenshot') {
@@ -39,9 +39,9 @@ const FullscreenImgModal = ({
       }
     }
     setIsLoading(false);
-  };
+  });
 
-  const nextClick = () => {
+  const nextClick = useCallback( () => {
     setIsLoading(true);
     getCurrIndex();
 
@@ -59,7 +59,7 @@ const FullscreenImgModal = ({
       }
     }
     setIsLoading(false);
-  };
+  });
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
@@ -140,7 +140,7 @@ const FullscreenImgModal = ({
                 ref={curImageRef}
                 className="img-fullscreen"
                 src={`https://images.igdb.com/igdb/image/upload/t_original/${imageId}.jpg`}
-                alt="image"
+                alt={imageId}
               />
             )}
             {isLoading && <p className="loading-text">Loading...</p>}

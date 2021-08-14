@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import './Dropdown.css';
 import { DropdownMenuItems } from './DropdownMenuItems';
 import { isOpen } from '../../../features/mobileMenu/mobileMenuSlice';
-import AuthContext from '../../../store/auth-context';
 
 const Dropdown = () => {
   const [clickDropdown, setClickDropdown] = useState(false);

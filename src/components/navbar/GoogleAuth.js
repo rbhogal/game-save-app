@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { auth, provider } from '../../firebase';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';

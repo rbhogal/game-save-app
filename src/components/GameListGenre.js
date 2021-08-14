@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 
 import { selectAppToken } from '../features/admin/appTokenSlice';
 import GamesSearchScroll from './carousels/GamesSearchScroll';
@@ -26,7 +26,7 @@ const GameListGenre = () => {
     const index = urlPath.lastIndexOf('/');
     const id = urlPath.slice(index + 1, urlPath.length);
     setGenreId(id);
-  });
+  }, [urlPath]);
 
   const searchGenre = () => {
     setIsLoading(true);
@@ -84,15 +84,16 @@ const GameListGenre = () => {
   };
 
   const handleBookmarkClick = async game => {
-    if (!isSignedIn) return toast('Sign in!', {
-      duration: 2000,
-      icon: (
-        <ion-icon
-          style={{ fontSize: '2.5rem' }}
-          name="person-circle-outline"
-        ></ion-icon>
-      ),
-    });
+    if (!isSignedIn)
+      return toast('Sign in!', {
+        duration: 2000,
+        icon: (
+          <ion-icon
+            style={{ fontSize: '2.5rem' }}
+            name="person-circle-outline"
+          ></ion-icon>
+        ),
+      });
 
     const gameExists = await checkGameExists(game.id);
 

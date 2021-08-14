@@ -1,14 +1,13 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import _, { upperFirst } from 'lodash';
+import _ from 'lodash';
 
 import './SavedGames.css';
 import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
 import RemoveBookmarkGame from '../components/carousels/RemoveBookmarkGame';
 import { selectUserKey, getUserData } from '../features/user/userSlice';
 import { auth } from '../firebase';
-import LoadingDots from './LoadingDots';
 import Footer from './Footer';
 
 const SavedGames = () => {

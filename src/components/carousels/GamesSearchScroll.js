@@ -21,7 +21,6 @@ const GamesSearchScroll = props => {
     speed: 500,
     rows: 1,
     slidesPerRow: 1,
-    className: 'slick-arrows',
     responsive: [
       {
         breakpoint: 1760,
