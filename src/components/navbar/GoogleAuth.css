@@ -102,6 +102,20 @@ hr.solid {
 
 .user-name-container {
   padding-bottom: 10px;
+
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-wrapper ion-icon {
+  color: #4c4c4c;
+  font-size: 2.5rem;
+  padding: 0 1rem;
+
 }
 
 /* Mobile--960px */

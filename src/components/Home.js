@@ -10,7 +10,11 @@ import {
   addLoadingState,
 } from '../features/admin/appTokenSlice';
 import AuthContext from '../store/auth-context';
-import { getUserData, storeBookmark, selectUserKey } from '../features/user/userSlice';
+import {
+  getUserData,
+  storeBookmark,
+  selectUserKey,
+} from '../features/user/userSlice';
 import { auth } from '../firebase';
 import AddBookmarkGame from './carousels/AddBookmarkGame';
 import Footer from './Footer';
@@ -92,7 +96,19 @@ const Home = () => {
         anticipatedGamesArr.push(key.game);
       }
 
-      setAnticipatedGames(anticipatedGamesArr);
+      const filteredAnticipatedGamesArr = anticipatedGamesArr.filter(
+        (game, i) => {
+          if (i > 0) {
+            // console.log(game.id);
+            // console.log(anticipatedGamesArr[i - 1].id);
+            return game.id !== anticipatedGamesArr[i - 1].id;
+          }
+        }
+      );
+
+      console.log(filteredAnticipatedGamesArr);
+
+      setAnticipatedGames(filteredAnticipatedGamesArr);
 
       // // RECENTLY RELEASED GAMES
       const respRecentGames = await axios({
@@ -113,9 +129,17 @@ const Home = () => {
         recentGamesArr.push(key.game);
       }
 
-      setRecentGames(recentGamesArr);
+      const filteredRecentGamesArr = recentGamesArr.filter((game, i) => {
+        if (i > 0) {
+          // console.log(game.id);
+          // console.log(anticipatedGamesArr[i - 1].id);
+          return game.id !== recentGamesArr[i - 1].id;
+        }
+      });
+
+      setRecentGames(filteredRecentGamesArr);
     } catch (err) {
-      throw Error(err.message);
+      throw new Error(err.message);
     }
 
     setIsLoading(false);

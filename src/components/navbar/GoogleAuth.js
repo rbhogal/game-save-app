@@ -205,7 +205,7 @@ function GoogleAuth() {
               className="sign-in-out-btn google-btn"
             >
               Google
-              <ion-icon name="logo-google"></ion-icon>
+              {/* <ion-icon name="logo-google"></ion-icon> */}
             </button>
           </Link>
         </div>
