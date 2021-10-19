@@ -230,25 +230,26 @@ const Home = () => {
 
       {!isLoading && (
         <GamesHorizontalScroll
-          title={'Most Anticipated'}
-          dots={false}
-          infinite={true}
-          bookmarkComponent={AddBookmarkGame}
-          handleBookmarkClick={handleBookmarkClick}
-          games={anticipatedGames}
-        />
-      )}
-
-      {!isLoading && (
-        <GamesHorizontalScroll
           title={'Recent Releases'}
           dots={false}
-          infinite={true}
+          infinite={false}
           bookmarkComponent={AddBookmarkGame}
           handleBookmarkClick={handleBookmarkClick}
           games={recentGames}
         />
       )}
+
+      {/* {!isLoading && (
+        <GamesHorizontalScroll
+          title={'Most Anticipated'}
+          dots={false}
+          infinite={false}
+          bookmarkComponent={AddBookmarkGame}
+          handleBookmarkClick={handleBookmarkClick}
+          games={anticipatedGames}
+        />
+      )} */}
+
       {!isLoading && <Footer />}
     </div>
   );
