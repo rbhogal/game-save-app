@@ -8,7 +8,7 @@ const Footer = () => {
       <p>
         Designed and Developed by{' '}
         <a
-          href="https://github.com/rbhogal"
+          href="https://rbhogal.github.io"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -18,6 +18,7 @@ const Footer = () => {
       <p>
         Powered by <a href="https://www.igdb.com/discover">IGDB</a>
       </p>
+      <p>© 2021</p>
       <ion-icon name="flash-outline"></ion-icon>
     </div>
   );
