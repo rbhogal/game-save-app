@@ -68,15 +68,14 @@ const GameMediaSliders = props => {
         <div className="slider-container">
           <Slider {...settings}>
             {props.videos.map(video => (
-              <div className="videos-container">
+              <div key={video.id} className="videos-container">
                 <iframe
                   className="videos"
-                  key={video.id}
                   src={`https://www.youtube.com/embed/${video.video_id}`}
                   title="YouTube video player"
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </div>
             ))}
@@ -89,14 +88,13 @@ const GameMediaSliders = props => {
         <div className="slider-container">
           <Slider {...settings}>
             {props.screenshots.map((screenshot, index) => (
-              <div className="img-container">
+              <div key={screenshot.id} className="img-container">
                 <span className="icon-zoom-container">
-                  <i class="fas fa-search-plus"></i>
+                  <i className="fas fa-search-plus"></i>
                 </span>
                 <img
                   ref={screenshotRef}
                   onClick={showFullscreen}
-                  key={screenshot.id}
                   id={screenshot.image_id}
                   src={`//images.igdb.com/igdb/image/upload/t_screenshot_med/${screenshot.image_id}.jpg`}
                   alt={`${props.gameName}-screenshot-${index}`}
@@ -113,16 +111,15 @@ const GameMediaSliders = props => {
         <div className="slider-container">
           <Slider {...settings}>
             {props.artworks.map((artwork, index) => (
-              <div className="img-container">
+              <div key={artwork.image_id} className="img-container">
                 <span className="icon-zoom-container">
-                  <i class="fas fa-search-plus"></i>
+                  <i className="fas fa-search-plus"></i>
                 </span>
                 <img
                   ref={artworkRef}
                   onClick={showFullscreen}
                   className="artwork"
-                  key={artwork.image_id}
-                  id={artwork.image_id}
+                  id={artwork.id}
                   src={`//images.igdb.com/igdb/image/upload/t_screenshot_med/${artwork.image_id}.jpg`}
                   alt={`${props.gameName}-artwork-${index}`}
                   data-img-type="artwork"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Slider from 'react-slick';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
@@ -115,7 +115,7 @@ const GamesSearchScroll = props => {
         <>
           <Slider {...settings}>
             {props.games.map(game => (
-              <>
+              <Fragment key={game.id}>
                 <Link to={`/gamelist/games/${game.name}/${game.id}`}>
                   <div className="game-card">
                     <img
@@ -129,29 +129,30 @@ const GamesSearchScroll = props => {
                       </p>
                     </div>
                   </div>
-                  <div className="game-card-content">
-                    <div className="game-card-genre-box">
-                      {game.genres && (
-                        <p className="game-card-genre">{`${game.genres[0].name}`}</p>
-                      )}
-                    </div>
-                    <Link
-                      onClick={() => {
-                        props.handleBookmarkClick(game);
-                      }}
-                    >
-                      <BookmarkComponent />
-                    </Link>
-                    <div className="game-card-rating-box">
-                      <p className="game-card-rating">
-                        {game.total_rating
-                          ? Math.round(game.total_rating)
-                          : 'N/A'}
-                      </p>
-                    </div>
-                  </div>
                 </Link>
-              </>
+                <div className="game-card-content">
+                  <div className="game-card-genre-box">
+                    {game.genres && (
+                      <p className="game-card-genre">{`${game.genres[0].name}`}</p>
+                    )}
+                  </div>
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      props.handleBookmarkClick(game);
+                    }}
+                  >
+                    <BookmarkComponent />
+                  </Link>
+                  <div className="game-card-rating-box">
+                    <p className="game-card-rating">
+                      {game.total_rating
+                        ? Math.round(game.total_rating)
+                        : 'N/A'}
+                    </p>
+                  </div>
+                </div>
+              </Fragment>
             ))}
           </Slider>
         </>

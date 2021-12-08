@@ -71,8 +71,8 @@ const GameLinks = props => {
       {wikiURL && (
         <a href={wikiURL} target="_blank" rel="noreferrer noopener">
           <div className="game-links-container">
-            <span style={{fontSize: '2rem'}}>
-              <i class="fab fa-wikipedia-w"></i>
+            <span style={{ fontSize: '2rem' }}>
+              <i className="fab fa-wikipedia-w"></i>
             </span>
             <p>Wiki</p>
           </div>
@@ -80,7 +80,12 @@ const GameLinks = props => {
       )}
 
       {newWebsitesArr.map(website => (
-        <a href={website.url} target="_blank" rel="noreferrer noopener">
+        <a
+          key={website.url}
+          href={website.url}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <div className="game-links-container">
             <ion-icon name={website.icon}></ion-icon>
             <p>{website.name}</p>

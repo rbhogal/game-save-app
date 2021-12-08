@@ -6,7 +6,7 @@ const LoadingDots = () => {
   return (
     <>
       <div id="container">
-        <div class="loading-dots">
+        <div className="loading-dots">
           <div></div>
           <div></div>
           <div></div>
