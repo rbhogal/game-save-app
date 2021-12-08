@@ -106,8 +106,6 @@ const Home = () => {
         }
       );
 
-      console.log(filteredAnticipatedGamesArr);
-
       setAnticipatedGames(filteredAnticipatedGamesArr);
 
       // // RECENTLY RELEASED GAMES
