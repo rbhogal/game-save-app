@@ -42,9 +42,9 @@ const GameMediaSliders = props => {
   };
 
   const showFullscreen = e => {
+    console.log(e);
     setImageId(e.target.id);
     setShowModal(prev => !prev);
-
     setImageType(e.target.dataset.imgType);
   };
 
@@ -119,7 +119,7 @@ const GameMediaSliders = props => {
                   ref={artworkRef}
                   onClick={showFullscreen}
                   className="artwork"
-                  id={artwork.id}
+                  id={artwork.image_id}
                   src={`//images.igdb.com/igdb/image/upload/t_screenshot_med/${artwork.image_id}.jpg`}
                   alt={`${props.gameName}-artwork-${index}`}
                   data-img-type="artwork"

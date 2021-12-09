@@ -34,6 +34,7 @@ const FullscreenImgModal = ({
 
     if (imageType === 'artwork') {
       for (const artwork of artworks) {
+        // It's artwork.id not artwork.image_id due to API breaking change
         if (artwork.image_id === imageId) {
           currIndex.current = artworks.indexOf(artwork);
           setCurrSlideNum(currIndex.current + 1);
