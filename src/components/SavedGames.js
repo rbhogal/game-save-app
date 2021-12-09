@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import _ from 'lodash';
@@ -20,13 +20,14 @@ const SavedGames = () => {
 
   const removeGame = async gameKey => {
     try {
-      const resp = await axios.delete(
+      await axios.delete(
         `https://game-save-default-rtdb.firebaseio.com/users/${userKey}/savedGames/${gameKey}.json`
       );
+
+      getSavedGames();
     } catch (err) {
       console.log(err.message);
     }
-    getSavedGames();
   };
 
   const handleBookmarkClick = game => {
@@ -37,7 +38,7 @@ const SavedGames = () => {
     }
   };
 
-  const getSavedGames = async () => {
+  const getSavedGames = useCallback(async () => {
     const resp = await axios.get(
       'https://game-save-default-rtdb.firebaseio.com/users/.json'
     );
@@ -51,7 +52,7 @@ const SavedGames = () => {
         if (!users[key].savedGames) setSavedGamesObj({});
       }
     }
-  };
+  }, [userId]);
 
   // Helper Function (DRY: Also in Home.js)
   const getUserIdFirebase = () => {
@@ -66,6 +67,14 @@ const SavedGames = () => {
     });
   };
 
+  const convertObjToArr = useCallback(() => {
+    if (!savedGamesObj) return;
+    const updatedSavedGames = Object.values(savedGamesObj);
+    const updatedSavedGamesRev = updatedSavedGames.reverse(); // Reversed order: Most recent saves
+    setSavedGamesArr(updatedSavedGamesRev);
+    setIsLoading(false);
+  }, [savedGamesObj]);
+
   useEffect(() => {
     getUserIdFirebase();
   });
@@ -79,19 +88,12 @@ const SavedGames = () => {
     if (userId) {
       getSavedGames();
     }
-  }, [userId]);
+  }, [userId, getSavedGames]);
 
   useEffect(() => {
     convertObjToArr();
-  }, [savedGamesObj]);
+  }, [savedGamesObj, convertObjToArr]);
 
-  const convertObjToArr = () => {
-    if (!savedGamesObj) return;
-    const updatedSavedGames = Object.values(savedGamesObj);
-    const updatedSavedGamesRev = updatedSavedGames.reverse(); // Reversed order: Most recent saves
-    setSavedGamesArr(updatedSavedGamesRev);
-    setIsLoading(false);
-  };
   return (
     <div className="SavedGames">
       <GamesSearchScroll

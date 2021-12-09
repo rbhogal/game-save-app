@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import _ from 'lodash';
@@ -45,13 +45,13 @@ const Game = () => {
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();
 
-  const getGameId = () => {
+  const getGameId = useCallback(() => {
     const index = urlPath.lastIndexOf('/');
     const gameId = urlPath.slice(index + 1, urlPath.length);
     setGameId(gameId);
-  };
+  }, [urlPath]);
 
-  const getGameData = async () => {
+  const getGameData = useCallback(async () => {
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
     setIsLoading(true);
@@ -73,7 +73,7 @@ const Game = () => {
     } catch (err) {
       console.log(err.message);
     }
-  };
+  }, [token, gameId]);
 
   const getDeveloper = gameData => {
     if (!gameData.involved_companies) return;
@@ -86,13 +86,13 @@ const Game = () => {
 
   useEffect(() => {
     getGameId();
-  }, []);
+  }, [getGameId]);
 
   useEffect(() => {
     if (gameId) {
       if (token) getGameData();
     }
-  }, [gameId, token]);
+  }, [gameId, token, getGameData]);
 
   useEffect(() => {
     getDeveloper(gameData);

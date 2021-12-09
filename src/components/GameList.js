@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 
 import { selectAppToken } from '../features/admin/appTokenSlice';
 import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
@@ -26,7 +26,7 @@ const GameList = () => {
     setSearch(newSearch);
   }, [newSearch]);
 
-  const searchGames = () => {
+  const searchGames = useCallback(() => {
     setIsLoading(true);
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
@@ -46,11 +46,11 @@ const GameList = () => {
       .catch(err => {
         console.log(err);
       });
-  };
+  }, [search, token]);
 
   useEffect(() => {
     if (token && search) searchGames();
-  }, [token, search]);
+  }, [token, search, searchGames]);
 
   const checkGameExists = async gameId => {
     let gameExists = false;

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-
 import './FullscreenImgModal.css';
 
 const FullscreenImgModal = ({
@@ -22,44 +21,66 @@ const FullscreenImgModal = ({
   const [numSlides, setNumSlides] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const getCurrIndex = useCallback(() => {
+    if (imageType === 'screenshot') {
+      for (const screenshot of screenshots) {
+        if (screenshot.image_id === imageId) {
+          currIndex.current = screenshots.indexOf(screenshot);
+          setCurrSlideNum(currIndex.current + 1);
+          setNumSlides(screenshots.length);
+        }
+      }
+    }
+
+    if (imageType === 'artwork') {
+      for (const artwork of artworks) {
+        if (artwork.image_id === imageId) {
+          currIndex.current = artworks.indexOf(artwork);
+          setCurrSlideNum(currIndex.current + 1);
+          setNumSlides(artworks.length);
+        }
+      }
+    }
+  }, [artworks, imageId, imageType, screenshots]);
+
   const prevClick = useCallback(() => {
     setIsLoading(true);
     getCurrIndex();
     if (imageType === 'screenshot') {
-      if (currIndex > 0) {
-        prevIndex = currIndex - 1;
-        setImageId(screenshots[prevIndex].image_id);
+      if (currIndex.current > 0) {
+        prevIndex.current = currIndex.current - 1;
+        setImageId(screenshots[prevIndex.current].image_id);
       }
     }
 
     if (imageType === 'artwork') {
-      if (currIndex > 0) {
-        prevIndex = currIndex - 1;
-        setImageId(artworks[prevIndex].image_id);
+      if (currIndex.current > 0) {
+        prevIndex.current = currIndex.current - 1;
+        setImageId(artworks[prevIndex.current].image_id);
       }
     }
     setIsLoading(false);
-  });
+  }, [artworks, getCurrIndex, imageType, screenshots, setImageId]);
 
-  const nextClick = useCallback( () => {
+  const nextClick = useCallback(() => {
     setIsLoading(true);
     getCurrIndex();
 
     if (imageType === 'screenshot') {
-      if (currIndex < screenshots.length - 1) {
-        nextIndex = currIndex + 1;
-        setImageId(screenshots[nextIndex].image_id);
+      if (currIndex.current < screenshots.length - 1) {
+        nextIndex.current = currIndex.current + 1;
+        setImageId(screenshots[nextIndex.current].image_id);
       }
     }
 
     if (imageType === 'artwork') {
-      if (currIndex < artworks.length - 1) {
-        nextIndex = currIndex + 1;
-        setImageId(artworks[nextIndex].image_id);
+      if (currIndex.current < artworks.length - 1) {
+        nextIndex.current = currIndex.current + 1;
+        setImageId(artworks[nextIndex.current].image_id);
       }
     }
     setIsLoading(false);
-  });
+  }, [artworks, getCurrIndex, imageType, screenshots, setImageId]);
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
@@ -82,28 +103,6 @@ const FullscreenImgModal = ({
     document.addEventListener('keydown', keyPress);
     return () => document.removeEventListener('keydown', keyPress);
   }, [keyPress]);
-
-  const getCurrIndex = () => {
-    if (imageType === 'screenshot') {
-      for (const screenshot of screenshots) {
-        if (screenshot.image_id === imageId) {
-          currIndex = screenshots.indexOf(screenshot);
-          setCurrSlideNum(currIndex + 1);
-          setNumSlides(screenshots.length);
-        }
-      }
-    }
-
-    if (imageType === 'artwork') {
-      for (const artwork of artworks) {
-        if (artwork.image_id === imageId) {
-          currIndex = artworks.indexOf(artwork);
-          setCurrSlideNum(currIndex + 1);
-          setNumSlides(artworks.length);
-        }
-      }
-    }
-  };
 
   useEffect(() => {
     getCurrIndex();
@@ -144,11 +143,10 @@ const FullscreenImgModal = ({
               />
             )}
             {isLoading && <p className="loading-text">Loading...</p>}
-            
           </div>
           <p className="slideshow-count">
-              {currSlideNum}/{numSlides}
-            </p>
+            {currSlideNum}/{numSlides}
+          </p>
         </div>
       ) : null}
     </>

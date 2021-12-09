@@ -28,11 +28,9 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const isSignedIn = authCtx.isSignedIn;
   const token = useSelector(selectAppToken);
-  const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
   const [userId, setUserId] = useState(null);
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
-  let currentDate = Math.round(new Date().getTime() / 1000);
 
   // Helper Functions
   const getUserIdFirebase = () => {
@@ -60,90 +58,93 @@ const Home = () => {
     dispatch(getUserData(userId));
   }, [dispatch, userId]);
 
-  const getAllGamesRequest = async () => {
-    setIsLoading(true);
+  useEffect(() => {
+    let currentDate = Math.round(new Date().getTime() / 1000);
+    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
 
-    try {
-      // POPULAR GAMES
-      const respPopularGames = await axios({
-        url: url,
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Client-ID': process.env.REACT_APP_CLIENT_ID,
-          Authorization: `Bearer ${token}`,
-        },
-        data: 'fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 48;',
-      });
+    const getAllGamesRequest = async () => {
+      setIsLoading(true);
 
-      const { data: popularGames } = await respPopularGames;
-      setPopularGames(popularGames);
+      try {
+        // POPULAR GAMES
+        const respPopularGames = await axios({
+          url: url,
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Client-ID': process.env.REACT_APP_CLIENT_ID,
+            Authorization: `Bearer ${token}`,
+          },
+          data: 'fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 48;',
+        });
 
-      const respAnticipatedGames = await axios({
-        url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Client-ID': process.env.REACT_APP_CLIENT_ID,
-          Authorization: `Bearer ${token}`,
-        },
-        data: `fields game.summary, game.cover.image_id, game.genres.name, game.name, game.total_rating; where date > ${currentDate} & game.hypes > 10 & game.genres.name != null & game.cover.image_id != null & game.platforms =(6, 48, 49, 130); sort date desc; limit 16;`,
-      });
+        const { data: popularGames } = await respPopularGames;
+        setPopularGames(popularGames);
 
-      const { data: anticipatedGamesIGDB } = await respAnticipatedGames;
-      let anticipatedGamesArr = [];
-      for (const key of anticipatedGamesIGDB) {
-        anticipatedGamesArr.push(key.game);
-      }
+        const respAnticipatedGames = await axios({
+          url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Client-ID': process.env.REACT_APP_CLIENT_ID,
+            Authorization: `Bearer ${token}`,
+          },
+          data: `fields game.summary, game.cover.image_id, game.genres.name, game.name, game.total_rating; where date > ${currentDate} & game.hypes > 10 & game.genres.name != null & game.cover.image_id != null & game.platforms =(6, 48, 49, 130); sort date desc; limit 16;`,
+        });
 
-      const filteredAnticipatedGamesArr = anticipatedGamesArr.filter(
-        (game, i) => {
+        const { data: anticipatedGamesIGDB } = await respAnticipatedGames;
+        let anticipatedGamesArr = [];
+        for (const key of anticipatedGamesIGDB) {
+          anticipatedGamesArr.push(key.game);
+        }
+
+        const filteredAnticipatedGamesArr = anticipatedGamesArr.filter(
+          (game, i) => {
+            if (i > 0) {
+              // console.log(game.id);
+              // console.log(anticipatedGamesArr[i - 1].id);
+              return game.id !== anticipatedGamesArr[i - 1].id;
+            }
+          }
+        );
+
+        setAnticipatedGames(filteredAnticipatedGamesArr);
+
+        // // RECENTLY RELEASED GAMES
+        const respRecentGames = await axios({
+          url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Client-ID': process.env.REACT_APP_CLIENT_ID,
+            Authorization: `Bearer ${token}`,
+          },
+          data: `fields game.summary, game.cover.image_id, game.genres.name, game.name, game.total_rating; where date < ${currentDate} & game.genres.name != null & game.cover.image_id != null & game.platforms =(6, 48, 49, 130); sort date desc; limit 16;`,
+        });
+
+        const { data: recentGamesIGDB } = await respRecentGames;
+        let recentGamesArr = [];
+
+        for (const key of recentGamesIGDB) {
+          recentGamesArr.push(key.game);
+        }
+
+        const filteredRecentGamesArr = recentGamesArr.filter((game, i) => {
           if (i > 0) {
             // console.log(game.id);
             // console.log(anticipatedGamesArr[i - 1].id);
-            return game.id !== anticipatedGamesArr[i - 1].id;
+            return game.id !== recentGamesArr[i - 1].id;
           }
-        }
-      );
+        });
 
-      setAnticipatedGames(filteredAnticipatedGamesArr);
-
-      // // RECENTLY RELEASED GAMES
-      const respRecentGames = await axios({
-        url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Client-ID': process.env.REACT_APP_CLIENT_ID,
-          Authorization: `Bearer ${token}`,
-        },
-        data: `fields game.summary, game.cover.image_id, game.genres.name, game.name, game.total_rating; where date < ${currentDate} & game.genres.name != null & game.cover.image_id != null & game.platforms =(6, 48, 49, 130); sort date desc; limit 16;`,
-      });
-
-      const { data: recentGamesIGDB } = await respRecentGames;
-      let recentGamesArr = [];
-
-      for (const key of recentGamesIGDB) {
-        recentGamesArr.push(key.game);
+        setRecentGames(filteredRecentGamesArr);
+      } catch (err) {
+        throw new Error(err.message);
       }
 
-      const filteredRecentGamesArr = recentGamesArr.filter((game, i) => {
-        if (i > 0) {
-          // console.log(game.id);
-          // console.log(anticipatedGamesArr[i - 1].id);
-          return game.id !== recentGamesArr[i - 1].id;
-        }
-      });
+      setIsLoading(false);
+    };
 
-      setRecentGames(filteredRecentGamesArr);
-    } catch (err) {
-      throw new Error(err.message);
-    }
-
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
     if (token) getAllGamesRequest();
   }, [token]);
 

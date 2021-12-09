@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
@@ -66,7 +66,7 @@ function App() {
       });
   };
 
-  const getAppToken = async () => {
+  const getAppToken = useCallback(async () => {
     // GET APP TOKEN
     // Get New Token If it Expires & dispatch token to redux
     try {
@@ -93,11 +93,11 @@ function App() {
     } catch (err) {
       alert(err.message);
     }
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     getAppToken();
-  }, []);
+  }, [getAppToken]);
 
   useEffect(() => {
     setTimeout(getNewToken, remainingDuration);

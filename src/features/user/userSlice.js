@@ -25,7 +25,7 @@ export const getSearchAsync = createAsyncThunk(
 );
 
 export const addNewUser = createAsyncThunk('user/addNewUser', async payload => {
-  const resp = await axios.post(
+  await axios.post(
     'https://game-save-default-rtdb.firebaseio.com/users/.json',
     {
       userId: payload,
@@ -56,13 +56,12 @@ export const getUserData = createAsyncThunk(
 export const storeBookmark = createAsyncThunk(
   'user/storeBookmark',
   async payload => {
-    const resp = await axios.post(
+    await axios.post(
       `https://game-save-default-rtdb.firebaseio.com/users/${payload.key}/savedGames.json`,
       payload.game
     );
   }
 );
-
 
 const initialState = {
   userKey: null,

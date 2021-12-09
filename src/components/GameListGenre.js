@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -22,13 +22,7 @@ const GameListGenre = () => {
   const [genreId, setGenreId] = useState('');
   const urlPath = window.location.pathname;
 
-  useEffect(() => {
-    const index = urlPath.lastIndexOf('/');
-    const id = urlPath.slice(index + 1, urlPath.length);
-    id !== 'all' ? setGenreId(id) : searchAllGames();
-  }, [urlPath]);
-
-  const searchAllGames = () => {
+  const searchAllGames = useCallback(() => {
     setIsLoading(true);
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
@@ -48,9 +42,9 @@ const GameListGenre = () => {
       .catch(err => {
         console.log(err);
       });
-  };
+  }, [token]);
 
-  const searchGenre = () => {
+  const searchGenre = useCallback(() => {
     setIsLoading(true);
     const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
@@ -70,11 +64,17 @@ const GameListGenre = () => {
       .catch(err => {
         console.log(err);
       });
-  };
+  }, [token, genreId]);
+
+  useEffect(() => {
+    const index = urlPath.lastIndexOf('/');
+    const id = urlPath.slice(index + 1, urlPath.length);
+    id !== 'all' ? setGenreId(id) : searchAllGames();
+  }, [urlPath, searchAllGames]);
 
   useEffect(() => {
     if (token && genreId) searchGenre();
-  }, [token, genreId]);
+  }, [token, genreId, searchGenre]);
 
   const checkGameExists = async gameId => {
     let gameExists = false;

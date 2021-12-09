@@ -137,7 +137,7 @@ const GamesSearchScroll = props => {
                     )}
                   </div>
                   <Link
-                    to="/"
+                    to={window.location.pathname}
                     onClick={() => {
                       props.handleBookmarkClick(game);
                     }}
