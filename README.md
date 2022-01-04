@@ -4,7 +4,7 @@
 
 ### Design
 
-* I forwent using Figma to design the app in order to maintain focus on js. Instead I drew it out roughly on a sketchpad: [Image of Sketchpad]() 
+* I forwent using Figma to design the app in order to maintain focus on JS. Instead I drew it out roughly on a sketchpad: [Image of Sketchpad]() 
 * However for the app's design I took inpsiration from varous gaming-related websites such as [GOG.com](https://www.gog.com/) and [IGDB.com](https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild) to name a few
 
 ### Planning 
