@@ -21,10 +21,10 @@
 
 ## How to naviage this project
 
-Implementation of Twitch's OAuth client credentials flow:
-Application fetching data from the IGDB API: Examples for request and data transformation
-Implementation of Google Auth: 
-Use of React's Context API: [Code]
+* Implementation of Twitch's OAuth client credentials flow:
+* Application fetching data from the IGDB API: Examples for request and data transformation
+* Implementation of Google Auth: 
+* Use of React's Context API: [Code]
 
 ## If I had more time I would change this
 
