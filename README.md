@@ -24,9 +24,10 @@
 ## How to navigate this project
 
 * Fetching and Refreshing the App token (Implementation of Twitch's OAuth client credentials flow) and storing to Firebase Database: 
-   * [Jump to code + HTTP requests](src/app/getAppToken.js)
+   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
 * Application fetching data from the IGDB API for home page: [Examples for HTTP requests and mapping arrays](src/components/Home.js)
-* Implementation of Google Auth: [Jump to code](src/components/navbar/GoogleAuth.js)
+* Implementation of Google Auth: 
+  * [Jump to code](src/components/navbar/GoogleAuth.js)
 * Use of React's Context API: [Jump to code](src/store/auth-context.js)
 * Search feature: [Jump to code](src/components/navbar/searchbox/SearchBox.js)
 * Browse games by genre feature: [Jump to Code](src/components/GameListGenre.js)
