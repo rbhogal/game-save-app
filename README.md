@@ -36,7 +36,7 @@
   * [Jump to Code](src/components/GameListGenre.js)
 * Full game information page (Info, Links, Videos, Screenshots, Artworks): 
   * [Jump to Code](src/components/game/Game.js)
-        * CSS styling for game informatoin page: [Jump to code](src/components/game/Game.css)
+  * CSS styling for game informatoin page: [Jump to code](src/components/game/Game.css)
 * Dynamic Styling with React: 
   * [Example ]
 
