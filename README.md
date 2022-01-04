@@ -6,7 +6,7 @@
 * My goal was to simulate a professional work enviornment while maintaining focus on JavaScript and React/Redux
 * Therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
 * To keep the focus on me learning React/Redux I used the React Slick Library for my carousels rather than creating one by scratch
-* Other than [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk)] from CodePen and the [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize) all of the code was written by me 
+* Other than [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk) from CodePen and the [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize) all of the code was written by me 
 
 ## How I worked on this project
 
