@@ -10,7 +10,7 @@
 
 ### Design
 
-* I forwent using Figma to design the app in order to maintain focus on js. Instead I drew it out roughly on a sketchpad: [Image of Sketchpag]() 
+* I forwent using Figma to design the app in order to maintain focus on js. Instead I drew it out roughly on a sketchpad: [Image of Sketchpad]() 
 * However for the app's design I dud take inpsiration from varous gaming-related websites such as [GOG.com](https://www.gog.com/) and [IGDB.com](https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild) to name a few
 
 ### Planning 
@@ -24,7 +24,7 @@
 * Implementation of Twitch's OAuth client credentials flow:
 * Application fetching data from the IGDB API: Examples for request and data transformation
 * Implementation of Google Auth: 
-* Use of React's Context API: [Code]
+* Use of React's Context API: [Code]()
 
 ## If I had more time I would change this
 
