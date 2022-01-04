@@ -26,7 +26,9 @@
 * Fetching/Refreshing the App token (Implementation of Twitch's OAuth client credentials flow) and storing to Firebase Database: 
   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
 * Application fetching data from the IGDB API for home page: 
-  * [Examples for HTTP requests and mapping arrays](src/components/Home.js)
+  * [Jump to code + HTTP requests](src/components/Home.js)
+* Mapping arrays to fill carousels with game information: 
+  * [Jump to code](src/components/carousels/GamesHorizontalScroll.js)
 * Implementation of Google Auth: 
   * [Jump to code](src/components/navbar/GoogleAuth.js)
 * Use of React's Context API: 
@@ -34,12 +36,12 @@
 * Search feature: 
   * [Jump to code](src/components/navbar/searchbox/SearchBox.js)
 * Browse games by genre feature: 
-  * [Jump to Code](src/components/GameListGenre.js)
+  * [Jump to code](src/components/GameListGenre.js)
 * Full game information page (Info, Links, Videos, Screenshots, Artworks): 
-  * [Jump to Code](src/components/game/Game.js)
+  * [Jump to code](src/components/game/Game.js)
   * CSS styling for game informatoin page: [Jump to code](src/components/game/Game.css)
 * Dynamic Styling with React: 
-  * [Example ]
+  * [Jump to code - Example with dropdown menu](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
 
 ## If I had more time I would change this
 
