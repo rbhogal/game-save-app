@@ -13,6 +13,8 @@ My goal was to simualte a professional working environment with a major focus on
 
 ### Planning 
 * I created user stories and features: [Screenshot](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-user-stories-features.png)
+
+### Organizing
 * I organized my work and tasks on a Kanban board using Notion: [Screenshot of tasks](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-kanban-board-tasks.png)
 
 ## How to naviage this project
