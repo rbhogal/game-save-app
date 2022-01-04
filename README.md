@@ -5,6 +5,7 @@
 * This was my very first react and redux project (other than many small tutorial based react projects)
 * My goal was to simulate a professional work enviornment while maintaining focus on JavaScript and React/Redux
 * Therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
+* To keep the focus on me learning React/Redux I used the React Slick Library for my carousels rather than creating one by scratch
 
 ## How I worked on this project
 
@@ -22,9 +23,11 @@
 ## How to naviage this project
 
 * Implementation of Twitch's OAuth client credentials flow:
-* Application fetching data from the IGDB API: Examples for request and data transformation
-* Implementation of Google Auth: 
-* Use of React's Context API: [Code]()
+* Refreshing the App token: Code + HTTP requests 
+* Application fetching data from the IGDB API: [Examples for request and data transformation](src/app/getAppToken.js)
+* Implementation of Google Auth: [Code](src/components/navbar/GoogleAuth.js)
+* Use of React's Context API: [Code](src/store/auth-context.js)
+* Search feature: [Code]()
 
 ## If I had more time I would change this
 
