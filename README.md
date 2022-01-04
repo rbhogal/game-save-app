@@ -19,7 +19,7 @@
 * Fetching/Refreshing the App token (Implementation of Twitch's OAuth client credentials flow) and storing to Firebase Database: 
   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
  
-* Application fetching data from the IGDB API for home page: 
+* Application fetching data from the IGDB API for home page and use of Hooks
   * [Jump to code + HTTP requests](src/components/Home.js)
   
 * Mapping arrays to fill carousels with game information: 
@@ -27,6 +27,9 @@
 
 * Implementation of Google Auth: 
   * [Jump to code](src/components/navbar/GoogleAuth.js)
+
+* Redux (using Redux Toolkit - createSlice)
+  * [Jump to code](src/features/user/userSlice.js)
 
 * Use of React's Context API: 
   * [Jump to code](src/store/auth-context.js)
