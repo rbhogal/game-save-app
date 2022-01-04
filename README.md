@@ -21,10 +21,12 @@ Fetching/Refreshing the App token (Implementation of Twitch's OAuth client crede
 Application fetching data from the IGDB API for home page: 
   * [Jump to code + HTTP requests](src/components/Home.js)
   
-* Mapping arrays to fill carousels with game information: 
+Mapping arrays to fill carousels with game information: 
   * [Jump to code](src/components/carousels/GamesHorizontalScroll.js)
-* Implementation of Google Auth: 
+
+Implementation of Google Auth: 
   * [Jump to code](src/components/navbar/GoogleAuth.js)
+
 * Use of React's Context API: 
   * [Jump to code](src/store/auth-context.js)
 * Search feature: 
