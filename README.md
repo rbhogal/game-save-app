@@ -1,6 +1,6 @@
 # WIP
 
-### How I worked on this project
+## How I worked on this project
 
 My goal was to simulate a professional work enviornment. 
 
