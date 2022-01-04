@@ -29,13 +29,17 @@
 
 * Use of React's Context API: 
   * [Jump to code](src/store/auth-context.js)
+  
 * Search feature: 
   * [Jump to code](src/components/navbar/searchbox/SearchBox.js)
+  
 * Browse games by genre feature: 
   * [Jump to code](src/components/GameListGenre.js)
+  
 * Full game information page (Info, Links, Videos, Screenshots, Artworks): 
   * [Jump to code](src/components/game/Game.js)
   * CSS styling for game informatoin page: [Jump to code](src/components/game/Game.css)
+  
 * Dynamic Styling with React: 
   * [Jump to code - Example with dropdown menu](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
 
