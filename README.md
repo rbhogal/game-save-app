@@ -26,9 +26,9 @@
 * Implementation of Twitch's OAuth client credentials flow:
 * Refreshing the App token: Code + HTTP requests 
 * Application fetching data from the IGDB API: [Examples for request and data transformation](src/app/getAppToken.js)
-* Implementation of Google Auth: [Code](src/components/navbar/GoogleAuth.js)
-* Use of React's Context API: [Code](src/store/auth-context.js)
-* Search feature: [Code]()
+* Implementation of Google Auth: [Jump to code](src/components/navbar/GoogleAuth.js)
+* Use of React's Context API: [Jump to code](src/store/auth-context.js)
+* Search feature: [Jump to code]()
 
 ## If I had more time I would change this
 
