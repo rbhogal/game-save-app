@@ -2,7 +2,9 @@
 
 ## Why I built the project this way
 
-This was my very first react and redux project (other than many small tutorial based react projects). My goal was to simulate a professional work enviornment while maintaining focus on JavaScript and React/Redux to learn the ropes. So I decided to keep it simple with the CSS and use external sheets rather than CSS-in-JS styled components or CSS Modules
+* This was my very first react and redux project (other than many small tutorial based react projects)
+* My goal was to simulate a professional work enviornment while maintaining focus on JavaScript and React/Redux to learn the ropes
+* Therefore I decided to keep it simple with the CSS and use external sheets rather than CSS-in-JS styled components or CSS Modules
 
 ## How I worked on this project
 
