@@ -1,5 +1,3 @@
-# Read me is a WIP
-
 ## How I worked on this project
 
 ### Design
