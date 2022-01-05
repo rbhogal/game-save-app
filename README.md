@@ -4,21 +4,22 @@
 
 ### Design
 
-* I forwent using Figma to design the app in order to maintain focus on js. Instead I drew it out roughly on a sketchpad: [Image of Sketchpad]() 
+* I forwent using Figma to design the app in order to maintain focus on JS. Instead I drew it out roughly on a sketchpad: [Image of Sketchpad]() 
 * However for the app's design I took inpsiration from varous gaming-related websites such as [GOG.com](https://www.gog.com/) and [IGDB.com](https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild) to name a few
 
 ### Planning 
 * I wrote out user stories and features: [Screenshot](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-user-stories-features.png)
 
 ### Organizing
-* I organized my work and tasks on a Kanban board using Notion: [Screenshot of tasks](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-kanban-board-tasks.png)
+* I organized my work using Notion
+* I worked on tasks on a Kanban board using Notion: [Screenshot of tasks](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-kanban-board-tasks.png)
 
 ## How to navigate this project
 
 * Fetching/Refreshing the App token (Implementation of Twitch's OAuth client credentials flow) and storing to Firebase Database: 
   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
  
-* Application fetching data from the IGDB API for home page: 
+* Application fetching data from the IGDB API for home page and use of Hooks
   * [Jump to code + HTTP requests](src/components/Home.js)
   
 * Mapping arrays to fill carousels with game information: 
@@ -26,6 +27,9 @@
 
 * Implementation of Google Auth: 
   * [Jump to code](src/components/navbar/GoogleAuth.js)
+
+* Redux (using Redux Toolkit - createSlice)
+  * [Jump to code](src/features/user/userSlice.js)
 
 * Use of React's Context API: 
   * [Jump to code](src/store/auth-context.js)
@@ -38,7 +42,7 @@
   
 * Full game information page (Info, Links, Videos, Screenshots, Artworks): 
   * [Jump to code](src/components/game/Game.js)
-  * CSS styling for game informatoin page: [Jump to code](src/components/game/Game.css)
+  * CSS styling for game information page: [Jump to code](src/components/game/Game.css)
   
 * Dynamic Styling with React: 
   * [Jump to code - Example with dropdown menu](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
