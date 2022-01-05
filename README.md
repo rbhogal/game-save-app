@@ -4,7 +4,7 @@
 
 ### Design
 
-* I forwent using Figma to design the app in order to maintain focus on JS. Instead I drew it out roughly on a sketchpad: [Image of Sketchpad]() 
+* I wanted to follow a close professional workflow, however I forwent using Figma to design the app in order to maintain focus on JS. Instead I drew it out roughly on a sketchpad: [Sketchpad](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/sketch-home-page.jpg) 
 * However for the app's design I took inpsiration from varous gaming-related websites such as [GOG.com](https://www.gog.com/) and [IGDB.com](https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild) to name a few
 
 ### Planning 
