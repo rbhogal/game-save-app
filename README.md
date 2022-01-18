@@ -1,4 +1,4 @@
-## How I worked on this project
+## How I worked on this project 👷🏼‍♂️
 
 ### Design
 
