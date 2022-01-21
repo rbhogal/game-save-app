@@ -8,7 +8,7 @@ export const addSearchAsync = createAsyncThunk(
       .put('https://game-save-default-rtdb.firebaseio.com/user.json', {
         search: payload,
       })
-      .then(console.log(`3) ${payload} added to database`))
+      // .then(console.log(`3) ${payload} added to database`))
       .catch(err => console.log(err.message));
   }
 );
@@ -19,20 +19,23 @@ export const getSearchAsync = createAsyncThunk(
     const resp = await axios.get(
       'https://game-save-default-rtdb.firebaseio.com/user.json'
     );
-    console.log(`received search:'${resp.data.search}' from database`);
+    // console.log(`received search:'${resp.data.search}' from database`);
     return resp.data.search;
   }
 );
 
 export const addNewUser = createAsyncThunk('user/addNewUser', async payload => {
-  await axios.post(
+  const resp = await axios.post(
     'https://game-save-default-rtdb.firebaseio.com/users/.json',
     {
-      userId: payload,
       savedGames: [],
+      userId: payload.userId,
+      userName: payload.userName,
     }
   );
-  // const data = await resp;
+
+  const userKey = resp.data.name;
+  return userKey;
 });
 
 export const getUserData = createAsyncThunk(
@@ -63,6 +66,23 @@ export const storeBookmark = createAsyncThunk(
   }
 );
 
+export const deleteUser = createAsyncThunk('user/deleteUser', async payload => {
+  // get user key for current user
+  const resp = await axios.get(
+    'https://game-save-default-rtdb.firebaseio.com/users/.json'
+  );
+  const { data: users } = resp;
+
+  for (const key in users) {
+    if (users[key].userId === payload) {
+      // delete user
+      axios.delete(
+        `https://game-save-default-rtdb.firebaseio.com/users/${key}/.json`
+      );
+    }
+  }
+});
+
 const initialState = {
   userKey: null,
   userId: null,
@@ -84,17 +104,19 @@ const userSlice = createSlice({
       state.token = action.payload.token;
     },
     setUserSignOutState: state => {
+      state.userKey = null;
       state.userId = null;
       state.userName = null;
       state.userEmail = null;
       state.token = null;
+      state.savedGames = {};
     },
   },
   extraReducers: {
     [getSearchAsync.fulfilled]: (state, action) => {
-      console.log(`5) Search, ${action.payload}, adding to state...`);
+      // console.log(`5) Search, ${action.payload}, adding to state...`);
       state.search = action.payload;
-      console.log(`6) Search, ${action.payload}, added to state`);
+      // console.log(`6) Search, ${action.payload}, added to state`);
     },
     [getSearchAsync.rejected]: (state, action) => {
       console.log('unable to retrieve search from database');
@@ -106,6 +128,12 @@ const userSlice = createSlice({
       state.userKey = action.payload.userKey;
       state.userId = action.payload.userData.userId;
       state.savedGames = action.payload.userData.savedGames;
+    },
+    [addNewUser.fulfilled]: (state, action) => {
+      state.userKey = action.payload;
+    },
+    [addNewUser.rejected]: () => {
+      console.log('Failed to add new user');
     },
   },
 });

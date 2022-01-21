@@ -10,6 +10,7 @@ import {
   setActiveUser,
   setUserSignOutState,
   addNewUser,
+  deleteUser,
 } from '../../features/user/userSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
@@ -28,7 +29,13 @@ function GoogleAuth() {
     setUsername(userName);
   }, [userName, setUsername]);
 
-  const handleNewUser = async id => {
+  useEffect(() => {
+    window.addEventListener('beforeunload', () => {
+      console.log('unload');
+    });
+  });
+
+  const handleUser = async (id, result) => {
     // Get users
     try {
       const resp = await axios.get(
@@ -47,26 +54,13 @@ function GoogleAuth() {
 
       // Add if new user
       if (newUser) {
-        dispatch(addNewUser(id));
-      }
+        dispatch(
+          addNewUser({
+            userId: result.user.uid,
+            userName: result.user.displayName,
+          })
+        );
 
-      if (!newUser) {
-        newUser = true;
-      }
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-
-  const onSignInClick = () => {
-    setIsLoading(true);
-
-    auth
-      .signInWithPopup(provider)
-      .then(result => {
-        authCtx.signIn(result.credential.accessToken);
-        localStorage.setItem('username', result.user.displayName);
-        setUsername(result.user.displayName);
         dispatch(
           setActiveUser({
             userId: result.user.uid,
@@ -76,17 +70,94 @@ function GoogleAuth() {
           })
         );
 
-        handleNewUser(result.user.uid);
-      })
-      .catch(err => {
-        toast(err.message);
-      });
+        authCtx.signIn(result.credential.accessToken);
+        localStorage.setItem('username', result.user.displayName);
+        setUsername(result.user.displayName);
+        toast.success('Signed in!');
+      }
+
+      // If not a new user, sign in
+      if (!newUser) {
+        newUser = true;
+
+        dispatch(
+          setActiveUser({
+            userId: result.user.uid,
+            userName: result.user.displayName,
+            userEmail: result.user.email,
+            token: result.credential.accessToken,
+          })
+        );
+        authCtx.signIn(result.credential.accessToken);
+        localStorage.setItem('username', result.user.displayName);
+        setUsername(result.user.displayName);
+      }
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const onSignInClick = e => {
+    setIsLoading(true);
+
+    // Guest Sign In
+    if (e.target.classList.contains('guest-btn')) {
+      auth
+        .signInAnonymously()
+        .then(({ user }) => {
+          dispatch(
+            addNewUser({
+              userId: user.uid,
+              userName: 'Guest',
+            })
+          );
+
+          dispatch(
+            setActiveUser({
+              userId: user.uid,
+              userName: 'Guest',
+              userEmail: 'Anonymous',
+              token: null,
+            })
+          );
+
+          authCtx.signIn('anonymous');
+          localStorage.setItem('username', 'Guest');
+          setUsername('Guest');
+          toast.success('Signed in as Guest!');
+        })
+        .catch(err => {
+          console.log(err.code);
+          toast(err.message);
+        });
+    }
+
+    // Google Sign In
+    if (e.target.classList.contains('google-btn')) {
+      auth
+        .signInWithPopup(provider)
+        .then(result => {
+          handleUser(result.user.uid, result);
+        })
+        .catch(err => {
+          toast(err.message);
+        });
+    }
 
     setIsLoading(false);
   };
 
   const onSignOutClick = () => {
     setIsLoading(true);
+    let uid = null;
+
+    // Get current signed in user's user id
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        uid = user.uid;
+      }
+    });
+
     toast.promise(auth.signOut(), {
       loading: 'Signing out...',
       success: 'Signed Out',
@@ -97,6 +168,12 @@ function GoogleAuth() {
       .then(() => {
         authCtx.signOut();
         dispatch(setUserSignOutState());
+
+        // Delete anonymous guest user from database
+        if (userName === 'Guest') {
+          dispatch(deleteUser(uid));
+          uid = null;
+        }
       })
       .catch(err => alert(err.message));
 
@@ -111,6 +188,7 @@ function GoogleAuth() {
         })
       );
     }
+
     setIsLoading(false);
     renderDropdown();
   };
@@ -131,9 +209,11 @@ function GoogleAuth() {
     // Signed In
     if (isSignedIn || isLoading) {
       return (
-        <button onClick={dropdownMobileMenu} className="drop-btn">
-          Profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
-        </button>
+        <>
+          <button onClick={dropdownMobileMenu} className="drop-btn">
+            Profile &nbsp; <ion-icon name="chevron-down-outline"></ion-icon>
+          </button>
+        </>
       );
     }
 
@@ -200,6 +280,12 @@ function GoogleAuth() {
       return (
         <div className="user-dropdown-content user-dropdown-content-signed-out">
           <Link to="/">
+            <button
+              onClick={onSignInClick}
+              className="sign-in-out-btn guest-btn"
+            >
+              As Guest
+            </button>
             <button
               onClick={onSignInClick}
               className="sign-in-out-btn google-btn"

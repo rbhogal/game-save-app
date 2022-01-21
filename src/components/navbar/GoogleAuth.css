@@ -6,7 +6,7 @@
   text-decoration: none;
 }
 
-.google-btn {
+/* .google-btn {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -15,7 +15,7 @@
 
 .google-btn ion-icon {
   margin: 0 4px;
-}
+} */
 
 .user-dropdown-content {
   position: absolute;
@@ -40,6 +40,7 @@
   margin: 5px;
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -102,7 +103,6 @@ hr.solid {
 
 .user-name-container {
   padding-bottom: 10px;
-
 }
 
 .profile-wrapper {
@@ -115,7 +115,6 @@ hr.solid {
   color: #4c4c4c;
   font-size: 2.5rem;
   padding: 0 1rem;
-
 }
 
 /* Mobile--960px */

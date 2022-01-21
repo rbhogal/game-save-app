@@ -55,8 +55,9 @@ const Home = () => {
 
   useEffect(() => {
     if (!userId) return;
+    if (!userKey) return;
     dispatch(getUserData(userId));
-  }, [dispatch, userId]);
+  }, [dispatch, userId, userKey]);
 
   useEffect(() => {
     let currentDate = Math.round(new Date().getTime() / 1000);
