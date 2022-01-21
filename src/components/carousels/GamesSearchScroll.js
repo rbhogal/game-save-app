@@ -161,7 +161,9 @@ const GamesSearchScroll = props => {
 
     if (_.isEmpty(props.games)) {
       return props.title === 'Saved Games' ? (
-        <h1 className="no-results-mssg">Add some games</h1>
+        <Link to={`/`}>
+          <h1 className="no-results-mssg">Add some games 🎮</h1>
+        </Link>
       ) : (
         <>
           <div className="no-results-mssg">

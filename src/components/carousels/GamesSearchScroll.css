@@ -13,4 +13,9 @@
 .no-results-mssg {
   margin: 45vh 0;
   text-align: center;
+  opacity: 0.5;
+}
+
+.no-results-mssg:hover {
+  opacity: 1;
 }
