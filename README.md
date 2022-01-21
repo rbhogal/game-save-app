@@ -57,6 +57,7 @@
 * Add some unit, integration, and end-to-end testing using Jest and React Testing Library
 * Figure out why it takes so long to initailly load
 * ~~Add a guest login~~ updated 1/20/2022
+* Memory leak bug on Google user sign out
 
 ## Available Scripts
 
