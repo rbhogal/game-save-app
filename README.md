@@ -10,7 +10,7 @@
 
 ### Organizing
 * I organized my work using Notion
-* I worked on tasks on a Kanban board using Notion: [Screenshot of tasks](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-kanban-board-tasks.png)
+* I worked on tasks on a Kanban board using Notion: [Link to Kanban Board](https://hypnotic-saver-f39.notion.site/3fbacc81006c470e8338bda191f6a7d0?v=48360e6b61a245df8627d0df2eef8e31)
 
 ## How to navigate this project 🧭
 
