@@ -30,7 +30,7 @@
 ### Planning 
 * I wrote out user stories and features: [Screenshot](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/game-save-user-stories-features.png)
 
-### Organizing
+### Organizing: User Stories, Features, Bug Tracking
 * I organized my work using Notion
 * I worked on tasks on a Kanban board using Notion: [Link to Task & Bug Tracker](https://hypnotic-saver-f39.notion.site/3fbacc81006c470e8338bda191f6a7d0?v=48360e6b61a245df8627d0df2eef8e31)
 
