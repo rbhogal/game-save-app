@@ -53,6 +53,7 @@
   * [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk) from CodePen
   * [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize)
   * [React Hot Toast Library](https://react-hot-toast.com/). 
+  
 Otherwise all of the code was written by me. 
 
 ## If I had more time I would change this ⌛
