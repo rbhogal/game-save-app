@@ -49,7 +49,11 @@
 
 * This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authethicaion, and using a database (other than many small tutorial based react projects). 
 * My goal was to maintain focus on JavaScript and React/Redux therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
-* For the same reason I also used [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk) from CodePen, [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize), and [React Hot Toast Library](https://react-hot-toast.com/). Otherwise all of the code was written by me. 
+* For the same reason I also used 
+  * [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk) from CodePen
+  * [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize)
+  * [React Hot Toast Library](https://react-hot-toast.com/). 
+Otherwise all of the code was written by me. 
 
 ## If I had more time I would change this ⌛
 
