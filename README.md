@@ -1,4 +1,4 @@
-## How I worked on this project 👷🏼‍♂️
+## How I worked on this project
 
 ### Design
 
@@ -45,7 +45,7 @@
 * Dynamic Styling with React: 
   * [Jump to code - Example with dropdown menu](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
 
-## Why I built the project this way 🤔
+## Why I built the project this way
 
 * This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authethicaion, and using a database (other than many small tutorial based react projects). 
 * My goal was to maintain focus on JavaScript and React/Redux therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
