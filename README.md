@@ -60,6 +60,7 @@
 * ~~Add a guest login~~ (updated 1/20/2022)
 * Memory leak bug on Google user sign out
 * Move page components into a seperate component folder
+* Add a loading spinner to image gallery
 
 
 ## Available Scripts
