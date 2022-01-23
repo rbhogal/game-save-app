@@ -13,7 +13,7 @@
     <li>
       <a href="#how-to-navigate-this-project">How to navigate this project</a>
     </li>
-    <li><a href="#why-i-built-the-project-this-way">Why I build the project this way</a></li>
+    <li><a href="#why-i-built-the-project-this-way">Why I built the project this way</a></li>
     <li><a href="#if-i-had-more-time-i-would-change-this">If I had more time I would change this</a></li>
     <li><a href="#available-scripts">Available Scripts</a></li>
   </ol>
