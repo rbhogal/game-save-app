@@ -34,7 +34,7 @@
 * I organized my work using Notion
 * I worked on tasks on a Kanban board using Notion: [Link to Task & Bug Tracker](https://hypnotic-saver-f39.notion.site/3fbacc81006c470e8338bda191f6a7d0?v=48360e6b61a245df8627d0df2eef8e31)
 
-## How to navigate this project ##🧭
+## How to navigate this project
 
 * Fetching/Refreshing the App token (Implementation of Twitch's OAuth client credentials flow) and storing to Firebase Database: 
   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
@@ -76,7 +76,7 @@
   * [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize)
   * [React Hot Toast Library](https://react-hot-toast.com/). 
   
-## If I had more time I would change this ##⌛
+## If I had more time I would change this
 
 * Refactor some code such as [this](https://github.com/rbhogal/game-save-app/blob/main/src/components/Home.js#L151) and [this](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/SavedGames.js#L57) in order to not repeat myself and maintain coding best practices
 * Add some unit, integration, and end-to-end testing using Jest and React Testing Library
