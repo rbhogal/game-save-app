@@ -19,6 +19,7 @@ import { auth } from '../firebase';
 import AddBookmarkGame from './carousels/AddBookmarkGame';
 import Footer from './Footer';
 import LoadingDots from './LoadingDots';
+import FeaturedGame from './FeaturedGame';
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -76,7 +77,7 @@ const Home = () => {
             'Client-ID': process.env.REACT_APP_CLIENT_ID,
             Authorization: `Bearer ${token}`,
           },
-          data: 'fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 48;',
+          data: 'fields summary, cover.image_id, first_release_date, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 48;',
         });
 
         const { data: popularGames } = await respPopularGames;
@@ -218,6 +219,10 @@ const Home = () => {
       {isLoading && <LoadingDots />}
 
       {!isLoading && (
+        <FeaturedGame title={'Featured Game'} games={popularGames} />
+      )}
+
+      {!isLoading && (
         <GamesHorizontalScroll
           title={'Popular Games'}
           dots={false}
@@ -227,7 +232,7 @@ const Home = () => {
           games={popularGames}
         />
       )}
-
+      {/* 
       {!isLoading && (
         <GamesHorizontalScroll
           title={'Recent Releases'}
@@ -237,7 +242,7 @@ const Home = () => {
           handleBookmarkClick={handleBookmarkClick}
           games={recentGames}
         />
-      )}
+      )} */}
 
       {/* {!isLoading && (
         <GamesHorizontalScroll

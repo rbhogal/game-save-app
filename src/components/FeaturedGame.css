@@ -1,0 +1,51 @@
+.FeaturedGame {
+  padding: 15rem;
+  padding-top: 5rem;
+  padding: 5rem 15rem 10rem 10rem;
+}
+
+/* 1045px */
+@media only screen and (max-width: 65.3125em) {
+}
+
+/* 925px */
+@media only screen and (max-width: 57.8125em) {
+  .FeaturedGame {
+    margin-top: 3rem;
+    padding: 0 4vw;
+    margin-bottom: 8rem;
+  }
+}
+
+/* 825px */
+@media only screen and (max-width: 51.5625em) {
+}
+
+/* 750px */
+@media only screen and (max-width: 46.875em) {
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+}
+
+/* 500px */
+@media only screen and (max-width: 31.25em) {
+  .Game {
+    margin-top: 3rem;
+    padding: 0 8vw;
+  }
+}
+
+.FeaturedGame h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgba(145, 71, 255, 1);
+  width: min-content;
+}
+
+.featured-game-summary-container .heading-container {
+  /* margin-top: 5rem; */
+}
