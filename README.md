@@ -65,6 +65,7 @@
 * Move page components into a seperate component folder
 * Add a loading spinner to image galleries
 * Add a modal for singing in instead of a toast notification
+* Instead of toast notifications I would update the buttons to alert the user that a game was saved.
 
 
 ## Available Scripts
