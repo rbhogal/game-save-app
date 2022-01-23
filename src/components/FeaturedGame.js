@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 const FeaturedGame = ({ games, title }) => {
   const featuredGameData = games[Math.floor(Math.random() * games.length)];
-  console.log(featuredGameData);
 
   const releaseDate = new Date(featuredGameData.first_release_date * 1000);
   const months = [
