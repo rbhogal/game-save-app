@@ -1,21 +1,33 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+  lazy,
+  Suspense,
+} from 'react';
+
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
-import Navbar from './components/navbar/Navbar';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Home from './components/Home';
-import GameList from './components/GameList';
-import Game from './components/game/Game';
-import SavedGames from './components/SavedGames';
-import GameListGenre from './components/GameListGenre';
 import AuthContext from './store/auth-context';
 import { addAppToken } from './features/admin/appTokenSlice';
+
+import Home from './components/Home';
+import Navbar from './components/navbar/Navbar';
+import LoadingDots from './components/LoadingDots';
+
+const GameList = lazy(() => import('./components/GameList'));
+const Game = lazy(() => import('./components/game/Game'));
+const SavedGames = lazy(() => import('./components/SavedGames'));
+const GameListGenre = lazy(() => import('./components/GameListGenre'));
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -111,23 +123,25 @@ function App() {
           top: 65,
         }}
       />
-      <Navbar />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        {isSignedIn && (
-          <Route path="/savedgames" exact component={SavedGames} />
-        )}
-        <Route path="/gamelist/games" exact component={GameList} />
-        <Route path="/gamelist/games/:game/:id" exact component={Game} />
-        <Route
-          path="/gamelist/genres/:genre/:id"
-          exact
-          component={GameListGenre}
-        />
-        <Route path="*">
-          <Redirect to="/" />
-        </Route>
-      </Switch>
+      <Suspense fallback={LoadingDots}>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          {isSignedIn && (
+            <Route path="/savedgames" exact component={SavedGames} />
+          )}
+          <Route path="/gamelist/games" exact component={GameList} />
+          <Route path="/gamelist/games/:game/:id" exact component={Game} />
+          <Route
+            path="/gamelist/genres/:genre/:id"
+            exact
+            component={GameListGenre}
+          />
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 }

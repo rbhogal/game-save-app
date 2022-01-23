@@ -73,7 +73,6 @@ function GoogleAuth() {
         authCtx.signIn(result.credential.accessToken);
         localStorage.setItem('username', result.user.displayName);
         setUsername(result.user.displayName);
-        toast.success('Signed in!');
       }
 
       // If not a new user, sign in
@@ -92,6 +91,8 @@ function GoogleAuth() {
         localStorage.setItem('username', result.user.displayName);
         setUsername(result.user.displayName);
       }
+
+      toast.success('Signed in!');
     } catch (err) {
       alert(err.message);
     }
@@ -124,7 +125,7 @@ function GoogleAuth() {
           authCtx.signIn('anonymous');
           localStorage.setItem('username', 'Guest');
           setUsername('Guest');
-          toast.success('Signed in as Guest!');
+          toast.success('Signed in!');
         })
         .catch(err => {
           console.log(err.code);
