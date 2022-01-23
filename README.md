@@ -54,8 +54,6 @@
   * [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize)
   * [React Hot Toast Library](https://react-hot-toast.com/). 
   
-Otherwise all of the code was written by me. 
-
 ## If I had more time I would change this ⌛
 
 * Refactor some code such as [this](https://github.com/rbhogal/game-save-app/blob/main/src/components/Home.js#L151) and [this](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/SavedGames.js#L57) in order to not repeat myself and maintain coding best practices
