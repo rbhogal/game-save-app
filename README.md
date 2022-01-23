@@ -3,9 +3,11 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#how-i-worked-on-this-project">How I worked on this projectt</a>
+      <a href="#how-i-worked-on-this-project">How I worked on this project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#planning">Planning</a></li>
+        <li><a href="#organization">Organization</a></li>
       </ul>
     </li>
     <li>
