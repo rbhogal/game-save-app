@@ -11,7 +11,7 @@
       </ul>
     </li>
     <li>
-      <a href="#how-to-navigate-this-project">How to navigate this project</a>
+      <a href="#how-to-navigate-this-project-🧭">How to navigate this project</a>
     </li>
     <li><a href="#why-i-built-the-project-this-way">Why I built the project this way</a></li>
     <li><a href="#if-i-had-more-time-i-would-change-this">If I had more time I would change this</a></li>
