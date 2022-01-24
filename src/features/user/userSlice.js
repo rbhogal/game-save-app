@@ -91,12 +91,16 @@ const initialState = {
   token: null,
   search: '',
   savedGames: {},
+  isLoadingUserData: false,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setIsLoadingUserData: (state, action) => {
+      state.isLoadingUserData = action.payload;
+    },
     setActiveUser: (state, action) => {
       state.userId = action.payload.userId;
       state.userName = action.payload.userName;
@@ -118,17 +122,24 @@ const userSlice = createSlice({
       state.search = action.payload;
       // console.log(`6) Search, ${action.payload}, added to state`);
     },
-    [getSearchAsync.rejected]: (state, action) => {
+    [getSearchAsync.rejected]: () => {
       console.log('unable to retrieve search from database');
     },
-    [addSearchAsync.fulfilled]: (state, action) => {
+    [addSearchAsync.fulfilled]: action => {
       return action.payload;
     },
+    [getUserData.pending]: () => {},
     [getUserData.fulfilled]: (state, action) => {
       state.userKey = action.payload.userKey;
       state.userId = action.payload.userData.userId;
       state.savedGames = action.payload.userData.savedGames;
+      state.isLoadingUserData = false;
     },
+    [getUserData.rejected]: state => {
+      console.log('Failed to retrieve use data');
+      state.isLoadingUserData = false;
+    },
+    [addNewUser.pending]: () => {},
     [addNewUser.fulfilled]: (state, action) => {
       state.userKey = action.payload;
     },
@@ -138,12 +149,14 @@ const userSlice = createSlice({
   },
 });
 
-export const { setActiveUser, setUserSignOutState } = userSlice.actions;
+export const { setActiveUser, setUserSignOutState, setIsLoadingUserData } =
+  userSlice.actions;
 
 export const selectUserName = state => state.user.userName;
 export const selectUserEmail = state => state.user.userEmail;
 export const selectUserToken = state => state.user.token;
 export const selectUserKey = state => state.user.userKey;
 export const selectSavedGames = state => state.user.savedGames;
+export const selectIsLoadingUserData = state => state.user.isLoadingUserData;
 
 export default userSlice.reducer;

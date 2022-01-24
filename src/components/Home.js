@@ -20,6 +20,7 @@ import AddBookmarkGame from './carousels/AddBookmarkGame';
 import Footer from './Footer';
 import LoadingDots from './LoadingDots';
 import FeaturedGame from './FeaturedGame';
+import { getAppToken } from '../app/getAppToken';
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -141,6 +142,7 @@ const Home = () => {
 
         setRecentGames(filteredRecentGamesArr);
       } catch (err) {
+        getAppToken();
         throw new Error(err.message);
       }
 

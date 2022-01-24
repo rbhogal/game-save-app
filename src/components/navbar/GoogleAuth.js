@@ -11,11 +11,12 @@ import {
   setUserSignOutState,
   addNewUser,
   deleteUser,
+  setIsLoadingUserData,
 } from '../../features/user/userSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 import AuthContext from '../../store/auth-context';
 
-function GoogleAuth() {
+const GoogleAuth = () => {
   const [dropdown, setDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
@@ -100,6 +101,7 @@ function GoogleAuth() {
 
   const onSignInClick = e => {
     setIsLoading(true);
+    dispatch(setIsLoadingUserData(true));
 
     // Guest Sign In
     if (e.target.classList.contains('guest-btn')) {
@@ -319,6 +321,6 @@ function GoogleAuth() {
       {dropdown && renderDropdownContent()}
     </div>
   );
-}
+};
 
 export default GoogleAuth;

@@ -34,6 +34,7 @@ function App() {
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();
   const [remainingDuration, setRemainingDuration] = useState(60000);
+  const [isSigningIn, setIsSigningIn] = useState(false);
 
   // Helper Function
   const calcRemainingTime = expiresIn => {
@@ -127,6 +128,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
+
           {isSignedIn && (
             <Route path="/savedgames" exact component={SavedGames} />
           )}

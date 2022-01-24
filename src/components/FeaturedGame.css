@@ -4,10 +4,6 @@
   padding: 5rem 15rem 10rem 10rem;
 }
 
-/* 1045px */
-@media only screen and (max-width: 65.3125em) {
-}
-
 /* 925px */
 @media only screen and (max-width: 57.8125em) {
   .FeaturedGame {
@@ -15,18 +11,6 @@
     padding: 0 4vw;
     margin-bottom: 8rem;
   }
-}
-
-/* 825px */
-@media only screen and (max-width: 51.5625em) {
-}
-
-/* 750px */
-@media only screen and (max-width: 46.875em) {
-}
-
-/* 600px */
-@media only screen and (max-width: 37.5em) {
 }
 
 /* 500px */
@@ -48,4 +32,62 @@
 
 .featured-game-summary-container .heading-container {
   /* margin-top: 5rem; */
+}
+
+.loading-dots-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(28 28 35);
+}
+
+.fade-in-featured-game {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
