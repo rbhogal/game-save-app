@@ -6,8 +6,8 @@
       <a href="#how-i-worked-on-this-project">How I worked on this project</a>
       <ul>
         <li><a href="#design">Design</a></li>
-        <li><a href="#planning">Planning: User Stories & Features</a></li>
-        <li><a href="#organization">Organization: Task & Bug Tracking</a></li>
+        <li><a href="#planning:-user-stories-&-features">Planning: User Stories & Features</a></li>
+        <li><a href="#organization:-task-&-bug-tracking">Organization: Task & Bug Tracking</a></li>
       </ul>
     </li>
     <li>
