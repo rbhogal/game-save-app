@@ -34,7 +34,6 @@ function App() {
   const isSignedIn = authCtx.isSignedIn;
   const dispatch = useDispatch();
   const [remainingDuration, setRemainingDuration] = useState(60000);
-  const [isSigningIn, setIsSigningIn] = useState(false);
 
   // Helper Function
   const calcRemainingTime = expiresIn => {
