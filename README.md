@@ -89,7 +89,7 @@
 * Make image gallery full screen for mobile
 * Add a modal for singing in instead of a toast notification
 * Instead of toast notifications I would update the buttons to alert the user that a game was saved
-* Add a featured game slider on the home page
+* Add a featured game slider on the home page (Current WIP ⚠)
 
 
 ## Available Scripts
