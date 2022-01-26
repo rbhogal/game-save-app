@@ -108,7 +108,7 @@ Click on video game title to view:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## How to navigate this project
+## How To Navigate This Project
 
 #### Twitch OAuth Client Credentials Flow
 Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database): 
@@ -144,7 +144,7 @@ Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing th
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Why I built the project this way
+## Why I Built The Project This Way
 
 * This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authethicaion, and using a database (other than many small tutorial based react projects). Therefore my code may not be as clean as I wanted but I was doing many firsts. 
 * My goal was to maintain focus on JavaScript and React/Redux therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
@@ -155,7 +155,7 @@ Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing th
 
 <p align="right">(<a href="#top">back to top</a>)</p>
   
-## If I had more time I would change this
+## If I Had More Time I Would Change This
 
 * Refactor some code such as [this](https://github.com/rbhogal/game-save-app/blob/main/src/components/Home.js#L155) and [this](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/SavedGames.js#L57) in order to not repeat myself and maintain coding best practices
 * Add some unit, integration, and end-to-end testing using Jest and React Testing Library
@@ -172,7 +172,7 @@ Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing th
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## The idea behind this project
+## The Idea Behind This Project
 
 After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
 * Authentication (Firebase Google)
