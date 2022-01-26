@@ -1,8 +1,5 @@
 <div id="top"></div>
 
-### Read me is a work in progress ⚠
-
-
 <!-- PROJECT HEADER -->
 <br />
 <div align="center">
