@@ -10,7 +10,7 @@
 <h3 align="center">Game Save</h3>
 
   <p align="center">
-    Search or discover video game titles and save them to your wishlist
+    Search, view, or discover video game titles and save them to your wishlist
     <br />
     <br />
     <a href="https://game-save.web.app">View Site</a>
