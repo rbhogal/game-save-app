@@ -88,7 +88,7 @@ Click on video game title to view:
 * Add button to add to your list
 
 #### Save Games to List
-* View ( or delete) your saved games by clicking "Saved Games" via the profile button dropdown
+* View (or delete) your saved games by clicking "Saved Games" via the profile button dropdown
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
