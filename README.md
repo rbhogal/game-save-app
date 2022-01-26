@@ -174,11 +174,13 @@ Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing th
 
 ## The Idea Behind This Project
 
+#### To Practice My Skills
 After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
 * Authentication (Firebase Google)
 * HTTP Reqeusts/Consuming an API (IGDB API)
 * CRUD operations and a database (Firebase Realtime Database) 
 
+#### Solve a Problem I Had
 I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game.
 
 Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
