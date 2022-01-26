@@ -55,9 +55,17 @@
 
 </div>
 <br />
-<br />
 
-Search or discover video game titles and save them to your wishlist
+### The idea behind this project
+
+After finishing my react and redux course I wanted to create an app to practice by including these features
+* Authentication (Firebase Google)
+* HTTP Reqeusts/Consuming an API (IGDB API)
+* CRUD operations and a database (Firebase Realtime Database) 
+
+I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game. 
+
+Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
 
 ### Built With
 * React
@@ -75,19 +83,6 @@ Search or discover video game titles and save them to your wishlist
 * Click on images to zoom in and scroll through gallery (no loading spinner currently, may have to wait for next image to load)
 * Sign in as guest or with Google to save titles either with the quick save button or add button on selected game information page
 * View and delete saved games via profile dropdown button
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## The idea behind this project
-
-After finishing my react and redux course I wanted to create an app to practice by including these features
-* Authentication (Firebase Google)
-* HTTP Reqeusts/Consuming an API (IGDB API)
-* CRUD operations and a database (Firebase Realtime Database) 
-
-I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game. 
-
-Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
