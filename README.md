@@ -38,7 +38,7 @@
 After finishing my react and redux course I wanted to create an app to practice by including these features
 * Authentication (Firebase Google)
 * HTTP Reqeusts/Consuming an API (IGDB API)
-* CRUD operation and a database (Firebase Realtime Database) 
+* CRUD operations and a database (Firebase Realtime Database) 
 
 Did you learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
 
