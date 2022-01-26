@@ -111,36 +111,42 @@ Click on video game title to view:
 ## How To Navigate This Project
 
 #### Twitch OAuth Client Credentials Flow
-Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database): 
-  * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
+Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database) + HTTP requests using axios: 
+  * [Code](src/app/getAppToken.js)
 
-* Application fetching data from the IGDB API for home page and use of Hooks
-  * [Jump to code + HTTP requests](src/components/Home.js)
+#### HTTP Requests from API + Use of Hooks
+Home Page
+  * [Code](src/components/Home.js)
   
-* Mapping arrays to fill carousels with game information: 
-  * [Jump to code](src/components/carousels/GamesHorizontalScroll.js)
+#### Mapping Arrays 
+To fill carousels with game information. Game carousel component. 
+  * [Code](src/components/carousels/GamesHorizontalScroll.js)
 
-* Implementation of Google Auth: 
-  * [Jump to code](src/components/navbar/GoogleAuth.js)
+#### Google Authentication via Firebase: 
+  * [Code](src/components/navbar/GoogleAuth.js)
 
-* Redux (using Redux Toolkit - createSlice)
-  * [Jump to code](src/features/user/userSlice.js)
+#### Redux (Redux Toolkit - createSlice)
+For user state
+  * [Code](src/features/user/userSlice.js)
 
-* Use of React's Context API: 
-  * [Jump to code](src/store/auth-context.js)
+#### React's Context API: 
+To persist state if user is signed in
+  * [Code](src/store/auth-context.js)
   
-* Search feature: 
-  * [Jump to code](src/components/navbar/searchbox/SearchBox.js)
+#### Search Feature
+Searchbox component
+* [Code](src/components/navbar/searchbox/SearchBox.js)
   
-* Browse games by genre feature: 
-  * [Jump to code](src/components/GameListGenre.js)
+#### Browse Games by Genre Feature: 
+  * [Code](src/components/GameListGenre.js)
   
-* Full game information page (Info, Links, Videos, Screenshots, Artworks): 
-  * [Jump to code](src/components/game/Game.js)
-  * CSS styling for game information page: [Jump to code](src/components/game/Game.css)
+#### Full Game Information Page (Info, Links, Videos, Screenshots, Artworks): 
+  * [Code](src/components/game/Game.js)
+  * [Code](src/components/game/Game.css) (CSS)
   
-* Dynamic Styling with React: 
-  * [Jump to code - Example with dropdown menu](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
+#### Dynamic Styling with React: 
+Example with dropdown menu
+  * [Code](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
