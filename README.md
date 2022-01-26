@@ -1,7 +1,12 @@
+# Read me is a work in progress ⚠
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
+    <li>
+      <a href="#the-idea-behind-this-project">The idea behind this project</a>
+    </li>
     <li>
       <a href="#how-i-worked-on-this-project">How I worked on this project</a>
       <ul>
@@ -19,6 +24,23 @@
   </ol>
 </details>
 
+## App features
+
+* Search video game titles, scroll through popular titles on the home page, or use the dropdown to search games by genre
+* Hover over titles to view and scroll through summary
+* Click on video game title to view game information page to view summary, storyline, links, more info, videos, screenshots, and artwork
+* Click on images to zoom in and scroll through gallery (no loading spinner currently, may have to wait for next image to load)
+* Sign in as guest or with Google to save titles either with the quick save button or add button on selected game information page
+* View and delete saved games via profile dropdown button
+
+## The idea behind this project
+
+After finishing my react and redux course I wanted to create an app to practice by including these features
+* Authentication (Firebase Google)
+* HTTP Reqeusts/Consuming an API (IGDB API)
+* CRUD operation and a database (Firebase Realtime Database) 
+
+Did you learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
 
 ## How I worked on this project
 
@@ -89,7 +111,7 @@
 * Make image gallery full screen for mobile
 * Add a modal for singing in instead of a toast notification
 * Instead of toast notifications I would update the buttons to alert the user that a game was saved
-* Add a featured game/more content on the home page (Current WIP ⚠)
+* Add a featured game/more content on the home page
 
 
 ## Available Scripts
