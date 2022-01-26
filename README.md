@@ -187,7 +187,7 @@ After finishing my react and redux course I wanted to create an app to practice 
 * CRUD operations and a database (Firebase Realtime Database) 
 
 #### Solve a Problem I Had
-I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game.
+I like video games but I don't have a lot of time to play. So sometimes a new one comes out (or I am reminded of an old one I never got a chance to play) and I want to remember to purchase it in the future. But I forget what games they were. So I made an app, and no matter what system the game is on, I can search it, and save it for later. Now I have a wish list of games I can come back to when I'm looking to game.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
