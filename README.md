@@ -172,7 +172,7 @@ Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing th
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### The idea behind this project
+## The idea behind this project
 
 After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
 * Authentication (Firebase Google)
