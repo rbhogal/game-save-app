@@ -24,7 +24,7 @@
     <li>
       <a href="#how-i-worked-on-this-project">How I Worked On This Project</a>
       <ul>
-        <li><a href="#design">Design</a></li>
+        <li><a href="#designing">Designing</a></li>
         <li><a href="#planning:-user-stories-&-features">Planning: User Stories & Features</a></li>
         <li><a href="#organization:-task-&-bug-tracking">Organization: Task & Bug Tracking</a></li>
       </ul>
@@ -91,9 +91,9 @@ Click on video game title to view:
 
 ## How I Worked On This Project
 
-### Design
+### Designing
 
-* I wanted to closely follow a professional workflow but Adobe XD was giving me too much trouble loading fonts. Instead I roughly drew it out on a sketchpad: [Sketchpad](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/sketch-home-page.jpg)
+* I'm not a designer but I wanted to closely follow a professional workflow but Adobe XD was giving me too much trouble loading fonts. Instead I roughly drew it out on a sketchpad: [Sketchpad](https://raw.githubusercontent.com/rbhogal/game-save-app/main/screenshots/sketch-home-page.jpg)
 * For the app's design I took inpsiration from varous gaming-related websites such as [GOG.com](https://www.gog.com/) and [IGDB.com](https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild) to name a few
 
 ### Planning: User Stories & Features
