@@ -1,9 +1,29 @@
-# Read me is a work in progress ⚠
+<div id="top"></div>
+
+### Read me is a work in progress ⚠
+
+
+<!-- PROJECT HEADER -->
+<br />
+<div align="center">
+
+<h3 align="center">Game Save</h3>
+
+  <p align="center">
+    Search or discover video game titles and save them to your wishlist
+    <br />
+    <br />
+    <a href="https://game-save.web.app">View Site</a>
+  </p>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
+     <li>
+      <a href="#about-the-project">About the Project</a>
+    </li>
     <li>
       <a href="#the-idea-behind-this-project">The idea behind this project</a>
     </li>
@@ -24,7 +44,30 @@
   </ol>
 </details>
 
-## App features
+<!-- ABOUT THE PROJECT -->
+## About the Project
+<br />
+<br />
+
+<div align="center">
+
+![Game Save BOTW Game Page](https://raw.githubusercontent.com/rbhogal/rbhogal.github.io/main/images/projects/game-save/Game-Save__BOTW_game_page.png)
+
+</div>
+<br />
+<br />
+
+Search or discover video game titles and save them to your wishlist
+
+### Built With
+* React
+* Redux
+* React-router
+* IGDB API
+* Firebase Authentication and Realtime Database
+* Heroku (proxy)
+
+### Features
 
 * Search video game titles, scroll through popular titles on the home page, or use the dropdown to search games by genre
 * Hover over titles to view and scroll through summary
@@ -32,6 +75,8 @@
 * Click on images to zoom in and scroll through gallery (no loading spinner currently, may have to wait for next image to load)
 * Sign in as guest or with Google to save titles either with the quick save button or add button on selected game information page
 * View and delete saved games via profile dropdown button
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## The idea behind this project
 
@@ -43,6 +88,8 @@ After finishing my react and redux course I wanted to create an app to practice 
 I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game. 
 
 Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## How I worked on this project
 
@@ -58,12 +105,16 @@ Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for j
 * I organized my work using Notion
 * I worked on tasks on a Kanban board using Notion: [Link to Task & Bug Tracker](https://hypnotic-saver-f39.notion.site/3fbacc81006c470e8338bda191f6a7d0?v=48360e6b61a245df8627d0df2eef8e31)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## How to navigate this project
 
-* Fetching/Refreshing the App token (Implementation of Twitch's OAuth client credentials flow) and storing to Firebase Database: 
+#### Twitch OAuth Client Credentials Flow
+Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database): 
   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
- 
-* Application fetching data from the IGDB API for home page and use of Hooks
+
+#### More stuff
+Application fetching data from the IGDB API for home page and use of Hooks
   * [Jump to code + HTTP requests](src/components/Home.js)
   
 * Mapping arrays to fill carousels with game information: 
@@ -91,6 +142,8 @@ Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for j
 * Dynamic Styling with React: 
   * [Jump to code - Example with dropdown menu](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/navbar/searchbox/SearchBox.js#L25)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Why I built the project this way
 
 * This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authethicaion, and using a database (other than many small tutorial based react projects). 
@@ -99,6 +152,8 @@ Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for j
   * [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk) from CodePen
   * [React Slick Library](https://react-slick.neostack.com/) for Carousels (although I did alter some code to customize)
   * [React Hot Toast Library](https://react-hot-toast.com/). 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
   
 ## If I had more time I would change this
 
@@ -115,9 +170,13 @@ Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for j
 * Instead of toast notifications I would update the buttons to alert the user that a game was saved
 * Add a featured game/more content on the home page
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Available Scripts
 
 In the project directory, run:
 
 ### `npm start`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
