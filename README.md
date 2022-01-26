@@ -89,7 +89,7 @@ Click on video game title to view:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## How I worked on this project
+## How I Worked On This Project
 
 ### Design
 
