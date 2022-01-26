@@ -35,7 +35,7 @@
     <li><a href="#why-i-built-the-project-this-way">Why I Built the Project This Way</a></li>
     <li><a href="#if-i-had-more-time-i-would-change-this">If I Had More Time I Would Change This</a></li>
      <li>
-      <a href="#the-idea-behind-this-project">The Idea Behind This Projectt</a>
+      <a href="#the-idea-behind-this-project">The Idea Behind This Project</a>
     </li>
     <li><a href="#available-scripts">Available Scripts</a></li>
   </ol>
