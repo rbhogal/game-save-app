@@ -56,17 +56,6 @@
 </div>
 <br />
 
-### The idea behind this project
-
-After finishing my react and redux course I wanted to create an app to practice by including these features
-* Authentication (Firebase Google)
-* HTTP Reqeusts/Consuming an API (IGDB API)
-* CRUD operations and a database (Firebase Realtime Database) 
-
-I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game. 
-
-Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
-
 ### Built With
 * React
 * Redux
@@ -75,14 +64,31 @@ Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for j
 * Firebase Authentication and Realtime Database
 * Heroku (proxy)
 
-### Features
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-* Search video game titles, scroll through popular titles on the home page, or use the dropdown to search games by genre
+## Features
+
+#### Login
+* As a Guest or with Google. Login is required to save titles. 
+
+#### Search Video Game Titles
+* Scroll through popular titles on the home page, use the search bar, or use the dropdown to search games by genre
+
+#### View Quick Summaries
 * Hover over titles to view and scroll through summary
-* Click on video game title to view game information page to view summary, storyline, links, more info, videos, screenshots, and artwork
+* Quick save button to save titles
+
+#### Full Game Information Page
+Click on video game title to view:
+* Summary and storyline, links, and more game information
+* Videos
+* Screenshots
+* Artworks gallery
 * Click on images to zoom in and scroll through gallery (no loading spinner currently, may have to wait for next image to load)
-* Sign in as guest or with Google to save titles either with the quick save button or add button on selected game information page
-* View and delete saved games via profile dropdown button
+* Add button to add to your list
+
+#### Save Games to List
+* View ( or delete) your saved games by clicking "Saved Games" via the profile button dropdown
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -108,8 +114,7 @@ Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for j
 Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database): 
   * [Jump to code + HTTP requests using axios](src/app/getAppToken.js)
 
-#### More stuff
-Application fetching data from the IGDB API for home page and use of Hooks
+* Application fetching data from the IGDB API for home page and use of Hooks
   * [Jump to code + HTTP requests](src/components/Home.js)
   
 * Mapping arrays to fill carousels with game information: 
@@ -141,7 +146,7 @@ Application fetching data from the IGDB API for home page and use of Hooks
 
 ## Why I built the project this way
 
-* This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authethicaion, and using a database (other than many small tutorial based react projects). 
+* This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authethicaion, and using a database (other than many small tutorial based react projects). Therefore my code may not be as clean as I wanted but I was doing many firsts. 
 * My goal was to maintain focus on JavaScript and React/Redux therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
 * For the same reason I also used 
   * [Bennett Wong's loading dots](https://codepen.io/bennett/pen/GjRPdk) from CodePen
@@ -164,6 +169,19 @@ Application fetching data from the IGDB API for home page and use of Hooks
 * Add a modal for singing in instead of a toast notification
 * Instead of toast notifications I would update the buttons to alert the user that a game was saved
 * Add a featured game/more content on the home page
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### The idea behind this project
+
+After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
+* Authentication (Firebase Google)
+* HTTP Reqeusts/Consuming an API (IGDB API)
+* CRUD operations and a database (Firebase Realtime Database) 
+
+I like video games. So sometimes a new one comes out, or I remember an old one I never got a chance to play and I want to remember to purchase it in the future. So I thought about building an app where you can do just that. Regardless of what system it's on, save it for later. Now you have a wish list of games you can come back to when you're looking to game.
+
+Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
