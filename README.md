@@ -68,17 +68,17 @@
 
 ## Features
 
-#### Login
+### Login
 * As a Guest or with Google. Login is required to save titles. 
 
-#### Search Video Game Titles
+### Search Video Game Titles
 * Scroll through popular titles on the home page, use the search bar, or use the dropdown to search games by genre
 
-#### View Quick Summaries
+### View Quick Summaries
 * Hover over titles to view and scroll through summary
 * Quick save button to save titles
 
-#### Full Game Information Page
+### Full Game Information Page
 Click on video game title to view:
 * Summary and storyline, links, and more game information
 * Videos
@@ -87,7 +87,7 @@ Click on video game title to view:
 * Click on images to zoom in and scroll through gallery (no loading spinner currently, may have to wait for next image to load)
 * Add button to add to your list
 
-#### Save Games to List
+### Save Games to List
 * View (or delete) your saved games by clicking "Saved Games" via the profile button dropdown
 
 <p align="right">(<a href="#top">back to top</a>)</p>
