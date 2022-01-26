@@ -22,7 +22,7 @@
       <a href="#about-the-project">About the Project</a>
     </li>
     <li>
-      <a href="#how-i-worked-on-this-project">How I worked on this project</a>
+      <a href="#how-i-worked-on-this-project">How I Worked On This Project</a>
       <ul>
         <li><a href="#design">Design</a></li>
         <li><a href="#planning:-user-stories-&-features">Planning: User Stories & Features</a></li>
@@ -30,12 +30,12 @@
       </ul>
     </li>
     <li>
-      <a href="#how-to-navigate-this-project">How to navigate this project</a>
+      <a href="#how-to-navigate-this-project">How To Navigate This Project</a>
     </li>
-    <li><a href="#why-i-built-the-project-this-way">Why I built the project this way</a></li>
-    <li><a href="#if-i-had-more-time-i-would-change-this">If I had more time I would change this</a></li>
+    <li><a href="#why-i-built-the-project-this-way">Why I Built the Project This Way</a></li>
+    <li><a href="#if-i-had-more-time-i-would-change-this">If I Had More Time I Would Change This</a></li>
      <li>
-      <a href="#the-idea-behind-this-project">The idea behind this project</a>
+      <a href="#the-idea-behind-this-project">The Idea Behind This Projectt</a>
     </li>
     <li><a href="#available-scripts">Available Scripts</a></li>
   </ol>
