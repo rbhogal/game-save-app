@@ -40,7 +40,7 @@ After finishing my react and redux course I wanted to create an app to practice 
 * HTTP Reqeusts/Consuming an API (IGDB API)
 * CRUD operations and a database (Firebase Realtime Database) 
 
-Did you learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
+Did I learn a lot? Oh yeah. Did it take long? 2.5 months. Do I hate myself for jumping into the deep end as my first app without building up to this? Meh, kind of. 
 
 ## How I worked on this project
 
