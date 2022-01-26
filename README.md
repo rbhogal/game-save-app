@@ -25,9 +25,6 @@
       <a href="#about-the-project">About the Project</a>
     </li>
     <li>
-      <a href="#the-idea-behind-this-project">The idea behind this project</a>
-    </li>
-    <li>
       <a href="#how-i-worked-on-this-project">How I worked on this project</a>
       <ul>
         <li><a href="#design">Design</a></li>
@@ -40,6 +37,9 @@
     </li>
     <li><a href="#why-i-built-the-project-this-way">Why I built the project this way</a></li>
     <li><a href="#if-i-had-more-time-i-would-change-this">If I had more time I would change this</a></li>
+     <li>
+      <a href="#the-idea-behind-this-project">The idea behind this project</a>
+    </li>
     <li><a href="#available-scripts">Available Scripts</a></li>
   </ol>
 </details>
