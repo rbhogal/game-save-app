@@ -158,6 +158,7 @@ Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing th
 ## If I Had More Time I Would Change This
 
 * Refactor some code such as [this](https://github.com/rbhogal/game-save-app/blob/main/src/components/Home.js#L155) and [this](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/SavedGames.js#L57) in order to not repeat myself and maintain coding best practices
+* Cleaner and more organized folder structure
 * Add some unit, integration, and end-to-end testing using Jest and React Testing Library
 * Figure out why it takes so long to initailly load
   * added lazy-loading to improve initial load time by a few seconds (1/23/2022)
