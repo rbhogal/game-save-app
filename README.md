@@ -183,6 +183,7 @@ For the same reason I also used
 
 #### To Practice My Skills
 After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
+* React & Redux
 * Authentication (Firebase Google)
 * HTTP Reqeusts/Consuming an API (IGDB API)
 * CRUD operations and a database (Firebase Realtime Database) 
