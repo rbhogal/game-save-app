@@ -57,8 +57,8 @@
 * React
 * Redux
 * React-router
-* IGDB API
-* Firebase Authentication and Realtime Database
+* [IGDB API](https://api-docs.igdb.com/#about)
+* [Firebase - Authentication and Realtime Database](https://firebase.google.com/)
 * Heroku (proxy)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
