@@ -65,8 +65,8 @@
 
 ## Features
 
-### Login
-* As a Guest or with Google. Login is required to save titles. 
+### Sign in as a Guest or with Google. 
+* Sign in is required to save titles. 
 
 ### Search Video Game Titles
 * Scroll through popular titles on the home page, use the search bar, or use the dropdown to search games by genre
