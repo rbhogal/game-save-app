@@ -56,7 +56,7 @@
 ### Built With
 * React
 * Redux
-* React-router
+* React-Router
 * [IGDB API](https://api-docs.igdb.com/#about)
 * [Firebase - Authentication and Realtime Database](https://firebase.google.com/)
 * Heroku (proxy)
