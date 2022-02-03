@@ -4,8 +4,8 @@
 <br />
 <div align="center">
 
-  <a href="https://www.flaticon.com/free-icons/game-boy-advance">
-    <img src="src/images/joystick.png" alt="Logo" width="80" height="80">
+  <a href="https://www.flaticon.com/free-icon/game-controller_141073?term=game%20controller&page=1&position=9&page=1&position=9&related_id=141073&origin=search">
+    <img src="src/images/game-controller.png" alt="Logo" width="70" height="70">
   </a>
 <h3 align="center">Game Save</h3>
 
