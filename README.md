@@ -13,7 +13,7 @@
     Search, view, or discover video game titles and save them to your wishlist
     <br />
     <br />
-    <a href="https://game-save.web.app" target="_blank">View Site</a>
+    <a href="https://game-save.web.app" >View Site</a>
   </p>
 </div>
 
