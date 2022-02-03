@@ -4,6 +4,9 @@
 <br />
 <div align="center">
 
+  <a href="https://www.flaticon.com/free-icons/game-boy-advance">
+    <img src="src/images/joystick.png" alt="Logo" width="80" height="80">
+  </a>
 <h3 align="center">Game Save</h3>
 
   <p align="center">
