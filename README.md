@@ -5,7 +5,7 @@
 <div align="center">
 
   <a href="https://www.flaticon.com/free-icon/joystick_808513?term=game%20controller&page=1&position=36&page=1&position=36&related_id=808513&origin=search">
-    <img src="src/images/joystick.png" alt="Logo" width="70" height="70">
+    <img src="src/images/joystick.png" alt="Logo" width="60" height="60">
   </a>
 <h3 align="center">Game Save</h3>
 
