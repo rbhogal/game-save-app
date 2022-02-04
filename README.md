@@ -182,7 +182,7 @@ For the same reason I also used
   
 ## If I Had More Time I Would Change This
 
-* Refactor some code such as [this](https://github.com/rbhogal/game-save-app/blob/main/src/components/Home.js#L155) and [this](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/SavedGames.js#L57) in order to not repeat myself and maintain coding best practices
+* Refactor some code such as [this](https://github.com/rbhogal/game-save-app/blob/main/src/components/Home.js#L155) and [this](https://github.com/rbhogal/game-save-app/blob/692245f90cf8a7f1730671039f3dfaf96a0e937c/src/components/SavedGames.js#L57) in order to not repeat myself and maintain coding best practices. As well as organize my firebase/auth code better. 
 * Cleaner and more organized folder structure such as moving the page components into a seperate component folder
 * Add some unit, integration, and end-to-end testing using Jest and React Testing Library
 * Figure out why it takes so long to initailly load
