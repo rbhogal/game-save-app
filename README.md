@@ -66,6 +66,21 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## The Idea Behind This Project
+
+#### To Practice My Skills
+After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
+* React & Redux
+* Authentication (Firebase Google)
+* HTTP Reqeusts/Consuming an API (IGDB API)
+* CRUD operations and a database (Firebase Realtime Database) 
+
+#### Solve a Problem I Had
+I like video games but I don't have a lot of time to play. So sometimes a new one comes out (or I am reminded of an old one I never got a chance to play) and I want to remember to purchase it in the future. Then later on, I have time to play, but I forget what games they were. So I made an app, and no matter what system the game is on, I can search it, and save it for later. Now I have a wish list of games I can come back to when I'm looking to purchase a new game.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 ## Features
 
 ### Sign in as a Guest or with Google. 
@@ -182,19 +197,6 @@ For the same reason I also used
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## The Idea Behind This Project
-
-#### To Practice My Skills
-After finishing my react and redux course I wanted to create an app to practice all that I learned such as:
-* React & Redux
-* Authentication (Firebase Google)
-* HTTP Reqeusts/Consuming an API (IGDB API)
-* CRUD operations and a database (Firebase Realtime Database) 
-
-#### Solve a Problem I Had
-I like video games but I don't have a lot of time to play. So sometimes a new one comes out (or I am reminded of an old one I never got a chance to play) and I want to remember to purchase it in the future. But I forget what games they were. So I made an app, and no matter what system the game is on, I can search it, and save it for later. Now I have a wish list of games I can come back to when I'm looking to game.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Q and A
 
