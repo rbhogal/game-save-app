@@ -137,7 +137,7 @@ Home Page
 To fill carousels with game information. Game carousel component. 
   * [Code](src/components/carousels/GamesHorizontalScroll.js)
 
-#### Google Authentication via Firebase: 
+#### Google Authentication via Firebase Auth REST API: 
   * [Code](src/components/navbar/GoogleAuth.js)
 
 #### Redux (Redux Toolkit - createSlice)
