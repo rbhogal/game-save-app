@@ -203,17 +203,17 @@ For the same reason I also used
 ## Q and A
 
 #### Did I learn a lot?
-Oh yeah
+Oh yeah. Authentication, using a database, tokens/refresh tokens, APIs, reading docs, HTTP requests, React, React-Router, Redux Toolkit, Context API, and most importantly handling asynchronous data. 
 
 #### Did it take long? 
 
 <img src="https://media.giphy.com/media/3o7TKRwpns23QMNNiE/giphy.gif" />
 
-2.5 months
+...I don't want to talk about it 😐 (2.5 months)
 
 #### Do I hate myself for jumping into the deep end as my first app without building up to this? 
 
-Meh, kind of. Hard for the code to not get messy. 
+Meh, kind of. Hard for the code to not get messy as I made a lot of mistakes but that's the best way to learn, because I do NOT want to deal with the stress of dealing with those mistakes again so I'm better prepared going forward.  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
