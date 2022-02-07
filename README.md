@@ -207,7 +207,6 @@ Oh yeah
 
 #### Did it take long? 
 
-<br />
 <img src="https://media.giphy.com/media/3o7TKRwpns23QMNNiE/giphy.gif" />
 
 2.5 months
