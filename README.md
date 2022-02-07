@@ -83,8 +83,8 @@ I like video games but I don't have a lot of time to play. So sometimes a new on
 
 ## Features
 
-### Sign in as a Guest or with Google. 
-* Sign in is required to save titles
+### Sign in as a Guest or with Google
+* Sign in is required to save titles to your wishlist
 
 ### Search Video Game Titles
 * Scroll through popular titles on the home page, use the search bar, or use the dropdown to search games by genre
