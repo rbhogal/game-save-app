@@ -170,7 +170,7 @@ Example with dropdown menu
 ## Why I Built The Project This Way
 
 ### Project of Many Firsts
-This was my very first react and redux project, as well as a first making http requests, consuming an API and token, authentication, and using a database on my own (I had done many small tutorial based react projects). Therefore my code may not be as clean as I wanted but I was doing many firsts. 
+This was my first react, react-router, and redux project, a well as a first making http requests, consuming an API and token, authentication, and using a database.  
 
 ### Keep Focus on Javascript less on CSS
 My goal was to maintain focus on JavaScript and React/Redux therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
@@ -207,12 +207,12 @@ Oh yeah
 
 #### Did it take long? 
 
+<br />
+<img src="https://media.giphy.com/media/3o7TKRwpns23QMNNiE/giphy.gif" />
+
 2.5 months
 
 #### Do I hate myself for jumping into the deep end as my first app without building up to this? 
-
-<br />
-<img src="https://media.giphy.com/media/3o7TKRwpns23QMNNiE/giphy.gif" />
 
 Meh, kind of. Hard for the code to not get messy. 
 
