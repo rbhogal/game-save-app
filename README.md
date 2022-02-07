@@ -87,11 +87,13 @@ I like video games but I don't have a lot of time to play. So sometimes a new on
 * Sign in is required to save titles to your wishlist
 
 ### Search Video Game Titles
-* Scroll through popular titles on the home page, use the search bar, or use the dropdown to search games by genre
+* Scroll through popular titles on the home page, use the dropdown to search games by genre, or use the search bar to find a specific game
 
 ### View Quick Summaries
-* Hover over titles to view and scroll through summary
-* Quick save button to save titles
+* Hover over titles to qucikly view and scroll through summary
+
+### Quick Save
+* Quick save a title when scrolling through games
 
 ### Full Game Information Page
 Click on video game title to view:
@@ -100,7 +102,7 @@ Click on video game title to view:
 * Screenshots
 * Artworks gallery
 * Click on images to zoom in and scroll through gallery (no loading spinner currently, may have to wait for next image to load)
-* Add button to add to your list
+* Add game to your wishlist
 
 ### Save Games to List
 * View (or delete) your saved games by clicking "Saved Games" via the profile button dropdown
@@ -129,7 +131,7 @@ Click on video game title to view:
 Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database) + HTTP requests using axios: 
   * [Code](src/app/getAppToken.js)
 
-#### HTTP Requests from API + Use of Hooks
+#### HTTP Requests from REST API + Use of Hooks
 Home Page
   * [Code](src/components/Home.js)
   
@@ -204,9 +206,14 @@ For the same reason I also used
 Oh yeah
 
 #### Did it take long? 
+
 2.5 months
 
 #### Do I hate myself for jumping into the deep end as my first app without building up to this? 
+
+<br />
+<img src="https://media.giphy.com/media/3o7TKRwpns23QMNNiE/giphy.gif" />
+
 Meh, kind of. Hard for the code to not get messy. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
