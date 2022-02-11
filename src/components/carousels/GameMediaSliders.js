@@ -42,7 +42,6 @@ const GameMediaSliders = props => {
   };
 
   const showFullscreen = e => {
-    console.log(e);
     setImageId(e.target.id);
     setShowModal(prev => !prev);
     setImageType(e.target.dataset.imgType);

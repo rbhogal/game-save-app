@@ -38,6 +38,11 @@
   animation-delay: 0.4s;
 }
 
+.loading-dots--mssg {
+  margin-bottom: 3rem;
+  color: #b2b2b2;
+}
+
 @-webkit-keyframes loading-dots {
   0% {
     -webkit-transform: scale(0, 0);

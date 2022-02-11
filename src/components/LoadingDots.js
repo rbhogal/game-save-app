@@ -5,8 +5,9 @@ import './LoadingDots.css';
 const LoadingDots = () => {
   return (
     <>
-      <div id="container">
+      <div style={{ textAlign: 'center' }} id="container">
         <div className="loading-dots">
+          {/* <p className="loading-dots--mssg">Loading games...</p> */}
           <div></div>
           <div></div>
           <div></div>
