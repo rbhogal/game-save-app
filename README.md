@@ -202,6 +202,22 @@ For the same reason I also used
 
 ## Q and A
 
+#### Biggest Challenge? 
+
+Handling asynchronous data
+
+* Many of the errors/bugs were simply due to code being written without consideration to async data such as code being executed before data in a useState hook had a chance to     update.
+
+Implementing Twitch's OAuth Client Credentials Flow
+
+* Working with a more complex API such as Twitch/IGDB's API. Reading and understanding the documentation, testing (using Postman), and implementing the app access token into my code properly took some time and effort. Maybe a week or two. I ran into a CORS error which required a workaround for the IGDB API by setting up a proxy using CORS anywhere with Heroku.
+
+Debugging Code
+* This project really tested my debugging skills. Using best practices in the first place will help avoid bugs entirely, however when they do happen, I've learned to work through them logically, use console logs, chrome dev tools/debugger/breakpoints, and keep calm as more than likely it's a very easy fix with a solution just around the corner. Take a short break if I have to.
+
+My First App
+* Although through tutorials I had implemented HTTP Requests, worked with an API, Firebase, React, Redux, and React-Router, this was the first time doing them on my own. It took a stressful 2.5 months to complete as it being a project of many firsts I made many mistakes, but it really forced me to learn.
+
 #### Did I learn a lot?
 Oh yeah. Authentication, using a database, tokens/refresh tokens, APIs, reading docs, HTTP requests, React, React-Router, Redux Toolkit, Context API, and most importantly handling asynchronous data. 
 
@@ -213,7 +229,7 @@ Oh yeah. Authentication, using a database, tokens/refresh tokens, APIs, reading 
 
 #### Do I hate myself for jumping into the deep end as my first app without building up to this? 
 
-Meh, kind of. Hard for the code to not get messy as I made a lot of mistakes but that's the best way to learn, because I do NOT want to deal with the stress of dealing with those mistakes again so I'm better prepared going forward.  
+Meh, kind of. Hard for the code to not get messy as I made a lot of mistakes but that's the best way to learn, because I do NOT want to deal with the stress of dealing with those mistakes again so I've been better prepared going forward. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
