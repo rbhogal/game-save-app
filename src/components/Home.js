@@ -83,7 +83,7 @@ const Home = () => {
 
         const { data: popularGames } = await respPopularGames;
         setPopularGames(popularGames);
-
+        /* 
         const respAnticipatedGames = await axios({
           url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
           method: 'POST',
@@ -112,7 +112,9 @@ const Home = () => {
         );
 
         setAnticipatedGames(filteredAnticipatedGamesArr);
+ */
 
+        /* 
         // // RECENTLY RELEASED GAMES
         const respRecentGames = await axios({
           url: 'https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/release_dates/',
@@ -141,6 +143,8 @@ const Home = () => {
         });
 
         setRecentGames(filteredRecentGamesArr);
+
+ */
       } catch (err) {
         getAppToken();
         throw new Error(err.message);
