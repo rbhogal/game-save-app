@@ -142,11 +142,11 @@ To fill carousels with game information. Game carousel component.
 #### Google Authentication via Firebase Auth REST API: 
   * [Code](src/components/navbar/GoogleAuth.js)
 
-#### Redux (Redux Toolkit - createSlice)
+#### Redux State Managment
 For user state
   * [Code](src/features/user/userSlice.js)
 
-#### React's Context API: 
+#### Context State Mangment: Auth/Login
 To persist state if user is signed in
   * [Code](src/store/auth-context.js)
   
