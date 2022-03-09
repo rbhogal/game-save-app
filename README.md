@@ -154,6 +154,9 @@ Click on video game title to view:
 #### Full Game Information Page (Info, Links, Videos, Screenshots, Artworks): 
   * [Code](src/components/game/Game.js)
   * [Code](src/components/game/Game.css) (CSS)
+
+#### Code Splitting / Lazy Loading
+* [Code](https://github.com/rbhogal/game-save-app/blob/214130ba31133a77bb888078dfcc8119c53ef74a/src/App.js#L26)
   
 #### Dynamic Styling with React: 
 Example with dropdown menu
