@@ -128,30 +128,24 @@ Click on video game title to view:
 ## How To Navigate This Project
 
 #### Twitch OAuth Client Credentials Flow
-Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database) + HTTP requests using axios: 
-  * [Code](src/app/getAppToken.js)
+  * [Code](src/app/getAppToken.js): Implementation of Twitch's OAuth client credentials flow (Fetching/Refreshing the App token storing to Firebase Database) + HTTP requests using axios
 
 #### HTTP Requests from REST API + Use of Hooks
-Home Page
-  * [Code](src/components/Home.js)
+  * [Code](src/components/Home.js): Home Page
   
 #### Mapping Arrays 
-To fill carousels with game information. Game carousel component. 
-  * [Code](src/components/carousels/GamesHorizontalScroll.js)
+  * [Code](src/components/carousels/GamesHorizontalScroll.js): To fill carousels with game information
 
 #### Google Authentication via Firebase Auth REST API: 
   * [Code](src/components/navbar/GoogleAuth.js)
 
-#### Redux (Redux Toolkit - createSlice)
-For user state
-  * [Code](src/features/user/userSlice.js)
+#### Redux State Managment
+  * [Code](src/features/user/userSlice.js): Handling user data
 
-#### React's Context API: 
-To persist state if user is signed in
-  * [Code](src/store/auth-context.js)
+#### Context State Mangment: Auth/Login
+  * [Code](src/store/auth-context.js): To persist state if user is signed in
   
 #### Search Feature
-Searchbox component
 * [Code](src/components/navbar/searchbox/SearchBox.js)
   
 #### Browse Games by Genre Feature: 
