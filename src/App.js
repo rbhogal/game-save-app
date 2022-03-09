@@ -22,8 +22,8 @@ import { addAppToken } from './features/admin/appTokenSlice';
 
 import Home from './components/Home';
 import Navbar from './components/navbar/Navbar';
-import LoadingDots from './components/LoadingDots';
 
+const LoadingDots = lazy(() => import('./components/LoadingDots'));
 const GameList = lazy(() => import('./components/GameList'));
 const Game = lazy(() => import('./components/game/Game'));
 const SavedGames = lazy(() => import('./components/SavedGames'));

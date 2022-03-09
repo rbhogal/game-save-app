@@ -52,6 +52,7 @@ const GameList = () => {
     if (token && search) searchGames();
   }, [token, search, searchGames]);
 
+  // DRY: Also in Home.js
   const checkGameExists = async gameId => {
     let gameExists = false;
 

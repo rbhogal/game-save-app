@@ -238,6 +238,7 @@ const Home = () => {
           games={popularGames}
         />
       )}
+
       {/* 
       {!isLoading && (
         <GamesHorizontalScroll
