@@ -41,10 +41,10 @@
       <a href="#the-idea-behind-this-project">The Idea Behind This Project</a>
     </li>
     <li>
-      <a href="#q-and-a">Q and A</a>
+      <a href="#challenges">Challenges</a>
     </li>
     <li>
-      <a href="#challenges">Challenges</a>
+      <a href="#q-and-a">Q and A</a>
     </li>
     <li><a href="#available-scripts">Available Scripts</a></li>
   </ol>
