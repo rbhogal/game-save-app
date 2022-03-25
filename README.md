@@ -40,6 +40,10 @@
      <li>
       <a href="#the-idea-behind-this-project">The Idea Behind This Project</a>
     </li>
+    <li>
+      <a href="#challenges">Challenges</a>
+    </li>
+    
     <li><a href="#available-scripts">Available Scripts</a></li>
   </ol>
 </details>
@@ -196,27 +200,30 @@ For the same reason I also used
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Challenges
 
-## Q and A
-
-#### Challenges
-
-Handling asynchronous data
+### Handling asynchronous data
 
 * Many of the errors/bugs were simply due to code being written without consideration to async data such as code being executed before data in a useState hook had a chance to     update.
 
-Implementing Twitch's OAuth Client Credentials Flow
+### Implementing Twitch's OAuth Client Credentials Flow
 
 * Working with a more complex API such as Twitch/IGDB's API. Reading and understanding the documentation, testing (using Postman), and implementing the app access token into my code properly took some time and effort. Maybe a week or two. I ran into a CORS error which required a workaround for the IGDB API by setting up a proxy using CORS anywhere with Heroku.
 
-Debugging Code
+### Debugging Code
 * This project really tested my debugging skills. Using best practices in the first place will help avoid bugs entirely, however when they do happen, I've learned to work through them logically, use console logs, chrome dev tools/debugger/breakpoints, and keep calm as more than likely it's a very easy fix with a solution just around the corner. Take a short break if I have to.
 
-CORS Error
+### CORS Error
 * The Twitch IGDB API didn't support CORS and so they recommeded setting up a proxy using [CORS everywhere](https://github.com/Rob--W/cors-anywhere) and Heroku. Not something I was familiar with but eventually figured out how to correclty implement it thanks to a 10 minute video of someone who implemented it. Still took me an hour but I had I not figured it out I would have had to abandon the project.
 
-My First App
+### My First App
 * Although through tutorials I had implemented HTTP Requests, worked with an API, Firebase, React, Redux, and React-Router, this was the first time doing them on my own. It took a stressful 2.5 months to complete as it being a project of many firsts I made many mistakes, but it really forced me to learn.
+
+
+## Q and A
+
+
+
 
 #### Did I learn a lot?
 Oh yeah. Authentication, using a database, tokens/refresh tokens, APIs, reading docs, HTTP requests, React, React-Router, Redux Toolkit, Context API, and most importantly handling asynchronous data. 
