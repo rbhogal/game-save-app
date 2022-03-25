@@ -216,7 +216,7 @@ For the same reason I also used
 * This project really tested my debugging skills. Using best practices in the first place will help avoid bugs entirely, however when they do happen, I've learned to work through them logically, use console logs, chrome dev tools/debugger/breakpoints, and keep calm as more than likely it's a very easy fix with a solution just around the corner. Take a short break if I have to.
 
 ### CORS Error
-* The Twitch IGDB API didn't support CORS and so they recommeded setting up a proxy using [CORS everywhere](https://github.com/Rob--W/cors-anywhere) and Heroku. Not something I was familiar with but eventually figured out how to correclty implement it thanks to a 10 minute video of someone who implemented it. Still took me an hour but I had I not figured it out I would have had to abandon the project.
+* The Twitch IGDB API didn't support CORS and so they recommeded setting up a proxy using [CORS everywhere](https://github.com/Rob--W/cors-anywhere) and Heroku. Not something I was familiar with but eventually figured out how to correclty implement it thanks to a 10 minute video of someone who implemented it. Still took me an hour but had I not figured it out I would have had to abandon the project.
 
 ### My First App
 * Although through tutorials I had implemented HTTP Requests, worked with an API, Firebase, React, Redux, and React-Router, this was the first time doing them on my own. It took a stressful 2.5 months to complete as it being a project of many firsts I made many mistakes, but it really forced me to learn.
