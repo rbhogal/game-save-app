@@ -175,7 +175,7 @@ Example with dropdown menu
 ### Project of Many Firsts
 This was my first react, react-router, and redux project, a well as a first making http requests, consuming an API and token, authentication, and using a database.  
 
-### Keep Focus on Javascript less on CSS
+### Keep the Focus on Javascript and less on CSS
 My goal was to maintain focus on JavaScript and React/Redux therefore I decided to keep it simple with the CSS and used external sheets rather than CSS-in-JS styled components or CSS Modules
 
 For the same reason I also used 
