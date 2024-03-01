@@ -20,25 +20,30 @@
 }
 
 .projectLinks {
-  li {
+  .link {
     list-style: none;
     position: relative;
     padding-left: 1.5rem;
   }
 
-  li:before {
+  .link:before {
     content: '\25BA \0020';
     font-size: 1.2rem;
     position: absolute;
     top: 0.3rem;
     left: -1rem;
+    opacity: 0;
   }
 
-  li a {
+  .active:before {
+    opacity: 1;
+  }
+
+  .link a {
     color: green;
   }
 
-  li a:hover {
+  .link a:hover {
     opacity: 0.6;
   }
 }
