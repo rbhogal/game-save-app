@@ -33,18 +33,23 @@
     top: 0.3rem;
     left: -1rem;
     opacity: 0;
+    color: green;
+  }
+
+  .link a {
+    opacity: 0.5;
   }
 
   .active:before {
     opacity: 1;
   }
 
-  .link a {
-    color: green;
+  .active a {
+    opacity: 1;
   }
 
-  .link a:hover {
-    opacity: 0.6;
+  .link a {
+    color: green;
   }
 }
 
