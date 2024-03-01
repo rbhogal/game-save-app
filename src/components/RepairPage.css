@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - 55px);
   color: white;
   gap: 3.2rem;
   padding: 3.2rem;
@@ -49,6 +49,13 @@
 
 .subheadingText {
   font-size: 2rem;
+}
+
+/* 925px */
+@media only screen and (max-width: 57.8125em) {
+  .repairPage {
+    height: calc(100vh - 55px);
+  }
 }
 
 /* 600px */
