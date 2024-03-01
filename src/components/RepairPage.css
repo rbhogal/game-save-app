@@ -1,0 +1,67 @@
+.headingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.repairPage {
+  font-family: 'Press Start 2P', system-ui;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  color: white;
+  gap: 3.2rem;
+  padding: 3.2rem;
+}
+
+.projectLinks {
+  li {
+    list-style: none;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  li:before {
+    content: '\25BA \0020';
+    font-size: 1.2rem;
+    position: absolute;
+    top: 0.3rem;
+    left: -1rem;
+  }
+
+  li a {
+    color: green;
+  }
+
+  li a:hover {
+    opacity: 0.6;
+  }
+}
+
+.headingText {
+  font-size: 6.4rem;
+}
+
+.subheadingText {
+  font-size: 2rem;
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  .headingText {
+    font-size: 3.2rem;
+  }
+
+  .subheadingText {
+    font-size: 1.2rem;
+  }
+
+  .subHeadingContainer {
+    font-size: 1rem;
+  }
+}

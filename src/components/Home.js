@@ -21,6 +21,7 @@ import Footer from './Footer';
 import LoadingDots from './LoadingDots';
 import FeaturedGame from './FeaturedGame';
 import { getAppToken } from '../app/getAppToken';
+import RepairPage from './RepairPage';
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -33,6 +34,7 @@ const Home = () => {
   const [userId, setUserId] = useState(null);
   const dispatch = useDispatch();
   const userKey = useSelector(selectUserKey);
+  const [errorPage, setErrorPage] = useState(false);
 
   // Helper Functions
   const getUserIdFirebase = () => {
@@ -63,7 +65,7 @@ const Home = () => {
 
   useEffect(() => {
     let currentDate = Math.round(new Date().getTime() / 1000);
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
+    const url = `https://rdahaeara0.execute-api.us-west-2.amazonaws.com/production/v4/games`;
 
     const getAllGamesRequest = async () => {
       setIsLoading(true);
@@ -75,7 +77,7 @@ const Home = () => {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Client-ID': process.env.REACT_APP_CLIENT_ID,
+            // 'Client-ID': process.env.REACT_APP_CLIENT_ID,
             Authorization: `Bearer ${token}`,
           },
           data: 'fields summary, cover.image_id, first_release_date, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 48;',
@@ -147,13 +149,16 @@ const Home = () => {
  */
       } catch (err) {
         getAppToken();
+
         throw new Error(err.message);
       }
 
       setIsLoading(false);
     };
 
-    if (token) getAllGamesRequest();
+    // TODO: Fix Axios / CORS / AWS API Gateway error
+    // if (token) getAllGamesRequest();
+    setIsLoading(false);
   }, [token]);
 
   // DRY: Repeat code in GameList.js
@@ -220,6 +225,8 @@ const Home = () => {
     }
   };
 
+  // TODO: Fix Axios / CORS / AWS API Gateway error
+  /* 
   return (
     <div className="Home">
       {isLoading && <LoadingDots />}
@@ -227,7 +234,6 @@ const Home = () => {
       {!isLoading && (
         <FeaturedGame title={'Featured Game'} games={popularGames} />
       )}
-
       {!isLoading && (
         <GamesHorizontalScroll
           title={'Popular Games'}
@@ -239,32 +245,12 @@ const Home = () => {
         />
       )}
 
-      {/* 
-      {!isLoading && (
-        <GamesHorizontalScroll
-          title={'Recent Releases'}
-          dots={false}
-          infinite={false}
-          bookmarkComponent={AddBookmarkGame}
-          handleBookmarkClick={handleBookmarkClick}
-          games={recentGames}
-        />
-      )} */}
-
-      {/* {!isLoading && (
-        <GamesHorizontalScroll
-          title={'Most Anticipated'}
-          dots={false}
-          infinite={false}
-          bookmarkComponent={AddBookmarkGame}
-          handleBookmarkClick={handleBookmarkClick}
-          games={anticipatedGames}
-        />
-      )} */}
-
       {!isLoading && <Footer />}
     </div>
   );
+ */
+
+  return <RepairPage />;
 };
 
 export default Home;
