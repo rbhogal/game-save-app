@@ -1,104 +1,36 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import _ from 'lodash';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import './Game.css';
-import { selectAppToken } from '../../features/admin/appTokenSlice';
-import { selectUserKey, storeBookmark } from '../../features/user/userSlice';
-import AuthContext from '../../store/auth-context';
-import LoadingDots from '../LoadingDots';
-import GameHeading from './GameHeading';
-import GameLinks from './GameLinks';
-import GameInfo from './GameInfo';
-import Footer from '../Footer';
-import GameMediaSliders from '../carousels/GameMediaSliders';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
+import { selectUserKey, storeBookmark } from '../../features/user/userSlice';
+import { selectAppToken } from '../../features/admin/appTokenSlice';
+import AuthContext from '../../store/auth-context';
+import LoadingDots from '../LoadingDots';
+import GameMainSection from './sections/GameMainSection';
+import GameDetailsSection from './sections/GameDetailsSection';
+import GameSliderSection from './sections/GameSliderSection';
+import Footer from '../Footer';
+
 const Game = () => {
-  const token = useSelector(selectAppToken);
-  const userKey = useSelector(selectUserKey);
-  const [gameId, setGameId] = useState('');
   const [gameData, setGameData] = useState([]);
-  const [developer, setDeveloper] = useState('');
-  const releaseDate = new Date(gameData.first_release_date * 1000);
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  const releaseYear = releaseDate.getFullYear();
-  const releaseMonth = months[releaseDate.getMonth()];
-  const releaseDay = releaseDate.getDate() + 1;
-  const urlPath = window.location.pathname;
   const [isLoading, setIsLoading] = useState(true);
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
-  const dispatch = useDispatch();
-
+  const [gameId, setGameId] = useState('');
+  const userKey = useSelector(selectUserKey);
+  const urlPath = window.location.pathname;
   const getGameId = useCallback(() => {
     const index = urlPath.lastIndexOf('/');
     const gameId = urlPath.slice(index + 1, urlPath.length);
     setGameId(gameId);
   }, [urlPath]);
+  const token = useSelector(selectAppToken);
+  const dispatch = useDispatch();
 
-  const getGameData = useCallback(async () => {
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
-
-    setIsLoading(true);
-    try {
-      const resp = await axios({
-        url: url,
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Client-ID': process.env.REACT_APP_CLIENT_ID,
-          Authorization: `Bearer ${token}`,
-        },
-        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots.image_id, videos.video_id, artworks.image_id; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
-      });
-
-      const { data } = await resp;
-      setGameData(data[0]);
-      setIsLoading(false);
-    } catch (err) {
-      console.log(err.message);
-    }
-  }, [token, gameId]);
-
-  const getDeveloper = gameData => {
-    if (!gameData.involved_companies) return;
-    if (!_.isEmpty(gameData)) {
-      gameData.involved_companies.forEach(c => {
-        if (c.developer === true) setDeveloper(c.company.name);
-      });
-    }
-  };
-
-  useEffect(() => {
-    getGameId();
-  }, [getGameId]);
-
-  useEffect(() => {
-    if (gameId) {
-      if (token) getGameData();
-    }
-  }, [gameId, token, getGameData]);
-
-  useEffect(() => {
-    getDeveloper(gameData);
-  }, [gameData]);
-
-  const checkGameExists = async () => {
+  // DRY: Repeat code in GameList.js
+  const checkGameExists = async gameId => {
     let gameExists = false;
 
     try {
@@ -109,7 +41,7 @@ const Game = () => {
       const { data: savedGames } = await resp;
 
       for (const game in savedGames) {
-        if (savedGames[game].id === +gameId) {
+        if (savedGames[game].id === gameId) {
           gameExists = true;
         }
       }
@@ -126,6 +58,39 @@ const Game = () => {
       console.log(err.message);
     }
   };
+
+  const getGameData = useCallback(async () => {
+    const url = `https://42z5n298h4.execute-api.us-west-2.amazonaws.com/production/v4/games`;
+
+    setIsLoading(true);
+    try {
+      const resp = await axios({
+        url: url,
+        method: 'POST',
+        headers: {
+          'x-api-key': process.env.REACT_APP_AWS_API_DEFAULT_API_KEY,
+        },
+        data: `fields summary, first_release_date, cover.image_id, genres.name, name, total_rating, involved_companies.*, involved_companies.company.name, platforms.name, websites.*, url, release_dates, game_modes.name, themes.name, player_perspectives.*, storyline, screenshots.image_id, videos.video_id, artworks.image_id; where id = ${gameId} & genres.name != null & cover.image_id != null;`,
+      });
+
+      const game = await resp;
+      const [data] = game.data;
+      setGameData(data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, [gameId]);
+
+  useEffect(() => {
+    getGameId();
+  }, [getGameId]);
+
+  useEffect(() => {
+    if (gameId) {
+      if (token) getGameData();
+    }
+  }, [gameId, token, getGameData]);
 
   const handleBookmarkClick = async () => {
     if (!isSignedIn) {
@@ -166,102 +131,12 @@ const Game = () => {
       {isLoading && <LoadingDots />}
       {!isLoading && (
         <>
-          <section className="game-main-section">
-            <img
-              className="game-img"
-              src={`//images.igdb.com/igdb/image/upload/t_cover_big/${gameData.cover.image_id}.jpg`}
-              alt={gameData.name}
-            ></img>
-
-            <div className="game-main-content">
-              <div className="game-main-content-text">
-                <h1 className="game-title">{gameData.name}</h1>
-                <h2 className="game-release-date">{`${releaseMonth} ${releaseDay}, ${releaseYear}`}</h2>
-                <h2 className="game-genre">{gameData.genres[0].name}</h2>
-              </div>
-
-              <div className="game-rating-bookmark-div">
-                <div className="game-rating-box">
-                  <p className="game-rating">
-                    {gameData.total_rating
-                      ? Math.round(gameData.total_rating)
-                      : 'N/A'}
-                  </p>
-                </div>
-                <ion-icon onClick={handleBookmarkClick} name="add"></ion-icon>
-              </div>
-            </div>
-          </section>
-          <section className="game-details-section">
-            <div className="game-left-column">
-              <GameHeading heading="Summary" />
-              <p className="game-summary">{gameData.summary}</p>
-
-              {gameData.storyline && (
-                <>
-                  <GameHeading heading="Storyline" />
-                  <p className="game-storyline">{gameData.storyline}</p>
-                </>
-              )}
-
-              {gameData.websites && (
-                <div className="game-links-div">
-                  <GameHeading heading="Links" />
-                  <div className="game-links">
-                    <GameLinks websitesArr={gameData.websites} />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="game-right-column">
-              <div className="game-info-div">
-                <GameHeading heading="Information" />
-
-                <div className="game-info-content">
-                  {developer && (
-                    <div className="game-info-content-container">
-                      <h4>Developer</h4>
-                      <p className="game-info-content--developer">
-                        {developer}
-                      </p>
-                    </div>
-                  )}
-
-                  {gameData.platforms && (
-                    <GameInfo title="Platforms" gameArr={gameData.platforms} />
-                  )}
-                  {gameData.game_modes && (
-                    <GameInfo
-                      title="Game Modes"
-                      gameArr={gameData.game_modes}
-                    />
-                  )}
-                  {gameData.player_perspectives && (
-                    <GameInfo
-                      title="Player Perspectives"
-                      gameArr={gameData.player_perspectives}
-                    />
-                  )}
-                  {gameData.genres && (
-                    <GameInfo title="Genre" gameArr={gameData.genres} />
-                  )}
-                  {gameData.themes && (
-                    <GameInfo title="Themes" gameArr={gameData.themes} />
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="game-slider-section">
-            <GameMediaSliders
-              videos={gameData.videos}
-              screenshots={gameData.screenshots}
-              artworks={gameData.artworks}
-              gameName={gameData.name}
-            />
-          </section>
-
+          <GameMainSection
+            gameData={gameData}
+            onBookmarkClick={handleBookmarkClick}
+          />
+          <GameDetailsSection gameData={gameData} />
+          <GameSliderSection gameData={gameData} />
           <div className="scroll-up-btn">
             <a href="#root">
               <p>Back To Top</p> <ion-icon name="arrow-up"></ion-icon>

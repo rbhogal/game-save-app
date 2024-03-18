@@ -65,7 +65,7 @@ const Home = () => {
 
   useEffect(() => {
     let currentDate = Math.round(new Date().getTime() / 1000);
-    const url = `https://rdahaeara0.execute-api.us-west-2.amazonaws.com/production/v4/games`;
+    const url = `https://42z5n298h4.execute-api.us-west-2.amazonaws.com/production/v4/games`;
 
     const getAllGamesRequest = async () => {
       setIsLoading(true);
@@ -76,9 +76,7 @@ const Home = () => {
           url: url,
           method: 'POST',
           headers: {
-            Accept: 'application/json',
-            // 'Client-ID': process.env.REACT_APP_CLIENT_ID,
-            Authorization: `Bearer ${token}`,
+            'x-api-key': process.env.REACT_APP_AWS_API_DEFAULT_API_KEY,
           },
           data: 'fields summary, cover.image_id, first_release_date, genres.name, name, total_rating; sort first_release_date desc; where platforms =(6, 48, 49, 130) & rating_count > 75 & genres.name != null & cover.image_id != null; limit 48;',
         });
@@ -156,8 +154,7 @@ const Home = () => {
       setIsLoading(false);
     };
 
-    // TODO: Fix Axios / CORS / AWS API Gateway error
-    // if (token) getAllGamesRequest();
+    if (token) getAllGamesRequest();
     setIsLoading(false);
   }, [token]);
 
@@ -226,14 +223,14 @@ const Home = () => {
   };
 
   // TODO: Fix Axios / CORS / AWS API Gateway error
-  /* 
+
   return (
     <div className="Home">
       {isLoading && <LoadingDots />}
 
-      {!isLoading && (
+      {/* {!isLoading && (
         <FeaturedGame title={'Featured Game'} games={popularGames} />
-      )}
+      )} */}
       {!isLoading && (
         <GamesHorizontalScroll
           title={'Popular Games'}
@@ -248,9 +245,6 @@ const Home = () => {
       {!isLoading && <Footer />}
     </div>
   );
- */
-
-  return <RepairPage />;
 };
 
 export default Home;

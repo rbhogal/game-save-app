@@ -93,8 +93,8 @@ function App() {
 
       setRemainingDuration(calcRemainingTime(expiresIn));
 
-      // // Gets new token when token expires
-      // setTimeout(getNewToken, remainingDuration);
+      // Gets new token when token expires
+      setTimeout(getNewToken, remainingDuration);
 
       //dispatch token to store
       dispatch(
@@ -108,6 +108,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    // Now handled by AWS Stack
     getAppToken();
   }, [getAppToken]);
 
