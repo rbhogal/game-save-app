@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-import { selectAppToken } from '../features/admin/appTokenSlice';
 import GamesSearchScroll from './carousels/GamesSearchScroll';
 import './GameList.css';
 import AuthContext from '../store/auth-context';
@@ -14,24 +13,21 @@ import Footer from './Footer';
 const GameListGenre = () => {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
   const isSignedIn = authCtx.isSignedIn;
   const userKey = useSelector(selectUserKey);
   const [genreId, setGenreId] = useState('');
   const urlPath = window.location.pathname;
+  const url = `https://42z5n298h4.execute-api.us-west-2.amazonaws.com/production/v4/games`;
 
   const searchAllGames = useCallback(() => {
     setIsLoading(true);
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
       url: url,
       method: 'POST',
       headers: {
-        Accept: 'application/json',
-        'Client-ID': process.env.REACT_APP_CLIENT_ID,
-        Authorization: `Bearer ${token}`,
+        'x-api-key': process.env.REACT_APP_AWS_API_DEFAULT_API_KEY,
       },
       data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where first_release_date !=null &cover.image_id != null & total_rating >= 75; limit 48;`,
     })
@@ -42,18 +38,15 @@ const GameListGenre = () => {
       .catch(err => {
         console.log(err);
       });
-  }, [token]);
+  }, [url]);
 
   const searchGenre = useCallback(() => {
     setIsLoading(true);
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
     axios({
       url: url,
       method: 'POST',
       headers: {
-        Accept: 'application/json',
-        'Client-ID': process.env.REACT_APP_CLIENT_ID,
-        Authorization: `Bearer ${token}`,
+        'x-api-key': process.env.REACT_APP_AWS_API_DEFAULT_API_KEY,
       },
       data: `fields summary, cover.image_id, genres.name, name, total_rating; sort first_release_date desc; where genres=${genreId} & cover.image_id != null & total_rating >= 75 & first_release_date !=null; limit 48;`,
     })
@@ -64,7 +57,7 @@ const GameListGenre = () => {
       .catch(err => {
         console.log(err);
       });
-  }, [token, genreId]);
+  }, [genreId, url]);
 
   useEffect(() => {
     const index = urlPath.lastIndexOf('/');
@@ -73,8 +66,8 @@ const GameListGenre = () => {
   }, [urlPath, searchAllGames]);
 
   useEffect(() => {
-    if (token && genreId) searchGenre();
-  }, [token, genreId, searchGenre]);
+    if (genreId) searchGenre();
+  }, [genreId, searchGenre]);
 
   const checkGameExists = async gameId => {
     let gameExists = false;
