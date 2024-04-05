@@ -18,7 +18,7 @@ const Footer = () => {
       <p>
         Powered by <a href="https://www.igdb.com/discover">IGDB</a>
       </p>
-      <p>© 2021</p>
+      <p>© 2024</p>
       <ion-icon name="flash-outline"></ion-icon>
     </div>
   );
