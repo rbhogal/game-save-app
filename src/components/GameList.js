@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-import { selectAppToken } from '../features/admin/appTokenSlice';
 import GamesSearchScroll from '../components/carousels/GamesSearchScroll';
 import './GameList.css';
 import AuthContext from '../store/auth-context';
@@ -14,7 +13,6 @@ import Footer from './Footer';
 const GameList = () => {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  // const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const authCtx = useContext(AuthContext);
