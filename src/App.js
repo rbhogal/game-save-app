@@ -22,10 +22,10 @@ import { addAppToken } from './features/admin/appTokenSlice';
 
 import Home from './components/Home';
 import Navbar from './components/navbar/Navbar';
+import Game from './components/game/Game';
 
 const LoadingDots = lazy(() => import('./components/LoadingDots'));
 const GameList = lazy(() => import('./components/GameList'));
-const Game = lazy(() => import('./components/game/Game'));
 const SavedGames = lazy(() => import('./components/SavedGames'));
 const GameListGenre = lazy(() => import('./components/GameListGenre'));
 
@@ -49,72 +49,6 @@ function App() {
     const remainingDuration = adjExpirationTime - currTime;
     return remainingDuration;
   };
-
-  // Helper function
-  const getNewToken = async () => {
-    // Get token from Twitch
-    const respTwitch = await axios.post(
-      `https://id.twitch.tv/oauth2/token`,
-      null,
-      {
-        params: {
-          client_id: process.env.REACT_APP_CLIENT_ID,
-          client_secret: process.env.REACT_APP_CLIENT_SECRET,
-          grant_type: 'client_credentials',
-        },
-      }
-    );
-    const { data } = respTwitch;
-
-    // Store token and expiration time to firebase
-    axios
-      .put('https://game-save-default-rtdb.firebaseio.com/admin.json', {
-        expiresIn: data.expires_in,
-        token: data.access_token,
-      })
-      .then()
-      .catch(err => {
-        alert(err.message);
-      });
-  };
-
-  const getAppToken = useCallback(async () => {
-    // GET APP TOKEN
-    // Get New Token If it Expires & dispatch token to redux
-    try {
-      // Get token's expiration time from firebase
-      const respFirebase = await axios.get(
-        'https://game-save-default-rtdb.firebaseio.com/admin.json'
-      );
-      const { data: dataFirebase } = respFirebase;
-
-      const expiresIn = dataFirebase.expiresIn; // in seconds
-      const token = dataFirebase.token;
-
-      setRemainingDuration(calcRemainingTime(expiresIn));
-
-      // Gets new token when token expires
-      setTimeout(getNewToken, remainingDuration);
-
-      //dispatch token to store
-      dispatch(
-        addAppToken({
-          token: token,
-        })
-      );
-    } catch (err) {
-      alert(err.message);
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    // Now handled by AWS Stack
-    getAppToken();
-  }, [getAppToken]);
-
-  useEffect(() => {
-    setTimeout(getNewToken, remainingDuration);
-  }, [remainingDuration]);
 
   return (
     <div className="App">

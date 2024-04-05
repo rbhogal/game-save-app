@@ -7,12 +7,11 @@ import GameHeading from './game/GameHeading';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoadingUserData } from '../features/user/userSlice';
-import LoadingDots from './LoadingDots';
 
 const FeaturedGame = ({ games, title }) => {
   const [featuredGame, setFeaturedGame] = useState({});
   const isLoadingUserData = useSelector(selectIsLoadingUserData);
-  const releaseDate = new Date(featuredGame.first_release_date * 1000);
+  const releaseDate = new Date(featuredGame?.first_release_date * 1000);
   const months = [
     'January',
     'February',
@@ -39,11 +38,6 @@ const FeaturedGame = ({ games, title }) => {
 
   return (
     <>
-      {_.isEmpty(featuredGame) && (
-        <div className="loading-dots-container">
-          <LoadingDots />
-        </div>
-      )}
       {!_.isEmpty(featuredGame) && (
         <Link to={`/gamelist/games/${featuredGame.name}/${featuredGame.id}`}>
           <div className="category">
@@ -74,8 +68,8 @@ const FeaturedGame = ({ games, title }) => {
                 <div className="game-rating-bookmark-div">
                   <div className="game-rating-box">
                     <p className="game-rating">
-                      {featuredGame.total_rating
-                        ? Math.round(featuredGame.total_rating)
+                      {featuredGame?.total_rating
+                        ? Math.round(featuredGame?.total_rating)
                         : 'N/A'}
                     </p>
                   </div>
@@ -85,7 +79,7 @@ const FeaturedGame = ({ games, title }) => {
 
             <div className="featured-game-summary-container">
               <GameHeading heading="Summary" />
-              <p className="game-summary">{featuredGame.summary}</p>
+              <p className="game-summary">{featuredGame?.summary}</p>
             </div>
           </div>
         </Link>

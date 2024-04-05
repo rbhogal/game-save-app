@@ -11,6 +11,7 @@ import {
 } from '../../features/users/usersSlice';
 import { isOpen } from '../../features/mobileMenu/mobileMenuSlice';
 
+// !!! DEPRECIATED
 const TwitchAuth = () => {
   const initialSignIn = localStorage.getItem('isSignedIn');
   console.log('local storage', initialSignIn);
@@ -25,8 +26,6 @@ const TwitchAuth = () => {
   const [dropdown, setDropdown] = useState(false);
 
   const dispatch = useDispatch();
-
-  const CLIENT_ID = 'zu11vezio6yttm9q01oea69kq9dd1h';
 
   useEffect(() => {
     // Return if not authenticated
@@ -43,7 +42,7 @@ const TwitchAuth = () => {
     axios
       .get('https://api.twitch.tv/helix/users', {
         headers: {
-          'Client-ID': CLIENT_ID,
+          'Client-ID': process.env.REACT_APP_CLIENT_ID,
           Authorization: `Bearer ${accessToken}`,
         },
       })

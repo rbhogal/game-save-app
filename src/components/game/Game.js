@@ -13,6 +13,8 @@ import GameDetailsSection from './sections/GameDetailsSection';
 import GameSliderSection from './sections/GameSliderSection';
 import Footer from '../Footer';
 
+import './Game.css';
+
 const Game = () => {
   const [gameData, setGameData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +63,6 @@ const Game = () => {
 
   const getGameData = useCallback(async () => {
     const url = `https://42z5n298h4.execute-api.us-west-2.amazonaws.com/production/v4/games`;
-
     setIsLoading(true);
     try {
       const resp = await axios({
@@ -76,9 +77,10 @@ const Game = () => {
       const game = await resp;
       const [data] = game.data;
       setGameData(data);
-      setIsLoading(false);
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setIsLoading(false);
     }
   }, [gameId]);
 
@@ -87,10 +89,8 @@ const Game = () => {
   }, [getGameId]);
 
   useEffect(() => {
-    if (gameId) {
-      if (token) getGameData();
-    }
-  }, [gameId, token, getGameData]);
+    if (gameId) getGameData();
+  }, [gameId, getGameData]);
 
   const handleBookmarkClick = async () => {
     if (!isSignedIn) {
@@ -142,9 +142,9 @@ const Game = () => {
               <p>Back To Top</p> <ion-icon name="arrow-up"></ion-icon>
             </a>
           </div>
+          <Footer />
         </>
       )}
-      {!isLoading && <Footer />}
     </div>
   );
 };

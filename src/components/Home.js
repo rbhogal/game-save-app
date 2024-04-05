@@ -69,7 +69,6 @@ const Home = () => {
 
     const getAllGamesRequest = async () => {
       setIsLoading(true);
-
       try {
         // POPULAR GAMES
         const respPopularGames = await axios({
@@ -147,16 +146,14 @@ const Home = () => {
  */
       } catch (err) {
         getAppToken();
-
         throw new Error(err.message);
+      } finally {
+        setIsLoading(false);
       }
-
-      setIsLoading(false);
     };
 
-    if (token) getAllGamesRequest();
-    setIsLoading(false);
-  }, [token]);
+    getAllGamesRequest();
+  }, []);
 
   // DRY: Repeat code in GameList.js
   const checkGameExists = async gameId => {
@@ -222,27 +219,24 @@ const Home = () => {
     }
   };
 
-  // TODO: Fix Axios / CORS / AWS API Gateway error
-
   return (
     <div className="Home">
-      {isLoading && <LoadingDots />}
-
-      {/* {!isLoading && (
-        <FeaturedGame title={'Featured Game'} games={popularGames} />
-      )} */}
-      {!isLoading && (
-        <GamesHorizontalScroll
-          title={'Popular Games'}
-          dots={false}
-          infinite={true}
-          bookmarkComponent={AddBookmarkGame}
-          handleBookmarkClick={handleBookmarkClick}
-          games={popularGames}
-        />
+      {isLoading ? (
+        <LoadingDots />
+      ) : (
+        <>
+          <FeaturedGame title={'Featured Game'} games={popularGames} />
+          <GamesHorizontalScroll
+            title="Popular Games"
+            dots={false}
+            infinite={true}
+            bookmarkComponent={AddBookmarkGame}
+            handleBookmarkClick={handleBookmarkClick}
+            games={popularGames}
+          />
+          <Footer />
+        </>
       )}
-
-      {!isLoading && <Footer />}
     </div>
   );
 };
