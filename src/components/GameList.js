@@ -14,7 +14,7 @@ import Footer from './Footer';
 const GameList = () => {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
-  const token = useSelector(selectAppToken);
+  // const token = useSelector(selectAppToken);
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const authCtx = useContext(AuthContext);
@@ -28,14 +28,12 @@ const GameList = () => {
 
   const searchGames = useCallback(() => {
     setIsLoading(true);
-    const url = `https://game-save-cors-proxy.herokuapp.com/https://api.igdb.com/v4/games`;
+    const url = `https://42z5n298h4.execute-api.us-west-2.amazonaws.com/production/v4/games`;
     axios({
       url: url,
       method: 'POST',
       headers: {
-        Accept: 'application/json',
-        'Client-ID': process.env.REACT_APP_CLIENT_ID,
-        Authorization: `Bearer ${token}`,
+        'x-api-key': process.env.REACT_APP_AWS_API_DEFAULT_API_KEY,
       },
       data: `search"${search}"; fields summary, cover.image_id, genres.name, name, total_rating; where genres.name != null & cover.image_id != null; limit 48;`,
     })
@@ -46,11 +44,11 @@ const GameList = () => {
       .catch(err => {
         console.log(err);
       });
-  }, [search, token]);
+  }, [search]);
 
   useEffect(() => {
-    if (token && search) searchGames();
-  }, [token, search, searchGames]);
+    if (search) searchGames();
+  }, [search, searchGames]);
 
   // DRY: Also in Home.js
   const checkGameExists = async gameId => {
@@ -115,6 +113,7 @@ const GameList = () => {
     }
   };
 
+  console.log(games);
   return (
     <div className="GameList">
       <GamesSearchScroll

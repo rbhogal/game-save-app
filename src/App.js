@@ -23,11 +23,10 @@ import { addAppToken } from './features/admin/appTokenSlice';
 import Home from './components/Home';
 import Navbar from './components/navbar/Navbar';
 import Game from './components/game/Game';
-
-const LoadingDots = lazy(() => import('./components/LoadingDots'));
-const GameList = lazy(() => import('./components/GameList'));
-const SavedGames = lazy(() => import('./components/SavedGames'));
-const GameListGenre = lazy(() => import('./components/GameListGenre'));
+import LoadingDots from './components/LoadingDots';
+import GameList from './components/GameList';
+import GameListGenre from './components/GameListGenre';
+import SavedGames from './components/SavedGames';
 
 function App() {
   const authCtx = useContext(AuthContext);
